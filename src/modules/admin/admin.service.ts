@@ -13,7 +13,6 @@ export class AdminService {
       const permissions = await this.prisma.appPermission.findMany({});
       const countries = await this.prisma.country.findMany({});
       const states = await this.prisma.state.findMany({});
-      const categories = await this.prisma.permissionCategory.findMany({});
       const vehicleParts = await this.prisma.vehiclePart.findMany({});
       const currencies = await this.prisma.currency.findMany({});
       const fuelTypes = await this.prisma.fuelType.findMany({});
@@ -44,12 +43,15 @@ export class AdminService {
       const subscriptionPlans = await this.prisma.subscriptionPlan.findMany({
         include: { features: true },
       });
+      const insuranceCompanies = await this.prisma.insuranceCompany.findMany(
+        {},
+      );
 
       return {
         permissions,
         countries,
         states,
-        categories,
+        categories: await this.prisma.permissionCategory.findMany({}),
         vehicleParts,
         currencies,
         fuelTypes,
@@ -76,6 +78,7 @@ export class AdminService {
         paymentTypes,
         vendorTypes,
         subscriptionPlans,
+        insuranceCompanies,
       };
     } catch (error) {}
   }

@@ -57,6 +57,8 @@ model Vehicle {
   swapFromHistory      BookingVehicleHistory[]  @relation("FromVehicleHistory")
   swapToHistory        BookingVehicleHistory[]  @relation("ToVehicleHistory")
   events               VehicleEvent[]
+  insuranceHistory     VehicleInsuranceHistory[]
+  registrationHistory  VehicleRegistrationHistory[]
 }
 
 model VehicleDiscount {
@@ -190,4 +192,36 @@ model VehicleEvent {
   date            DateTime
   notes           String?
   vehicle         Vehicle   @relation(fields: [vehicleId], references: [id])
+}
+
+model VehicleInsuranceHistory {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()"))
+  vehicleId           String
+  insuranceCompanyId  String
+  policyNumber        String
+  validFrom           DateTime
+  validTo             DateTime
+  expired             Boolean   @default(false)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime? @updatedAt
+  createdBy           String?
+  updatedBy           String?
+
+  vehicle             Vehicle   @relation(fields: [vehicleId], references: [id])
+  insuranceCompany    InsuranceCompany @relation(fields: [insuranceCompanyId], references: [id])
+}
+
+model VehicleRegistrationHistory {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()"))
+  vehicleId          String
+  registrationNumber String
+  validFrom          DateTime
+  validTo            DateTime
+  expired            Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime? @updatedAt
+  createdBy          String?
+  updatedBy          String?
+
+  vehicle           Vehicle   @relation(fields: [vehicleId], references: [id])
 }

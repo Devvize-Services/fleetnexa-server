@@ -158,6 +158,11 @@ export type VendorType = Prisma.VendorTypeModel
  */
 export type Port = Prisma.PortModel
 /**
+ * Model InsuranceCompany
+ * 
+ */
+export type InsuranceCompany = Prisma.InsuranceCompanyModel
+/**
  * Model Customer
  * 
  */
@@ -522,3 +527,13 @@ export type BookingVehicleHistory = Prisma.BookingVehicleHistoryModel
  * 
  */
 export type VehicleEvent = Prisma.VehicleEventModel
+/**
+ * Model VehicleInsuranceHistory
+ * 
+ */
+export type VehicleInsuranceHistory = Prisma.VehicleInsuranceHistoryModel
+/**
+ * Model VehicleRegistrationHistory
+ * 
+ */
+export type VehicleRegistrationHistory = Prisma.VehicleRegistrationHistoryModel

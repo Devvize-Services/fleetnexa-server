@@ -75,6 +75,7 @@ export const ModelName = {
   PaymentType: 'PaymentType',
   VendorType: 'VendorType',
   Port: 'Port',
+  InsuranceCompany: 'InsuranceCompany',
   Customer: 'Customer',
   CustomerMessengerApp: 'CustomerMessengerApp',
   CustomerAddress: 'CustomerAddress',
@@ -147,7 +148,9 @@ export const ModelName = {
   VehicleMaintenance: 'VehicleMaintenance',
   VehicleServiceSchedule: 'VehicleServiceSchedule',
   BookingVehicleHistory: 'BookingVehicleHistory',
-  VehicleEvent: 'VehicleEvent'
+  VehicleEvent: 'VehicleEvent',
+  VehicleInsuranceHistory: 'VehicleInsuranceHistory',
+  VehicleRegistrationHistory: 'VehicleRegistrationHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -391,6 +394,15 @@ export const PortScalarFieldEnum = {
 } as const
 
 export type PortScalarFieldEnum = (typeof PortScalarFieldEnum)[keyof typeof PortScalarFieldEnum]
+
+
+export const InsuranceCompanyScalarFieldEnum = {
+  id: 'id',
+  company: 'company',
+  code: 'code'
+} as const
+
+export type InsuranceCompanyScalarFieldEnum = (typeof InsuranceCompanyScalarFieldEnum)[keyof typeof InsuranceCompanyScalarFieldEnum]
 
 
 export const CustomerScalarFieldEnum = {
@@ -1559,6 +1571,39 @@ export const VehicleEventScalarFieldEnum = {
 } as const
 
 export type VehicleEventScalarFieldEnum = (typeof VehicleEventScalarFieldEnum)[keyof typeof VehicleEventScalarFieldEnum]
+
+
+export const VehicleInsuranceHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  insuranceCompanyId: 'insuranceCompanyId',
+  policyNumber: 'policyNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleInsuranceHistoryScalarFieldEnum = (typeof VehicleInsuranceHistoryScalarFieldEnum)[keyof typeof VehicleInsuranceHistoryScalarFieldEnum]
+
+
+export const VehicleRegistrationHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  registrationNumber: 'registrationNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleRegistrationHistoryScalarFieldEnum = (typeof VehicleRegistrationHistoryScalarFieldEnum)[keyof typeof VehicleRegistrationHistoryScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -207,3 +207,11 @@ model Port {
   country   Country      @relation(fields: [countryId], references: [id])
   vessels   VesselInfo[]
 }
+
+model InsuranceCompany {
+  id         String     @id @default(dbgenerated("gen_random_uuid()"))
+  company    String
+  code       String     @unique
+
+  vehicles   VehicleInsuranceHistory[]
+}
