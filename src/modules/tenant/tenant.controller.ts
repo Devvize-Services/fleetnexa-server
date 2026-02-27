@@ -10,19 +10,19 @@ import {
   Patch,
 } from '@nestjs/common';
 import { TenantService } from './tenant.service.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
 import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
 import { CreateTenantDto } from './dto/create-tenant.dto.js';
 import { UpdateTenantDto } from './dto/update-tenant.dto.js';
 import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
+import { TenantAuthGuard } from '../auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant')
 export class TenantController {
   constructor(private readonly tenantService: TenantService) {}
 
   @Get()
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   getCurrentTenant(@Req() req: AuthenticatedRequest) {
     const { tenant, user } = req.context;
     return this.tenantService.getCurrentTenant(tenant, user);
@@ -47,7 +47,7 @@ export class TenantController {
   }
 
   @Get('today')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   getTodayActivities(@Req() req: AuthenticatedRequest) {
     const tenant = req.context.tenant!;
     return this.tenantService.getTodayActivities(tenant);
@@ -64,7 +64,7 @@ export class TenantController {
   }
 
   @Put()
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   updateTenant(
     @Req() req: AuthenticatedRequest,
     @Body() data: UpdateTenantDto,
@@ -74,7 +74,7 @@ export class TenantController {
   }
 
   @Patch('storefront')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   updateStorefront(
     @Req() req: AuthenticatedRequest,
     @Body() data: UpdateStorefrontDto,

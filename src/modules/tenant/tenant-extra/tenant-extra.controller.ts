@@ -8,51 +8,46 @@ import {
   Put,
   Req,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { TenantExtraService } from './tenant-extra.service.js';
 import type { AuthenticatedRequest } from 'src/types/authenticated-request.js';
 import { TenantExtraDto } from './tenant-extra.dto.js';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
+import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant/extra')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class TenantExtraController {
   constructor(private readonly service: TenantExtraService) {}
 
   @Get()
-  async getTenantExtras(@Req() req: AuthenticatedRequest) {
-    const tenant = req.context.tenant;
+  async getTenantExtras(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantExtras(tenant);
   }
 
   @Post()
-  async addTenantExtra(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantExtraDto,
-  ) {
-    const tenant = req.context.tenant;
-    const user = req.context.user;
+  async addTenantExtra(@Request() req, @Body() data: TenantExtraDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.createTenantExtra(data, tenant, user);
   }
 
   @Put()
-  async updateTenantExtra(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantExtraDto,
-  ) {
-    const tenant = req.context.tenant;
-    const user = req.context.user;
+  async updateTenantExtra(@Request() req, @Body() data: TenantExtraDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.updateTenantExtra(data, tenant, user);
   }
 
   @Delete(':type/:id')
   async deleteTenantExtra(
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
     @Param('type') type: 'service' | 'equipment' | 'insurance',
     @Param('id') id: string,
   ) {
-    const tenant = req.context.tenant;
-    const user = req.context.user;
+    const { tenant } = req.user;
+    const user = req.user;
 
     switch (type) {
       case 'service':

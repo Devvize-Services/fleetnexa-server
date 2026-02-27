@@ -8,9 +8,9 @@ import {
 } from '@nestjs/common';
 import { StorageService } from './storage.service.js';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
 import { UploadFileDto } from './dto/upload-file.dto.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
+import { TenantAuthGuard } from '../auth/guards/tenant-auth.guard.js';
 
 @Controller('storage')
 export class StorageController {
@@ -18,7 +18,7 @@ export class StorageController {
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async uploadFile(
     @Body() data: UploadFileDto,
     @UploadedFile() file: Express.Multer.File,

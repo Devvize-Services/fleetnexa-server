@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TenantLocationModule } from './tenant-location/tenant-location.module.js';
 import { JwtService } from '@nestjs/jwt';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
 import { TenantUserModule } from '../user/tenant-user/tenant-user.module.js';
 import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { UserRoleModule } from '../user/tenant-user/modules/user-role/user-role.module.js';
@@ -39,7 +38,6 @@ import { VehicleMaintenanceModule } from '../vehicle/modules/vehicle-maintenance
     TenantService,
     TenantRepository,
     TenantUserRepository,
-    AuthGuard,
   ],
   exports: [TenantService, TenantRepository, TenantUserRepository],
 })

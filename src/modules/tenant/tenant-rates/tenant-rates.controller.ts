@@ -1,26 +1,22 @@
-import { Body, Controller, Get, Put, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Put, UseGuards, Request } from '@nestjs/common';
 import { TenantRatesService } from './tenant-rates.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantRateDto } from './tenant-rate.dto.js';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
+import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant/rate')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class TenantRatesController {
   constructor(private readonly service: TenantRatesService) {}
 
   @Get()
-  async getTenantRates(@Req() req: AuthenticatedRequest) {
-    const tenant = req.context.tenant;
+  async getTenantRates(@Request() req) {
+    const tenant = req.user.tenant;
     return this.service.getTenantRates(tenant);
   }
 
   @Put()
-  async updateTenantRate(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantRateDto,
-  ) {
-    const tenant = req.context.tenant;
+  async updateTenantRate(@Request() req, @Body() data: TenantRateDto) {
+    const tenant = req.user.tenant;
     return this.service.updateTenantRate(data, tenant);
   }
 }

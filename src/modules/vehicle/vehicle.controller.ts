@@ -12,19 +12,19 @@ import {
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
 import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
+import { TenantAuthGuard } from '../auth/guards/tenant-auth.guard.js';
 
 @Controller('vehicle')
 export class VehicleController {
   constructor(private readonly service: VehicleService) {}
 
   @Get()
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async getTenantVehicles(@Req() req: AuthenticatedRequest) {
     const { tenant } = req.context;
     return this.service.getTenantVehicles(tenant);
@@ -49,7 +49,7 @@ export class VehicleController {
   }
 
   @Get('plate/:plate')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async getVehicleByLicensePlate(
     @Param('plate') licensePlate: string,
     @Req() req: AuthenticatedRequest,
@@ -59,7 +59,7 @@ export class VehicleController {
   }
 
   @Get(':id')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async getVehicleById(
     @Param('id') id: string,
     @Req() req: AuthenticatedRequest,
@@ -69,7 +69,7 @@ export class VehicleController {
   }
 
   @Post()
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async createVehicle(
     @Req() req: AuthenticatedRequest,
     @Body() data: VehicleDto,
@@ -79,7 +79,7 @@ export class VehicleController {
   }
 
   @Put()
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async updateVehicle(
     @Req() req: AuthenticatedRequest,
     @Body() data: VehicleDto,
@@ -89,7 +89,7 @@ export class VehicleController {
   }
 
   @Patch('status')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async updateVehicleStatus(
     @Req() req: AuthenticatedRequest,
     @Body() data: VehicleStatusDto,
@@ -99,7 +99,7 @@ export class VehicleController {
   }
 
   @Patch('location')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async updateVehicleLocation(
     @Req() req: AuthenticatedRequest,
     @Body() data: VehicleLocationDto,
@@ -109,7 +109,7 @@ export class VehicleController {
   }
 
   @Post('swap')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async swapVehicle(
     @Req() req: AuthenticatedRequest,
     @Body() data: SwapVehicleDto,
@@ -119,7 +119,7 @@ export class VehicleController {
   }
 
   @Delete(':id')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async deleteVehicle(
     @Param('id') id: string,
     @Req() req: AuthenticatedRequest,
@@ -129,7 +129,7 @@ export class VehicleController {
   }
 
   @Patch(':id/storefront')
-  @UseGuards(AuthGuard)
+  @UseGuards(TenantAuthGuard)
   async updateVehicleStorefrontStatus(
     @Req() req: AuthenticatedRequest,
     @Param('id') vehicleId: string,

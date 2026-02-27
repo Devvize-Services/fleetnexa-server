@@ -1,20 +1,14 @@
-import { Module } from "@nestjs/common";
-import { UserModule } from "../../../user.module.js";
-import { UserRoleService } from "./user-role.service.js";
-import { UserRoleController } from "./user-role.controller.js";
-import { AuthGuard } from "../../../../../common/guards/auth.guard.js";
-import { TenantRepository } from "../../../../../modules/tenant/tenant.repository.js";
-import { TenantUserRepository } from "../../tenant-user.repository.js";
+import { Module } from '@nestjs/common';
+import { UserModule } from '../../../user.module.js';
+import { UserRoleService } from './user-role.service.js';
+import { UserRoleController } from './user-role.controller.js';
+import { TenantRepository } from '../../../../../modules/tenant/tenant.repository.js';
+import { TenantUserRepository } from '../../tenant-user.repository.js';
 
 @Module({
-	imports: [UserModule],
-	controllers: [UserRoleController],
-	providers: [
-		UserRoleService,
-		AuthGuard,
-		TenantRepository,
-		TenantUserRepository,
-	],
-	exports: [UserRoleService],
+  imports: [UserModule],
+  controllers: [UserRoleController],
+  providers: [UserRoleService, TenantRepository, TenantUserRepository],
+  exports: [UserRoleService],
 })
 export class UserRoleModule {}

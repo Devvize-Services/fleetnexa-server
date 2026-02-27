@@ -10,15 +10,15 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TenantBookingService } from './tenant-booking.service.js';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
 import type { AuthenticatedRequest } from 'src/types/authenticated-request.js';
 import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { ActionBookingDto } from '../dto/action-booking.dto.js';
 import { SendDocumentsDto } from './dto/send-documents.dto.js';
+import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant/booking')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class TenantBookingController {
   constructor(private readonly service: TenantBookingService) {}
 

@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TenantModule } from './modules/tenant/tenant.module.js';
-import { TenantAuthModule } from './modules/auth/tenant-auth/tenant-auth.module.js';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ConfigModule } from '@nestjs/config';
@@ -74,7 +73,6 @@ import { SubscriptionModule } from './modules/subscription/subscription.module.j
     StorefrontAuthModule,
     StorefrontUserModule,
     AuthModule,
-    TenantAuthModule,
     AdminAuthModule,
 
     StorefrontBookingModule,

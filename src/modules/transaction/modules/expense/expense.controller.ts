@@ -6,49 +6,42 @@ import {
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { ExpenseService } from './expense.service.js';
-import { AuthGuard } from '../../../../common/guards/auth.guard.js';
-import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { ExpenseDto } from './expense.dto.js';
+import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('transaction/expense')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class ExpenseController {
   constructor(private readonly service: ExpenseService) {}
 
   @Get()
-  async getExpenses(@Req() req: AuthenticatedRequest) {
-    const { tenant } = req.context;
+  async getExpenses(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantExpenses(tenant);
   }
 
   @Post()
-  async createExpense(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: ExpenseDto,
-  ) {
-    const { tenant, user } = req.context;
+  async createExpense(@Request() req, @Body() data: ExpenseDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.createExpense(data, tenant, user);
   }
 
   @Put()
-  async updateExpense(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: ExpenseDto,
-  ) {
-    const { tenant, user } = req.context;
+  async updateExpense(@Request() req, @Body() data: ExpenseDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.updateExpense(data, tenant, user);
   }
 
   @Delete(':id')
-  async deleteExpense(
-    @Req() req: AuthenticatedRequest,
-    @Param('id') expenseId: string,
-  ) {
-    const { tenant, user } = req.context;
+  async deleteExpense(@Request() req, @Param('id') expenseId: string) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.deleteExpense(expenseId, tenant, user);
   }
 }

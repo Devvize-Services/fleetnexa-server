@@ -6,49 +6,39 @@ import {
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { TenantViolationService } from './tenant-violation.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantViolationDto } from './tenant-violation.dto.js';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
+import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant/violation')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class TenantViolationController {
   constructor(private readonly service: TenantViolationService) {}
 
   @Get()
-  async getTenantViolations(@Req() req: AuthenticatedRequest) {
-    const { tenant } = req.context;
+  async getTenantViolations(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantViolations(tenant);
   }
 
   @Post()
-  async createViolation(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantViolationDto,
-  ) {
-    const { tenant } = req.context;
+  async createViolation(@Request() req, @Body() data: TenantViolationDto) {
+    const { tenant } = req.user;
     return this.service.createViolation(data, tenant);
   }
 
   @Put()
-  async updateViolation(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantViolationDto,
-  ) {
-    const { tenant } = req.context;
+  async updateViolation(@Request() req, @Body() data: TenantViolationDto) {
+    const { tenant } = req.user;
     return this.service.updateViolation(data, tenant);
   }
 
   @Delete(':id')
-  async deleteViolation(
-    @Req() req: AuthenticatedRequest,
-    @Param('id') id: string,
-  ) {
-    const { tenant } = req.context;
+  async deleteViolation(@Request() req, @Param('id') id: string) {
+    const { tenant } = req.user;
     return this.service.deleteViolation(id, tenant);
   }
 }

@@ -10,12 +10,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UserRoleService } from './user-role.service.js';
-import { AuthGuard } from '../../../../../common/guards/auth.guard.js';
 import type { AuthenticatedRequest } from '../../../../../types/authenticated-request.js';
 import { UserRoleDto, UserRolePermissionsDto } from './user-role.dto.js';
+import { TenantAuthGuard } from '../../../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('tenant/user/role')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class UserRoleController {
   constructor(private readonly service: UserRoleService) {}
 

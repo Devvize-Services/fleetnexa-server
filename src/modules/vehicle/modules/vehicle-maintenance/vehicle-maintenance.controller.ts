@@ -10,12 +10,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { VehicleMaintenanceService } from './vehicle-maintenance.service.js';
-import { AuthGuard } from '../../../../common/guards/auth.guard.js';
 import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { VehicleMaintenanceDto } from './vehicle-maintenance.dto.js';
+import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
 
 @Controller('vehicle/maintenance')
-@UseGuards(AuthGuard)
+@UseGuards(TenantAuthGuard)
 export class VehicleMaintenanceController {
   constructor(private readonly service: VehicleMaintenanceService) {}
 
