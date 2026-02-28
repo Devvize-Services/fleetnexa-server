@@ -17,14 +17,16 @@ import { UpdateTenantDto } from './dto/update-tenant.dto.js';
 import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
 import { LocalAuthGuard } from '../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 
 @Controller('tenant')
 export class TenantController {
   constructor(private readonly tenantService: TenantService) {}
 
   @Get()
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
   getCurrentTenant(@Request() req) {
+    console.log('Getting current tenant for user:', req.user);
     const { tenant } = req.user;
     return this.tenantService.getCurrentTenant(tenant, req.user);
   }

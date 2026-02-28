@@ -8,6 +8,7 @@ import { winstonConfig } from './config/winston.config.js';
 import * as crypto from 'node:crypto';
 import helmet from 'helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import cookieParser from 'cookie-parser';
 
 config();
 
@@ -17,6 +18,7 @@ async function bootstrap() {
   });
   app.setGlobalPrefix('api');
   app.use(helmet());
+  app.use(cookieParser());
 
   app.useGlobalPipes(
     new ValidationPipe({

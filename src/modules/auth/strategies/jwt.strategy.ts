@@ -22,15 +22,24 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    console.log('Validating JWT payload:', payload);
+    if (payload.role === 'TENANT_USER') {
+      return this.validateTenantUser(payload);
+    }
 
-    const user = await this.userRepo.getUserById(payload.sub);
-    if (!user) throw new UnauthorizedException('User not found');
+    console.log('Validating JWT payload for tenant:', payload);
+    throw new UnauthorizedException('Invalid JWT payload: unrecognized role');
+  }
+
+  async validateTenantUser(payload: any) {
+    console.log('Validating JWT payload for tenant user:', payload);
+
+    const tenantUser = await this.userRepo.getUserById(payload.sub);
+    if (!tenantUser) throw new UnauthorizedException('Tenant user not found');
 
     const tenant = await this.tenantRepo.getTenantById(payload.tenantId);
     if (!tenant) throw new UnauthorizedException('Tenant not found');
 
-    return { ...user, tenant };
+    return { ...tenantUser, tenant };
   }
 
   static cookieExtractor = (req: any): string | null => {
