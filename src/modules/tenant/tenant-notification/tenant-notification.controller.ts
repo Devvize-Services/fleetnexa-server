@@ -10,10 +10,10 @@ import {
 } from '@nestjs/common';
 import { TenantNotificationService } from './tenant-notification.service.js';
 import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/notification')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantNotificationController {
   constructor(private readonly service: TenantNotificationService) {}
 

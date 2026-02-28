@@ -15,10 +15,10 @@ import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { ActionBookingDto } from '../dto/action-booking.dto.js';
 import { SendDocumentsDto } from './dto/send-documents.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/booking')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantBookingController {
   constructor(private readonly service: TenantBookingService) {}
 

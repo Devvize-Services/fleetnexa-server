@@ -22,6 +22,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
+    console.log('Validating JWT payload:', payload);
+
     const user = await this.userRepo.getUserById(payload.sub);
     if (!user) throw new UnauthorizedException('User not found');
 
@@ -32,6 +34,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   static cookieExtractor = (req: any): string | null => {
+    console.log('Extracting JWT from cookies:', req?.cookies);
+
     return req?.cookies?.access_token || null;
   };
 }

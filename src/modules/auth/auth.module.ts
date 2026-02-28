@@ -6,7 +6,7 @@ import { AuthController } from './auth.controller.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { PassportModule } from '@nestjs/passport';
 import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
-import { TenantStrategy } from './strategies/tenant.strategy.js';
+import { LocalStrategy } from './strategies/local.strategy.js';
 import { JwtStrategy } from './strategies/jwt.strategy.js';
 import { TenantRepository } from '../tenant/tenant.repository.js';
 
@@ -21,7 +21,7 @@ import { TenantRepository } from '../tenant/tenant.repository.js';
     AuthService,
     TenantUserRepository,
     TenantRepository,
-    TenantStrategy,
+    LocalStrategy,
     JwtStrategy,
   ],
 })

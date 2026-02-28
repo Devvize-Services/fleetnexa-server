@@ -1,9 +1,9 @@
 import { Controller, Get, Req, UseGuards, Request } from '@nestjs/common';
 import { TenantActivityService } from './tenant-activity.service.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/activity')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantActivityController {
   constructor(private readonly service: TenantActivityService) {}
 

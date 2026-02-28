@@ -13,10 +13,10 @@ import {
 import { TenantVendorService } from './tenant-vendor.service.js';
 import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantVendorDto } from './tenant-vendor.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/vendor')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantVendorController {
   constructor(private readonly service: TenantVendorService) {}
 

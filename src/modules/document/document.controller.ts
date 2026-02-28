@@ -2,10 +2,10 @@ import { Body, Controller, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { DocumentService } from './document.service.js';
 import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
 import { SendForSigningDto } from './dto/send-for-signing.dto.js';
-import { TenantAuthGuard } from '../auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../auth/guards/local.guard.js';
 
 @Controller('document')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class DocumentController {
   constructor(private readonly service: DocumentService) {}
 

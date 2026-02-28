@@ -1,10 +1,10 @@
 import { Controller, Get, Req, UseGuards, Request } from '@nestjs/common';
 import { TransactionService } from './transaction.service.js';
 import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
-import { TenantAuthGuard } from '../auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../auth/guards/local.guard.js';
 
 @Controller('transaction')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TransactionController {
   constructor(private readonly service: TransactionService) {}
 

@@ -12,10 +12,10 @@ import {
 } from '@nestjs/common';
 import { TenantLocationService } from './tenant-location.service.js';
 import { TenantLocationDto } from './tenant.location.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/location')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantLocationController {
   constructor(private readonly service: TenantLocationService) {}
 

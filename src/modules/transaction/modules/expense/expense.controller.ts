@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import { ExpenseService } from './expense.service.js';
 import { ExpenseDto } from './expense.dto.js';
-import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
 
 @Controller('transaction/expense')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class ExpenseController {
   constructor(private readonly service: ExpenseService) {}
 

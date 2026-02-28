@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import { TenantViolationService } from './tenant-violation.service.js';
 import { TenantViolationDto } from './tenant-violation.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/violation')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantViolationController {
   constructor(private readonly service: TenantViolationService) {}
 

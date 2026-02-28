@@ -1,13 +1,13 @@
 import { Controller, Get, Post, UseGuards, Request, Res } from '@nestjs/common';
 import { AuthService } from './auth.service.js';
-import { TenantAuthGuard } from './guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from './guards/local.guard.js';
 import type { Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(TenantAuthGuard)
+  @UseGuards(LocalAuthGuard)
   @Post('tenant/login')
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
     const result = await this.authService.loginTenantUser(req.user.id);

@@ -12,10 +12,10 @@ import {
 import { VehicleMaintenanceService } from './vehicle-maintenance.service.js';
 import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { VehicleMaintenanceDto } from './vehicle-maintenance.dto.js';
-import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
 
 @Controller('vehicle/maintenance')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class VehicleMaintenanceController {
   constructor(private readonly service: VehicleMaintenanceService) {}
 

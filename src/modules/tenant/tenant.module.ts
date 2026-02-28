@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TenantLocationModule } from './tenant-location/tenant-location.module.js';
-import { JwtService } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { TenantUserModule } from '../user/tenant-user/tenant-user.module.js';
 import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { UserRoleModule } from '../user/tenant-user/modules/user-role/user-role.module.js';
@@ -16,9 +16,14 @@ import { TenantActivityModule } from './tenant-activity/tenant-activity.module.j
 import { TenantRatesModule } from './tenant-rates/tenant-rates.module.js';
 import { TenantBookingModule } from '../booking/tenant-booking/tenant-booking.module.js';
 import { VehicleMaintenanceModule } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.module.js';
+import { JwtStrategy } from '../auth/strategies/jwt.strategy.js';
+import jwtConfig from '../../config/jwt.config.js';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forFeature(jwtConfig),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
     TenantLocationModule,
     TenantExtrasModule,
     TenantUserModule,
@@ -38,6 +43,7 @@ import { VehicleMaintenanceModule } from '../vehicle/modules/vehicle-maintenance
     TenantService,
     TenantRepository,
     TenantUserRepository,
+    JwtStrategy,
   ],
   exports: [TenantService, TenantRepository, TenantUserRepository],
 })

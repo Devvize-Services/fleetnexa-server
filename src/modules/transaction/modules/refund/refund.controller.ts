@@ -13,10 +13,10 @@ import {
 import { RefundService } from './refund.service.js';
 import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { RefundDto } from './refund.dto.js';
-import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
 
 @Controller('transaction/refund')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class RefundController {
   constructor(private readonly service: RefundService) {}
 

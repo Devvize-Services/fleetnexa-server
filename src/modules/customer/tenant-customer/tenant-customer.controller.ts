@@ -12,10 +12,10 @@ import {
 import { TenantCustomerService } from './tenant-customer.service.js';
 import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantCustomerDto } from './tenant-customer.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/customer')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantCustomerController {
   constructor(private readonly service: TenantCustomerService) {}
 

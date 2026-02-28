@@ -15,10 +15,10 @@ import { TenantUserService } from './tenant-user.service.js';
 import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantUserDto } from './dto/tenant-user.dto.js';
 import { ChangePasswordDto } from '../dto/change-password.dto.js';
-import { TenantAuthGuard } from '../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 
 @Controller('tenant/user')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class TenantUserController {
   private readonly logger = new Logger(TenantUserController.name);
 

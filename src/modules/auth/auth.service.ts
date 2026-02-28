@@ -14,6 +14,15 @@ export class AuthService {
     private tenantUserRepo: TenantUserRepository,
   ) {}
 
+  async validateUser(username: string, password: string, role: string) {
+    if (role === 'TENANT_USER') {
+      return this.validateTenantUser(username, password);
+    }
+
+    this.logger.warn(`Unsupported role ${role} provided for user ${username}.`);
+    throw new UnauthorizedException('Invalid role');
+  }
+
   async validateTenantUser(username: string, password: string) {
     try {
       let user: any | null = null;
@@ -47,6 +56,7 @@ export class AuthService {
         username: user.username,
         email: user.email,
         tenantId: user.tenantId,
+        role: 'TENANT_USER',
       };
     } catch (error) {
       this.logger.error(
@@ -69,7 +79,7 @@ export class AuthService {
 
       const token = this.jwtService.sign(payload);
 
-      return { token, user };
+      return { token, user, role: 'TENANT_USER' };
     } catch (error) {
       this.logger.error(
         `Error logging in tenant user with ID ${userId}: ${error.message}`,

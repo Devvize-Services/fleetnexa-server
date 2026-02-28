@@ -11,10 +11,10 @@ import {
 import { PaymentService } from './payment.service.js';
 import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { PaymentDto } from './payment.dto.js';
-import { TenantAuthGuard } from '../../../../modules/auth/guards/tenant-auth.guard.js';
+import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
 
 @Controller('transaction/payment')
-@UseGuards(TenantAuthGuard)
+@UseGuards(LocalAuthGuard)
 export class PaymentController {
   constructor(private readonly service: PaymentService) {}
 
