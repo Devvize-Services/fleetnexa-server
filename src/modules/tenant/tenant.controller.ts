@@ -29,7 +29,6 @@ export class TenantController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   getCurrentTenant(@Request() req) {
-    console.log('Getting current tenant for user:', req.user);
     const { tenant } = req.user;
     return this.tenantService.getCurrentTenant(tenant, req.user);
   }
@@ -53,9 +52,10 @@ export class TenantController {
   }
 
   @Get('today')
-  @UseGuards(LocalAuthGuard)
-  getTodayActivities(@Req() req: AuthenticatedRequest) {
-    const tenant = req.context.tenant!;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  getTodayActivities(@Request() req) {
+    const tenant = req.user.tenant;
     return this.tenantService.getTodayActivities(tenant);
   }
 

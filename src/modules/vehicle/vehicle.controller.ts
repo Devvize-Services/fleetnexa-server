@@ -9,6 +9,7 @@ import {
   Put,
   Req,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
@@ -18,15 +19,19 @@ import { VehicleDto } from './dto/vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 import { LocalAuthGuard } from '../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
+import { Role } from '../../common/enums/role.enum.js';
+import { Roles } from '../auth/decorator/role.decorator.js';
 
 @Controller('vehicle')
 export class VehicleController {
   constructor(private readonly service: VehicleService) {}
 
   @Get()
-  @UseGuards(LocalAuthGuard)
-  async getTenantVehicles(@Req() req: AuthenticatedRequest) {
-    const { tenant } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async getTenantVehicles(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantVehicles(tenant);
   }
 
@@ -49,42 +54,43 @@ export class VehicleController {
   }
 
   @Get('plate/:plate')
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   async getVehicleByLicensePlate(
     @Param('plate') licensePlate: string,
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
   ) {
-    const { tenant } = req.context;
+    const { tenant } = req.user;
     return this.service.getVehicleByLicensePlate(licensePlate, tenant);
   }
 
-  @Get(':id')
-  @UseGuards(LocalAuthGuard)
-  async getVehicleById(
-    @Param('id') id: string,
-    @Req() req: AuthenticatedRequest,
-  ) {
-    const { tenant } = req.context;
+  @Get('id/:id')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async getVehicleById(@Param('id') id: string, @Request() req) {
+    console.log(
+      'This is being hit instead of maintenance endpoint, vehicle id:',
+      id,
+    );
+    const { tenant } = req.user;
     return this.service.getVehicleById(id, tenant);
   }
 
   @Post()
-  @UseGuards(LocalAuthGuard)
-  async createVehicle(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async createVehicle(@Request() req, @Body() data: VehicleDto) {
+    const user = req.user;
+    const { tenant } = req.user;
     return this.service.addVehicle(data, tenant, user);
   }
 
   @Put()
-  @UseGuards(LocalAuthGuard)
-  async updateVehicle(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async updateVehicle(@Request() req, @Body() data: VehicleDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.updateVehicle(data, tenant, user);
   }
 
