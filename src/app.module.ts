@@ -42,6 +42,8 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { AdminAuthModule } from './modules/auth/admin-auth/admin-auth.module.js';
 import { DashboardModule } from './modules/dashboard/dashboard.module.js';
 import { SubscriptionModule } from './modules/subscription/subscription.module.js';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 
 @Module({
   imports: [
@@ -107,6 +109,12 @@ import { SubscriptionModule } from './modules/subscription/subscription.module.j
     SubscriptionModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}

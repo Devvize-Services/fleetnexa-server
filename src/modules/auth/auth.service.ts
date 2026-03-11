@@ -75,7 +75,11 @@ export class AuthService {
         throw new UnauthorizedException('User not found');
       }
 
-      const payload = { sub: user.id, tenantId: user.tenantId };
+      const payload = {
+        sub: user.id,
+        tenantId: user.tenantId,
+        role: 'TENANT_USER',
+      };
 
       const token = this.jwtService.sign(payload);
 

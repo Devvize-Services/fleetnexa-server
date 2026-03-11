@@ -18,6 +18,8 @@ import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
 import { LocalAuthGuard } from '../auth/guards/local.guard.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
+import { Role } from '../../common/enums/role.enum.js';
+import { Roles } from '../auth/decorator/role.decorator.js';
 
 @Controller('tenant')
 export class TenantController {
@@ -25,6 +27,7 @@ export class TenantController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   getCurrentTenant(@Request() req) {
     console.log('Getting current tenant for user:', req.user);
     const { tenant } = req.user;
