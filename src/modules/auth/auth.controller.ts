@@ -28,6 +28,6 @@ export class AuthController {
       path: '/',
     });
 
-    return { user, token };
+    return { user };
   }
 }
