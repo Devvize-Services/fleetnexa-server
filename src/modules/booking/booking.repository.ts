@@ -1,5 +1,5 @@
-import { Prisma } from '../../generated/prisma/client';
-import { PrismaService } from '../../prisma/prisma.service';
+import { Prisma } from 'src/generated/prisma/client.js';
+import { PrismaService } from 'src/prisma/prisma.service.js';
 
 export class BookingRepository {
   constructor(private readonly prisma: PrismaService) {}

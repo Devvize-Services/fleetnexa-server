@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Tenant } from 'src/generated/prisma/client';
-import { BookingRepository } from './booking.repository';
+import { BookingRepository } from './booking.repository.js';
+import { Tenant } from 'src/generated/prisma/client.js';
 
 @Injectable()
 export class BookingService {
