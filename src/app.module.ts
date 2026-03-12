@@ -44,6 +44,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module.js';
 import { SubscriptionModule } from './modules/subscription/subscription.module.js';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth/guards/roles.guard.js';
+import { BookingModule } from './modules/booking/booking.module.js';
+import { UserModule } from './modules/user/user.module.js';
 
 @Module({
   imports: [
@@ -79,11 +81,14 @@ import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 
     StorefrontBookingModule,
     TenantBookingModule,
+    BookingModule,
 
     TenantCustomerModule,
 
     UserRoleModule,
     TenantUserModule,
+    UserModule,
+
     TenantLocationModule,
     TenantRatesModule,
     TenantActivityModule,
