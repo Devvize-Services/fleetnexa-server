@@ -1,0 +1,51 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    name: Deploy to ${{ github.ref_name == 'main' && 'Production' || 'Development' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set environment host
+        id: env
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            echo "host=${{ secrets.EC2_HOST_PROD }}" >> $GITHUB_OUTPUT
+          else
+            echo "host=${{ secrets.EC2_HOST_DEV }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ steps.env.outputs.host }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script_stop: true
+          script: |
+            set -e
+            echo "==> Deploying branch: ${{ github.ref_name }}"
+            cd /wwwroot/fleetnexa-server
+
+            sudo git stash
+            sudo git fetch origin
+            sudo git pull origin ${{ github.ref_name }}
+
+            sudo npm install
+            sudo npx prisma migrate deploy
+            sudo npx prisma generate
+            sudo npm run build
+
+            sudo systemctl restart fleetnexa
+
+            echo "✅ Done! Deployed ${{ github.ref_name }} to ${{ steps.env.outputs.host }}"
