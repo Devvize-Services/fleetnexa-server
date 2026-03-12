@@ -26,7 +26,7 @@ jobs:
             npx prisma migrate deploy
             npx prisma generate
             npm run build
-            systemctl restart dev-fleetnexa-server.service
+            sudo systemctl restart dev-fleetnexa-server.service
 
   deploy-prod:
     if: github.ref == 'refs/heads/main'
@@ -47,4 +47,24 @@ jobs:
             npx prisma migrate deploy
             npx prisma generate
             npm run build
-            systemctl restart fleetnexa-server.service
+            sudo systemctl restart fleetnexa-server.service
+
+  notify:
+    needs: [deploy-dev, deploy-prod]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Discord Notify
+        run: |
+          STATUS="${{ job.status }}"
+          curl -H "Content-Type: application/json" \
+          -d "{
+            \"content\": \"🚀 FleetNexa Deploy\",
+            \"embeds\": [{
+              \"title\": \"Deployment $STATUS\",
+              \"description\": \"Branch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\",
+              \"color\": $([ \"$STATUS\" = \"success\" ] && echo 5763719 || echo 15548997)
+            }]
+          }" \
+          ${{ secrets.DISCORD_WEBHOOK }}
