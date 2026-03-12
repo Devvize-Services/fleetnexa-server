@@ -109,3 +109,9 @@ interface UserPasswordResetVerificationEmailDto {
 interface VerificationEmailDto {
   verificationCode: string;
 }
+
+interface WelcomeEmailDto {
+  name: string;
+  tenantName: string;
+  username: string;
+}

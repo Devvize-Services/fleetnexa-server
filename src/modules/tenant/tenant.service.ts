@@ -24,6 +24,7 @@ import { TenantRatesService } from './tenant-rates/tenant-rates.service.js';
 import { TenantBookingService } from '../booking/tenant-booking/tenant-booking.service.js';
 import { Activity, ActivityType } from 'src/types/tenant.js';
 import { VehicleMaintenanceService } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.service.js';
+import { EmailService } from '../../common/email/email.service.js';
 
 @Injectable()
 export class TenantService {
@@ -47,6 +48,7 @@ export class TenantService {
     private readonly roles: UserRoleService,
     private readonly bookingService: TenantBookingService,
     private readonly maintenanceService: VehicleMaintenanceService,
+    private readonly emailService: EmailService,
   ) {}
 
   async getCurrentTenant(tenant: Tenant, user: User) {
@@ -184,23 +186,15 @@ export class TenantService {
         return { tenant, country };
       });
 
-      this.logger.log(data.user);
-
       await this.locationService.initializeTenantLocation(country, tenant);
       const role = await this.userRoleService.createDefaultRole(tenant);
 
       data.user.roleId = role.id;
-      const user = await this.userService.createUser(data.user, tenant);
+      const { user } = await this.userService.createUser(data.user, tenant);
 
-      // if (user.email) {
-      //   const emailData: WelcomeEmailDto = {
-      //     username: user.username,
-      //     name: `${user.firstName} ${user.lastName}`,
-      //     email: user.email,
-      //   };
-
-      //   await this.emailService.sendWelcomeEmail(emailData, tenant);
-      // }
+      if (user.email) {
+        await this.emailService.sendWelcomeEmail(user, tenant);
+      }
 
       return tenant;
     } catch (error) {

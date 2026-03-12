@@ -1,7 +1,7 @@
 import { Global, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { NotifyService } from '../notify/notify.service.js';
-import { Tenant } from '../../generated/prisma/client.js';
+import { Tenant, User } from '../../generated/prisma/client.js';
 import { FormatterService } from '../formatter/formatter.service.js';
 import { SendEmailDto } from '../notify/dto/send-email.dto.js';
 import { CustomerService } from '../../modules/customer/customer.service.js';
@@ -13,10 +13,10 @@ import {
   NewBookingEmailDto,
   NewUserEmailDto,
   PasswordResetEmailDto,
-  UserPasswordResetVerificationEmailDto,
   VerificationEmailDto,
+  WelcomeEmailDto,
 } from '../../types/email.js';
-import { SendDocumentsDto } from 'src/modules/booking/tenant-booking/dto/send-documents.dto.js';
+import { SendDocumentsDto } from '../../modules/booking/tenant-booking/dto/send-documents.dto.js';
 
 @Global()
 @Injectable()
@@ -535,6 +535,33 @@ export class EmailService {
     } catch (error) {
       this.logger.error(error, 'Error sending password reset email', {
         email,
+      });
+      throw error;
+    }
+  }
+
+  async sendWelcomeEmail(user: User, tenant: Tenant) {
+    try {
+      const templateData: WelcomeEmailDto = {
+        tenantName: tenant.tenantName,
+        name: `${user.firstName} ${user.lastName}`,
+        username: user.username,
+      };
+
+      const payload: SendEmailDto = {
+        recipients: [user.email || ''],
+        cc: [],
+        templateName: 'FleetNexaWelcome',
+        templateData,
+        sender: 'no-reply@fleetnexa.com',
+        senderName: 'FleetNexa',
+      };
+
+      await this.notify.sendEmail(payload);
+    } catch (error) {
+      this.logger.error(error, 'Error sending welcome email', {
+        userId: user.id,
+        tenantId: tenant.id,
       });
       throw error;
     }
