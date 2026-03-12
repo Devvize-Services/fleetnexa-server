@@ -1,0 +1,50 @@
+name: Deploy FleetNexa Server
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to DEV server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_EC2_HOST }}
+          username: ${{ secrets.DEV_EC2_USER }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          script: |
+            cd /wwwroot/dev-fleetnexa
+            git stash
+            git pull origin develop
+            npm install
+            npx prisma migrate deploy
+            npx prisma generate
+            npm run build
+            systemctl restart dev-fleetnexa-server.service
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to PROD server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_EC2_HOST }}
+          username: ${{ secrets.PROD_EC2_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /wwwroot/fleetnexa-server
+            git stash
+            git pull origin main
+            npm install
+            npx prisma migrate deploy
+            npx prisma generate
+            npm run build
+            systemctl restart fleetnexa-server.service
