@@ -10,7 +10,6 @@ jobs:
   deploy-dev:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to DEV server
         uses: appleboy/ssh-action@v1.0.3
@@ -22,7 +21,7 @@ jobs:
             cd /wwwroot/dev-fleetnexa
             git stash
             git pull origin develop
-            npm install
+            npm ci
             npx prisma migrate deploy
             npx prisma generate
             npm run build
@@ -31,7 +30,6 @@ jobs:
   deploy-prod:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to PROD server
         uses: appleboy/ssh-action@v1.0.3
@@ -43,7 +41,7 @@ jobs:
             cd /wwwroot/fleetnexa-server
             git stash
             git pull origin main
-            npm install
+            npm ci
             npx prisma migrate deploy
             npx prisma generate
             npm run build
@@ -53,19 +51,26 @@ jobs:
     needs: [deploy-dev, deploy-prod]
     if: always()
     runs-on: ubuntu-latest
-
     steps:
-      - name: Discord Notify
+      - name: Slack Notify
         run: |
           STATUS="${{ job.status }}"
           ENVIRONMENT=$([ "${{ github.ref }}" = "refs/heads/main" ] && echo "PRODUCTION" || echo "DEVELOPMENT")
-          curl -H "Content-Type: application/json" \
-          -d "{
-            \"content\": \"FleetNexa Server Deployment\",
-            \"embeds\": [{
-              \"title\": \"Deployment $STATUS\",
-              \"description\": \"Environment: $ENVIRONMENT\nBranch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\",
-              \"color\": $([ \"$STATUS\" = \"success\" ] && echo 5763719 || echo 15548997)
-            }]
+          curl -X POST -H 'Content-type: application/json' \
+          --data "{
+            \"text\": \"FleetNexa Server Deployment\",
+            \"blocks\": [
+              {
+                \"type\": \"section\",
+                \"fields\": [
+                  {\"type\": \"mrkdwn\", \"text\": \"*Status:* $STATUS\"},
+                  {\"type\": \"mrkdwn\", \"text\": \"*Environment:* $ENVIRONMENT\"},
+                  {\"type\": \"mrkdwn\", \"text\": \"*Branch:* ${{ github.ref_name }}\"},
+                  {\"type\": \"mrkdwn\", \"text\": \"*Commit:* ${{ github.sha }}\"},
+                  {\"type\": \"mrkdwn\", \"text\": \"*Author:* ${{ github.actor }}\"},
+                  {\"type\": \"mrkdwn\", \"text\": \"*Message:* ${{ github.event.head_commit.message }}\"}
+                ]
+              }
+            ]
           }" \
-          ${{ secrets.DISCORD_WEBHOOK }}
+          ${{ secrets.SLACK_WEBHOOK }}
