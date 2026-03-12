@@ -58,12 +58,13 @@ jobs:
       - name: Discord Notify
         run: |
           STATUS="${{ job.status }}"
+          ENVIRONMENT=$([ "${{ github.ref }}" = "refs/heads/main" ] && echo "PRODUCTION" || echo "DEVELOPMENT")
           curl -H "Content-Type: application/json" \
           -d "{
-            \"content\": \"🚀 FleetNexa Deploy\",
+            \"content\": \"FleetNexa Server Deployment\",
             \"embeds\": [{
               \"title\": \"Deployment $STATUS\",
-              \"description\": \"Branch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\",
+              \"description\": \"Environment: $ENVIRONMENT\nBranch: ${{ github.ref_name }}\nCommit: ${{ github.sha }}\",
               \"color\": $([ \"$STATUS\" = \"success\" ] && echo 5763719 || echo 15548997)
             }]
           }" \
