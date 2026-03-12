@@ -13,16 +13,16 @@ import {
 import { RefundService } from './refund.service.js';
 import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { RefundDto } from './refund.dto.js';
-import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../../modules/auth/guards/jwt-auth.guard.js';
 
 @Controller('transaction/refund')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
 export class RefundController {
   constructor(private readonly service: RefundService) {}
 
   @Get()
   async getRefunds(@Request() req) {
-    const tenant = req.user.tenant;
+    const { tenant } = req.user;
     return this.service.getTenantRefunds(tenant);
   }
 

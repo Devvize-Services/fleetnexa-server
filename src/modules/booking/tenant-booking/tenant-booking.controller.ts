@@ -22,12 +22,6 @@ import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
 export class TenantBookingController {
   constructor(private readonly service: TenantBookingService) {}
 
-  @Get()
-  async getBookings(@Req() req: AuthenticatedRequest) {
-    const { tenant } = req.context;
-    return this.service.getBookings(tenant);
-  }
-
   @Get('code/:bookingCode')
   async getBookingByCode(
     @Param('bookingCode') bookingCode: string,
