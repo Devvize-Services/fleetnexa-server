@@ -21,10 +21,10 @@ import { VehicleService } from '../vehicle/vehicle.service.js';
 import { TenantCustomerService } from '../customer/tenant-customer/tenant-customer.service.js';
 import { TenantActivityService } from './tenant-activity/tenant-activity.service.js';
 import { TenantRatesService } from './tenant-rates/tenant-rates.service.js';
-import { TenantBookingService } from '../booking/tenant-booking/tenant-booking.service.js';
 import { Activity, ActivityType } from 'src/types/tenant.js';
 import { VehicleMaintenanceService } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.service.js';
 import { EmailService } from '../../common/email/email.service.js';
+import { BookingService } from '../booking/booking.service.js';
 
 @Injectable()
 export class TenantService {
@@ -46,7 +46,7 @@ export class TenantService {
     private readonly activities: TenantActivityService,
     private readonly rates: TenantRatesService,
     private readonly roles: UserRoleService,
-    private readonly bookingService: TenantBookingService,
+    private readonly bookingService: BookingService,
     private readonly maintenanceService: VehicleMaintenanceService,
     private readonly emailService: EmailService,
   ) {}

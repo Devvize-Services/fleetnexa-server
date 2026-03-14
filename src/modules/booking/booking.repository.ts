@@ -1,6 +1,8 @@
-import { Prisma } from 'src/generated/prisma/client.js';
-import { PrismaService } from 'src/prisma/prisma.service.js';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '../../generated/prisma/client.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
+@Injectable()
 export class BookingRepository {
   constructor(private readonly prisma: PrismaService) {}
 
@@ -18,16 +20,16 @@ export class BookingRepository {
     });
   }
 
-  async getBookingById(id: string, tenantId: string) {
+  async getBookingById(id: string) {
     return this.prisma.rental.findUnique({
-      where: { id, tenantId, isDeleted: false },
+      where: { id, isDeleted: false },
       include: this.getBookingIncludeOptions(),
     });
   }
 
-  async getBookingByCode(bookingCode: string, tenantId: string) {
+  async getBookingByCode(bookingCode: string) {
     return this.prisma.rental.findUnique({
-      where: { bookingCode, tenantId, isDeleted: false },
+      where: { bookingCode, isDeleted: false },
       include: this.getBookingIncludeOptions(),
     });
   }
@@ -49,6 +51,79 @@ export class BookingRepository {
         ...additionalWhere,
       },
       include: this.getBookingIncludeOptions(),
+    });
+  }
+
+  async getBookingsByDates(
+    tenantId: string,
+    startOfDay: string,
+    endOfDay: string,
+  ) {
+    return this.prisma.rental.findMany({
+      where: {
+        tenantId,
+        OR: [
+          {
+            startDate: {
+              gte: startOfDay,
+              lt: endOfDay,
+            },
+          },
+          {
+            endDate: {
+              gte: startOfDay,
+              lt: endOfDay,
+            },
+          },
+        ],
+      },
+      include: {
+        pickup: true,
+        return: true,
+        vehicle: {
+          include: {
+            brand: true,
+            model: {
+              include: {
+                bodyType: true,
+              },
+            },
+            vehicleStatus: true,
+            transmission: true,
+            wheelDrive: true,
+            fuelType: true,
+            features: true,
+            damages: {
+              where: { isDeleted: false },
+              include: {
+                customer: true,
+              },
+            },
+          },
+        },
+        drivers: {
+          include: {
+            customer: {
+              include: {
+                license: true,
+                address: {
+                  include: {
+                    village: true,
+                    country: true,
+                    state: true,
+                  },
+                },
+                violations: {
+                  where: { isDeleted: false },
+                  include: {
+                    violation: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     });
   }
 
@@ -156,5 +231,66 @@ export class BookingRepository {
         },
       },
     };
+  }
+
+  async createBookingValues(bookingId: string, values: any) {
+    return this.prisma.$transaction(async (tx) => {
+      const createdValues = await tx.values.create({
+        data: {
+          rentalId: bookingId,
+          ...values,
+        },
+      });
+
+      if (values.extras && Array.isArray(values.extras)) {
+        await Promise.all(
+          values.extras.map((extra: any) =>
+            tx.rentalExtra.create({
+              data: {
+                id: extra.id,
+                extraId: extra.extraId,
+                amount: extra.amount,
+                customAmount: extra.customAmount,
+                valuesId: createdValues.id,
+              },
+            }),
+          ),
+        );
+      }
+      return createdValues;
+    });
+  }
+
+  async updateBookingValues(bookingId: string, values: any) {
+    return this.prisma.$transaction(async (tx) => {
+      const updatedValues = await tx.values.update({
+        where: { rentalId: bookingId },
+        data: {
+          ...values,
+        },
+      });
+
+      await tx.rentalExtra.deleteMany({
+        where: { valuesId: updatedValues.id },
+      });
+
+      if (values.extras && Array.isArray(values.extras)) {
+        await Promise.all(
+          values.extras.map((extra: any) =>
+            tx.rentalExtra.create({
+              data: {
+                id: extra.id,
+                extraId: extra.extraId,
+                amount: extra.amount,
+                customAmount: extra.customAmount,
+                valuesId: updatedValues.id,
+              },
+            }),
+          ),
+        );
+      }
+
+      return updatedValues;
+    });
   }
 }

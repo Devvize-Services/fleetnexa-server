@@ -7,8 +7,8 @@ import { TenantRepository } from '../tenant/tenant.repository.js';
 import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { StorageModule } from '../storage/storage.module.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
-import { TenantBookingRepository } from '../booking/tenant-booking/tenant-booking.repository.js';
 import { VehicleEventModule } from './modules/vehicle-event/vehicle-event.module.js';
+import { BookingRepository } from '../booking/booking.repository.js';
 
 @Module({
   imports: [TenantExtrasModule, StorageModule, VehicleEventModule],
@@ -19,7 +19,7 @@ import { VehicleEventModule } from './modules/vehicle-event/vehicle-event.module
     ApiGuard,
     TenantRepository,
     TenantUserRepository,
-    TenantBookingRepository,
+    BookingRepository,
   ],
   exports: [VehicleService],
 })

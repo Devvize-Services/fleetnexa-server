@@ -6,8 +6,8 @@ import { RefundController } from './refund.controller.js';
 import { RefundService } from './refund.service.js';
 import { TenantRepository } from '../../../../modules/tenant/tenant.repository.js';
 import { TenantUserRepository } from '../../../../modules/user/tenant-user/tenant-user.repository.js';
-import { TenantBookingRepository } from '../../../../modules/booking/tenant-booking/tenant-booking.repository.js';
 import jwtConfig from '../../../../config/jwt.config.js';
+import { BookingRepository } from '../../../../modules/booking/booking.repository.js';
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import jwtConfig from '../../../../config/jwt.config.js';
     RefundService,
     TenantRepository,
     TenantUserRepository,
-    TenantBookingRepository,
+    BookingRepository,
   ],
   exports: [RefundService],
 })

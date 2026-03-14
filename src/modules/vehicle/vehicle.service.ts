@@ -19,9 +19,9 @@ import { StorageService } from '../storage/storage.service.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
-import { TenantBookingRepository } from '../booking/tenant-booking/tenant-booking.repository.js';
 import { VehicleEventService } from './modules/vehicle-event/vehicle-event.service.js';
 import { VehicleEventDto } from './dto/vehicle-event.dto.js';
+import { BookingRepository } from '../booking/booking.repository.js';
 
 @Injectable()
 export class VehicleService {
@@ -32,7 +32,7 @@ export class VehicleService {
     private readonly prisma: PrismaService,
     private readonly extrasService: TenantExtraService,
     private readonly storage: StorageService,
-    private readonly bookingRepo: TenantBookingRepository,
+    private readonly bookingRepo: BookingRepository,
     private readonly vehicleEvent: VehicleEventService,
   ) {}
 

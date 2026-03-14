@@ -4,8 +4,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { PaymentController } from './payment.controller.js';
 import { PaymentService } from './payment.service.js';
 import { TransactionModule } from '../../transaction.module.js';
-import { TenantBookingRepository } from '../../../../modules/booking/tenant-booking/tenant-booking.repository.js';
 import jwtConfig from '../../../../config/jwt.config.js';
+import { BookingRepository } from '../../../../modules/booking/booking.repository.js';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import jwtConfig from '../../../../config/jwt.config.js';
     JwtModule.registerAsync(jwtConfig.asProvider()),
   ],
   controllers: [PaymentController],
-  providers: [PaymentService, TenantBookingRepository],
+  providers: [PaymentService, BookingRepository],
   exports: [PaymentService],
 })
 export class PaymentModule {}

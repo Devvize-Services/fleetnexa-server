@@ -16,7 +16,7 @@ import {
   VerificationEmailDto,
   WelcomeEmailDto,
 } from '../../types/email.js';
-import { SendDocumentsDto } from '../../modules/booking/tenant-booking/dto/send-documents.dto.js';
+import { SendDocumentsDto } from 'src/modules/booking/dto/send-documents.dto.js';
 
 @Global()
 @Injectable()

@@ -14,7 +14,6 @@ import { VehicleModule } from '../vehicle/vehicle.module.js';
 import { TenantCustomerModule } from '../customer/tenant-customer/tenant-customer.module.js';
 import { TenantActivityModule } from './tenant-activity/tenant-activity.module.js';
 import { TenantRatesModule } from './tenant-rates/tenant-rates.module.js';
-import { TenantBookingModule } from '../booking/tenant-booking/tenant-booking.module.js';
 import { VehicleMaintenanceModule } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.module.js';
 import { JwtStrategy } from '../auth/strategies/jwt.strategy.js';
 import jwtConfig from '../../config/jwt.config.js';
@@ -34,7 +33,6 @@ import { ConfigModule } from '@nestjs/config';
     TenantCustomerModule,
     TenantActivityModule,
     TenantRatesModule,
-    TenantBookingModule,
     VehicleMaintenanceModule,
   ],
   controllers: [TenantController],
