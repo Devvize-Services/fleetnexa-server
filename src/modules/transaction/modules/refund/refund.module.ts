@@ -8,9 +8,11 @@ import { TenantRepository } from '../../../../modules/tenant/tenant.repository.j
 import { TenantUserRepository } from '../../../../modules/user/tenant-user/tenant-user.repository.js';
 import jwtConfig from '../../../../config/jwt.config.js';
 import { BookingRepository } from '../../../../modules/booking/booking.repository.js';
+import { PrismaModule } from '../../../../prisma/prisma.module.js';
 
 @Module({
   imports: [
+    PrismaModule,
     TransactionModule,
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),

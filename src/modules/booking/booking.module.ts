@@ -6,9 +6,11 @@ import { VehicleEventModule } from '../vehicle/modules/vehicle-event/vehicle-eve
 import { VehicleModule } from '../vehicle/vehicle.module.js';
 import { CustomerModule } from '../customer/customer.module.js';
 import { TransactionModule } from '../transaction/transaction.module.js';
+import { PrismaModule } from '../../prisma/prisma.module.js';
 
 @Module({
   imports: [
+    PrismaModule,
     VehicleModule,
     CustomerModule,
     TransactionModule,
