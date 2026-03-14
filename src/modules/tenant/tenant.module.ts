@@ -11,13 +11,14 @@ import { TenantService } from './tenant.service.js';
 import { TenantNotificationModule } from './tenant-notification/tenant-notification.module.js';
 import { TenantVendorModule } from './tenant-vendor/tenant-vendor.module.js';
 import { VehicleModule } from '../vehicle/vehicle.module.js';
-import { TenantCustomerModule } from '../customer/tenant-customer/tenant-customer.module.js';
 import { TenantActivityModule } from './tenant-activity/tenant-activity.module.js';
 import { TenantRatesModule } from './tenant-rates/tenant-rates.module.js';
 import { VehicleMaintenanceModule } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.module.js';
+import { BookingModule } from '../booking/booking.module.js';
 import { JwtStrategy } from '../auth/strategies/jwt.strategy.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { ConfigModule } from '@nestjs/config';
+import { TenantCustomerModule } from '../customer/tenant-customer/tenant-customer.module.js';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ConfigModule } from '@nestjs/config';
     TenantActivityModule,
     TenantRatesModule,
     VehicleMaintenanceModule,
+    BookingModule,
   ],
   controllers: [TenantController],
   providers: [
