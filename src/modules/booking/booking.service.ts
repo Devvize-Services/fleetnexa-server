@@ -61,6 +61,7 @@ export class BookingService {
   }
 
   getBookings(tenant: Tenant) {
+    console.log('Fetching bookings for tenant:', tenant.id);
     return this.bookingRepo.getBookings(tenant.id);
   }
 

@@ -1,37 +1,37 @@
 import {
-	IsEmail,
-	IsNotEmpty,
-	IsObject,
-	IsString,
-	IsUUID,
-} from "class-validator";
-import { BookingValuesDto } from "../../dto/booking-items.dto.js";
-import { StorefrontCustomerDto } from "../../../../modules/customer/storefront-customer/storefront-customer.dto.js";
+  IsEmail,
+  IsNotEmpty,
+  IsObject,
+  IsString,
+  IsUUID,
+} from 'class-validator';
+import { BookingValuesDto } from '../../dto/booking-items.dto.js';
+import { StorefrontCustomerDto } from '../../../customer/storefront-customer/storefront-customer.dto.js';
 
 export class StorefrontGuestBookingDto {
-	@IsObject()
-	@IsNotEmpty()
-	customer: StorefrontCustomerDto;
+  @IsObject()
+  @IsNotEmpty()
+  customer: StorefrontCustomerDto;
 
-	@IsString()
-	startDate: string;
+  @IsString()
+  startDate: string;
 
-	@IsString()
-	endDate: string;
+  @IsString()
+  endDate: string;
 
-	@IsUUID()
-	pickupLocationId: string;
+  @IsUUID()
+  pickupLocationId: string;
 
-	@IsUUID()
-	returnLocationId: string;
+  @IsUUID()
+  returnLocationId: string;
 
-	@IsUUID()
-	vehicleId: string;
+  @IsUUID()
+  vehicleId: string;
 
-	@IsUUID()
-	tenantId: string;
+  @IsUUID()
+  tenantId: string;
 
-	@IsObject()
-	@IsNotEmpty()
-	values: BookingValuesDto;
+  @IsObject()
+  @IsNotEmpty()
+  values: BookingValuesDto;
 }

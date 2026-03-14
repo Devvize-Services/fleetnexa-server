@@ -18,13 +18,13 @@ import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
 import { TenantNotificationService } from './tenant-notification/tenant-notification.service.js';
 import { TenantVendorService } from './tenant-vendor/tenant-vendor.service.js';
 import { VehicleService } from '../vehicle/vehicle.service.js';
-import { TenantCustomerService } from '../customer/tenant-customer/tenant-customer.service.js';
 import { TenantActivityService } from './tenant-activity/tenant-activity.service.js';
 import { TenantRatesService } from './tenant-rates/tenant-rates.service.js';
 import { Activity, ActivityType } from 'src/types/tenant.js';
 import { VehicleMaintenanceService } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.service.js';
 import { EmailService } from '../../common/email/email.service.js';
 import { BookingService } from '../booking/booking.service.js';
+import { CustomerService } from '../customer/customer.service.js';
 
 @Injectable()
 export class TenantService {
@@ -42,7 +42,7 @@ export class TenantService {
     private readonly locations: TenantLocationService,
     private readonly vendors: TenantVendorService,
     private readonly vehicles: VehicleService,
-    private readonly customers: TenantCustomerService,
+    private readonly customers: CustomerService,
     private readonly activities: TenantActivityService,
     private readonly rates: TenantRatesService,
     private readonly roles: UserRoleService,

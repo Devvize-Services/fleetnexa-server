@@ -18,7 +18,7 @@ import { BookingModule } from '../booking/booking.module.js';
 import { JwtStrategy } from '../auth/strategies/jwt.strategy.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { ConfigModule } from '@nestjs/config';
-import { TenantCustomerModule } from '../customer/tenant-customer/tenant-customer.module.js';
+import { CustomerModule } from '../customer/customer.module.js';
 
 @Module({
   imports: [
@@ -31,11 +31,11 @@ import { TenantCustomerModule } from '../customer/tenant-customer/tenant-custome
     UserRoleModule,
     TenantVendorModule,
     VehicleModule,
-    TenantCustomerModule,
     TenantActivityModule,
     TenantRatesModule,
     VehicleMaintenanceModule,
     BookingModule,
+    CustomerModule,
   ],
   controllers: [TenantController],
   providers: [

@@ -21,7 +21,6 @@ import { StorefrontUserModule } from './modules/user/storefront-user/storefront-
 import { StorageModule } from './modules/storage/storage.module.js';
 import { TenantUserModule } from './modules/user/tenant-user/tenant-user.module.js';
 import { VehicleMaintenanceModule } from './modules/vehicle/modules/vehicle-maintenance/vehicle-maintenance.module.js';
-import { TenantCustomerModule } from './modules/customer/tenant-customer/tenant-customer.module.js';
 import { PaymentModule } from './modules/transaction/modules/payment/payment.module.js';
 import { UserRoleModule } from './modules/user/tenant-user/modules/user-role/user-role.module.js';
 import { RefundModule } from './modules/transaction/modules/refund/refund.module.js';
@@ -45,6 +44,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 import { BookingModule } from './modules/booking/booking.module.js';
 import { UserModule } from './modules/user/user.module.js';
+import { CustomerModule } from './modules/customer/customer.module.js';
 
 @Module({
   imports: [
@@ -61,7 +61,7 @@ import { UserModule } from './modules/user/user.module.js';
     }),
     ScheduleModule.forRoot(),
     PrismaModule,
-    // CronModule,
+    CronModule,
     HealthModule,
     GeneratorModule,
     FormatterModule,
@@ -81,7 +81,7 @@ import { UserModule } from './modules/user/user.module.js';
     StorefrontBookingModule,
     BookingModule,
 
-    TenantCustomerModule,
+    CustomerModule,
 
     UserRoleModule,
     TenantUserModule,
