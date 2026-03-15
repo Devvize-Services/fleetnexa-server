@@ -6,17 +6,18 @@ import {
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { TenantVendorService } from './tenant-vendor.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantVendorDto } from './tenant-vendor.dto.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/vendor')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantVendorController {
   constructor(private readonly service: TenantVendorService) {}
 

@@ -9,11 +9,13 @@ import {
   Request,
 } from '@nestjs/common';
 import { TenantNotificationService } from './tenant-notification.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/notification')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantNotificationController {
   constructor(private readonly service: TenantNotificationService) {}
 

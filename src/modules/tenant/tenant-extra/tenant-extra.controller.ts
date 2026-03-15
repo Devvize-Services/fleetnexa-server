@@ -6,17 +6,18 @@ import {
   Param,
   Post,
   Put,
-  Req,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { TenantExtraService } from './tenant-extra.service.js';
-import type { AuthenticatedRequest } from 'src/types/authenticated-request.js';
 import { TenantExtraDto } from './tenant-extra.dto.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/extra')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantExtraController {
   constructor(private readonly service: TenantExtraService) {}
 

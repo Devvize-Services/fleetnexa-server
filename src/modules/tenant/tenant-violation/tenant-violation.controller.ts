@@ -11,10 +11,13 @@ import {
 } from '@nestjs/common';
 import { TenantViolationService } from './tenant-violation.service.js';
 import { TenantViolationDto } from './tenant-violation.dto.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/violation')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantViolationController {
   constructor(private readonly service: TenantViolationService) {}
 

@@ -1,10 +1,13 @@
 import { Body, Controller, Get, Put, UseGuards, Request } from '@nestjs/common';
 import { TenantRatesService } from './tenant-rates.service.js';
 import { TenantRateDto } from './tenant-rate.dto.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/rate')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantRatesController {
   constructor(private readonly service: TenantRatesService) {}
 

@@ -1,10 +1,12 @@
 import { Controller, Get, Req, UseGuards, Request } from '@nestjs/common';
 import { TenantReviewService } from './tenant-review.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
-import { LocalAuthGuard } from '../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/review')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TenantReviewController {
   constructor(private readonly service: TenantReviewService) {}
 
