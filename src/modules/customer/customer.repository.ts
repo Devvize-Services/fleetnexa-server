@@ -222,6 +222,19 @@ export class CustomerRepository {
                   },
                 },
               },
+              payments: {
+                where: { isDeleted: false },
+                include: {
+                  paymentMethod: true,
+                  paymentType: true,
+                  receipt: true,
+                },
+              },
+              values: {
+                include: {
+                  extras: true,
+                },
+              },
             },
           },
         },
