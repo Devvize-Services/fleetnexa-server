@@ -21,7 +21,7 @@ import { UpdateBookingDto } from './dto/update-booking.dto.js';
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
-  @Get('tenant')
+  @Get()
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async getTenantBookings(@Request() req) {
@@ -47,7 +47,7 @@ export class BookingController {
     return this.bookingService.getBookingById(id);
   }
 
-  @Post('tenant')
+  @Post()
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async createBooking(@Request() req, @Body() data: CreateBookingDto) {
@@ -56,7 +56,7 @@ export class BookingController {
     return this.bookingService.createTenantBooking(data, tenant, user);
   }
 
-  @Put('tenant')
+  @Put()
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async updateBooking(@Request() req, @Body() data: UpdateBookingDto) {

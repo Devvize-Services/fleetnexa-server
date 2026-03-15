@@ -16,7 +16,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: WinstonModule.createLogger(winstonConfig),
   });
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api/v1');
   app.use(helmet());
   app.use(cookieParser());
 
@@ -31,6 +31,7 @@ async function bootstrap() {
   if (!(globalThis as any).crypto) {
     (globalThis as any).crypto = crypto;
   }
+
   const config = new DocumentBuilder()
     .setTitle('FleetNexa API')
     .setDescription('FleetNexa API documentation')
@@ -38,7 +39,7 @@ async function bootstrap() {
     .addTag('fleetnexa')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
+  SwaggerModule.setup('api/v1', app, documentFactory);
 
   app.enableCors({
     origin: (origin, callback) => {

@@ -24,7 +24,6 @@ export class CustomerController {
   @Roles(Role.TENANT_USER)
   async getCustomers(@Request() req) {
     const { tenant } = req.user;
-    const user = req.user;
     return this.customerService.getCustomers(tenant);
   }
 
