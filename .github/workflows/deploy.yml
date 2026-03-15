@@ -19,7 +19,8 @@ jobs:
           key: ${{ secrets.DEV_SSH_KEY }}
           script: |
             cd /wwwroot/dev-fleetnexa
-            git stash
+            git reset --hard
+            git clean -fd
             git pull origin develop
             npm ci
             npx prisma migrate deploy
@@ -39,7 +40,8 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             cd /wwwroot/fleetnexa-server
-            git stash
+            git reset --hard
+            git clean -fd
             git pull origin main
             npm ci
             npx prisma migrate deploy
