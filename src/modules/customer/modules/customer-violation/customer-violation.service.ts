@@ -17,6 +17,16 @@ export class CustomerViolationService {
     try {
       const violations = await this.prisma.customerViolation.findMany({
         where: { tenantId: tenant.id },
+        include: {
+          customer: {
+            select: {
+              id: true,
+              firstName: true,
+              lastName: true,
+            },
+          },
+          violation: true,
+        },
       });
       return violations;
     } catch (error) {
