@@ -10,6 +10,8 @@ import { ApiGuard } from '../../common/guards/api.guard.js';
 import { VehicleEventModule } from './modules/vehicle-event/vehicle-event.module.js';
 import { BookingRepository } from '../booking/booking.repository.js';
 import { PrismaModule } from '../../prisma/prisma.module.js';
+import { VehicleMaintenanceModule } from './modules/vehicle-maintenance/vehicle-maintenance.module.js';
+import { VehicleDamageModule } from './modules/vehicle-damage/vehicle-damage.module.js';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { PrismaModule } from '../../prisma/prisma.module.js';
     TenantExtrasModule,
     StorageModule,
     VehicleEventModule,
+    VehicleMaintenanceModule,
+    VehicleDamageModule,
   ],
   controllers: [VehicleController],
   providers: [

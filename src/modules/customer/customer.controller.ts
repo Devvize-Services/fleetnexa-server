@@ -60,4 +60,46 @@ export class CustomerController {
     const user = req.user;
     return this.customerService.deleteCustomer(id, tenant, user);
   }
+
+  // @Post('violation')
+  // @UseGuards(JwtAuthGuard)
+  // @Roles(Role.TENANT_USER)
+  // async createCustomerViolation(
+  //   @Request() req,
+  //   @Body() data: CustomerViolationDto,
+  // ) {
+  //   const { tenant } = req.user;
+  //   const user = req.user;
+
+  //   return await this.customerService.createCustomerViolation(
+  //     data,
+  //     tenant,
+  //     user,
+  //   );
+  // }
+
+  // @Put('violation')
+  // @UseGuards(JwtAuthGuard)
+  // @Roles(Role.TENANT_USER)
+  // async updateCustomerViolation(
+  //   @Request() req,
+  //   @Body() data: CustomerViolationDto,
+  // ) {
+  //   const { tenant } = req.user;
+  //   const user = req.user;
+  //   return await this.customerService.updateCustomerViolation(
+  //     data,
+  //     tenant,
+  //     user,
+  //   );
+  // }
+
+  // @Delete('violation/:id')
+  // @UseGuards(JwtAuthGuard)
+  // @Roles(Role.TENANT_USER)
+  // async deleteCustomerViolation(@Param('id') id: string, @Request() req) {
+  //   const { tenant } = req.user;
+  //   const user = req.user;
+  //   return await this.customerService.deleteCustomerViolation(id, tenant, user);
+  // }
 }
