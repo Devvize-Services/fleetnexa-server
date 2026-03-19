@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { TransactionModule } from '../../transaction.module.js';
@@ -13,7 +13,7 @@ import { PrismaModule } from '../../../../prisma/prisma.module.js';
 @Module({
   imports: [
     PrismaModule,
-    TransactionModule,
+    forwardRef(() => TransactionModule),
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
   ],

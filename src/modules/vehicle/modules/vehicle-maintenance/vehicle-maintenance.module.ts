@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ExpenseModule } from '../../../../modules/transaction/modules/expense/expense.module.js';
 import { VehicleMaintenanceController } from './vehicle-maintenance.controller.js';
 import { VehicleMaintenanceService } from './vehicle-maintenance.service.js';
@@ -8,7 +8,7 @@ import { VehicleModule } from '../../vehicle.module.js';
 import { VehicleRepository } from '../../vehicle.repository.js';
 
 @Module({
-  imports: [ExpenseModule, VehicleModule],
+  imports: [ExpenseModule, forwardRef(() => VehicleModule)],
   controllers: [VehicleMaintenanceController],
   providers: [
     VehicleMaintenanceService,

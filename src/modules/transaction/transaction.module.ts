@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { TransactionService } from './transaction.service.js';
@@ -13,9 +13,9 @@ import { RefundModule } from './modules/refund/refund.module.js';
   imports: [
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
-    ExpenseModule,
-    PaymentModule,
-    RefundModule,
+    forwardRef(() => ExpenseModule),
+    forwardRef(() => PaymentModule),
+    forwardRef(() => RefundModule),
   ],
   providers: [TransactionService, TransactionRepository],
   controllers: [TransactionController],

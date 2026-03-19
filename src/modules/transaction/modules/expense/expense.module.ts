@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { ExpenseService } from './expense.service.js';
@@ -8,7 +8,7 @@ import jwtConfig from '../../../../config/jwt.config.js';
 
 @Module({
   imports: [
-    TransactionModule,
+    forwardRef(() => TransactionModule),
     ConfigModule.forFeature(jwtConfig),
     JwtModule.registerAsync(jwtConfig.asProvider()),
   ],

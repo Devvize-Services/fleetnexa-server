@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { VehicleController } from './vehicle.controller.js';
 import { VehicleService } from './vehicle.service.js';
 import { VehicleRepository } from './vehicle.repository.js';
@@ -18,9 +18,9 @@ import { VehicleDamageModule } from './modules/vehicle-damage/vehicle-damage.mod
     PrismaModule,
     TenantExtrasModule,
     StorageModule,
-    VehicleEventModule,
-    VehicleMaintenanceModule,
-    VehicleDamageModule,
+    forwardRef(() => VehicleEventModule),
+    forwardRef(() => VehicleMaintenanceModule),
+    forwardRef(() => VehicleDamageModule),
   ],
   controllers: [VehicleController],
   providers: [
