@@ -5,12 +5,14 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import jwtConfig from '../../../config/jwt.config.js';
 import { TenantRepository } from '../../../modules/tenant/tenant.repository.js';
 import { TenantUserRepository } from '../../../modules/user/tenant-user/tenant-user.repository.js';
+import { PrismaService } from '../../../prisma/prisma.service.js';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     private userRepo: TenantUserRepository,
     private tenantRepo: TenantRepository,
+    private readonly prisma: PrismaService,
     @Inject(jwtConfig.KEY)
     private config: ConfigType<typeof jwtConfig>,
   ) {
@@ -24,6 +26,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     if (payload.role === 'TENANT_USER') {
       return this.validateTenantUser(payload);
+    } else if (payload.role === 'ADMIN') {
+      return this.validateAdminUser(payload);
     }
 
     throw new UnauthorizedException('Invalid JWT payload: unrecognized role');
@@ -37,6 +41,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!tenant) throw new UnauthorizedException('Tenant not found');
 
     return { ...tenantUser, tenant, serverRole: payload.role };
+  }
+
+  async validateAdminUser(payload: any) {
+    const adminUser = await this.prisma.adminUser.findUnique({
+      where: { id: payload.sub },
+    });
+
+    if (!adminUser) throw new UnauthorizedException('Admin user not found');
+
+    return { ...adminUser, serverRole: payload.role };
   }
 
   static cookieExtractor = (req: any): string | null => {

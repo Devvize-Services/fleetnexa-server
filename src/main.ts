@@ -48,6 +48,7 @@ async function bootstrap() {
       const allowedDomains = [
         'localhost:3000',
         'localhost:5173',
+        'localhost:5174',
         'rentnexa.com',
         'www.rentnexa.com',
         'fleetnexa.com',
@@ -67,7 +68,6 @@ async function bootstrap() {
     allowedHeaders: [
       'Content-Type',
       'Authorization',
-      'x-auth-token',
       'x-timestamp',
       'x-api-key',
       'x-signature',

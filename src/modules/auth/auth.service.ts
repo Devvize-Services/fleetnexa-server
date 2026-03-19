@@ -17,6 +17,8 @@ export class AuthService {
   async validateUser(username: string, password: string, role: string) {
     if (role === 'TENANT_USER') {
       return this.validateTenantUser(username, password);
+    } else if (role === 'ADMIN') {
+      return this.validateAdminUser(username, password);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${username}.`);
@@ -66,6 +68,46 @@ export class AuthService {
     }
   }
 
+  async validateAdminUser(username: string, password: string) {
+    try {
+      const adminUser = await this.prisma.adminUser.findUnique({
+        where: { username },
+      });
+
+      if (!adminUser) {
+        this.logger.warn(`Login failed: Admin user ${username} not found.`);
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      if (!adminUser.password) {
+        this.logger.warn(
+          `Login failed: Admin user ${username} does not have a password set.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      const passwordValid = await bcrypt.compare(password, adminUser.password);
+      if (!passwordValid) {
+        this.logger.warn(
+          `Login failed: Invalid password for admin user ${username}.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      return {
+        id: adminUser.id,
+        username: adminUser.username,
+        email: adminUser.email,
+        role: 'ADMIN',
+      };
+    } catch (error) {
+      this.logger.error(
+        `Error validating admin user ${username}: ${error.message}`,
+      );
+      throw new UnauthorizedException('Invalid username or password');
+    }
+  }
+
   async loginTenantUser(userId: string) {
     try {
       const user = await this.tenantUserRepo.getUserById(userId);
@@ -87,6 +129,35 @@ export class AuthService {
     } catch (error) {
       this.logger.error(
         `Error logging in tenant user with ID ${userId}: ${error.message}`,
+      );
+      throw new UnauthorizedException('Login failed');
+    }
+  }
+
+  async loginAdminUser(userId: string) {
+    try {
+      const user = await this.prisma.adminUser.findUnique({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        this.logger.warn(
+          `Login failed: Admin user with ID ${userId} not found.`,
+        );
+        throw new UnauthorizedException('User not found');
+      }
+
+      const payload = {
+        sub: user.id,
+        role: 'ADMIN',
+      };
+
+      const token = this.jwtService.sign(payload);
+
+      return { token, user, role: 'ADMIN' };
+    } catch (error) {
+      this.logger.error(
+        `Error logging in admin user with ID ${userId}: ${error.message}`,
       );
       throw new UnauthorizedException('Login failed');
     }
