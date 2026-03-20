@@ -9,9 +9,9 @@ export class PermissionService {
 
   constructor(private readonly prisma: PrismaService) {}
 
-  create(data: CreatePermissionDto) {
+  async createAppPermission(data: CreatePermissionDto) {
     try {
-      this.prisma.appPermission.create({
+      await this.prisma.appPermission.create({
         data: {
           name: data.name,
           description: data.description,
@@ -19,7 +19,7 @@ export class PermissionService {
         },
       });
 
-      const permissions = this.findAll();
+      const permissions = await this.getAllAppPermissions();
 
       return { message: 'Permission created successfully', permissions };
     } catch (error) {
@@ -28,9 +28,9 @@ export class PermissionService {
     }
   }
 
-  findAll() {
+  async getAllAppPermissions() {
     try {
-      const permissions = this.prisma.appPermission.findMany({
+      const permissions = await this.prisma.appPermission.findMany({
         include: { category: true },
       });
 
@@ -41,13 +41,9 @@ export class PermissionService {
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} permission`;
-  }
-
-  update(data: UpdatePermissionDto) {
+  async updateAppPermission(data: UpdatePermissionDto) {
     try {
-      const existing = this.prisma.appPermission.findUnique({
+      const existing = await this.prisma.appPermission.findUnique({
         where: { id: data.id },
       });
 
@@ -55,7 +51,7 @@ export class PermissionService {
         throw new NotFoundException('Permission not found');
       }
 
-      this.prisma.appPermission.update({
+      await this.prisma.appPermission.update({
         where: { id: data.id },
         data: {
           name: data.name,
@@ -64,7 +60,7 @@ export class PermissionService {
         },
       });
 
-      const permissions = this.findAll();
+      const permissions = await this.getAllAppPermissions();
 
       return {
         message: 'Permission updated successfully',
@@ -76,9 +72,9 @@ export class PermissionService {
     }
   }
 
-  remove(id: string) {
+  async deleteAppPermission(id: string) {
     try {
-      const existing = this.prisma.appPermission.findUnique({
+      const existing = await this.prisma.appPermission.findUnique({
         where: { id },
       });
 
@@ -86,11 +82,11 @@ export class PermissionService {
         throw new NotFoundException('Permission not found');
       }
 
-      this.prisma.appPermission.delete({
+      await this.prisma.appPermission.delete({
         where: { id },
       });
 
-      const permissions = this.findAll();
+      const permissions = await this.getAllAppPermissions();
 
       return {
         message: 'Permission deleted successfully',

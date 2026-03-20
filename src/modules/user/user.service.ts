@@ -27,6 +27,8 @@ export class UserService {
   async getCurrentUser(id: string, role: string) {
     if (role === 'TENANT_USER') {
       return this.getTenantUser(id);
+    } else if (role === 'ADMIN') {
+      return this.getAdminUser(id);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${id}.`);
@@ -124,6 +126,35 @@ export class UserService {
       return userData;
     } catch (error) {
       this.logger.error(error, 'Error fetching current user', {
+        userId: id,
+      });
+      throw error;
+    }
+  }
+
+  async getAdminUser(id: string) {
+    try {
+      const user = await this.prisma.adminUser.findUnique({
+        where: { id },
+      });
+
+      if (!user) {
+        this.logger.warn(`Admin user with ID ${id} not found.`);
+        return new UnauthorizedException('User not found');
+      }
+
+      return {
+        id: user.id,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        initials: `${user.firstName[0]}${user.lastName[0]}`,
+        fullName: `${user.firstName} ${user.lastName}`,
+        createdAt: user.createdAt,
+        email: user.email,
+      };
+    } catch (error) {
+      this.logger.error(error, 'Error fetching admin user', {
         userId: id,
       });
       throw error;

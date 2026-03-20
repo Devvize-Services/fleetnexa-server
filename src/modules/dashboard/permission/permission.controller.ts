@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Put,
 } from '@nestjs/common';
 import { PermissionService } from './permission.service.js';
 import { CreatePermissionDto } from './dto/create-permission.dto.js';
@@ -23,26 +24,21 @@ export class PermissionController {
 
   @Post()
   create(@Body() createPermissionDto: CreatePermissionDto) {
-    return this.permissionService.create(createPermissionDto);
+    return this.permissionService.createAppPermission(createPermissionDto);
   }
 
   @Get()
   findAll() {
-    return this.permissionService.findAll();
+    return this.permissionService.getAllAppPermissions();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.permissionService.findOne(+id);
-  }
-
-  @Patch()
+  @Put()
   update(@Body() data: UpdatePermissionDto) {
-    return this.permissionService.update(data);
+    return this.permissionService.updateAppPermission(data);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.permissionService.remove(id);
+    return this.permissionService.deleteAppPermission(id);
   }
 }

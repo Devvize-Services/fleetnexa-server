@@ -5,6 +5,7 @@ import { VillageModule } from './village/village.module.js';
 import { TenantModule } from './tenant/tenant.module.js';
 import { SubscriptionPlanModule } from './subscription-plan/subscription-plan.module.js';
 import { PermissionModule } from './permission/permission.module.js';
+import { PermissionCategoryModule } from './permission-category/permission-category.module.js';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PermissionModule } from './permission/permission.module.js';
     TenantModule,
     SubscriptionPlanModule,
     PermissionModule,
+    PermissionCategoryModule,
   ],
   exports: [
     CountryModule,
