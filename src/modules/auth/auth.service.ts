@@ -1,8 +1,8 @@
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import bcrypt from 'bcrypt';
-import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { JwtService } from '@nestjs/jwt';
+import { UserRepository } from '../user/user.repository.js';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +11,7 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
-    private tenantUserRepo: TenantUserRepository,
+    private readonly userRepo: UserRepository,
   ) {}
 
   async validateUser(username: string, password: string, role: string) {
@@ -30,8 +30,8 @@ export class AuthService {
       let user: any | null = null;
 
       user = username.includes('@')
-        ? await this.tenantUserRepo.getUserByEmail(username)
-        : await this.tenantUserRepo.getUserByUsername(username);
+        ? await this.userRepo.getTenantUserByEmail(username)
+        : await this.userRepo.getTenantUserByUsername(username);
 
       if (!user) {
         this.logger.warn(`Login failed: User ${username} not found.`);
@@ -110,7 +110,7 @@ export class AuthService {
 
   async loginTenantUser(userId: string) {
     try {
-      const user = await this.tenantUserRepo.getUserById(userId);
+      const user = await this.userRepo.getTenantUserById(userId);
 
       if (!user) {
         this.logger.warn(`Login failed: User with ID ${userId} not found.`);

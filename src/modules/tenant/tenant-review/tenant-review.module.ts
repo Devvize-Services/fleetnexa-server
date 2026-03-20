@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { TenantReviewService } from './tenant-review.service.js';
 import { TenantReviewController } from './tenant-review.controller.js';
 import { TenantRepository } from '../tenant.repository.js';
-import { TenantUserRepository } from '../../user/tenant-user/tenant-user.repository.js';
+import { UserRepository } from 'src/modules/user/user.repository.js';
 
 @Module({
   imports: [],
-  providers: [TenantReviewService, TenantRepository, TenantUserRepository],
+  providers: [TenantReviewService, TenantRepository, UserRepository],
   controllers: [TenantReviewController],
   exports: [TenantReviewService],
 })

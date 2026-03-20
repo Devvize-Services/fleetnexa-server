@@ -7,7 +7,6 @@ import {
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import { Tenant, User } from '../../generated/prisma/client.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { TenantUserService } from '../user/tenant-user/tenant-user.service.js';
 import { UserRoleService } from '../user/tenant-user/modules/user-role/user-role.service.js';
 import { CreateTenantDto } from './dto/create-tenant.dto.js';
 import { TenantExtraService } from './tenant-extra/tenant-extra.service.js';
@@ -25,6 +24,7 @@ import { VehicleMaintenanceService } from '../vehicle/modules/vehicle-maintenanc
 import { EmailService } from '../../common/email/email.service.js';
 import { BookingService } from '../booking/booking.service.js';
 import { CustomerService } from '../customer/customer.service.js';
+import { UserService } from '../user/user.service.js';
 
 @Injectable()
 export class TenantService {
@@ -35,7 +35,7 @@ export class TenantService {
     private readonly generator: GeneratorService,
     private readonly locationService: TenantLocationService,
     private readonly userRoleService: UserRoleService,
-    private readonly userService: TenantUserService,
+    private readonly userService: UserService,
     private readonly extraService: TenantExtraService,
     private readonly tenantRepo: TenantRepository,
     private readonly notifications: TenantNotificationService,
@@ -190,7 +190,10 @@ export class TenantService {
       const role = await this.userRoleService.createDefaultRole(tenant);
 
       data.user.roleId = role.id;
-      const { user } = await this.userService.createUser(data.user, tenant);
+      const { user } = await this.userService.createTenantUser(
+        data.user,
+        tenant,
+      );
 
       if (user.email) {
         await this.emailService.sendWelcomeEmail(user, tenant);

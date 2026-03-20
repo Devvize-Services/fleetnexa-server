@@ -4,13 +4,13 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import jwtConfig from '../../../config/jwt.config.js';
 import { TenantRepository } from '../../../modules/tenant/tenant.repository.js';
-import { TenantUserRepository } from '../../../modules/user/tenant-user/tenant-user.repository.js';
 import { PrismaService } from '../../../prisma/prisma.service.js';
+import { UserRepository } from '../../../modules/user/user.repository.js';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
-    private userRepo: TenantUserRepository,
+    private userRepo: UserRepository,
     private tenantRepo: TenantRepository,
     private readonly prisma: PrismaService,
     @Inject(jwtConfig.KEY)
@@ -34,7 +34,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validateTenantUser(payload: any) {
-    const tenantUser = await this.userRepo.getUserById(payload.sub);
+    const tenantUser = await this.userRepo.getTenantUserById(payload.sub);
     if (!tenantUser) throw new UnauthorizedException('Tenant user not found');
 
     const tenant = await this.tenantRepo.getTenantById(payload.tenantId);

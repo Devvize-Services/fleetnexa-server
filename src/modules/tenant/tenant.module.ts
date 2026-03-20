@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TenantLocationModule } from './tenant-location/tenant-location.module.js';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { TenantUserModule } from '../user/tenant-user/tenant-user.module.js';
-import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { UserRoleModule } from '../user/tenant-user/modules/user-role/user-role.module.js';
 import { TenantExtrasModule } from './tenant-extra/tenant-extra.module.js';
 import { TenantController } from './tenant.controller.js';
@@ -19,6 +17,8 @@ import { JwtStrategy } from '../auth/strategies/jwt.strategy.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { ConfigModule } from '@nestjs/config';
 import { CustomerModule } from '../customer/customer.module.js';
+import { UserModule } from '../user/user.module.js';
+import { UserRepository } from '../user/user.repository.js';
 
 @Module({
   imports: [
@@ -26,7 +26,7 @@ import { CustomerModule } from '../customer/customer.module.js';
     JwtModule.registerAsync(jwtConfig.asProvider()),
     TenantLocationModule,
     TenantExtrasModule,
-    TenantUserModule,
+    UserModule,
     TenantNotificationModule,
     UserRoleModule,
     TenantVendorModule,
@@ -42,9 +42,9 @@ import { CustomerModule } from '../customer/customer.module.js';
     JwtService,
     TenantService,
     TenantRepository,
-    TenantUserRepository,
+    UserRepository,
     JwtStrategy,
   ],
-  exports: [TenantService, TenantRepository, TenantUserRepository],
+  exports: [TenantService, TenantRepository, UserRepository],
 })
 export class TenantModule {}

@@ -11,11 +11,7 @@ import { VehicleModule } from './modules/vehicle/vehicle.module.js';
 import { StorefrontAuthModule } from './modules/auth/storefront-auth/storefront-auth.module.js';
 import { StorefrontUserModule } from './modules/user/storefront-user/storefront-user.module.js';
 import { StorageModule } from './modules/storage/storage.module.js';
-import { TenantUserModule } from './modules/user/tenant-user/tenant-user.module.js';
-import { PaymentModule } from './modules/transaction/modules/payment/payment.module.js';
 import { UserRoleModule } from './modules/user/tenant-user/modules/user-role/user-role.module.js';
-import { RefundModule } from './modules/transaction/modules/refund/refund.module.js';
-import { ExpenseModule } from './modules/transaction/modules/expense/expense.module.js';
 import { TransactionModule } from './modules/transaction/transaction.module.js';
 import { DocumentModule } from './modules/document/document.module.js';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -74,7 +70,7 @@ import { CustomerModule } from './modules/customer/customer.module.js';
     CustomerModule,
 
     UserRoleModule,
-    TenantUserModule,
+    UserModule,
     UserModule,
 
     TenantModule,

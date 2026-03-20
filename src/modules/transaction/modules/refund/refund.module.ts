@@ -5,10 +5,10 @@ import { TransactionModule } from '../../transaction.module.js';
 import { RefundController } from './refund.controller.js';
 import { RefundService } from './refund.service.js';
 import { TenantRepository } from '../../../../modules/tenant/tenant.repository.js';
-import { TenantUserRepository } from '../../../../modules/user/tenant-user/tenant-user.repository.js';
 import jwtConfig from '../../../../config/jwt.config.js';
 import { BookingRepository } from '../../../../modules/booking/booking.repository.js';
 import { PrismaModule } from '../../../../prisma/prisma.module.js';
+import { UserRepository } from '../../../../modules/user/user.repository.js';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { PrismaModule } from '../../../../prisma/prisma.module.js';
   providers: [
     RefundService,
     TenantRepository,
-    TenantUserRepository,
+    UserRepository,
     BookingRepository,
   ],
   exports: [RefundService],

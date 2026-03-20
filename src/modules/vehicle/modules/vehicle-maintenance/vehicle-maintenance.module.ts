@@ -3,9 +3,9 @@ import { ExpenseModule } from '../../../../modules/transaction/modules/expense/e
 import { VehicleMaintenanceController } from './vehicle-maintenance.controller.js';
 import { VehicleMaintenanceService } from './vehicle-maintenance.service.js';
 import { TenantRepository } from '../../../../modules/tenant/tenant.repository.js';
-import { TenantUserRepository } from '../../../../modules/user/tenant-user/tenant-user.repository.js';
 import { VehicleModule } from '../../vehicle.module.js';
 import { VehicleRepository } from '../../vehicle.repository.js';
+import { UserRepository } from '../../../../modules/user/user.repository.js';
 
 @Module({
   imports: [ExpenseModule, forwardRef(() => VehicleModule)],
@@ -13,7 +13,7 @@ import { VehicleRepository } from '../../vehicle.repository.js';
   providers: [
     VehicleMaintenanceService,
     TenantRepository,
-    TenantUserRepository,
+    UserRepository,
     VehicleRepository,
   ],
   exports: [VehicleMaintenanceService],

@@ -1,49 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '../../../generated/prisma/client.js';
-import { PrismaService } from '../../../prisma/prisma.service.js';
+import { Prisma } from '../../generated/prisma/browser.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
 @Injectable()
-export class TenantUserRepository {
+export class UserRepository {
   constructor(private readonly prisma: PrismaService) {}
-  getUsers = async (
+
+  getTenantUsers = async (
     tenantId: string,
     additionalWhere?: Prisma.UserWhereInput,
   ) => {
     return await this.prisma.user.findMany({
       where: { tenantId, ...additionalWhere, isDeleted: false, show: true },
-      select: this.getUserSelectOptions(),
+      select: this.getTenantUserSelectOptions(),
     });
   };
 
-  getUserById = async (id: string) => {
+  getTenantUserById = async (id: string) => {
     return await this.prisma.user.findUnique({
       where: { id },
-      select: this.getUserSelectOptions(),
+      select: this.getTenantUserSelectOptions(),
     });
   };
 
-  getUserByEmail = async (email: string) => {
+  getTenantUserByEmail = async (email: string) => {
     return await this.prisma.user.findUnique({
       where: { email },
-      select: this.getUserAuthSelectOptions(),
+      select: this.getTenantUserSelectOptions(),
     });
   };
 
-  getUserByUsername = async (username: string) => {
+  getTenantUserByUsername = async (username: string) => {
     return await this.prisma.user.findUnique({
       where: { username },
-      select: this.getUserAuthSelectOptions(),
+      select: this.getTenantUserSelectOptions(),
     });
   };
 
-  private getUserAuthSelectOptions(): Prisma.UserSelect {
-    return {
-      ...this.getUserSelectOptions(),
-      password: true,
-    };
-  }
-
-  private getUserSelectOptions(): Prisma.UserSelect {
+  private getTenantUserSelectOptions(): Prisma.UserSelect {
     return {
       id: true,
       username: true,

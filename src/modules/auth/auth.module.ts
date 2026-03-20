@@ -5,10 +5,10 @@ import { AuthService } from './auth.service.js';
 import { AuthController } from './auth.controller.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { PassportModule } from '@nestjs/passport';
-import { TenantUserRepository } from '../user/tenant-user/tenant-user.repository.js';
 import { LocalStrategy } from './strategies/local.strategy.js';
 import { JwtStrategy } from './strategies/jwt.strategy.js';
 import { TenantRepository } from '../tenant/tenant.repository.js';
+import { UserRepository } from '../user/user.repository.js';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { TenantRepository } from '../tenant/tenant.repository.js';
   controllers: [AuthController],
   providers: [
     AuthService,
-    TenantUserRepository,
+    UserRepository,
     TenantRepository,
     LocalStrategy,
     JwtStrategy,
