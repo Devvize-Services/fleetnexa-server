@@ -9,7 +9,7 @@ import {
   endOfYear,
   eachMonthOfInterval,
 } from 'date-fns';
-import { TenantGateway } from '../gateway/tenant.gateway.js';
+import { NotificationService } from '../common/notification/notification.service.js';
 
 @Injectable()
 export class CronService {
@@ -17,7 +17,7 @@ export class CronService {
 
   constructor(
     private readonly prisma: PrismaService,
-    private readonly tenantGateway: TenantGateway,
+    private readonly notificationService: NotificationService,
   ) {}
 
   @Cron('* * * * *')
@@ -424,7 +424,10 @@ export class CronService {
             },
           });
 
-          this.tenantGateway.sendTenantNotification(tenant.id, notification);
+          this.notificationService.sendTenantNotification(
+            tenant.id,
+            notification,
+          );
         }
       }
     } catch (error) {
@@ -513,7 +516,10 @@ export class CronService {
             },
           });
 
-          this.tenantGateway.sendTenantNotification(tenant.id, notification);
+          this.notificationService.sendTenantNotification(
+            tenant.id,
+            notification,
+          );
         }
       }
     } catch (error) {
@@ -602,7 +608,10 @@ export class CronService {
             },
           });
 
-          this.tenantGateway.sendTenantNotification(tenant.id, notification);
+          this.notificationService.sendTenantNotification(
+            tenant.id,
+            notification,
+          );
         }
       }
     } catch (error) {

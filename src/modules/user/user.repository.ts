@@ -26,16 +26,40 @@ export class UserRepository {
   getTenantUserByEmail = async (email: string) => {
     return await this.prisma.user.findUnique({
       where: { email },
-      select: this.getTenantUserSelectOptions(),
+      select: this.getTenantUserAuthSelectOptions(),
     });
   };
 
   getTenantUserByUsername = async (username: string) => {
     return await this.prisma.user.findUnique({
       where: { username },
-      select: this.getTenantUserSelectOptions(),
+      select: this.getTenantUserAuthSelectOptions(),
     });
   };
+
+  protected getTenantUserAuthSelectOptions(): Prisma.UserSelect {
+    return {
+      id: true,
+      username: true,
+      firstName: true,
+      lastName: true,
+      tenantId: true,
+      createdAt: true,
+      password: true,
+      email: true,
+      roleId: true,
+      requirePasswordChange: true,
+      role: {
+        include: {
+          rolePermission: {
+            include: {
+              permission: true,
+            },
+          },
+        },
+      },
+    };
+  }
 
   private getTenantUserSelectOptions(): Prisma.UserSelect {
     return {

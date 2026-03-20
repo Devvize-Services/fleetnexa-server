@@ -7,6 +7,7 @@ import {
   OnGatewayDisconnect,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { TenantNotification } from '../generated/prisma/client.js';
 
 @Global()
 @WebSocketGateway({
@@ -41,7 +42,7 @@ export class TenantGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.logger.log(`🔌 Client disconnected: ${socket.id}`);
   }
 
-  sendTenantNotification(tenantId: string, data: any) {
+  sendTenantNotification(tenantId: string, data: TenantNotification) {
     this.io.to(tenantId).emit('tenant-notification', data);
   }
 }

@@ -30,6 +30,7 @@ import { RolesGuard } from './modules/auth/guards/roles.guard.js';
 import { BookingModule } from './modules/booking/booking.module.js';
 import { UserModule } from './modules/user/user.module.js';
 import { CustomerModule } from './modules/customer/customer.module.js';
+import { NotificationModule } from './common/notification/notification.module.js';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { CustomerModule } from './modules/customer/customer.module.js';
     DocumentModule,
     EmailModule,
     WhatsappModule,
+    NotificationModule,
 
     AdminModule,
 

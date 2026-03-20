@@ -64,7 +64,7 @@ export class AuthService {
       this.logger.error(
         `Error validating tenant user ${username}: ${error.message}`,
       );
-      throw new UnauthorizedException('Invalid username or password');
+      throw error;
     }
   }
 
