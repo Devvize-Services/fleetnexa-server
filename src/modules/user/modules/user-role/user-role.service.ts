@@ -6,13 +6,10 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import {
-  Tenant,
-  User,
-  UserRole,
-} from '../../../../../generated/prisma/client.js';
-import { PrismaService } from '../../../../../prisma/prisma.service.js';
+
 import { UserRoleDto, UserRolePermissionsDto } from './user-role.dto.js';
+import { PrismaService } from '../../../../prisma/prisma.service.js';
+import { Tenant, User, UserRole } from '../../../../generated/prisma/client.js';
 
 @Injectable()
 export class UserRoleService {

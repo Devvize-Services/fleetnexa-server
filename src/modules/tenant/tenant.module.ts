@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TenantLocationModule } from './tenant-location/tenant-location.module.js';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { UserRoleModule } from '../user/tenant-user/modules/user-role/user-role.module.js';
 import { TenantExtrasModule } from './tenant-extra/tenant-extra.module.js';
 import { TenantController } from './tenant.controller.js';
 import { TenantRepository } from './tenant.repository.js';
@@ -18,6 +17,7 @@ import jwtConfig from '../../config/jwt.config.js';
 import { ConfigModule } from '@nestjs/config';
 import { CustomerModule } from '../customer/customer.module.js';
 import { UserModule } from '../user/user.module.js';
+import { UserRoleModule } from '../user/modules/user-role/user-role.module.js';
 import { UserRepository } from '../user/user.repository.js';
 
 @Module({
@@ -27,8 +27,8 @@ import { UserRepository } from '../user/user.repository.js';
     TenantLocationModule,
     TenantExtrasModule,
     UserModule,
-    TenantNotificationModule,
     UserRoleModule,
+    TenantNotificationModule,
     TenantVendorModule,
     VehicleModule,
     TenantActivityModule,

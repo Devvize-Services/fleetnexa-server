@@ -59,7 +59,7 @@ export class TenantController {
     return this.tenantService.getTodayActivities(tenant);
   }
 
-  @Get(':id')
+  @Get('id/:id')
   getTenantById(@Param('id') id: string) {
     return this.tenantService.getTenantById(id);
   }

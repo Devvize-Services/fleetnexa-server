@@ -31,6 +31,13 @@ export class UserController {
     return this.service.getCurrentUser(user.id, user.serverRole);
   }
 
+  @Get()
+  @Roles(Role.TENANT_USER)
+  async getTenantUsers(@Request() req) {
+    const { tenant } = req.user;
+    return this.service.getTenantUsers(tenant);
+  }
+
   @Post()
   @Roles(Role.TENANT_USER)
   async createUser(@Request() req, @Body() data: TenantUserDto) {

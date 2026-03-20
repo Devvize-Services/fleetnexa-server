@@ -7,7 +7,6 @@ import {
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import { Tenant, User } from '../../generated/prisma/client.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { UserRoleService } from '../user/tenant-user/modules/user-role/user-role.service.js';
 import { CreateTenantDto } from './dto/create-tenant.dto.js';
 import { TenantExtraService } from './tenant-extra/tenant-extra.service.js';
 import { TenantLocationService } from './tenant-location/tenant-location.service.js';
@@ -25,6 +24,7 @@ import { EmailService } from '../../common/email/email.service.js';
 import { BookingService } from '../booking/booking.service.js';
 import { CustomerService } from '../customer/customer.service.js';
 import { UserService } from '../user/user.service.js';
+import { UserRoleService } from '../user/modules/user-role/user-role.service.js';
 
 @Injectable()
 export class TenantService {
@@ -45,7 +45,6 @@ export class TenantService {
     private readonly customers: CustomerService,
     private readonly activities: TenantActivityService,
     private readonly rates: TenantRatesService,
-    private readonly roles: UserRoleService,
     private readonly bookingService: BookingService,
     private readonly maintenanceService: VehicleMaintenanceService,
     private readonly emailService: EmailService,
@@ -66,7 +65,7 @@ export class TenantService {
         user,
       );
       const users = await this.userService.getTenantUsers(tenant);
-      const roles = await this.roles.getAllRoles(tenant);
+      const roles = await this.userRoleService.getAllRoles(tenant);
       const bookings = await this.bookingService.getBookings(tenant);
 
       const data = {
