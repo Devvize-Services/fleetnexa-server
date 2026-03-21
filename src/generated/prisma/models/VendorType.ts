@@ -870,6 +870,11 @@ export type VendorTypeFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` VendorTypes.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VendorTypes.
+   */
   distinct?: Prisma.VendorTypeScalarFieldEnum | Prisma.VendorTypeScalarFieldEnum[]
 }
 

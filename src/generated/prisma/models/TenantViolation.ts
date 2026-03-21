@@ -1435,6 +1435,11 @@ export type TenantViolationFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` TenantViolations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantViolations.
+   */
   distinct?: Prisma.TenantViolationScalarFieldEnum | Prisma.TenantViolationScalarFieldEnum[]
 }
 

@@ -1026,6 +1026,11 @@ export type ChargeTypeFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` ChargeTypes.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ChargeTypes.
+   */
   distinct?: Prisma.ChargeTypeScalarFieldEnum | Prisma.ChargeTypeScalarFieldEnum[]
 }
 

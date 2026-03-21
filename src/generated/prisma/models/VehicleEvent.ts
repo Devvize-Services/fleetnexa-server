@@ -1161,6 +1161,11 @@ export type VehicleEventFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` VehicleEvents.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleEvents.
+   */
   distinct?: Prisma.VehicleEventScalarFieldEnum | Prisma.VehicleEventScalarFieldEnum[]
 }
 

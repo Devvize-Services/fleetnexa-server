@@ -1237,6 +1237,11 @@ export type LicenseClassFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` LicenseClasses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of LicenseClasses.
+   */
   distinct?: Prisma.LicenseClassScalarFieldEnum | Prisma.LicenseClassScalarFieldEnum[]
 }
 

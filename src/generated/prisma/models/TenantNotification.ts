@@ -1399,6 +1399,11 @@ export type TenantNotificationFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` TenantNotifications.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantNotifications.
+   */
   distinct?: Prisma.TenantNotificationScalarFieldEnum | Prisma.TenantNotificationScalarFieldEnum[]
 }
 

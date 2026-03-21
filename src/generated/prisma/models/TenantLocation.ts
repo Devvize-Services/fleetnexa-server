@@ -1870,6 +1870,11 @@ export type TenantLocationFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` TenantLocations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantLocations.
+   */
   distinct?: Prisma.TenantLocationScalarFieldEnum | Prisma.TenantLocationScalarFieldEnum[]
 }
 

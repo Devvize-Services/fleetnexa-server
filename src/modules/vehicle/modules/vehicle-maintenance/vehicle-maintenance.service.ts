@@ -35,12 +35,6 @@ export class VehicleMaintenanceService {
         },
       });
 
-      console.log('Fetched tenant maintenance services:', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        serviceCount: services.length,
-      });
-
       return services;
     } catch (error) {
       this.logger.error(error, 'Error fetching tenant maintenance services', {

@@ -1488,6 +1488,11 @@ export type VehicleInsuranceHistoryFindManyArgs<ExtArgs extends runtime.Types.Ex
    * Skip the first `n` VehicleInsuranceHistories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleInsuranceHistories.
+   */
   distinct?: Prisma.VehicleInsuranceHistoryScalarFieldEnum | Prisma.VehicleInsuranceHistoryScalarFieldEnum[]
 }
 

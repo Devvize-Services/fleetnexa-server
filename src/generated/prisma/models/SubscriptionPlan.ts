@@ -1578,6 +1578,11 @@ export type SubscriptionPlanFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Skip the first `n` SubscriptionPlans.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of SubscriptionPlans.
+   */
   distinct?: Prisma.SubscriptionPlanScalarFieldEnum | Prisma.SubscriptionPlanScalarFieldEnum[]
 }
 

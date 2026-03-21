@@ -1274,6 +1274,11 @@ export type AppPermissionFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` AppPermissions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of AppPermissions.
+   */
   distinct?: Prisma.AppPermissionScalarFieldEnum | Prisma.AppPermissionScalarFieldEnum[]
 }
 

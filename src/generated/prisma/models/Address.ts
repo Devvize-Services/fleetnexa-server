@@ -1606,6 +1606,11 @@ export type AddressFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Addresses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Addresses.
+   */
   distinct?: Prisma.AddressScalarFieldEnum | Prisma.AddressScalarFieldEnum[]
 }
 

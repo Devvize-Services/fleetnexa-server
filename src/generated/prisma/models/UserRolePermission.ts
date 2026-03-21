@@ -1248,6 +1248,11 @@ export type UserRolePermissionFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` UserRolePermissions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserRolePermissions.
+   */
   distinct?: Prisma.UserRolePermissionScalarFieldEnum | Prisma.UserRolePermissionScalarFieldEnum[]
 }
 

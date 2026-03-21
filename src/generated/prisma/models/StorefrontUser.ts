@@ -2472,6 +2472,11 @@ export type StorefrontUserFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` StorefrontUsers.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of StorefrontUsers.
+   */
   distinct?: Prisma.StorefrontUserScalarFieldEnum | Prisma.StorefrontUserScalarFieldEnum[]
 }
 

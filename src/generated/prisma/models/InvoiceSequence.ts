@@ -1026,6 +1026,11 @@ export type InvoiceSequenceFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` InvoiceSequences.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of InvoiceSequences.
+   */
   distinct?: Prisma.InvoiceSequenceScalarFieldEnum | Prisma.InvoiceSequenceScalarFieldEnum[]
 }
 

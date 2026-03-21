@@ -1262,6 +1262,11 @@ export type TenantRemindersFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` TenantReminders.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantReminders.
+   */
   distinct?: Prisma.TenantRemindersScalarFieldEnum | Prisma.TenantRemindersScalarFieldEnum[]
 }
 

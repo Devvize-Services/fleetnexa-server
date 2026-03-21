@@ -1501,6 +1501,11 @@ export type VillageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Villages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Villages.
+   */
   distinct?: Prisma.VillageScalarFieldEnum | Prisma.VillageScalarFieldEnum[]
 }
 

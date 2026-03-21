@@ -1207,6 +1207,11 @@ export type NotificationReadStatusFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Skip the first `n` NotificationReadStatuses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of NotificationReadStatuses.
+   */
   distinct?: Prisma.NotificationReadStatusScalarFieldEnum | Prisma.NotificationReadStatusScalarFieldEnum[]
 }
 

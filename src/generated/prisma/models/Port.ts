@@ -1200,6 +1200,11 @@ export type PortFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Skip the first `n` Ports.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Ports.
+   */
   distinct?: Prisma.PortScalarFieldEnum | Prisma.PortScalarFieldEnum[]
 }
 

@@ -1606,6 +1606,11 @@ export type CustomerAddressFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` CustomerAddresses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CustomerAddresses.
+   */
   distinct?: Prisma.CustomerAddressScalarFieldEnum | Prisma.CustomerAddressScalarFieldEnum[]
 }
 

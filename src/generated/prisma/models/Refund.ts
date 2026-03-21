@@ -2008,6 +2008,11 @@ export type RefundFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Skip the first `n` Refunds.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Refunds.
+   */
   distinct?: Prisma.RefundScalarFieldEnum | Prisma.RefundScalarFieldEnum[]
 }
 

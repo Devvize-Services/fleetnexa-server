@@ -2328,6 +2328,11 @@ export type TransactionsFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` Transactions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Transactions.
+   */
   distinct?: Prisma.TransactionsScalarFieldEnum | Prisma.TransactionsScalarFieldEnum[]
 }
 

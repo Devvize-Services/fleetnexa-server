@@ -1297,6 +1297,11 @@ export type VehicleRegistrationHistoryFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` VehicleRegistrationHistories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleRegistrationHistories.
+   */
   distinct?: Prisma.VehicleRegistrationHistoryScalarFieldEnum | Prisma.VehicleRegistrationHistoryScalarFieldEnum[]
 }
 

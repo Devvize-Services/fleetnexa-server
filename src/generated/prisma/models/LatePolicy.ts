@@ -1109,6 +1109,11 @@ export type LatePolicyFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` LatePolicies.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of LatePolicies.
+   */
   distinct?: Prisma.LatePolicyScalarFieldEnum | Prisma.LatePolicyScalarFieldEnum[]
 }
 

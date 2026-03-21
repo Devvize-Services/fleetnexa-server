@@ -1429,6 +1429,11 @@ export type TenantCurrencyRateFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` TenantCurrencyRates.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantCurrencyRates.
+   */
   distinct?: Prisma.TenantCurrencyRateScalarFieldEnum | Prisma.TenantCurrencyRateScalarFieldEnum[]
 }
 

@@ -1283,6 +1283,11 @@ export type CustomerMessengerAppFindManyArgs<ExtArgs extends runtime.Types.Exten
    * Skip the first `n` CustomerMessengerApps.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CustomerMessengerApps.
+   */
   distinct?: Prisma.CustomerMessengerAppScalarFieldEnum | Prisma.CustomerMessengerAppScalarFieldEnum[]
 }
 

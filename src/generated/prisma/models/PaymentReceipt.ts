@@ -1860,6 +1860,11 @@ export type PaymentReceiptFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` PaymentReceipts.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of PaymentReceipts.
+   */
   distinct?: Prisma.PaymentReceiptScalarFieldEnum | Prisma.PaymentReceiptScalarFieldEnum[]
 }
 

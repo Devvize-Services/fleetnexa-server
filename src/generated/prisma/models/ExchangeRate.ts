@@ -1333,6 +1333,11 @@ export type ExchangeRateFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` ExchangeRates.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ExchangeRates.
+   */
   distinct?: Prisma.ExchangeRateScalarFieldEnum | Prisma.ExchangeRateScalarFieldEnum[]
 }
 

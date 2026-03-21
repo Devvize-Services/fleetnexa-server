@@ -26,9 +26,6 @@ export class BookingController {
   @Roles(Role.TENANT_USER)
   async getTenantBookings(@Request() req) {
     const { tenant } = req.user;
-
-    console.log('Getting tenant bookings for tenant:', tenant.id);
-
     return this.bookingService.getBookings(tenant);
   }
 

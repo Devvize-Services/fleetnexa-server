@@ -233,19 +233,24 @@ export class BookingRepository {
     };
   }
 
-  async createBookingValues(bookingId: string, values: any) {
-    return this.prisma.$transaction(async (tx) => {
-      const createdValues = await tx.values.create({
+  async createBookingValues(
+    bookingId: string,
+    values: any,
+    tx?: Prisma.TransactionClient,
+  ) {
+    const run = async (client: Prisma.TransactionClient) => {
+      const { extras, ...valuesData } = values;
+      const createdValues = await client.values.create({
         data: {
           rentalId: bookingId,
-          ...values,
+          ...valuesData,
         },
       });
 
-      if (values.extras && Array.isArray(values.extras)) {
+      if (extras && Array.isArray(extras)) {
         await Promise.all(
-          values.extras.map((extra: any) =>
-            tx.rentalExtra.create({
+          extras.map((extra: any) =>
+            client.rentalExtra.create({
               data: {
                 id: extra.id,
                 extraId: extra.extraId,
@@ -258,7 +263,9 @@ export class BookingRepository {
         );
       }
       return createdValues;
-    });
+    };
+
+    return tx ? run(tx) : this.prisma.$transaction(run);
   }
 
   async updateBookingValues(bookingId: string, values: any) {

@@ -228,6 +228,12 @@ export class CronService {
         const revenue = await this.calcYearlyRevenue(tenant.id, from, to);
         const rentals = await this.calcYearlyRentals(tenant.id, from, to);
         const customers = await this.calcYearlyCustomers(tenant.id, from, to);
+        const vehicleCount = await this.calcYearlyVehicleCount(
+          tenant.id,
+          from,
+          to,
+        );
+        const expenses = await this.calcYearlyExpenses(tenant.id, from, to);
         const avgDuration = await this.calcAverageRentalDuration(
           tenant.id,
           from,
@@ -240,6 +246,14 @@ export class CronService {
             year,
             'YEARLY_REVENUE',
             revenue,
+            from,
+            to,
+          ),
+          this.saveYearlyStat(
+            tenant.id,
+            year,
+            'YEARLY_EXPENSES',
+            expenses,
             from,
             to,
           ),
@@ -262,6 +276,15 @@ export class CronService {
           this.saveYearlyStat(
             tenant.id,
             year,
+            'YEARLY_VEHICLES',
+            vehicleCount,
+            from,
+            to,
+          ),
+
+          this.saveYearlyStat(
+            tenant.id,
+            year,
             'AVERAGE_RENTAL_DURATION',
             avgDuration,
             from,
@@ -277,8 +300,10 @@ export class CronService {
     year: number,
     stat:
       | 'YEARLY_REVENUE'
+      | 'YEARLY_EXPENSES'
       | 'YEARLY_RENTALS'
       | 'YEARLY_CUSTOMERS'
+      | 'YEARLY_VEHICLES'
       | 'AVERAGE_RENTAL_DURATION',
     value: number,
     from: Date,
@@ -319,6 +344,18 @@ export class CronService {
     return (payments.amount ?? 0) - (refunds.amount ?? 0);
   }
 
+  private async calcYearlyExpenses(tenantId: string, from: Date, to: Date) {
+    const { _sum: expenses } = await this.prisma.expense.aggregate({
+      where: {
+        tenantId,
+        expenseDate: { gte: from, lte: to },
+        isDeleted: false,
+      },
+      _sum: { amount: true },
+    });
+    return expenses.amount ?? 0;
+  }
+
   private async calcYearlyRentals(tenantId: string, from: Date, to: Date) {
     return this.prisma.rental.count({
       where: {
@@ -333,6 +370,12 @@ export class CronService {
   private async calcYearlyCustomers(tenantId: string, from: Date, to: Date) {
     return this.prisma.customer.count({
       where: { tenantId, createdAt: { gte: from, lte: to }, isDeleted: false },
+    });
+  }
+
+  private async calcYearlyVehicleCount(tenantId: string, from: Date, to: Date) {
+    return this.prisma.vehicle.count({
+      where: { tenantId, createdAt: { lte: to }, isDeleted: false },
     });
   }
 

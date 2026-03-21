@@ -396,7 +396,6 @@ export class UserService {
 
   async forgotTenantUserPassword(email: string) {
     try {
-      console.log('Initiating password reset for email:', email);
       const user = await this.prisma.user.findUnique({
         where: { email },
       });

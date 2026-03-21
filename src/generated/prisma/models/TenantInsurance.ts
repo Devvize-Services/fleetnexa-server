@@ -1380,6 +1380,11 @@ export type TenantInsuranceFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` TenantInsurances.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantInsurances.
+   */
   distinct?: Prisma.TenantInsuranceScalarFieldEnum | Prisma.TenantInsuranceScalarFieldEnum[]
 }
 

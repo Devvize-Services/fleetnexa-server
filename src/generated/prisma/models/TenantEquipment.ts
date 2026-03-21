@@ -1491,6 +1491,11 @@ export type TenantEquipmentFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` TenantEquipments.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantEquipments.
+   */
   distinct?: Prisma.TenantEquipmentScalarFieldEnum | Prisma.TenantEquipmentScalarFieldEnum[]
 }
 

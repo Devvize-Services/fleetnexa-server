@@ -1455,6 +1455,11 @@ export type VesselInfoFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` VesselInfos.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VesselInfos.
+   */
   distinct?: Prisma.VesselInfoScalarFieldEnum | Prisma.VesselInfoScalarFieldEnum[]
 }
 

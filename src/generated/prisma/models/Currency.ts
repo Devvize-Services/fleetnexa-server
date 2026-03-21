@@ -1457,6 +1457,11 @@ export type CurrencyFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` Currencies.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Currencies.
+   */
   distinct?: Prisma.CurrencyScalarFieldEnum | Prisma.CurrencyScalarFieldEnum[]
 }
 

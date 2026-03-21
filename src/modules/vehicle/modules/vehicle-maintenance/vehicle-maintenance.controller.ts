@@ -24,23 +24,12 @@ export class VehicleMaintenanceController {
 
   @Get()
   async getTenantMaintenanceServices(@Request() req) {
-    console.log('Received request to get tenant maintenance services', {
-      userId: req.user?.id,
-      tenantId: req.user?.tenant?.id,
-      timestamp: new Date().toISOString(),
-    });
     const { tenant } = req.user;
     return this.service.getTenantMaintenanceServices(tenant);
   }
 
   @Get('id/:id')
   async getVehicleMaintenances(@Param('id') id: string, @Request() req) {
-    console.log('Received request to get vehicle maintenances', {
-      userId: req.user?.id,
-      tenantId: req.user?.tenant?.id,
-      vehicleId: id,
-      timestamp: new Date().toISOString(),
-    });
     const { tenant } = req.user;
     return this.service.getVehicleMaintenances(id, tenant);
   }

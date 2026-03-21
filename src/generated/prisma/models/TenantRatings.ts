@@ -1272,6 +1272,11 @@ export type TenantRatingsFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` TenantRatings.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TenantRatings.
+   */
   distinct?: Prisma.TenantRatingsScalarFieldEnum | Prisma.TenantRatingsScalarFieldEnum[]
 }
 

@@ -1361,6 +1361,11 @@ export type VehicleServiceScheduleFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Skip the first `n` VehicleServiceSchedules.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleServiceSchedules.
+   */
   distinct?: Prisma.VehicleServiceScheduleScalarFieldEnum | Prisma.VehicleServiceScheduleScalarFieldEnum[]
 }
 

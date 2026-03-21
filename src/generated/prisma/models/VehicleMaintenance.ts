@@ -2120,6 +2120,11 @@ export type VehicleMaintenanceFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` VehicleMaintenances.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleMaintenances.
+   */
   distinct?: Prisma.VehicleMaintenanceScalarFieldEnum | Prisma.VehicleMaintenanceScalarFieldEnum[]
 }
 

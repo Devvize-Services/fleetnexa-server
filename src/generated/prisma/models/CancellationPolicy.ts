@@ -1179,6 +1179,11 @@ export type CancellationPolicyFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` CancellationPolicies.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CancellationPolicies.
+   */
   distinct?: Prisma.CancellationPolicyScalarFieldEnum | Prisma.CancellationPolicyScalarFieldEnum[]
 }
 

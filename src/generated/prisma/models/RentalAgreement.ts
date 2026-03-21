@@ -1603,6 +1603,11 @@ export type RentalAgreementFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` RentalAgreements.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of RentalAgreements.
+   */
   distinct?: Prisma.RentalAgreementScalarFieldEnum | Prisma.RentalAgreementScalarFieldEnum[]
 }
 

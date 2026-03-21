@@ -24,7 +24,6 @@ export class StorefrontAuthController {
   @Post('forgot-password')
   async requestPasswordReset(@Body() data: any) {
     const { email } = data;
-    console.log('Received forgot-password request for email:', email);
     return this.service.requestPasswordReset(email);
   }
 

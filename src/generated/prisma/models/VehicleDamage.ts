@@ -2001,6 +2001,11 @@ export type VehicleDamageFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` VehicleDamages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleDamages.
+   */
   distinct?: Prisma.VehicleDamageScalarFieldEnum | Prisma.VehicleDamageScalarFieldEnum[]
 }
 

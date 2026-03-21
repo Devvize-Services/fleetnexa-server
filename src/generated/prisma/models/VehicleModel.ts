@@ -1321,6 +1321,11 @@ export type VehicleModelFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` VehicleModels.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleModels.
+   */
   distinct?: Prisma.VehicleModelScalarFieldEnum | Prisma.VehicleModelScalarFieldEnum[]
 }
 

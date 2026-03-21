@@ -9,7 +9,6 @@ export class AdminAuthController {
 
   @Post('login')
   async loginAdmin(@Body() data: EmailLoginDto | UsernameLoginDto) {
-    console.log('Admin login attempt', data);
     return this.service.login(data);
   }
 

@@ -2121,6 +2121,11 @@ export type VehicleServiceLogFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` VehicleServiceLogs.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleServiceLogs.
+   */
   distinct?: Prisma.VehicleServiceLogScalarFieldEnum | Prisma.VehicleServiceLogScalarFieldEnum[]
 }
 

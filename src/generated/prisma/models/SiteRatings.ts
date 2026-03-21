@@ -1057,6 +1057,11 @@ export type SiteRatingsFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Skip the first `n` SiteRatings.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of SiteRatings.
+   */
   distinct?: Prisma.SiteRatingsScalarFieldEnum | Prisma.SiteRatingsScalarFieldEnum[]
 }
 

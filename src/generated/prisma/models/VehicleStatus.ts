@@ -992,6 +992,11 @@ export type VehicleStatusFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` VehicleStatuses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of VehicleStatuses.
+   */
   distinct?: Prisma.VehicleStatusScalarFieldEnum | Prisma.VehicleStatusScalarFieldEnum[]
 }
 

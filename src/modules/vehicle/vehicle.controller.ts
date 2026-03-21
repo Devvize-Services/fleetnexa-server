@@ -68,10 +68,6 @@ export class VehicleController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async getVehicleById(@Param('id') id: string, @Request() req) {
-    console.log(
-      'This is being hit instead of maintenance endpoint, vehicle id:',
-      id,
-    );
     const { tenant } = req.user;
     return this.service.getVehicleById(id, tenant);
   }

@@ -1010,6 +1010,11 @@ export type EmailTokensFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Skip the first `n` EmailTokens.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of EmailTokens.
+   */
   distinct?: Prisma.EmailTokensScalarFieldEnum | Prisma.EmailTokensScalarFieldEnum[]
 }
 

@@ -1250,6 +1250,11 @@ export type MaintenanceServiceFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` MaintenanceServices.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of MaintenanceServices.
+   */
   distinct?: Prisma.MaintenanceServiceScalarFieldEnum | Prisma.MaintenanceServiceScalarFieldEnum[]
 }
 

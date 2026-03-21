@@ -1691,6 +1691,11 @@ export type CustomerViolationFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` CustomerViolations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of CustomerViolations.
+   */
   distinct?: Prisma.CustomerViolationScalarFieldEnum | Prisma.CustomerViolationScalarFieldEnum[]
 }
 

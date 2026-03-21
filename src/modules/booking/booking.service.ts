@@ -61,7 +61,6 @@ export class BookingService {
   }
 
   getBookings(tenant: Tenant) {
-    console.log('Fetching bookings for tenant:', tenant.id);
     return this.bookingRepo.getBookings(tenant.id);
   }
 
@@ -133,7 +132,11 @@ export class BookingService {
           ),
         );
 
-        await this.bookingRepo.createBookingValues(newBooking.id, data.values);
+        await this.bookingRepo.createBookingValues(
+          newBooking.id,
+          data.values,
+          tx,
+        );
 
         return newBooking;
       });
