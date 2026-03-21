@@ -28,6 +28,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       return this.validateTenantUser(payload);
     } else if (payload.role === 'ADMIN') {
       return this.validateAdminUser(payload);
+    } else if (payload.role === 'STOREFRONT') {
+      return this.validateStorefrontUser(payload);
     }
 
     throw new UnauthorizedException('Invalid JWT payload: unrecognized role');
@@ -51,6 +53,17 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!adminUser) throw new UnauthorizedException('Admin user not found');
 
     return { ...adminUser, serverRole: payload.role };
+  }
+
+  async validateStorefrontUser(payload: any) {
+    const storefrontUser = await this.prisma.storefrontUser.findUnique({
+      where: { id: payload.sub },
+    });
+
+    if (!storefrontUser)
+      throw new UnauthorizedException('Storefront user not found');
+
+    return { ...storefrontUser, serverRole: payload.role };
   }
 
   static cookieExtractor = (req: any): string | null => {

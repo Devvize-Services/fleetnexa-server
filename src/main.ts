@@ -72,6 +72,7 @@ async function bootstrap() {
       'x-api-key',
       'x-signature',
       'x-admin-token',
+      'x-auth-token',
     ],
   });
 

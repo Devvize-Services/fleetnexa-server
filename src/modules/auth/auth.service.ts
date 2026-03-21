@@ -19,6 +19,8 @@ export class AuthService {
       return this.validateTenantUser(username, password);
     } else if (role === 'ADMIN') {
       return this.validateAdminUser(username, password);
+    } else if (role === 'STOREFRONT') {
+      return this.validateStorefrontUser(username, password);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${username}.`);
@@ -108,6 +110,51 @@ export class AuthService {
     }
   }
 
+  async validateStorefrontUser(username: string, password: string) {
+    try {
+      const storefrontUser = await this.prisma.storefrontUser.findUnique({
+        where: { email: username },
+      });
+
+      if (!storefrontUser) {
+        this.logger.warn(
+          `Login failed: Storefront user ${username} not found.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      if (!storefrontUser.password) {
+        this.logger.warn(
+          `Login failed: Storefront user ${username} does not have a password set.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      const passwordValid = await bcrypt.compare(
+        password,
+        storefrontUser.password,
+      );
+      if (!passwordValid) {
+        this.logger.warn(
+          `Login failed: Invalid password for storefront user ${username}.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
+      return {
+        id: storefrontUser.id,
+        username: storefrontUser.email,
+        email: storefrontUser.email,
+        role: 'STOREFRONT',
+      };
+    } catch (error) {
+      this.logger.error(
+        `Error validating storefront user ${username}: ${error.message}`,
+      );
+      throw error;
+    }
+  }
+
   async loginTenantUser(userId: string) {
     try {
       const user = await this.userRepo.getTenantUserById(userId);
@@ -130,7 +177,7 @@ export class AuthService {
       this.logger.error(
         `Error logging in tenant user with ID ${userId}: ${error.message}`,
       );
-      throw new UnauthorizedException('Login failed');
+      throw error;
     }
   }
 
@@ -159,7 +206,36 @@ export class AuthService {
       this.logger.error(
         `Error logging in admin user with ID ${userId}: ${error.message}`,
       );
-      throw new UnauthorizedException('Login failed');
+      throw error;
+    }
+  }
+
+  async loginStorefrontUser(userId: string) {
+    try {
+      const user = await this.prisma.storefrontUser.findUnique({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        this.logger.warn(
+          `Login failed: Storefront user with ID ${userId} not found.`,
+        );
+        throw new UnauthorizedException('User not found');
+      }
+
+      const payload = {
+        sub: user.id,
+        role: 'STOREFRONT',
+      };
+
+      const token = this.jwtService.sign(payload);
+
+      return { token, user, role: 'STOREFRONT' };
+    } catch (error) {
+      this.logger.error(
+        `Error logging in storefront user with ID ${userId}: ${error.message}`,
+      );
+      throw error;
     }
   }
 }
