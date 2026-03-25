@@ -181,58 +181,54 @@ export class UserService {
 
   async createTenantUser(data: TenantUserDto, tenant: Tenant) {
     try {
-      const { user, password } = await this.prisma.$transaction(async (tx) => {
-        const emailExists = await tx.user.findUnique({
-          where: { email: data.email, tenantId: tenant.id },
-        });
+      const emailExists = await this.prisma.user.findUnique({
+        where: { email: data.email, tenantId: tenant.id },
+      });
 
-        if (emailExists) {
-          this.logger.warn(
-            `User creation failed: Email ${data.email} is already in use.`,
-          );
-          throw new ConflictException(
-            'Email is already associated with another user.',
-          );
-        }
-
-        const username = await this.generator.generateUsername(
-          data.firstName,
-          data.lastName,
+      if (emailExists) {
+        this.logger.warn(
+          `User creation failed: Email ${data.email} is already in use.`,
         );
+        throw new ConflictException(
+          'Email is already associated with another user.',
+        );
+      }
 
-        const salt = await bcrypt.genSalt(10);
-        let hashedPassword: string;
-        let password: string | undefined;
+      const username = await this.generator.generateUsername(
+        data.firstName,
+        data.lastName,
+      );
 
-        if (data.password) {
-          hashedPassword = await bcrypt.hash(data.password, salt);
-        } else {
-          password = await this.generator.generateTempPassword();
-          hashedPassword = await bcrypt.hash(password, salt);
-        }
+      const salt = await bcrypt.genSalt(10);
+      let hashedPassword: string;
+      let password: string | undefined;
 
-        if (!data.roleId) {
-          this.logger.warn(
-            `User creation failed: roleId is required but not provided.`,
-          );
-          throw new BadRequestException('Role is required.');
-        }
+      if (data.password) {
+        hashedPassword = await bcrypt.hash(data.password, salt);
+      } else {
+        password = await this.generator.generateTempPassword();
+        hashedPassword = await bcrypt.hash(password, salt);
+      }
 
-        const user = await tx.user.create({
-          data: {
-            email: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            username,
-            password: hashedPassword,
-            tenantId: tenant.id,
-            requirePasswordChange: true,
-            roleId: data.roleId,
-            createdAt: new Date(),
-          },
-        });
+      if (!data.roleId) {
+        this.logger.warn(
+          `User creation failed: roleId is required but not provided.`,
+        );
+        throw new BadRequestException('Role is required.');
+      }
 
-        return { user, password };
+      const user = await this.prisma.user.create({
+        data: {
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          username,
+          password: hashedPassword,
+          tenantId: tenant.id,
+          requirePasswordChange: true,
+          roleId: data.roleId,
+          createdAt: new Date(),
+        },
       });
 
       if (password) {
