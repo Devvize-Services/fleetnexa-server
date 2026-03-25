@@ -5,7 +5,6 @@ import { AppService } from './app.service.js';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module.js';
 import { SocketModule } from './gateway/socket.module.js';
-import { StorefrontBookingModule } from './modules/booking/storefront-booking/storefront-booking.module.js';
 import { AdminModule } from './modules/admin/admin.module.js';
 import { VehicleModule } from './modules/vehicle/vehicle.module.js';
 import { StorefrontAuthModule } from './modules/auth/storefront-auth/storefront-auth.module.js';
@@ -65,7 +64,6 @@ import { NotificationModule } from './common/notification/notification.module.js
     AuthModule,
     AdminAuthModule,
 
-    StorefrontBookingModule,
     BookingModule,
 
     CustomerModule,

@@ -16,6 +16,8 @@ import { Role } from '../../common/enums/role.enum.js';
 import { ActionBookingDto } from './dto/action-booking.dto.js';
 import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
+import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
+import { StorefrontGuestBookingDto } from './dto/storefront-guest-booking.dto.js';
 
 @Controller('booking')
 export class BookingController {
@@ -40,8 +42,15 @@ export class BookingController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async getBookingById(@Param('id') id: string, @Request() req) {
-    const { tenant } = req.user;
     return this.bookingService.getBookingById(id);
+  }
+
+  @Get('storefront')
+  @Roles(Role.STOREFRONT)
+  async getStorefrontUserBookings(@Request() req) {
+    const userId = req.user?.id;
+
+    return this.bookingService.getStorefrontBookings(userId);
   }
 
   @Post()
@@ -51,6 +60,18 @@ export class BookingController {
     const { tenant } = req.user;
     const user = req.user;
     return this.bookingService.createTenantBooking(data, tenant, user);
+  }
+
+  @Post('user')
+  @Roles(Role.STOREFRONT)
+  async createUserBooking(@Body() data: StorefrontUserBookingDto) {
+    return this.bookingService.createStorefrontUserBooking(data);
+  }
+
+  @Post('guest')
+  @Roles(Role.STOREFRONT)
+  async createGuestBooking(@Body() data: StorefrontGuestBookingDto) {
+    return this.bookingService.createStorefrontGuestBooking(data);
   }
 
   @Put()

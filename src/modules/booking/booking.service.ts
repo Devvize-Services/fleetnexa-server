@@ -1,29 +1,20 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { BookingRepository } from './booking.repository.js';
-import {
-  Agent,
-  RentalStatus,
-  Tenant,
-  User,
-  VehicleEventType,
-} from '../../generated/prisma/client.js';
-import { GeneratorService } from '../../common/generator/generator.service.js';
-import { VehicleEventDto } from '../vehicle/dto/vehicle-event.dto.js';
+import { RentalStatus, Tenant, User } from '../../generated/prisma/client.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { VehicleEventService } from '../vehicle/modules/vehicle-event/vehicle-event.service.js';
 import { EmailService } from '../../common/email/email.service.js';
 import { ActionBookingDto } from './dto/action-booking.dto.js';
-import { RentalActivityDto } from './dto/rental-activity.dto.js';
-import { CustomerService } from '../customer/customer.service.js';
-import { VehicleStatusDto } from '../vehicle/dto/vehicle-status.dto.js';
-import { VehicleService } from '../vehicle/vehicle.service.js';
 import { SendWhatsAppDto } from '../../common/notify/dto/send-whatsapp.dto.js';
 import { WhatsappService } from '../../common/whatsapp/whatsapp.service.js';
 import { TransactionService } from '../transaction/transaction.service.js';
-import { DocumentService } from '../document/document.service.js';
-import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { SendDocumentsDto } from './dto/send-documents.dto.js';
+import { CustomerRepository } from '../customer/customer.repository.js';
+import { BookingWorkflowService } from './services/booking-workflow.service.js';
+import { BookingCreationService } from './services/booking-creation.service.js';
+import { CreateBookingDto } from './dto/create-booking.dto.js';
+import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
+import { StorefrontGuestBookingDto } from './dto/storefront-guest-booking.dto.js';
 
 @Injectable()
 export class BookingService {
@@ -31,33 +22,19 @@ export class BookingService {
 
   constructor(
     private readonly bookingRepo: BookingRepository,
-    private readonly generator: GeneratorService,
     private readonly prisma: PrismaService,
-    private readonly vehicleEvent: VehicleEventService,
-    private readonly documentService: DocumentService,
     private readonly emailService: EmailService,
-    private readonly customerService: CustomerService,
-    private readonly vehicleService: VehicleService,
     private readonly whatsapp: WhatsappService,
     private readonly transactions: TransactionService,
+    private readonly customerRepo: CustomerRepository,
+    private readonly workflow: BookingWorkflowService,
+    private readonly bookingCreation: BookingCreationService,
   ) {}
 
   private async findBookingOrFail(id: string) {
     const booking = await this.prisma.rental.findUnique({ where: { id } });
     if (!booking) throw new NotFoundException('Booking not found');
     return booking;
-  }
-
-  private async bookingResponse(
-    message: string,
-    bookingId: string,
-    tenantId: string,
-  ) {
-    const [booking, bookings] = await Promise.all([
-      this.bookingRepo.getBookingById(bookingId),
-      this.bookingRepo.getBookings(tenantId),
-    ]);
-    return { message, booking, bookings };
   }
 
   getBookings(tenant: Tenant) {
@@ -76,93 +53,81 @@ export class BookingService {
     return booking;
   }
 
+  async getStorefrontBookings(id: string) {
+    try {
+      const user = await this.prisma.storefrontUser.findUnique({
+        where: { id },
+      });
+
+      if (!user) {
+        this.logger.warn(`Storefront user with ID ${id} not found`);
+        throw new NotFoundException('Storefront user not found');
+      }
+
+      const customers =
+        await this.customerRepo.getStorefrontBookingsByCustomerId(user.id);
+
+      if (!customers) {
+        this.logger.warn(`No storefront bookings found for user ID ${id}`);
+        return [];
+      }
+
+      const customerArray = Array.isArray(customers) ? customers : [customers];
+      const bookingData = customerArray.map((customer) => {
+        return customer.drivers.map((driver) => {
+          const rental = driver.rental;
+          return {
+            startDate: rental.startDate,
+            endDate: rental.endDate,
+            status: rental.status,
+            netTotal: rental.values?.netTotal,
+            id: rental.id,
+            rentalNumber: rental.rentalNumber,
+            bookingCode: rental.bookingCode,
+            vehicle: {
+              year: rental.vehicle.year,
+              brand: rental.vehicle.brand.brand,
+              model: rental.vehicle.model.model,
+            },
+            tenant: rental.vehicle.tenant
+              ? {
+                  tenantName: rental.vehicle.tenant.tenantName,
+                  street: rental.vehicle.tenant.address?.street,
+                  village: rental.vehicle.tenant.address?.village?.village,
+                  state: rental.vehicle.tenant.address?.state?.state,
+                  country: rental.vehicle.tenant.address?.country?.country,
+                  address: rental.vehicle.tenant.address,
+                  currency: rental.vehicle.tenant.currency,
+                  currencyRates: rental.vehicle.tenant.currencyRates,
+                }
+              : null,
+          };
+        });
+      });
+
+      return bookingData.flat();
+    } catch (error) {
+      this.logger.error(error, 'Failed to get storefront bookings', {
+        userId: id,
+      });
+      throw error;
+    }
+  }
+
   async createTenantBooking(
     data: CreateBookingDto,
     tenant: Tenant,
     user: User,
   ) {
-    try {
-      const bookingNumber = await this.generator.generateBookingNumber(
-        tenant.id,
-      );
+    await this.bookingCreation.createTenantBooking(data, tenant, user);
+  }
 
-      if (!bookingNumber) {
-        throw new NotFoundException('Failed to generate booking number');
-      }
+  async createStorefrontUserBooking(data: StorefrontUserBookingDto) {
+    return await this.bookingCreation.createUserBooking(data);
+  }
 
-      const bookingCode = await this.generator.generateBookingCode(
-        tenant.tenantCode,
-        bookingNumber,
-      );
-
-      if (!bookingCode) {
-        throw new NotFoundException('Failed to generate booking code');
-      }
-
-      const newBooking = await this.prisma.$transaction(async (tx) => {
-        const newBooking = await tx.rental.create({
-          data: {
-            id: data.id,
-            startDate: new Date(data.startDate),
-            endDate: new Date(data.endDate),
-            pickupLocationId: data.pickupLocationId,
-            returnLocationId: data.returnLocationId,
-            vehicleId: data.vehicleId,
-            chargeTypeId: data.chargeTypeId,
-            bookingCode,
-            createdAt: new Date(),
-            createdBy: user.id,
-            rentalNumber: bookingNumber,
-            tenantId: tenant.id,
-            status: RentalStatus.PENDING,
-            agent: data.agent ?? Agent.SYSTEM,
-          },
-        });
-
-        await Promise.all(
-          data.drivers.map((driver: any) =>
-            tx.rentalDriver.create({
-              data: {
-                id: driver.id,
-                driverId: driver.driverId,
-                isPrimary: driver.isPrimary,
-                rentalId: newBooking.id,
-              },
-            }),
-          ),
-        );
-
-        await this.bookingRepo.createBookingValues(
-          newBooking.id,
-          data.values,
-          tx,
-        );
-
-        return newBooking;
-      });
-
-      const booking = await this.bookingRepo.getBookingById(newBooking.id);
-      const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-      const vehicleEvent: VehicleEventDto = {
-        vehicleId: booking!.vehicleId,
-        event: `Vehicle rented for booking #${booking!.rentalNumber}`,
-        type: VehicleEventType.ASSIGNED_TO_BOOKING,
-        date: new Date().toISOString(),
-        notes: `Booking #${booking!.rentalNumber} created by ${user.username}`,
-      };
-
-      await this.vehicleEvent.createEvent(vehicleEvent);
-
-      return { message: 'Booking created successfully', booking, bookings };
-    } catch (error) {
-      this.logger.error(error, 'Failed to create booking', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        data,
-      });
-      throw error;
-    }
+  async createStorefrontGuestBooking(data: StorefrontGuestBookingDto) {
+    return await this.bookingCreation.createGuestBooking(data);
   }
 
   async updateBooking(data: UpdateBookingDto, tenant: Tenant, user: User) {
@@ -220,180 +185,24 @@ export class BookingService {
     };
   }
 
-  async confirmBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    try {
-      await this.findBookingOrFail(data.bookingId);
-
-      await this.updateBookingStatus(
-        data.bookingId,
-        RentalStatus.CONFIRMED,
-        tenant,
-        user,
-      );
-
-      await this.createRentalActivity(data, tenant, user, new Date());
-
-      const updatedBooking = await this.bookingRepo.getBookingById(
-        data.bookingId,
-      );
-
-      await this.documentService.generateInvoice(
-        updatedBooking?.id || '',
-        tenant,
-        user,
-      );
-
-      await this.documentService.generateAgreement(
-        updatedBooking?.id || '',
-        tenant,
-        user,
-      );
-
-      if (data.sendEmail) {
-        await this.emailService.sendBookingConfirmationEmail(
-          updatedBooking?.id || '',
-          data.includeInvoice,
-          data.includeAgreement,
-          tenant,
-        );
-      }
-
-      const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-      return {
-        message: `Booking #${updatedBooking!.rentalNumber} confirmed successfully`,
-        booking: updatedBooking,
-        bookings,
-      };
-    } catch (error) {
-      this.logger.error(error, 'Failed to confirm booking', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        data,
-      });
-      throw error;
-    }
+  confirmBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+    return this.workflow.confirmBooking(data, tenant, user);
   }
 
-  async declineBooking(id: string, tenant: Tenant, user: User) {
-    try {
-      await this.findBookingOrFail(id);
-
-      const updatedBooking = await this.prisma.$transaction(async (tx) => {
-        await this.updateBookingStatus(id, RentalStatus.DECLINED, tenant, user);
-
-        return this.bookingRepo.getBookingById(id);
-      });
-
-      const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-      return {
-        message: `Booking #${updatedBooking!.rentalNumber} declined successfully`,
-        updatedBooking,
-        bookings,
-      };
-    } catch (error) {
-      this.logger.error(error, 'Failed to decline booking', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        bookingId: id,
-      });
-      throw error;
-    }
+  declineBooking(id: string, tenant: Tenant, user: User) {
+    return this.workflow.declineBooking(id, tenant, user);
   }
 
-  async cancelBooking(id: string, tenant: Tenant, user: User) {
-    await this.findBookingOrFail(id);
-
-    const updatedBooking = await this.prisma.$transaction(async (tx) => {
-      await this.updateBookingStatus(id, RentalStatus.CANCELED, tenant, user);
-
-      return this.bookingRepo.getBookingById(id);
-    });
-
-    const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-    return {
-      message: `Booking #${updatedBooking!.rentalNumber} canceled successfully`,
-      booking: updatedBooking,
-      bookings,
-    };
+  cancelBooking(id: string, tenant: Tenant, user: User) {
+    return this.workflow.cancelBooking(id, tenant, user);
   }
 
-  async startBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    const booking = await this.findBookingOrFail(data.bookingId);
-
-    await this.updateBookingStatus(
-      data.bookingId,
-      RentalStatus.ACTIVE,
-      tenant,
-      user,
-    );
-
-    const vehicleStatus: VehicleStatusDto = {
-      vehicleId: booking.vehicleId,
-      status: 'RENTED',
-    };
-
-    await this.vehicleService.updateVehicleStatus(vehicleStatus, tenant, user);
-
-    await this.createRentalActivity(data, tenant, user);
-
-    const updatedBooking = await this.bookingRepo.getBookingById(
-      data.bookingId,
-    );
-    const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-    return {
-      message: `Booking #${updatedBooking!.rentalNumber} started successfully`,
-      booking: updatedBooking,
-      bookings,
-    };
+  startBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+    return this.workflow.startBooking(data, tenant, user);
   }
 
-  async endBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    try {
-      const booking = await this.findBookingOrFail(data.bookingId);
-
-      const updatedBooking = await this.bookingRepo.getBookingById(
-        data.bookingId,
-      );
-
-      await this.updateBookingStatus(data.bookingId, data.status, tenant, user);
-
-      const vehicleStatus: VehicleStatusDto = {
-        vehicleId: booking.vehicleId,
-        status: 'PENDING INSPECTION',
-      };
-
-      await this.vehicleService.updateVehicleStatus(
-        vehicleStatus,
-        tenant,
-        user,
-      );
-
-      await this.createRentalActivity(
-        data,
-        tenant,
-        user,
-        data.returnDate ? new Date(data.returnDate) : undefined,
-      );
-
-      const bookings = await this.bookingRepo.getBookings(tenant.id);
-
-      return {
-        message: `Booking #${updatedBooking!.rentalNumber} ended successfully`,
-        booking: updatedBooking,
-        bookings,
-      };
-    } catch (error) {
-      this.logger.error(error, 'Failed to end booking', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        data,
-      });
-      throw error;
-    }
+  endBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+    return this.workflow.endBooking(data, tenant, user);
   }
 
   async deleteBooking(id: string, tenant: Tenant, user: User) {
@@ -494,48 +303,5 @@ export class BookingService {
       });
       throw error;
     }
-  }
-
-  async updateBookingStatus(
-    bookingId: string,
-    status: RentalStatus,
-    tenant: Tenant,
-    user: User,
-  ) {
-    await this.findBookingOrFail(bookingId);
-    await this.prisma.rental.update({
-      where: { id: bookingId },
-      data: { status, updatedAt: new Date(), updatedBy: user.username },
-    });
-  }
-
-  async createRentalActivity(
-    data: RentalActivityDto,
-    tenant: Tenant,
-    user: User,
-    createdAt?: Date,
-  ) {
-    const booking = await this.findBookingOrFail(data.bookingId);
-    const primaryDriver = await this.customerService.getPrimaryDriver(
-      booking.id,
-    );
-
-    if (!primaryDriver) throw new NotFoundException('Primary driver not found');
-
-    await this.prisma.rentalActivity.create({
-      data: {
-        rentalId: data.bookingId,
-        action: data.action,
-        tenantId: tenant.id,
-        createdAt:
-          createdAt ??
-          (new Date(booking.startDate) < new Date()
-            ? new Date(booking.startDate)
-            : new Date()),
-        createdBy: user.username,
-        customerId: primaryDriver.driverId,
-        vehicleId: booking.vehicleId,
-      },
-    });
   }
 }

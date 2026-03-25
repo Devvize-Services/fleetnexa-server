@@ -5,7 +5,6 @@ import { Tenant, User } from '../../generated/prisma/browser.js';
 import { TenantCustomerDto } from './dto/tenant-customer.dto.js';
 import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { StorefrontCustomerDto } from './storefront-customer/storefront-customer.dto.js';
-import { CustomerViolationDto } from './dto/customer-violation.dto.js';
 
 @Injectable()
 export class CustomerService {
@@ -144,6 +143,137 @@ export class CustomerService {
         `Error fetching primary driver for booking ID: ${bookingId}`,
         { bookingId },
       );
+      throw error;
+    }
+  }
+
+  async getStorefrontCustomer(data: StorefrontCustomerDto, tenant: Tenant) {
+    try {
+      const existingCustomer = await this.prisma.customer.findFirst({
+        where: {
+          tenantId: tenant.id,
+          license: {
+            licenseNumber: data.driverLicenseNumber,
+          },
+        },
+      });
+
+      if (existingCustomer) {
+        await this.prisma.customer.update({
+          where: { id: existingCustomer.id },
+          data: {
+            storefrontId: data.storefrontId || existingCustomer.storefrontId,
+          },
+        });
+
+        await this.prisma.driverLicense.update({
+          where: { customerId: existingCustomer.id },
+          data: {
+            licenseExpiry: data.licenseExpiry,
+            licenseIssued: data.licenseIssued,
+          },
+        });
+
+        if (data.address) {
+          await this.prisma.customerAddress.upsert({
+            where: { customerId: existingCustomer.id },
+            update: {
+              street: data.address.street,
+              village: data.address.villageId
+                ? { connect: { id: data.address.villageId } }
+                : undefined,
+              state: data.address.stateId
+                ? { connect: { id: data.address.stateId } }
+                : undefined,
+              country: data.address.countryId
+                ? { connect: { id: data.address.countryId } }
+                : undefined,
+            },
+            create: {
+              customer: { connect: { id: existingCustomer.id } },
+              street: data.address.street,
+              village: data.address.villageId
+                ? { connect: { id: data.address.villageId } }
+                : undefined,
+              state: data.address.stateId
+                ? { connect: { id: data.address.stateId } }
+                : undefined,
+              country: data.address.countryId
+                ? { connect: { id: data.address.countryId } }
+                : undefined,
+            },
+          });
+        }
+
+        return existingCustomer;
+      } else {
+        const customer = await this.prisma.customer.create({
+          data: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            gender: data.gender || 'UNSPECIFIED',
+            dateOfBirth: data.dateOfBirth,
+            email: data.email,
+            phone: data.phone || '',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            tenantId: tenant.id,
+            status: 'ACTIVE',
+            storefrontId: data.storefrontId || null,
+          },
+        });
+
+        const existingLicense = await this.prisma.driverLicense.findUnique({
+          where: { licenseNumber: data.driverLicenseNumber },
+        });
+
+        if (!existingLicense) {
+          await this.prisma.driverLicense.create({
+            data: {
+              customerId: customer.id,
+              licenseNumber: data.driverLicenseNumber,
+              licenseExpiry: data.licenseExpiry,
+              image: data.license,
+              licenseIssued: data.licenseIssued,
+            },
+          });
+        } else {
+          await this.prisma.driverLicense.update({
+            where: { licenseNumber: data.driverLicenseNumber },
+            data: {
+              customerId: customer.id,
+              licenseExpiry: data.licenseExpiry,
+              licenseIssued: data.licenseIssued,
+              image: data.license,
+            },
+          });
+        }
+
+        if (data.address) {
+          await this.prisma.customerAddress.create({
+            data: {
+              customer: { connect: { id: customer.id } },
+              street: data.address.street,
+              village: data.address.villageId
+                ? { connect: { id: data.address.villageId } }
+                : undefined,
+              state: data.address.stateId
+                ? { connect: { id: data.address.stateId } }
+                : undefined,
+              country: data.address.countryId
+                ? { connect: { id: data.address.countryId } }
+                : undefined,
+            },
+          });
+        }
+
+        return customer;
+      }
+    } catch (error) {
+      this.logger.error(error, 'Failed to get storefront customer', {
+        tenantId: tenant.id,
+        tenantCode: tenant.tenantCode,
+      });
       throw error;
     }
   }

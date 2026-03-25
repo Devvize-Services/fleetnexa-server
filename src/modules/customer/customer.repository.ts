@@ -41,6 +41,25 @@ export class CustomerRepository {
     });
   }
 
+  async getStorefrontBookingsByCustomerId(id: string) {
+    return this.prisma.customer.findUnique({
+      where: {
+        id,
+        isDeleted: false,
+        drivers: {
+          some: {
+            rental: {
+              is: {
+                agent: 'STOREFRONT',
+              },
+            },
+          },
+        },
+      },
+      select: this.getStorefrontCustomerSelectOptions(),
+    });
+  }
+
   async getPrimaryDriverByBookingId(bookingId: string) {
     return this.prisma.rentalDriver.findFirst({
       where: {
@@ -251,6 +270,56 @@ export class CustomerRepository {
       violations: {
         include: {
           violation: true,
+        },
+      },
+    };
+  }
+
+  private getStorefrontCustomerSelectOptions(): Prisma.CustomerSelect {
+    return {
+      drivers: {
+        select: {
+          rental: {
+            select: {
+              id: true,
+              rentalNumber: true,
+              bookingCode: true,
+              startDate: true,
+              endDate: true,
+              status: true,
+              vehicle: {
+                select: {
+                  year: true,
+                  brand: true,
+                  model: true,
+                  tenant: {
+                    select: {
+                      tenantName: true,
+                      address: {
+                        select: {
+                          street: true,
+                          village: true,
+                          state: true,
+                          country: true,
+                        },
+                      },
+                      currency: true,
+                      currencyRates: {
+                        include: {
+                          currency: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              values: {
+                select: {
+                  netTotal: true,
+                },
+              },
+            },
+          },
         },
       },
     };
