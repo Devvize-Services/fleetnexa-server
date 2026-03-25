@@ -33,7 +33,7 @@ export class TenantGateway implements OnGatewayConnection, OnGatewayDisconnect {
       socket.data.user = decoded.user;
       socket.join(decoded.user.tenantId);
     } catch (error) {
-      this.logger.error('❌ Invalid socket token');
+      this.logger.error('❌ Invalid socket token', error);
       socket.disconnect();
     }
   }

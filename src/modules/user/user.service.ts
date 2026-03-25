@@ -47,6 +47,8 @@ export class UserService {
       return this.getTenantUser(id);
     } else if (role === 'ADMIN') {
       return this.getAdminUser(id);
+    } else if (role === 'STOREFRONT') {
+      return this.getAdminUser(id);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${id}.`);
@@ -173,6 +175,53 @@ export class UserService {
       };
     } catch (error) {
       this.logger.error(error, 'Error fetching admin user', {
+        userId: id,
+      });
+      throw error;
+    }
+  }
+
+  async getStorefrontUser(id: string) {
+    try {
+      const user = await this.prisma.storefrontUser.findUnique({
+        where: { id },
+        include: {
+          country: true,
+          state: true,
+          village: true,
+        },
+      });
+
+      if (!user) {
+        this.logger.warn(`Storefront user with ID ${id} not found.`);
+        return new UnauthorizedException('User not found');
+      }
+
+      return {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        initials: `${user.firstName[0]}${user.lastName[0]}`,
+        fullName: `${user.firstName} ${user.lastName}`,
+        createdAt: user.createdAt,
+        email: user.email,
+        profilePicture: user.profilePicture || null,
+        driverLicenseNumber: user.driverLicenseNumber,
+        licenseExpiry: user.licenseExpiry,
+        licenseIssued: user.licenseIssued,
+        license: user.license,
+        country: user.country?.country,
+        countryId: user.countryId,
+        street: user.street,
+        village: user.village?.village,
+        villageId: user.villageId,
+        state: user.state?.state,
+        stateId: user.stateId,
+        phone: user.phone,
+        dateOfBirth: user.dateOfBirth,
+      };
+    } catch (error) {
+      this.logger.error(error, 'Error fetching storefront user', {
         userId: id,
       });
       throw error;

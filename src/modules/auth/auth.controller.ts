@@ -54,4 +54,31 @@ export class AuthController {
 
     return { user };
   }
+
+  @UseGuards(LocalAuthGuard)
+  @Post('storefront/login')
+  async storefrontLogin(
+    @Request() req,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const result = await this.authService.loginStorefrontUser(req.user.id);
+
+    if (!result) {
+      throw new Error('Login failed');
+    }
+
+    const { token, user } = result;
+
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.cookie('access_token', token, {
+      domain: isProd ? '.rentnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { user };
+  }
 }

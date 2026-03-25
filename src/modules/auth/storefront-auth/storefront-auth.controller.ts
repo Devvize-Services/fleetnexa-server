@@ -11,11 +11,6 @@ import { ResetPasswordDto } from '../dto/reset-password.dto.js';
 export class StorefrontAuthController {
   constructor(private readonly service: StorefrontAuthService) {}
 
-  @Post('login')
-  async login(@Body() data: EmailLoginDto) {
-    return this.service.loginUser(data);
-  }
-
   @Post('register')
   async register(@Body() data: StorefrontAuthDto) {
     return this.service.createUser(data);
