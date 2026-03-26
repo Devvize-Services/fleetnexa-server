@@ -120,6 +120,13 @@ export class BookingService {
     user: User,
   ) {
     await this.bookingCreation.createTenantBooking(data, tenant, user);
+
+    const bookings = await this.bookingRepo.getBookings(tenant.id);
+
+    return {
+      message: 'Booking created successfully',
+      bookings,
+    };
   }
 
   async createStorefrontUserBooking(data: StorefrontUserBookingDto) {

@@ -8,6 +8,7 @@ import {
   Body,
   Post,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { BookingService } from './booking.service.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
@@ -49,7 +50,6 @@ export class BookingController {
   @Roles(Role.STOREFRONT)
   async getStorefrontUserBookings(@Request() req) {
     const userId = req.user?.id;
-
     return this.bookingService.getStorefrontBookings(userId);
   }
 
@@ -78,7 +78,8 @@ export class BookingController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async updateBooking(@Request() req, @Body() data: UpdateBookingDto) {
-    const { tenant, user } = req.user;
+    const { tenant } = req.user;
+    const user = req.user;
     return this.bookingService.updateBooking(data, tenant, user);
   }
 
@@ -86,7 +87,8 @@ export class BookingController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async confirmBooking(@Request() req, @Body() data: ActionBookingDto) {
-    const { tenant, user } = req.user;
+    const { tenant } = req.user;
+    const user = req.user;
     return this.bookingService.confirmBooking(data, tenant, user);
   }
 
@@ -94,7 +96,8 @@ export class BookingController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   async declineBooking(@Request() req, @Param('id') id: string) {
-    const { tenant, user } = req.context;
+    const { tenant } = req.user;
+    const user = req.user;
     return this.bookingService.declineBooking(id, tenant, user);
   }
 
@@ -119,5 +122,14 @@ export class BookingController {
     const { tenant } = req.user;
     const user = req.user;
     return this.bookingService.endBooking(data, tenant, user);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async deleteBooking(@Request() req, @Param('id') id: string) {
+    const { tenant } = req.user;
+    const user = req.user;
+    return this.bookingService.deleteBooking(id, tenant, user);
   }
 }

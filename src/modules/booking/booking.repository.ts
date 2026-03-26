@@ -239,11 +239,11 @@ export class BookingRepository {
     tx?: Prisma.TransactionClient,
   ) {
     const run = async (client: Prisma.TransactionClient) => {
-      const { extras, ...valuesData } = values;
+      const { extras, rentalId: _ignoredRentalId, ...valuesData } = values;
       const createdValues = await client.values.create({
         data: {
-          rentalId: bookingId,
           ...valuesData,
+          rentalId: bookingId,
         },
       });
 
