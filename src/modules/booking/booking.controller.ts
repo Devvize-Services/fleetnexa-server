@@ -47,10 +47,12 @@ export class BookingController {
   }
 
   @Get('storefront')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.STOREFRONT)
   async getStorefrontUserBookings(@Request() req) {
-    const userId = req.user?.id;
-    return this.bookingService.getStorefrontBookings(userId);
+    const user = req.user;
+    console.log('Storefront user making request:', user);
+    return this.bookingService.getStorefrontBookings(user.id);
   }
 
   @Post()
@@ -62,13 +64,13 @@ export class BookingController {
     return this.bookingService.createTenantBooking(data, tenant, user);
   }
 
-  @Post('user')
+  @Post('storefront/user')
   @Roles(Role.STOREFRONT)
   async createUserBooking(@Body() data: StorefrontUserBookingDto) {
     return this.bookingService.createStorefrontUserBooking(data);
   }
 
-  @Post('guest')
+  @Post('storefront/guest')
   @Roles(Role.STOREFRONT)
   async createGuestBooking(@Body() data: StorefrontGuestBookingDto) {
     return this.bookingService.createStorefrontGuestBooking(data);

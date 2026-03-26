@@ -235,15 +235,16 @@ export class EmailService {
       const payload: SendEmailDto = {
         recipients: [primaryDriver?.customer.email || ''],
         cc: [],
-        templateName: 'RentNexaBookingCompleted',
+        templateName: 'RentNexaBookingSubmitted',
         templateData,
         sender: 'no-reply@rentnexa.com',
         senderName: 'RentNexa',
       };
 
-      await this.notify.sendEmail(payload);
+      const res = await this.notify.sendEmail(payload);
+      this.logger.log(`Booking completed email sent: ${res}`);
     } catch (error) {
-      this.logger.error('Error sending booking completed email', error);
+      this.logger.error('Error sending new booking email', error);
       throw error;
     }
   }
@@ -337,7 +338,8 @@ export class EmailService {
         senderName: 'RentNexa',
       };
 
-      await this.notify.sendEmail(payload);
+      const res = await this.notify.sendEmail(payload);
+      this.logger.log(`Booking completed email sent: ${res}`);
     } catch (error) {
       this.logger.error('Error sending booking completed email', error);
       throw error;

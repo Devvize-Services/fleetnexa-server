@@ -117,7 +117,11 @@ export class BookingCreationService {
     await this.bookingRepo.createBookingValues(booking.id, data.values);
 
     if (data.source !== BookingSource.TENANT) {
-      await this.sendNotifications(booking);
+      const bookingWithTenant = await this.prisma.rental.findUnique({
+        where: { id: booking.id },
+        include: { tenant: true },
+      });
+      await this.sendNotifications(bookingWithTenant);
       return this.getBookingDetails(booking.id);
     }
 

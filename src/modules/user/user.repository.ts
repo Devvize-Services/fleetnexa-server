@@ -16,6 +16,13 @@ export class UserRepository {
     });
   };
 
+  getAllTenantUsers = async (tenantId: string) => {
+    return await this.prisma.user.findMany({
+      where: { tenantId, isDeleted: false },
+      select: this.getTenantUserSelectOptions(),
+    });
+  };
+
   getTenantUserById = async (id: string) => {
     return await this.prisma.user.findUnique({
       where: { id },

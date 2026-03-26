@@ -44,5 +44,7 @@ export class TenantGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   sendTenantNotification(tenantId: string, data: TenantNotification) {
     this.io.to(tenantId).emit('tenant-notification', data);
+
+    this.logger.log(`Sent notification to tenant ${tenantId}: ${data.message}`);
   }
 }
