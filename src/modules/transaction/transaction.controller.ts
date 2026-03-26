@@ -1,10 +1,12 @@
-import { Controller, Get, Req, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, UseGuards, Request } from '@nestjs/common';
 import { TransactionService } from './transaction.service.js';
-import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
-import { LocalAuthGuard } from '../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
+import { Role } from '../../common/enums/role.enum.js';
+import { Roles } from '../auth/decorator/role.decorator.js';
 
 @Controller('transaction')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class TransactionController {
   constructor(private readonly service: TransactionService) {}
 

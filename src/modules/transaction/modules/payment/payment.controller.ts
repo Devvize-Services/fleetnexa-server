@@ -4,17 +4,18 @@ import {
   Get,
   Post,
   Put,
-  Req,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { PaymentService } from './payment.service.js';
-import type { AuthenticatedRequest } from '../../../../types/authenticated-request.js';
 import { PaymentDto } from './payment.dto.js';
-import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../../modules/auth/guards/jwt-auth.guard.js';
+import { Roles } from '../../../../modules/auth/decorator/role.decorator.js';
+import { Role } from '../../../../common/enums/role.enum.js';
 
 @Controller('transaction/payment')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class PaymentController {
   constructor(private readonly service: PaymentService) {}
 

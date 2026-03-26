@@ -11,10 +11,13 @@ import {
 } from '@nestjs/common';
 import { ExpenseService } from './expense.service.js';
 import { ExpenseDto } from './expense.dto.js';
-import { LocalAuthGuard } from '../../../auth/guards/local.guard.js';
+import { JwtAuthGuard } from '../../../../modules/auth/guards/jwt-auth.guard.js';
+import { Roles } from '../../../../modules/auth/decorator/role.decorator.js';
+import { Role } from '../../../../common/enums/role.enum.js';
 
 @Controller('transaction/expense')
-@UseGuards(LocalAuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT_USER)
 export class ExpenseController {
   constructor(private readonly service: ExpenseService) {}
 

@@ -111,6 +111,8 @@ export class BookingController {
   }
 
   @Post('start')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   async startBooking(@Request() req, @Body() data: ActionBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -118,6 +120,8 @@ export class BookingController {
   }
 
   @Post('end')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   async endBooking(@Request() req, @Body() data: ActionBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
