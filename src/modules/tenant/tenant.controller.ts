@@ -55,7 +55,7 @@ export class TenantController {
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT_USER)
   getTodayActivities(@Request() req) {
-    const tenant = req.user.tenant;
+    const { tenant } = req.user;
     return this.tenantService.getTodayActivities(tenant);
   }
 
@@ -72,22 +72,18 @@ export class TenantController {
   }
 
   @Put()
-  @UseGuards(LocalAuthGuard)
-  updateTenant(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: UpdateTenantDto,
-  ) {
-    const tenant = req.context.tenant!;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  updateTenant(@Request() req, @Body() data: UpdateTenantDto) {
+    const { tenant } = req.user;
     return this.tenantService.updateTenant(data, tenant);
   }
 
   @Patch('storefront')
-  @UseGuards(LocalAuthGuard)
-  updateStorefront(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: UpdateStorefrontDto,
-  ) {
-    const tenant = req.context.tenant!;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  updateStorefront(@Request() req, @Body() data: UpdateStorefrontDto) {
+    const { tenant } = req.user;
     return this.tenantService.updateStorefront(data, tenant);
   }
 }

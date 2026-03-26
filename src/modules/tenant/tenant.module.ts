@@ -19,6 +19,7 @@ import { CustomerModule } from '../customer/customer.module.js';
 import { UserModule } from '../user/user.module.js';
 import { UserRoleModule } from '../user/modules/user-role/user-role.module.js';
 import { UserRepository } from '../user/user.repository.js';
+import { TenantViolationModule } from './tenant-violation/tenant-violation.module.js';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UserRepository } from '../user/user.repository.js';
     VehicleMaintenanceModule,
     BookingModule,
     CustomerModule,
+    TenantViolationModule,
   ],
   controllers: [TenantController],
   providers: [

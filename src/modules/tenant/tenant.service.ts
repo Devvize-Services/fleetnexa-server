@@ -25,6 +25,7 @@ import { BookingService } from '../booking/booking.service.js';
 import { CustomerService } from '../customer/customer.service.js';
 import { UserService } from '../user/user.service.js';
 import { UserRoleService } from '../user/modules/user-role/user-role.service.js';
+import { TenantViolationService } from './tenant-violation/tenant-violation.service.js';
 
 @Injectable()
 export class TenantService {
@@ -48,6 +49,7 @@ export class TenantService {
     private readonly bookingService: BookingService,
     private readonly maintenanceService: VehicleMaintenanceService,
     private readonly emailService: EmailService,
+    private readonly violationService: TenantViolationService,
   ) {}
 
   async getCurrentTenant(tenant: Tenant, user: User) {
@@ -67,6 +69,8 @@ export class TenantService {
       const users = await this.userService.getTenantUsers(tenant);
       const roles = await this.userRoleService.getAllRoles(tenant);
       const bookings = await this.bookingService.getBookings(tenant);
+      const violations =
+        await this.violationService.getTenantViolations(tenant);
 
       const data = {
         tenant: fetched,
@@ -81,6 +85,7 @@ export class TenantService {
         users,
         roles,
         bookings,
+        violations,
       };
 
       return data;
@@ -407,14 +412,17 @@ export class TenantService {
 
       const bookingActivities = bookings.map((booking) => {
         const customer = booking.drivers.find((d) => d.isPrimary)?.customer;
-        const activityType = booking.endDate > today ? 'pickup' : 'return';
+        const activityType =
+          booking.endDate > today ? 'booking_start' : 'booking_end';
 
         const time =
-          activityType === 'pickup' ? booking.startDate : booking.endDate;
+          activityType === 'booking_start'
+            ? booking.startDate
+            : booking.endDate;
 
         const vehicleName = `${booking.vehicle.year} ${booking.vehicle.brand.brand} ${booking.vehicle.model.model}`;
 
-        const title = `${activityType === 'pickup' ? 'Vehicle Pickup' : 'Vehicle Return'} - ${vehicleName}`;
+        const title = `${activityType === 'booking_start' ? 'Vehicle Pickup' : 'Vehicle Return'} - ${vehicleName}`;
 
         const description = `Booking Ref: ${booking.bookingCode}`;
 
@@ -430,7 +438,8 @@ export class TenantService {
           description,
           vehicle: booking.vehicle,
           customer: customer,
-          location: activityType === 'pickup' ? booking.pickup : booking.return,
+          location:
+            activityType === 'booking_start' ? booking.pickup : booking.return,
         };
 
         return act;

@@ -7,13 +7,11 @@ import {
   Patch,
   Post,
   Put,
-  Req,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service.js';
 import { ApiGuard } from '../../common/guards/api.guard.js';
-import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
@@ -91,52 +89,54 @@ export class VehicleController {
   }
 
   @Patch('status')
-  @UseGuards(LocalAuthGuard)
-  async updateVehicleStatus(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleStatusDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async updateVehicleStatus(@Request() req, @Body() data: VehicleStatusDto) {
+    const { tenant } = req.user;
+    const user = req.user;
+
     return this.service.updateVehicleStatus(data, tenant, user);
   }
 
   @Patch('location')
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   async updateVehicleLocation(
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
     @Body() data: VehicleLocationDto,
   ) {
-    const { tenant, user } = req.context;
+    const { tenant } = req.user;
+    const user = req.user;
+
     return this.service.updateVehicleLocation(data, tenant, user);
   }
 
   @Post('swap')
-  @UseGuards(LocalAuthGuard)
-  async swapVehicle(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: SwapVehicleDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async swapVehicle(@Request() req, @Body() data: SwapVehicleDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.swapBookingVehicle(data, tenant, user);
   }
 
   @Delete(':id')
-  @UseGuards(LocalAuthGuard)
-  async deleteVehicle(
-    @Param('id') id: string,
-    @Req() req: AuthenticatedRequest,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
+  async deleteVehicle(@Param('id') id: string, @Request() req) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.deleteVehicle(id, tenant, user);
   }
 
   @Patch(':id/storefront')
   @UseGuards(LocalAuthGuard)
   async updateVehicleStorefrontStatus(
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
     @Param('id') vehicleId: string,
   ) {
-    const { tenant, user } = req.context;
+    const { tenant } = req.user;
+    const user = req.user;
 
     return this.service.updateVehicleStorefrontStatus(vehicleId, tenant, user);
   }

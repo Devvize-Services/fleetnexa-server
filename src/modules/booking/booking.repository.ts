@@ -62,6 +62,7 @@ export class BookingRepository {
     return this.prisma.rental.findMany({
       where: {
         tenantId,
+        isDeleted: false,
         OR: [
           {
             startDate: {

@@ -82,6 +82,7 @@ export class VehicleMaintenanceService {
       const maintenances = await this.prisma.vehicleMaintenance.findMany({
         where: {
           tenantId: tenant.id,
+          isDeleted: false,
           OR: [
             {
               startDate: {
