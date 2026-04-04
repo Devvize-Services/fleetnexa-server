@@ -48,7 +48,7 @@ export class UserService {
     } else if (role === 'ADMIN') {
       return this.getAdminUser(id);
     } else if (role === 'STOREFRONT') {
-      return this.getAdminUser(id);
+      return this.getStorefrontUser(id);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${id}.`);

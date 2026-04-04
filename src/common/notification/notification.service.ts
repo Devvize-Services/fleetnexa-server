@@ -21,11 +21,14 @@ export class NotificationService {
     this.appId = this.config.get<string>('ONESIGNAL_APP_ID');
     this.apiKey = this.config.get<string>('ONESIGNAL_API_KEY');
 
+    console.log('ONESIGNAL_APP_ID', this.appId);
+    console.log('ONESIGNAL_API_KEY', this.apiKey);
+
     this.client = axios.create({
       baseURL: 'https://onesignal.com/api/v1',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Basic ${this.apiKey}`,
+        Authorization: `Key ${this.apiKey}`,
       },
     });
   }
@@ -40,7 +43,7 @@ export class NotificationService {
     tenantId: string,
     payload: TenantNotification,
   ) {
-    const users = await this.userRepo.getTenantUsers(tenantId);
+    const users = await this.userRepo.getAllTenantUsers(tenantId);
 
     const externalIds = users.map((u) => u.id).filter(Boolean);
 
@@ -50,14 +53,16 @@ export class NotificationService {
       app_id: this.appId,
       contents: { en: payload.message },
       include_aliases: {
-        external_ids: externalIds,
+        external_id: externalIds,
       },
       target_channel: 'push',
       headings: { en: payload.title || 'New Notification' },
     };
 
+    console.log('Push notification body:', body);
+
     try {
-      await this.client.post('/notifications', body);
+      const res = await this.client.post('/notifications', body);
     } catch (error) {
       this.logger.error('Error sending push notification', error, {
         tenantId,
