@@ -21,6 +21,9 @@ export class NotificationService {
     this.appId = this.config.get<string>('ONESIGNAL_APP_ID');
     this.apiKey = this.config.get<string>('ONESIGNAL_API_KEY');
 
+    console.log('ONESIGNAL_APP_ID', this.appId);
+    console.log('ONESIGNAL_API_KEY', this.apiKey);
+
     this.client = axios.create({
       baseURL: 'https://onesignal.com/api/v1',
       headers: {
