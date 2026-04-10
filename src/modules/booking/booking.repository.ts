@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '../../generated/prisma/client.js';
-import { PrismaService } from '../../prisma/prisma.service.js';
+import { PrismaService, TxClient } from '../../prisma/prisma.service.js';
 
 @Injectable()
 export class BookingRepository {
@@ -234,11 +234,7 @@ export class BookingRepository {
     };
   }
 
-  async createBookingValues(
-    bookingId: string,
-    values: any,
-    tx?: Prisma.TransactionClient,
-  ) {
+  async createBookingValues(bookingId: string, values: any, tx: TxClient) {
     const run = async (client: Prisma.TransactionClient) => {
       const { extras, rentalId: _ignoredRentalId, ...valuesData } = values;
       const createdValues = await client.values.create({
@@ -251,7 +247,7 @@ export class BookingRepository {
       if (extras && Array.isArray(extras)) {
         await Promise.all(
           extras.map((extra: any) =>
-            client.rentalExtra.create({
+            tx.rentalExtra.create({
               data: {
                 id: extra.id,
                 extraId: extra.extraId,
@@ -271,10 +267,12 @@ export class BookingRepository {
 
   async updateBookingValues(bookingId: string, values: any) {
     return this.prisma.$transaction(async (tx) => {
+      const { extras, ...valuesWithoutExtras } = values;
+
       const updatedValues = await tx.values.update({
         where: { rentalId: bookingId },
         data: {
-          ...values,
+          ...valuesWithoutExtras,
         },
       });
 

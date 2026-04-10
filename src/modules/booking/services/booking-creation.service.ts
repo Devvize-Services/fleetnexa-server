@@ -14,7 +14,7 @@ import {
 } from '../dto/create-booking-input.dto.js';
 import { StorefrontUserBookingDto } from '../dto/storefront-user-booking.dto.js';
 import { StorefrontGuestBookingDto } from '../dto/storefront-guest-booking.dto.js';
-import { PrismaService } from '../../../prisma/prisma.service.js';
+import { PrismaService, TxClient } from '../../../prisma/prisma.service.js';
 import { CustomerService } from '../../../modules/customer/customer.service.js';
 import { GeneratorService } from '../../../common/generator/generator.service.js';
 import { StorefrontCustomerDto } from '../../../modules/customer/storefront-customer/storefront-customer.dto.js';
@@ -94,38 +94,40 @@ export class BookingCreationService {
     const tenant = await this.getTenantById(data.tenantId);
     const identifiers = await this.generateIdentifiers(tenant);
 
-    const booking = await this.prisma.rental.create({
-      data: {
-        startDate: new Date(data.startDate),
-        endDate: new Date(data.endDate),
-        pickupLocationId: data.pickupLocationId,
-        returnLocationId: data.returnLocationId,
-        vehicleId: data.vehicleId,
-        chargeTypeId: data.chargeTypeId,
-        bookingCode: identifiers.bookingCode,
-        createdAt: new Date(),
-        createdBy: data.createdBy,
-        rentalNumber: identifiers.bookingNumber,
-        tenantId: tenant.id,
-        status: RentalStatus.PENDING,
-        agent: data.agent ?? Agent.SYSTEM,
-      },
-    });
-
-    await this.assignDrivers(data, booking, tenant);
-
-    await this.bookingRepo.createBookingValues(booking.id, data.values);
-
-    if (data.source !== BookingSource.TENANT) {
-      const bookingWithTenant = await this.prisma.rental.findUnique({
-        where: { id: booking.id },
-        include: { tenant: true },
+    await this.prisma.$transaction(async (tx) => {
+      const booking = await tx.rental.create({
+        data: {
+          startDate: new Date(data.startDate),
+          endDate: new Date(data.endDate),
+          pickupLocationId: data.pickupLocationId,
+          returnLocationId: data.returnLocationId,
+          vehicleId: data.vehicleId,
+          chargeTypeId: data.chargeTypeId,
+          bookingCode: identifiers.bookingCode,
+          createdAt: new Date(),
+          createdBy: data.createdBy,
+          rentalNumber: identifiers.bookingNumber,
+          tenantId: tenant.id,
+          status: RentalStatus.PENDING,
+          agent: data.agent ?? Agent.SYSTEM,
+        },
       });
-      await this.sendNotifications(bookingWithTenant);
-      return this.getBookingDetails(booking.id);
-    }
 
-    return booking;
+      await this.assignDrivers(tx, data, booking, tenant);
+
+      await this.bookingRepo.createBookingValues(booking.id, data.values, tx);
+
+      if (data.source !== BookingSource.TENANT) {
+        const bookingWithTenant = await this.prisma.rental.findUnique({
+          where: { id: booking.id },
+          include: { tenant: true },
+        });
+        await this.sendNotifications(bookingWithTenant);
+        return this.getBookingDetails(booking.id);
+      }
+
+      return booking;
+    });
   }
 
   private async getTenantById(tenantId: string) {
@@ -141,21 +143,23 @@ export class BookingCreationService {
   }
 
   private async assignDrivers(
+    tx: TxClient,
     data: CreateBookingInput,
     booking: Rental,
     tenant: Tenant,
   ) {
     switch (data.source) {
       case BookingSource.TENANT:
-        return this.assignDriversToBooking(data.drivers, booking);
+        return this.assignDriversToBooking(tx, data.drivers, booking);
       case BookingSource.STOREFRONT_USER:
-        return this.assignUserToBooking(data.userId!, booking.id, tenant);
+        return this.assignUserToBooking(tx, data.userId!, booking.id, tenant);
       case BookingSource.STOREFRONT_GUEST:
-        return this.assignGuestToBooking(data.customer, booking.id, tenant);
+        return this.assignGuestToBooking(tx, data.customer, booking.id, tenant);
     }
   }
 
   async assignDriversToBooking(
+    tx: TxClient,
     drivers: BookingDriverDto[] | undefined,
     booking: Rental,
   ) {
@@ -163,7 +167,7 @@ export class BookingCreationService {
 
     return await Promise.all(
       drivers.map((driver: any) =>
-        this.prisma.rentalDriver.create({
+        tx.rentalDriver.create({
           data: {
             id: driver.id,
             driverId: driver.driverId,
@@ -175,7 +179,12 @@ export class BookingCreationService {
     );
   }
 
-  async assignUserToBooking(userId: string, bookingId: string, tenant: Tenant) {
+  async assignUserToBooking(
+    tx: TxClient,
+    userId: string,
+    bookingId: string,
+    tenant: Tenant,
+  ) {
     const user = await this.getStorefrontUser(userId);
     const customerDto = await this.createCustomer(user);
 
@@ -184,7 +193,7 @@ export class BookingCreationService {
       tenant,
     );
 
-    await this.prisma.rentalDriver.create({
+    await tx.rentalDriver.create({
       data: {
         driverId: storefrontCustomer.id,
         rentalId: bookingId,
@@ -194,6 +203,7 @@ export class BookingCreationService {
   }
 
   async assignGuestToBooking(
+    tx: TxClient,
     data: StorefrontCustomerDto | undefined,
     bookingId: string,
     tenant: Tenant,
@@ -205,7 +215,7 @@ export class BookingCreationService {
       tenant,
     );
 
-    await this.prisma.rentalDriver.create({
+    await tx.rentalDriver.create({
       data: {
         driverId: storefrontCustomer.id,
         rentalId: bookingId,
