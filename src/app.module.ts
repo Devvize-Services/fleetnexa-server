@@ -7,8 +7,6 @@ import { AuthModule } from './modules/auth/auth.module.js';
 import { SocketModule } from './gateway/socket.module.js';
 import { AdminModule } from './modules/admin/admin.module.js';
 import { VehicleModule } from './modules/vehicle/vehicle.module.js';
-import { StorefrontAuthModule } from './modules/auth/storefront-auth/storefront-auth.module.js';
-import { StorefrontUserModule } from './modules/user/storefront-user/storefront-user.module.js';
 import { StorageModule } from './modules/storage/storage.module.js';
 import { TransactionModule } from './modules/transaction/transaction.module.js';
 import { DocumentModule } from './modules/document/document.module.js';
@@ -21,7 +19,6 @@ import { FormatterModule } from './common/formatter/formatter.module.js';
 import { EmailModule } from './common/email/email.module.js';
 import { WhatsappModule } from './common/whatsapp/whatsapp.module.js';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { AdminAuthModule } from './modules/auth/admin-auth/admin-auth.module.js';
 import { DashboardModule } from './modules/dashboard/dashboard.module.js';
 import { SubscriptionModule } from './modules/subscription/subscription.module.js';
 import { APP_GUARD } from '@nestjs/core';
@@ -59,10 +56,7 @@ import { NotificationModule } from './common/notification/notification.module.js
 
     DashboardModule,
 
-    StorefrontAuthModule,
-    StorefrontUserModule,
     AuthModule,
-    AdminAuthModule,
 
     BookingModule,
 
