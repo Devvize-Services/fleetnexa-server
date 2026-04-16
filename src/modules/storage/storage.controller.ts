@@ -9,7 +9,7 @@ import {
 import { StorageService } from './storage.service.js';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadFileDto } from './dto/upload-file.dto.js';
-import { ApiGuard } from '../../common/guards/api.guard.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 
 @Controller('storage')

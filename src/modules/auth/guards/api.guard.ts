@@ -43,7 +43,12 @@ export class ApiGuard implements CanActivate {
       .update(payload)
       .digest('hex');
 
-    if (signature !== expectedSignature) {
+    const isValid = crypto.timingSafeEqual(
+      Buffer.from(signature, 'hex'),
+      Buffer.from(expectedSignature, 'hex'),
+    );
+
+    if (!isValid) {
       throw new UnauthorizedException('Invalid signature');
     }
 

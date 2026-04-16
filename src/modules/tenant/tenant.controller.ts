@@ -15,7 +15,7 @@ import type { AuthenticatedRequest } from '../../types/authenticated-request.js'
 import { CreateTenantDto } from './dto/create-tenant.dto.js';
 import { UpdateTenantDto } from './dto/update-tenant.dto.js';
 import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
-import { ApiGuard } from '../../common/guards/api.guard.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 import { LocalAuthGuard } from '../auth/guards/local.guard.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { Role } from '../../common/enums/role.enum.js';

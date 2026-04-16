@@ -11,7 +11,7 @@ import {
   Request,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service.js';
-import { ApiGuard } from '../../common/guards/api.guard.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';

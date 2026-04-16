@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/style/useImportType: <> */
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ApiGuard } from '../../common/guards/api.guard.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 import { AdminService } from './admin.service.js';
 
 @Controller('admin')
