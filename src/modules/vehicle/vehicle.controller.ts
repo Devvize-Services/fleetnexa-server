@@ -16,7 +16,6 @@ import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
-import { LocalAuthGuard } from '../auth/guards/local.guard.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { Role } from '../../common/enums/role.enum.js';
 import { Roles } from '../auth/decorator/role.decorator.js';
@@ -130,7 +129,8 @@ export class VehicleController {
   }
 
   @Patch(':id/storefront')
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT_USER)
   async updateVehicleStorefrontStatus(
     @Request() req,
     @Param('id') vehicleId: string,
