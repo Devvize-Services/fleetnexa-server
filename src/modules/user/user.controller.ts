@@ -53,17 +53,17 @@ export class UserController {
     return this.service.updateTenantUser(data, tenant);
   }
 
-  @Delete(':id')
-  @Roles(Role.TENANT_USER)
-  async deleteUser(@Request() req, @Param('id') id: string) {
-    const { tenant } = req.user;
-    return this.service.deleteTenantUser(id, tenant);
-  }
-
   @Delete('storefront')
   @Roles(Role.TENANT_USER)
   async deleteStorefrontUser(@Request() req, @Body() data: DeleteUserDto) {
     return this.service.deleteStorefrontUser(data.id, data.password);
+  }
+
+  @Delete('id/:id')
+  @Roles(Role.TENANT_USER)
+  async deleteUser(@Request() req, @Param('id') id: string) {
+    const { tenant } = req.user;
+    return this.service.deleteTenantUser(id, tenant);
   }
 
   @Patch('password')
