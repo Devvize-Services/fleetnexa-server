@@ -18,6 +18,7 @@ import { VerifyEmailDto } from './dto/verify-email.dto.js';
 import { NewPasswordDto } from './dto/new-password.dto.js';
 import { TenantUserDto } from './dto/tenant-user.dto.js';
 import { ChangePasswordDto } from './dto/change-password.dto.js';
+import { DeleteUserDto } from './dto/delete-user.dto.js';
 
 @Controller('user')
 @UseGuards(JwtAuthGuard)
@@ -57,6 +58,12 @@ export class UserController {
   async deleteUser(@Request() req, @Param('id') id: string) {
     const { tenant } = req.user;
     return this.service.deleteTenantUser(id, tenant);
+  }
+
+  @Delete('storefront')
+  @Roles(Role.TENANT_USER)
+  async deleteStorefrontUser(@Request() req, @Body() data: DeleteUserDto) {
+    return this.service.deleteStorefrontUser(data.id, data.password);
   }
 
   @Patch('password')

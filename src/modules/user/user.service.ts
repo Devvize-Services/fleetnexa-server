@@ -383,6 +383,45 @@ export class UserService {
     }
   }
 
+  async deleteStorefrontUser(userId: string, password: string) {
+    try {
+      const existingUser = await this.prisma.storefrontUser.findUnique({
+        where: { id: userId },
+      });
+
+      if (!existingUser) {
+        this.logger.warn(
+          `Storefront user deletion failed: User with ID ${userId} not found.`,
+        );
+        throw new NotFoundException(
+          'Your account could not be found. It may have already been deleted.',
+        );
+      }
+
+      const isMatch = await bcrypt.compare(password, existingUser.password);
+
+      if (!isMatch) {
+        throw new UnauthorizedException(
+          'Please provide the correct password to delete your account',
+        );
+      }
+
+      await this.prisma.storefrontUser.update({
+        where: { id: userId },
+        data: { isDeleted: true, updatedAt: new Date() },
+      });
+
+      return {
+        message: 'Your account has been deleted successfully',
+      };
+    } catch (error) {
+      this.logger.error('Failed to delete storefront user', error, {
+        userId,
+      });
+      throw error;
+    }
+  }
+
   async updateUserPassword(
     data: ChangePasswordDto,
     tenant: Tenant,

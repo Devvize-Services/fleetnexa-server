@@ -81,4 +81,49 @@ export class AuthController {
 
     return { user };
   }
+
+  @Post('tenant/logout')
+  async logout(@Res({ passthrough: true }) res: Response) {
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.clearCookie('access_token', {
+      domain: isProd ? '.fleetnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { message: 'Logged out successfully' };
+  }
+
+  @Post('admin/logout')
+  async adminLogout(@Res({ passthrough: true }) res: Response) {
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.clearCookie('access_token', {
+      domain: isProd ? '.fleetnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { message: 'Logged out successfully' };
+  }
+
+  @Post('storefront/logout')
+  async storefrontLogout(@Res({ passthrough: true }) res: Response) {
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.clearCookie('access_token', {
+      domain: isProd ? '.rentnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { message: 'Logged out successfully' };
+  }
 }
