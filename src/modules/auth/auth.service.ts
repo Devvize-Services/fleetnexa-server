@@ -1,8 +1,14 @@
-import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  Logger,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from '../user/user.repository.js';
+import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
 
 @Injectable()
 export class AuthService {
@@ -235,6 +241,59 @@ export class AuthService {
       this.logger.error(
         `Error logging in storefront user with ID ${userId}: ${error.message}`,
       );
+      throw error;
+    }
+  }
+
+  async createStorefrontUser(data: StorefrontAuthDto) {
+    try {
+      const [existingEmail, existingLicense] = await Promise.all([
+        this.prisma.storefrontUser.findUnique({ where: { email: data.email } }),
+        this.prisma.storefrontUser.findFirst({
+          where: { driverLicenseNumber: data.licenseNumber },
+        }),
+      ]);
+
+      if (existingEmail || existingLicense) {
+        this.logger.warn('Registration conflict', {
+          emailConflict: !!existingEmail,
+          licenseConflict: !!existingLicense,
+        });
+        throw new ConflictException(
+          'An account with these details already exists.',
+        );
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(data.password, salt);
+
+      const user = await this.userRepo.createStorefrontUser({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        gender: data.gender || 'male',
+        phone: data.phone || '',
+        password: hashedPassword,
+        driverLicenseNumber: data.licenseNumber,
+        licenseExpiry: new Date(data.licenseExpiry),
+        licenseIssued: new Date(data.licenseIssued),
+        license: data.license,
+        dateOfBirth: new Date(data.dateOfBirth),
+        street: data.street || '',
+        countryId: data.countryId || null,
+        stateId: data.stateId || null,
+      });
+
+      const payload = {
+        sub: user.id,
+        role: 'STOREFRONT',
+      };
+
+      const token = this.jwtService.sign(payload);
+
+      return { token, user, role: 'STOREFRONT' };
+    } catch (error) {
+      this.logger.error('Error creating user', { error });
       throw error;
     }
   }

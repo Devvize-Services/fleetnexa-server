@@ -1,7 +1,16 @@
-import { Controller, Get, Post, UseGuards, Request, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  UseGuards,
+  Request,
+  Res,
+  Body,
+} from '@nestjs/common';
 import { AuthService } from './auth.service.js';
 import { LocalAuthGuard } from './guards/local.guard.js';
 import type { Response } from 'express';
+import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
 
 @Controller('auth')
 export class AuthController {
@@ -65,6 +74,32 @@ export class AuthController {
 
     if (!result) {
       throw new Error('Login failed');
+    }
+
+    const { token, user } = result;
+
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.cookie('access_token', token, {
+      domain: isProd ? '.rentnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    return { user };
+  }
+
+  @Post('storefront/register')
+  async createStorefrontUser(
+    @Body() data: StorefrontAuthDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const result = await this.authService.createStorefrontUser(data);
+
+    if (!result) {
+      throw new Error('Registration failed');
     }
 
     const { token, user } = result;

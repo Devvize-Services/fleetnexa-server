@@ -44,6 +44,13 @@ export class UserRepository {
     });
   };
 
+  createStorefrontUser = async (data: any) => {
+    return await this.prisma.storefrontUser.create({
+      data,
+      select: this.getStorefrontUserSelectOptions(),
+    });
+  };
+
   protected getTenantUserAuthSelectOptions(): Prisma.UserSelect {
     return {
       id: true,
@@ -65,6 +72,29 @@ export class UserRepository {
           },
         },
       },
+    };
+  }
+
+  private getStorefrontUserSelectOptions(): Prisma.StorefrontUserSelect {
+    return {
+      id: true,
+      firstName: true,
+      lastName: true,
+      createdAt: true,
+      email: true,
+      profilePicture: true,
+      driverLicenseNumber: true,
+      licenseExpiry: true,
+      licenseIssued: true,
+      license: true,
+      country: true,
+      countryId: true,
+      street: true,
+      village: true,
+      villageId: true,
+      state: true,
+      stateId: true,
+      phone: true,
     };
   }
 
