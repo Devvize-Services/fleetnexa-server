@@ -19,6 +19,7 @@ import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
 import { StorefrontGuestBookingDto } from './dto/storefront-guest-booking.dto.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 
 @Controller('booking')
 export class BookingController {
@@ -51,7 +52,6 @@ export class BookingController {
   @Roles(Role.STOREFRONT)
   async getStorefrontUserBookings(@Request() req) {
     const user = req.user;
-    console.log('Storefront user making request:', user);
     return this.bookingService.getStorefrontBookings(user.id);
   }
 
@@ -72,7 +72,7 @@ export class BookingController {
   }
 
   @Post('storefront/guest')
-  @Roles(Role.STOREFRONT)
+  @UseGuards(ApiGuard)
   async createGuestBooking(@Body() data: StorefrontGuestBookingDto) {
     return this.bookingService.createStorefrontGuestBooking(data);
   }

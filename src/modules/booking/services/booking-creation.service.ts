@@ -94,7 +94,7 @@ export class BookingCreationService {
     const tenant = await this.getTenantById(data.tenantId);
     const identifiers = await this.generateIdentifiers(tenant);
 
-    await this.prisma.$transaction(async (tx) => {
+    const booking = await this.prisma.$transaction(async (tx) => {
       const booking = await tx.rental.create({
         data: {
           startDate: new Date(data.startDate),
@@ -117,17 +117,26 @@ export class BookingCreationService {
 
       await this.bookingRepo.createBookingValues(booking.id, data.values, tx);
 
-      if (data.source !== BookingSource.TENANT) {
-        const bookingWithTenant = await this.prisma.rental.findUnique({
-          where: { id: booking.id },
-          include: { tenant: true },
-        });
-        await this.sendNotifications(bookingWithTenant);
-        return this.getBookingDetails(booking.id);
-      }
-
       return booking;
     });
+
+    this.logger.log(
+      `Booking created with ID: ${booking.id} and code: ${booking.bookingCode}`,
+    );
+
+    if (data.source !== BookingSource.TENANT) {
+      this.logger.log(
+        `Booking created from source ${data.source} for tenant ${tenant.tenantName}`,
+      );
+
+      const bookingWithTenant = await this.prisma.rental.findUnique({
+        where: { id: booking.id },
+        include: { tenant: true },
+      });
+
+      await this.sendNotifications(bookingWithTenant);
+      return this.getBookingDetails(booking.id);
+    }
   }
 
   private async getTenantById(tenantId: string) {
