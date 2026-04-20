@@ -278,7 +278,7 @@ export class AuthService {
         licenseExpiry: new Date(data.licenseExpiry),
         licenseIssued: new Date(data.licenseIssued),
         license: data.license,
-        dateOfBirth: new Date(data.dateOfBirth),
+        dateOfBirth: data.dateOfBirth,
         street: data.street || '',
         countryId: data.countryId || null,
         stateId: data.stateId || null,
