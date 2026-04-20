@@ -149,6 +149,10 @@ export class CustomerService {
 
   async getStorefrontCustomer(data: StorefrontCustomerDto, tenant: Tenant) {
     try {
+      const addressData = data.address
+        ? await this.buildStorefrontAddressData(data.address, tenant)
+        : null;
+
       const existingCustomer = await this.prisma.customer.findFirst({
         where: {
           tenantId: tenant.id,
@@ -174,33 +178,13 @@ export class CustomerService {
           },
         });
 
-        if (data.address) {
+        if (addressData) {
           await this.prisma.customerAddress.upsert({
             where: { customerId: existingCustomer.id },
-            update: {
-              street: data.address.street,
-              village: data.address.villageId
-                ? { connect: { id: data.address.villageId } }
-                : undefined,
-              state: data.address.stateId
-                ? { connect: { id: data.address.stateId } }
-                : undefined,
-              country: data.address.countryId
-                ? { connect: { id: data.address.countryId } }
-                : undefined,
-            },
+            update: addressData!,
             create: {
               customer: { connect: { id: existingCustomer.id } },
-              street: data.address.street,
-              village: data.address.villageId
-                ? { connect: { id: data.address.villageId } }
-                : undefined,
-              state: data.address.stateId
-                ? { connect: { id: data.address.stateId } }
-                : undefined,
-              country: data.address.countryId
-                ? { connect: { id: data.address.countryId } }
-                : undefined,
+              ...addressData!,
             },
           });
         }
@@ -249,20 +233,11 @@ export class CustomerService {
           });
         }
 
-        if (data.address) {
+        if (addressData) {
           await this.prisma.customerAddress.create({
             data: {
               customer: { connect: { id: customer.id } },
-              street: data.address.street,
-              village: data.address.villageId
-                ? { connect: { id: data.address.villageId } }
-                : undefined,
-              state: data.address.stateId
-                ? { connect: { id: data.address.stateId } }
-                : undefined,
-              country: data.address.countryId
-                ? { connect: { id: data.address.countryId } }
-                : undefined,
+              ...addressData!,
             },
           });
         }
@@ -276,5 +251,78 @@ export class CustomerService {
       });
       throw error;
     }
+  }
+
+  private async buildStorefrontAddressData(
+    address: NonNullable<StorefrontCustomerDto['address']>,
+    tenant: Tenant,
+  ) {
+    const [village, state, country] = await Promise.all([
+      address.villageId
+        ? this.prisma.village.findUnique({
+            where: { id: address.villageId },
+            select: { id: true },
+          })
+        : null,
+      address.stateId
+        ? this.prisma.state.findUnique({
+            where: { id: address.stateId },
+            select: { id: true },
+          })
+        : null,
+      address.countryId
+        ? this.prisma.country.findUnique({
+            where: { id: address.countryId },
+            select: { id: true },
+          })
+        : null,
+    ]);
+
+    this.logMissingAddressReference(
+      'village',
+      address.villageId,
+      village?.id,
+      tenant,
+    );
+    this.logMissingAddressReference(
+      'state',
+      address.stateId,
+      state?.id,
+      tenant,
+    );
+    this.logMissingAddressReference(
+      'country',
+      address.countryId,
+      country?.id,
+      tenant,
+    );
+
+    return {
+      street: address.street,
+      village: village ? { connect: { id: village.id } } : undefined,
+      state: state ? { connect: { id: state.id } } : undefined,
+      country: country ? { connect: { id: country.id } } : undefined,
+    };
+  }
+
+  private logMissingAddressReference(
+    relation: 'village' | 'state' | 'country',
+    requestedId: string | undefined,
+    resolvedId: string | undefined,
+    tenant: Tenant,
+  ) {
+    if (!requestedId || resolvedId) {
+      return;
+    }
+
+    this.logger.warn(
+      `Ignoring missing ${relation} reference for storefront customer address`,
+      {
+        tenantId: tenant.id,
+        tenantCode: tenant.tenantCode,
+        relation,
+        requestedId,
+      },
+    );
   }
 }
