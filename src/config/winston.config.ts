@@ -19,6 +19,7 @@ export const winstonConfig = {
     ...(process.env.CLOUDWATCH_LOG_GROUP !== 'fleetnexa-local-dev'
       ? [
           new WinstonCloudWatch({
+            level: 'info',
             logGroupName:
               process.env.CLOUDWATCH_LOG_GROUP || 'fleetnexa-server',
             logStreamName: logStreamName,

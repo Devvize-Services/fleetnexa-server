@@ -179,6 +179,10 @@ export class EmailService {
 
   async sendBookingCompletedEmail(bookingId: string, tenant: Tenant) {
     try {
+      this.logger.log(
+        `Sending booking completed email for booking ID: ${bookingId} and tenant ID: ${tenant.id}`,
+      );
+
       const booking = await this.prisma.rental.findUnique({
         where: { id: bookingId, tenantId: tenant.id },
         include: {
@@ -251,6 +255,9 @@ export class EmailService {
 
   async sendNewBookingEmail(bookingId: string, tenant: Tenant) {
     try {
+      this.logger.log(
+        `Sending new booking email for booking ID: ${bookingId} and tenant ID: ${tenant.id}`,
+      );
       const booking = await this.prisma.rental.findUnique({
         where: { id: bookingId, tenantId: tenant.id },
         include: {

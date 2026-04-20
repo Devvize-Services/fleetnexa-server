@@ -138,19 +138,23 @@ export class BookingCreationService {
       `Booking created with ID: ${booking.id} and code: ${booking.bookingCode}`,
     );
 
+    const bookingWithTenant = await this.prisma.rental.findUnique({
+      where: { id: booking.id },
+      include: { tenant: true },
+    });
+
     if (data.source !== BookingSource.TENANT) {
       this.logger.log(
         `Booking created from source ${data.source} for tenant ${tenant.tenantName}`,
       );
-
-      const bookingWithTenant = await this.prisma.rental.findUnique({
-        where: { id: booking.id },
-        include: { tenant: true },
-      });
-
-      await this.sendNotifications(bookingWithTenant);
-      return this.getBookingDetails(booking.id);
+      this.sendNotifications(bookingWithTenant).catch((error) =>
+        this.logger.error(error, 'Failed to send notifications', {
+          bookingId: booking.id,
+        }),
+      );
     }
+
+    return this.getBookingDetails(booking.id);
   }
 
   private async getTenantById(tenantId: string) {
