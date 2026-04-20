@@ -64,10 +64,9 @@ export class BookingCreationService {
   }
 
   createUserBooking(dto: StorefrontUserBookingDto) {
-    this.logger.log(
-      `Creating user booking for tenant ${dto.tenantId} with email ${dto.customer.email}`,
-      { data: dto },
-    );
+    this.logger.log(`Creating user booking for tenant ${dto.tenantId}`, {
+      data: dto,
+    });
 
     const input: CreateBookingInput = {
       source: BookingSource.STOREFRONT_USER,
