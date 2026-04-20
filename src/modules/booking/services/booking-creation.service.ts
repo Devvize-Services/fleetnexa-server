@@ -39,6 +39,11 @@ export class BookingCreationService {
   ) {}
 
   createTenantBooking(dto: CreateBookingDto, tenant: Tenant, user: User) {
+    this.logger.log(
+      `Creating tenant booking for tenant ${tenant.tenantName} with email ${user.email}`,
+      { data: dto },
+    );
+
     const input: CreateBookingInput = {
       source: BookingSource.TENANT,
       tenantId: tenant.id,
@@ -59,6 +64,11 @@ export class BookingCreationService {
   }
 
   createUserBooking(dto: StorefrontUserBookingDto) {
+    this.logger.log(
+      `Creating user booking for tenant ${dto.tenantId} with email ${dto.customer.email}`,
+      { data: dto },
+    );
+
     const input: CreateBookingInput = {
       source: BookingSource.STOREFRONT_USER,
       tenantId: dto.tenantId,
@@ -75,6 +85,11 @@ export class BookingCreationService {
   }
 
   createGuestBooking(dto: StorefrontGuestBookingDto) {
+    this.logger.log(
+      `Creating guest booking for tenant ${dto.tenantId} with email ${dto.customer.email}`,
+      { data: dto },
+    );
+
     const input: CreateBookingInput = {
       source: BookingSource.STOREFRONT_GUEST,
       tenantId: dto.tenantId,
