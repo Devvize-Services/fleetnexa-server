@@ -27,7 +27,7 @@ export class BookingController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getTenantBookings(@Request() req) {
     const { tenant } = req.user;
     return this.bookingService.getBookings(tenant);
@@ -35,14 +35,14 @@ export class BookingController {
 
   @Get('code/:bookingCode')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getBookingByCode(@Param('bookingCode') bookingCode: string) {
     return this.bookingService.getBookingByCode(bookingCode);
   }
 
   @Get('id/:id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getBookingById(@Param('id') id: string, @Request() req) {
     return this.bookingService.getBookingById(id);
   }
@@ -57,7 +57,7 @@ export class BookingController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async createBooking(@Request() req, @Body() data: CreateBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -79,7 +79,7 @@ export class BookingController {
 
   @Put()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateBooking(@Request() req, @Body() data: UpdateBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -88,7 +88,7 @@ export class BookingController {
 
   @Post('confirm')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async confirmBooking(@Request() req, @Body() data: ActionBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -97,7 +97,7 @@ export class BookingController {
 
   @Post('decline/:id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async declineBooking(@Request() req, @Param('id') id: string) {
     const { tenant } = req.user;
     const user = req.user;
@@ -106,7 +106,7 @@ export class BookingController {
 
   @Post('cancel/:id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async cancelBooking(@Request() req, @Param('id') id: string) {
     const { tenant } = req.user;
     const user = req.user;
@@ -115,7 +115,7 @@ export class BookingController {
 
   @Post('start')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async startBooking(@Request() req, @Body() data: ActionBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -124,7 +124,7 @@ export class BookingController {
 
   @Post('end')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async endBooking(@Request() req, @Body() data: ActionBookingDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -133,7 +133,7 @@ export class BookingController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async deleteBooking(@Request() req, @Param('id') id: string) {
     const { tenant } = req.user;
     const user = req.user;

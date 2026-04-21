@@ -27,7 +27,7 @@ export class TenantController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   getCurrentTenant(@Request() req) {
     const { tenant } = req.user;
     return this.tenantService.getCurrentTenant(tenant, req.user);
@@ -53,7 +53,7 @@ export class TenantController {
 
   @Get('today')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   getTodayActivities(@Request() req) {
     const { tenant } = req.user;
     return this.tenantService.getTodayActivities(tenant);
@@ -66,14 +66,14 @@ export class TenantController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   createTenant(@Body() data: CreateTenantDto) {
     return this.tenantService.createTenant(data);
   }
 
   @Put()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   updateTenant(@Request() req, @Body() data: UpdateTenantDto) {
     const { tenant } = req.user;
     return this.tenantService.updateTenant(data, tenant);
@@ -81,7 +81,7 @@ export class TenantController {
 
   @Patch('storefront')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   updateStorefront(@Request() req, @Body() data: UpdateStorefrontDto) {
     const { tenant } = req.user;
     return this.tenantService.updateStorefront(data, tenant);

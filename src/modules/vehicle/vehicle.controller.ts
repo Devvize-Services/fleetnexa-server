@@ -26,7 +26,7 @@ export class VehicleController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getTenantVehicles(@Request() req) {
     const { tenant } = req.user;
     return this.service.getTenantVehicles(tenant);
@@ -52,7 +52,7 @@ export class VehicleController {
 
   @Get('plate/:plate')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getVehicleByLicensePlate(
     @Param('plate') licensePlate: string,
     @Request() req,
@@ -63,7 +63,7 @@ export class VehicleController {
 
   @Get('id/:id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getVehicleById(@Param('id') id: string, @Request() req) {
     const { tenant } = req.user;
     return this.service.getVehicleById(id, tenant);
@@ -71,7 +71,7 @@ export class VehicleController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async createVehicle(@Request() req, @Body() data: VehicleDto) {
     const user = req.user;
     const { tenant } = req.user;
@@ -80,7 +80,7 @@ export class VehicleController {
 
   @Put()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateVehicle(@Request() req, @Body() data: VehicleDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -89,7 +89,7 @@ export class VehicleController {
 
   @Patch('status')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateVehicleStatus(@Request() req, @Body() data: VehicleStatusDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -99,7 +99,7 @@ export class VehicleController {
 
   @Patch('location')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateVehicleLocation(
     @Request() req,
     @Body() data: VehicleLocationDto,
@@ -112,7 +112,7 @@ export class VehicleController {
 
   @Post('swap')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async swapVehicle(@Request() req, @Body() data: SwapVehicleDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -121,7 +121,7 @@ export class VehicleController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async deleteVehicle(@Param('id') id: string, @Request() req) {
     const { tenant } = req.user;
     const user = req.user;
@@ -130,7 +130,7 @@ export class VehicleController {
 
   @Patch(':id/storefront')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateVehicleStorefrontStatus(
     @Request() req,
     @Param('id') vehicleId: string,

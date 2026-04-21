@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '../../generated/prisma/browser.js';
+import { Prisma, UserType } from '../../generated/prisma/browser.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 
 @Injectable()
@@ -44,11 +44,61 @@ export class UserRepository {
     });
   };
 
+  getAnyUserByUsername = async (username: string, userType: UserType) => {
+    if (userType === 'TENANT') {
+      if (username.includes('@')) {
+        return await this.getTenantUserByEmail(username);
+      } else {
+        return await this.getTenantUserByUsername(username);
+      }
+      return await this.getTenantUserByUsername(username);
+    } else if (userType === 'STOREFRONT') {
+      return await this.prisma.storefrontUser.findUnique({
+        where: { email: username },
+        select: this.getStorefrontUserSelectOptions(),
+      });
+    } else {
+      return await this.prisma.adminUser.findUnique({
+        where: { email: username },
+      });
+    }
+  };
+
   createStorefrontUser = async (data: any) => {
     return await this.prisma.storefrontUser.create({
       data,
       select: this.getStorefrontUserSelectOptions(),
     });
+  };
+
+  getAnyUserByEmail = async (email: string, userType: UserType) => {
+    if (userType === 'TENANT') {
+      return await this.getTenantUserByEmail(email);
+    } else if (userType === 'STOREFRONT') {
+      return await this.prisma.storefrontUser.findUnique({
+        where: { email },
+        select: this.getStorefrontUserSelectOptions(),
+      });
+    } else {
+      return await this.prisma.adminUser.findUnique({
+        where: { email },
+      });
+    }
+  };
+
+  getAnyUserById = async (id: string, userType: UserType) => {
+    if (userType === 'TENANT') {
+      return await this.getTenantUserById(id);
+    } else if (userType === 'STOREFRONT') {
+      return await this.prisma.storefrontUser.findUnique({
+        where: { id },
+        select: this.getStorefrontUserSelectOptions(),
+      });
+    } else {
+      return await this.prisma.adminUser.findUnique({
+        where: { id },
+      });
+    }
   };
 
   protected getTenantUserAuthSelectOptions(): Prisma.UserSelect {

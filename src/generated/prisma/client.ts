@@ -495,11 +495,6 @@ export type UserRole = Prisma.UserRoleModel
  */
 export type UserRolePermission = Prisma.UserRolePermissionModel
 /**
- * Model EmailTokens
- * 
- */
-export type EmailTokens = Prisma.EmailTokensModel
-/**
  * Model Vehicle
  * 
  */

@@ -7,7 +7,7 @@ import { Role } from '../../common/enums/role.enum.js';
 
 @Controller('subscription')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class SubscriptionController {
   constructor(private readonly subscriptionService: SubscriptionService) {}
 

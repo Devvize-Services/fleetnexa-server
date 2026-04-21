@@ -10,12 +10,13 @@ import bcrypt from 'bcrypt';
 import { EmailService } from '../../common/email/email.service.js';
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { VerifyEmailDto } from './dto/verify-email.dto.js';
-import { NewPasswordDto } from './dto/new-password.dto.js';
-import { Tenant } from 'src/generated/prisma/browser.js';
+import { VerifyOTPDto } from '../auth/dto/verify-otp.dto.js';
+import { NewPasswordDto } from '../auth/dto/new-password.dto.js';
+import { Tenant } from '../../generated/prisma/browser.js';
 import { UserRepository } from './user.repository.js';
 import { TenantUserDto } from './dto/tenant-user.dto.js';
 import { ChangePasswordDto } from './dto/change-password.dto.js';
+import { OtpService } from '../auth/services/otp.service.js';
 
 @Injectable()
 export class UserService {
@@ -26,6 +27,7 @@ export class UserService {
     private readonly generator: GeneratorService,
     private readonly repo: UserRepository,
     private readonly email: EmailService,
+    private readonly otpService: OtpService,
   ) {}
 
   async getTenantUsers(tenant: Tenant) {
@@ -43,7 +45,7 @@ export class UserService {
   }
 
   async getCurrentUser(id: string, role: string) {
-    if (role === 'TENANT_USER') {
+    if (role === 'TENANT') {
       return this.getTenantUser(id);
     } else if (role === 'ADMIN') {
       return this.getAdminUser(id);
@@ -473,89 +475,6 @@ export class UserService {
       this.logger.error('Failed to update user password', error, {
         userId,
         tenantId: tenant.id,
-      });
-      throw error;
-    }
-  }
-
-  async forgotTenantUserPassword(email: string) {
-    try {
-      const user = await this.prisma.user.findUnique({
-        where: { email },
-      });
-
-      if (!user) {
-        this.logger.warn(
-          `Password reset requested for non-existent email: ${email}`,
-        );
-        return null;
-      }
-
-      if (!user.email) {
-        this.logger.warn(
-          `User with ID ${user.id} does not have an email address for password reset.`,
-        );
-        throw new BadRequestException(
-          'User does not have an email address associated for password reset',
-        );
-      }
-
-      await this.prisma.emailTokens.updateMany({
-        where: { email: user.email, expired: false },
-        data: { expired: true },
-      });
-
-      const token = await this.generator.generateVerificationCode();
-      const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
-
-      await this.prisma.emailTokens.create({
-        data: {
-          email: user.email,
-          token,
-          expiresAt,
-        },
-      });
-
-      await this.email.sendPasswordResetEmail(user.email, token);
-    } catch (error) {
-      this.logger.error(error, 'Error resetting tenant user password', {
-        email,
-      });
-      throw error;
-    }
-  }
-
-  async verifyEmailToken(data: VerifyEmailDto) {
-    try {
-      const record = await this.prisma.emailTokens.findFirst({
-        where: {
-          email: data.email,
-          token: data.verificationCode,
-          expired: false,
-          expiresAt: {
-            gt: new Date(),
-          },
-        },
-      });
-
-      if (!record) {
-        this.logger.warn(
-          `Invalid or expired email verification token for email: ${data.email}`,
-        );
-        throw new BadRequestException('Invalid or expired token');
-      }
-
-      await this.prisma.emailTokens.updateMany({
-        where: { email: data.email, token: data.verificationCode },
-        data: { expired: true, verified: true },
-      });
-
-      return {
-        message: 'Email verified successfully',
-      };
-    } catch (error) {
-      this.logger.error(error, 'Error verifying email token', {
-        email: data.email,
       });
       throw error;
     }

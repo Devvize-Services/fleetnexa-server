@@ -21,7 +21,7 @@ export class CustomerController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getCustomers(@Request() req) {
     const { tenant } = req.user;
     return this.customerService.getCustomers(tenant);
@@ -29,14 +29,14 @@ export class CustomerController {
 
   @Get('id/:id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async getCustomerById(@Param('id') id: string) {
     return this.customerService.getCustomerById(id);
   }
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async createCustomer(@Request() req, @Body() data: TenantCustomerDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -45,7 +45,7 @@ export class CustomerController {
 
   @Put()
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async updateCustomer(@Request() req, @Body() data: TenantCustomerDto) {
     const { tenant } = req.user;
     const user = req.user;
@@ -54,7 +54,7 @@ export class CustomerController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT_USER)
+  @Roles(Role.TENANT)
   async deleteCustomer(@Param('id') id: string, @Request() req) {
     const { tenant } = req.user;
     const user = req.user;
@@ -63,7 +63,7 @@ export class CustomerController {
 
   // @Post('violation')
   // @UseGuards(JwtAuthGuard)
-  // @Roles(Role.TENANT_USER)
+  // @Roles(Role.TENANT)
   // async createCustomerViolation(
   //   @Request() req,
   //   @Body() data: CustomerViolationDto,
@@ -80,7 +80,7 @@ export class CustomerController {
 
   // @Put('violation')
   // @UseGuards(JwtAuthGuard)
-  // @Roles(Role.TENANT_USER)
+  // @Roles(Role.TENANT)
   // async updateCustomerViolation(
   //   @Request() req,
   //   @Body() data: CustomerViolationDto,
@@ -96,7 +96,7 @@ export class CustomerController {
 
   // @Delete('violation/:id')
   // @UseGuards(JwtAuthGuard)
-  // @Roles(Role.TENANT_USER)
+  // @Roles(Role.TENANT)
   // async deleteCustomerViolation(@Param('id') id: string, @Request() req) {
   //   const { tenant } = req.user;
   //   const user = req.user;

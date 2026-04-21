@@ -6,7 +6,7 @@ import { Roles } from '../auth/decorator/role.decorator.js';
 
 @Controller('transaction')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class TransactionController {
   constructor(private readonly service: TransactionService) {}
 

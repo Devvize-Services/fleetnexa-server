@@ -15,7 +15,7 @@ import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/notification')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class TenantNotificationController {
   constructor(private readonly service: TenantNotificationService) {}
 

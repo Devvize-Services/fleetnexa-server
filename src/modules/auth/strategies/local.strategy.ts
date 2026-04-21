@@ -15,6 +15,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
   async validate(req: any, username: string, password: string) {
     const role = req.body?.role;
+
     const ip = req.ip || req.connection?.remoteAddress;
     const userAgent = req.get('user-agent');
     if (!role) {

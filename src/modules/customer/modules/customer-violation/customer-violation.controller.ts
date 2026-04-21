@@ -17,7 +17,7 @@ import { CustomerViolationDto } from './customer-violation.dto.js';
 
 @Controller('customer/violation')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class CustomerViolationController {
   constructor(private readonly service: CustomerViolationService) {}
 

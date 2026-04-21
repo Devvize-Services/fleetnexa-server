@@ -142,7 +142,6 @@ export const ModelName = {
   AdminUser: 'AdminUser',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission',
-  EmailTokens: 'EmailTokens',
   Vehicle: 'Vehicle',
   VehicleDiscount: 'VehicleDiscount',
   VehicleDamage: 'VehicleDamage',
@@ -1435,19 +1434,6 @@ export const UserRolePermissionScalarFieldEnum = {
 } as const
 
 export type UserRolePermissionScalarFieldEnum = (typeof UserRolePermissionScalarFieldEnum)[keyof typeof UserRolePermissionScalarFieldEnum]
-
-
-export const EmailTokensScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  token: 'token',
-  createdAt: 'createdAt',
-  expiresAt: 'expiresAt',
-  verified: 'verified',
-  expired: 'expired'
-} as const
-
-export type EmailTokensScalarFieldEnum = (typeof EmailTokensScalarFieldEnum)[keyof typeof EmailTokensScalarFieldEnum]
 
 
 export const VehicleScalarFieldEnum = {

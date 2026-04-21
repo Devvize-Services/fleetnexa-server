@@ -24,7 +24,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    if (payload.role === 'TENANT_USER') {
+    if (payload.role === 'TENANT') {
       return this.validateTenantUser(payload);
     } else if (payload.role === 'ADMIN') {
       return this.validateAdminUser(payload);

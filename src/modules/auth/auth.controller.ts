@@ -12,6 +12,11 @@ import { LocalAuthGuard } from './guards/local.guard.js';
 import type { Response } from 'express';
 import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
 import { RefreshAuthGuard } from './guards/refresh-auth.guard.js';
+import { VerifyOTPDto } from './dto/verify-otp.dto.js';
+import {
+  ResetPasswordDto,
+  ResetPasswordRequestDto,
+} from './dto/reset-password.dto.js';
 
 @Controller('auth')
 export class AuthController {
@@ -42,7 +47,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('tenant/login')
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.loginTenantUser(req);
+    const result = await this.authService.login(req.user.id, 'TENANT');
 
     if (!result) {
       throw new Error('Login failed');
@@ -74,7 +79,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('admin/login')
   async adminLogin(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.loginAdminUser(req.user.id);
+    const result = await this.authService.login(req.user.id, 'ADMIN');
 
     if (!result) {
       throw new Error('Login failed');
@@ -109,7 +114,7 @@ export class AuthController {
     @Request() req,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const result = await this.authService.loginStorefrontUser(req.user.id);
+    const result = await this.authService.login(req.user.id, 'STOREFRONT');
 
     if (!result) {
       throw new Error('Login failed');
@@ -177,5 +182,23 @@ export class AuthController {
     });
 
     return { message: 'Logged out successfully' };
+  }
+
+  @Post('password/forgot')
+  async requestPasswordReset(
+    @Request() req,
+    @Body() data: ResetPasswordRequestDto,
+  ) {
+    return this.authService.forgotPassword(data, req);
+  }
+
+  @Post('password/reset')
+  async resetPassword(@Body() data: ResetPasswordDto) {
+    return this.authService.changePassword(data);
+  }
+
+  @Post('otp/verify')
+  async verifyOTP(@Body() data: VerifyOTPDto) {
+    return this.authService.verifyOTP(data);
   }
 }

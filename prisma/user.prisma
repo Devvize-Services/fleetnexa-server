@@ -95,14 +95,3 @@ model UserRolePermission {
   @@unique([roleId, permissionId])
 }
 
-model EmailTokens {
-  id        String   @id @default(dbgenerated("gen_random_uuid()"))
-  email     String
-  token     String   @unique
-  createdAt DateTime @default(now())
-  expiresAt DateTime
-  verified  Boolean  @default(false)
-  expired   Boolean  @default(false)
-
-  @@index([email])
-}

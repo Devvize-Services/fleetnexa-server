@@ -1,6 +1,5 @@
 import {
   ConflictException,
-  Inject,
   Injectable,
   Logger,
   UnauthorizedException,
@@ -11,10 +10,15 @@ import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from '../user/user.repository.js';
 import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
 import { SessionService } from './services/session.service.js';
-import refreshJwtConfig from '../../config/refresh-jwt.config.js';
-import type { ConfigType } from '@nestjs/config';
 import { AuditLogService } from './services/audit-log.service.js';
-import { UserType } from '../../generated/prisma/enums.js';
+import { VerifyOTPDto } from './dto/verify-otp.dto.js';
+import { OtpService } from './services/otp.service.js';
+import {
+  ResetPasswordDto,
+  ResetPasswordRequestDto,
+} from './dto/reset-password.dto.js';
+import { PasswordService } from './services/password.service.js';
+import { UserType } from 'src/generated/prisma/enums.js';
 
 @Injectable()
 export class AuthService {
@@ -26,41 +30,19 @@ export class AuthService {
     private readonly userRepo: UserRepository,
     private readonly sessionService: SessionService,
     private readonly auditLogService: AuditLogService,
-    @Inject(refreshJwtConfig.KEY)
-    private refreshTokenConfig: ConfigType<typeof refreshJwtConfig>,
+    private readonly otpService: OtpService,
+    private readonly passwordService: PasswordService,
   ) {}
 
   async validateUser(
     username: string,
     password: string,
-    role: string,
-    ip: string,
-    userAgent: string,
-  ) {
-    if (role === 'TENANT_USER') {
-      return this.validateTenantUser(username, password, ip, userAgent);
-    } else if (role === 'ADMIN') {
-      return this.validateAdminUser(username, password, ip, userAgent);
-    } else if (role === 'STOREFRONT') {
-      return this.validateStorefrontUser(username, password, ip, userAgent);
-    }
-
-    this.logger.warn(`Unsupported role ${role} provided for user ${username}.`);
-    throw new UnauthorizedException('Invalid role');
-  }
-
-  async validateTenantUser(
-    username: string,
-    password: string,
+    type: UserType,
     ip: string,
     userAgent: string,
   ) {
     try {
-      let user: any | null = null;
-
-      user = username.includes('@')
-        ? await this.userRepo.getTenantUserByEmail(username)
-        : await this.userRepo.getTenantUserByUsername(username);
+      const user = await this.userRepo.getAnyUserByUsername(username, type);
 
       if (!user) {
         this.logger.warn(`Login failed: User ${username} not found.`);
@@ -74,246 +56,64 @@ export class AuthService {
         throw new UnauthorizedException('Invalid username or password');
       }
 
+      if (!user.password) {
+        this.logger.warn(
+          `Login failed: ${type} user ${username} does not have a password set.`,
+        );
+        throw new UnauthorizedException('Invalid username or password');
+      }
+
       const passwordValid = await bcrypt.compare(password, user.password);
       if (!passwordValid) {
         this.auditLogService.logEvent({
           userId: user.id,
-          userType: 'TENANT',
+          userType: type,
           action: 'LOGIN_FAILED',
           ip,
           userAgent,
         });
 
         this.logger.warn(
-          `Login failed: Invalid password for user ${username}.`,
+          `Login failed: Invalid password for ${type} user ${username}.`,
         );
         throw new UnauthorizedException('Invalid username or password');
       }
 
       return {
         id: user.id,
-        username: user.username,
         email: user.email,
-        tenantId: user.tenantId,
-        role: 'TENANT_USER',
+        role: type,
+        username: 'username' in user ? user.username : null,
+        tenantId: 'tenantId' in user ? user.tenantId : null,
       };
     } catch (error) {
-      this.logger.error(
-        `Error validating tenant user ${username}: ${error.message}`,
-      );
+      this.logger.error(`Error validating user ${username}: ${error.message}`);
       throw error;
     }
   }
 
-  async validateAdminUser(
-    username: string,
-    password: string,
-    ip: string,
-    userAgent: string,
-  ) {
+  async login(userId: string, userType: UserType, tenantId?: string) {
     try {
-      const adminUser = await this.prisma.adminUser.findUnique({
-        where: { username },
-      });
+      const user = await this.userRepo.getAnyUserById(userId, userType);
 
-      if (!adminUser) {
-        this.logger.warn(`Login failed: Admin user ${username} not found.`);
-        throw new UnauthorizedException('Invalid username or password');
-      }
+      if (!user) throw new UnauthorizedException('User not found');
 
-      if (!adminUser.password) {
-        this.logger.warn(
-          `Login failed: Admin user ${username} does not have a password set.`,
-        );
-        throw new UnauthorizedException('Invalid username or password');
-      }
-
-      const passwordValid = await bcrypt.compare(password, adminUser.password);
-      if (!passwordValid) {
-        this.logger.warn(
-          `Login failed: Invalid password for admin user ${username}.`,
-        );
-        throw new UnauthorizedException('Invalid username or password');
-      }
-
-      return {
-        id: adminUser.id,
-        username: adminUser.username,
-        email: adminUser.email,
-        role: 'ADMIN',
-      };
-    } catch (error) {
-      this.logger.error(
-        `Error validating admin user ${username}: ${error.message}`,
-      );
-      throw new UnauthorizedException('Invalid username or password');
-    }
-  }
-
-  async validateStorefrontUser(
-    username: string,
-    password: string,
-    ip: string,
-    userAgent: string,
-  ) {
-    try {
-      const storefrontUser = await this.prisma.storefrontUser.findUnique({
-        where: { email: username },
-      });
-
-      if (!storefrontUser) {
-        this.logger.warn(
-          `Login failed: Storefront user ${username} not found.`,
-        );
-        throw new UnauthorizedException('Invalid username or password');
-      }
-
-      if (!storefrontUser.password) {
-        this.logger.warn(
-          `Login failed: Storefront user ${username} does not have a password set.`,
-        );
-        throw new UnauthorizedException('Invalid username or password');
-      }
-
-      const passwordValid = await bcrypt.compare(
-        password,
-        storefrontUser.password,
-      );
-      if (!passwordValid) {
-        this.logger.warn(
-          `Login failed: Invalid password for storefront user ${username}.`,
-        );
-        throw new UnauthorizedException('Invalid username or password');
-      }
-
-      return {
-        id: storefrontUser.id,
-        username: storefrontUser.email,
-        email: storefrontUser.email,
-        role: 'STOREFRONT',
-      };
-    } catch (error) {
-      this.logger.error(
-        `Error validating storefront user ${username}: ${error.message}`,
-      );
-      throw error;
-    }
-  }
-
-  async loginTenantUser(req: any) {
-    try {
-      const userId = req.user.id;
-      const ip = req.ip;
-      const userAgent = req.headers['user-agent'] || '';
-      const meta = req.headers;
-
-      const user = await this.userRepo.getTenantUserById(userId);
-
-      if (!user) {
-        this.auditLogService.logEvent({
-          userId: userId,
-          userType: 'TENANT',
-          action: 'LOGIN_FAILED',
-          ip,
-          meta,
-          userAgent,
-        });
-
-        this.logger.warn(`Login failed: User with ID ${userId} not found.`);
-        throw new UnauthorizedException('User not found');
-      }
-
-      const session = await this.createLoginSession({
+      const session = await this.sessionService.createLoginSession({
         userId: user.id,
-        userType: 'TENANT',
-        role: 'TENANT_USER',
-        tenantId: user.tenantId,
-      });
-
-      this.auditLogService.logEvent({
-        userId: user.id,
-        userType: 'TENANT',
-        action: 'LOGIN_SUCCESS',
-        ip,
-        meta,
-        userAgent,
+        userType,
+        role: userType,
+        tenantId,
       });
 
       return {
         accessToken: session.accessToken,
         refreshToken: session.refreshToken,
         user,
-        role: 'TENANT_USER',
+        role: userType,
       };
     } catch (error) {
       this.logger.error(
-        `Error logging in tenant user with ID ${req.user.id}: ${error.message}`,
-      );
-      throw error;
-    }
-  }
-
-  async loginAdminUser(userId: string) {
-    try {
-      const user = await this.prisma.adminUser.findUnique({
-        where: { id: userId },
-      });
-
-      if (!user) {
-        this.logger.warn(
-          `Login failed: Admin user with ID ${userId} not found.`,
-        );
-        throw new UnauthorizedException('User not found');
-      }
-
-      const session = await this.createLoginSession({
-        userId: user.id,
-        userType: 'ADMIN',
-        role: 'ADMIN',
-      });
-
-      return {
-        accessToken: session.accessToken,
-        refreshToken: session.refreshToken,
-        user,
-        role: 'ADMIN',
-      };
-    } catch (error) {
-      this.logger.error(
-        `Error logging in admin user with ID ${userId}: ${error.message}`,
-      );
-      throw error;
-    }
-  }
-
-  async loginStorefrontUser(userId: string) {
-    try {
-      const user = await this.prisma.storefrontUser.findUnique({
-        where: { id: userId },
-      });
-
-      if (!user) {
-        this.logger.warn(
-          `Login failed: Storefront user with ID ${userId} not found.`,
-        );
-        throw new UnauthorizedException('User not found');
-      }
-
-      const session = await this.createLoginSession({
-        userId: user.id,
-        userType: 'STOREFRONT',
-        role: 'STOREFRONT',
-      });
-
-      return {
-        accessToken: session.accessToken,
-        refreshToken: session.refreshToken,
-        user,
-        role: 'STOREFRONT',
-      };
-    } catch (error) {
-      this.logger.error(
-        `Error logging in storefront user with ID ${userId}: ${error.message}`,
+        `Error logging in user with ID ${userId}: ${error.message}`,
       );
       throw error;
     }
@@ -346,40 +146,16 @@ export class AuthService {
     }
   }
 
-  async createLoginSession(params: {
-    userId: string;
-    userType: UserType;
-    role: string;
-    tenantId?: string;
-  }) {
-    try {
-      const session = await this.sessionService.createSession({
-        userId: params.userId,
-        userType: params.userType,
-      });
+  async forgotPassword(data: ResetPasswordRequestDto, req: any) {
+    return this.passwordService.forgotPassword(data, req);
+  }
 
-      const payload = {
-        sub: params.userId,
-        role: params.role,
-        sessionId: session.id,
-        tenantId: params.tenantId,
-      };
+  async changePassword(data: ResetPasswordDto) {
+    return this.passwordService.changePassword(data);
+  }
 
-      const accessToken = this.jwtService.sign(payload);
-      const refreshToken = this.jwtService.sign(
-        payload,
-        this.refreshTokenConfig,
-      );
-
-      await this.sessionService.updateSessionToken(session.id, refreshToken);
-
-      return { accessToken, refreshToken, session };
-    } catch (error) {
-      this.logger.error(
-        `Error creating login session for userId ${params.userId}: ${error.message}`,
-      );
-      throw error;
-    }
+  async verifyOTP(data: VerifyOTPDto) {
+    return this.otpService.verifyOTP(data);
   }
 
   async createStorefrontUser(data: StorefrontAuthDto) {

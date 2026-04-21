@@ -17,7 +17,7 @@ import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/violation')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class TenantViolationController {
   constructor(private readonly service: TenantViolationService) {}
 

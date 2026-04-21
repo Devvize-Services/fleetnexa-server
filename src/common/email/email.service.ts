@@ -1,7 +1,12 @@
 import { Global, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { NotifyService } from '../notify/notify.service.js';
-import { Tenant, User } from '../../generated/prisma/client.js';
+import {
+  Tenant,
+  User,
+  UserRole,
+  UserType,
+} from '../../generated/prisma/client.js';
 import { FormatterService } from '../formatter/formatter.service.js';
 import { SendEmailDto } from '../notify/dto/send-email.dto.js';
 import { CustomerService } from '../../modules/customer/customer.service.js';
@@ -525,16 +530,21 @@ export class EmailService {
     }
   }
 
-  async sendPasswordResetEmail(email: string, token: string) {
+  async sendPasswordResetEmail(email: string, token: string, type: UserType) {
     try {
       const templateData: VerificationEmailDto = {
         verificationCode: token,
       };
 
+      const templateName =
+        type === UserType.STOREFRONT
+          ? 'RentNexaPasswordReset'
+          : 'FleetNexaPasswordReset';
+
       const payload: SendEmailDto = {
         recipients: [email],
         cc: [],
-        templateName: 'FleetNexaPasswordReset',
+        templateName,
         templateData,
         sender: 'no-reply@fleetnexa.com',
         senderName: 'FleetNexa',

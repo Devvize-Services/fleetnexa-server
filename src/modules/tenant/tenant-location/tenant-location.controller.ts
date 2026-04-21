@@ -16,7 +16,7 @@ import { Role } from '../../../common/enums/role.enum.js';
 import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 @Controller('tenant/location')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class TenantLocationController {
   constructor(private readonly service: TenantLocationService) {}
 

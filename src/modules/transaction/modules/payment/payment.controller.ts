@@ -15,7 +15,7 @@ import { Role } from '../../../../common/enums/role.enum.js';
 
 @Controller('transaction/payment')
 @UseGuards(JwtAuthGuard)
-@Roles(Role.TENANT_USER)
+@Roles(Role.TENANT)
 export class PaymentController {
   constructor(private readonly service: PaymentService) {}
 
