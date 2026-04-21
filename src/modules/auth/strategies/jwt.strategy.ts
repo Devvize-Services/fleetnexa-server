@@ -32,7 +32,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       return this.validateStorefrontUser(payload);
     }
 
-    throw new UnauthorizedException('Invalid JWT payload: unrecognized role');
+    throw new UnauthorizedException(
+      `Invalid JWT payload: unrecognized role ${payload.role}`,
+    );
   }
 
   async validateTenantUser(payload: any) {

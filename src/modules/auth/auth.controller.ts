@@ -37,6 +37,14 @@ export class AuthController {
       path: '/',
     });
 
+    res.cookie('refresh_token', refreshToken, {
+      domain: isProd ? '.fleetnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
     return { user };
   }
 

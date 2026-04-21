@@ -176,7 +176,7 @@ export class AuthService {
       const userId = req.user.id;
       const ip = req.ip;
       const userAgent = req.headers['user-agent'] || '';
-      const meta = req.body?.meta || {};
+      const meta = req.headers;
 
       const user = await this.userRepo.getTenantUserById(userId);
 
@@ -197,6 +197,8 @@ export class AuthService {
       const session = await this.createLoginSession({
         userId: user.id,
         userType: 'TENANT',
+        role: 'TENANT_USER',
+        tenantId: user.tenantId,
       });
 
       this.auditLogService.logEvent({
@@ -238,6 +240,7 @@ export class AuthService {
       const session = await this.createLoginSession({
         userId: user.id,
         userType: 'ADMIN',
+        role: 'ADMIN',
       });
 
       return {
@@ -270,6 +273,7 @@ export class AuthService {
       const session = await this.createLoginSession({
         userId: user.id,
         userType: 'STOREFRONT',
+        role: 'STOREFRONT',
       });
 
       return {
@@ -286,7 +290,12 @@ export class AuthService {
     }
   }
 
-  async createLoginSession(params: { userId: string; userType: UserType }) {
+  async createLoginSession(params: {
+    userId: string;
+    userType: UserType;
+    role: string;
+    tenantId?: string;
+  }) {
     try {
       const session = await this.sessionService.createSession({
         userId: params.userId,
@@ -295,8 +304,9 @@ export class AuthService {
 
       const payload = {
         sub: params.userId,
-        role: params.userType,
+        role: params.role,
         sessionId: session.id,
+        tenantId: params.tenantId,
       };
 
       const accessToken = this.jwtService.sign(payload);
