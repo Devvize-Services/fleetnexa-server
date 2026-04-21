@@ -46,9 +46,6 @@ export type TenantMinAggregateOutputType = {
   tenantName: string | null
   email: string | null
   number: string | null
-  whatsappNumber: string | null
-  whatsappNotifications: boolean | null
-  emailNotifications: boolean | null
   currencyId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -67,16 +64,19 @@ export type TenantMinAggregateOutputType = {
   additionalDriverFee: number | null
   daysInMonth: number | null
   slug: string | null
-  subdomain: string | null
   merchantId: string | null
   businessVerified: boolean | null
   emailVerified: boolean | null
   isDeleted: boolean | null
   endTime: string | null
   startTime: string | null
+  emailNotifications: boolean | null
+  whatsappNotifications: boolean | null
+  whatsappNumber: string | null
   firmaWorkspaceId: string | null
   firmaApiKey: string | null
   firmaApiKeyAt: Date | null
+  subdomain: string | null
 }
 
 export type TenantMaxAggregateOutputType = {
@@ -85,9 +85,6 @@ export type TenantMaxAggregateOutputType = {
   tenantName: string | null
   email: string | null
   number: string | null
-  whatsappNumber: string | null
-  whatsappNotifications: boolean | null
-  emailNotifications: boolean | null
   currencyId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -106,16 +103,19 @@ export type TenantMaxAggregateOutputType = {
   additionalDriverFee: number | null
   daysInMonth: number | null
   slug: string | null
-  subdomain: string | null
   merchantId: string | null
   businessVerified: boolean | null
   emailVerified: boolean | null
   isDeleted: boolean | null
   endTime: string | null
   startTime: string | null
+  emailNotifications: boolean | null
+  whatsappNotifications: boolean | null
+  whatsappNumber: string | null
   firmaWorkspaceId: string | null
   firmaApiKey: string | null
   firmaApiKeyAt: Date | null
+  subdomain: string | null
 }
 
 export type TenantCountAggregateOutputType = {
@@ -124,9 +124,6 @@ export type TenantCountAggregateOutputType = {
   tenantName: number
   email: number
   number: number
-  whatsappNumber: number
-  whatsappNotifications: number
-  emailNotifications: number
   currencyId: number
   createdAt: number
   updatedAt: number
@@ -145,16 +142,19 @@ export type TenantCountAggregateOutputType = {
   additionalDriverFee: number
   daysInMonth: number
   slug: number
-  subdomain: number
   merchantId: number
   businessVerified: number
   emailVerified: number
   isDeleted: number
   endTime: number
   startTime: number
+  emailNotifications: number
+  whatsappNotifications: number
+  whatsappNumber: number
   firmaWorkspaceId: number
   firmaApiKey: number
   firmaApiKeyAt: number
+  subdomain: number
   _all: number
 }
 
@@ -179,9 +179,6 @@ export type TenantMinAggregateInputType = {
   tenantName?: true
   email?: true
   number?: true
-  whatsappNumber?: true
-  whatsappNotifications?: true
-  emailNotifications?: true
   currencyId?: true
   createdAt?: true
   updatedAt?: true
@@ -200,16 +197,19 @@ export type TenantMinAggregateInputType = {
   additionalDriverFee?: true
   daysInMonth?: true
   slug?: true
-  subdomain?: true
   merchantId?: true
   businessVerified?: true
   emailVerified?: true
   isDeleted?: true
   endTime?: true
   startTime?: true
+  emailNotifications?: true
+  whatsappNotifications?: true
+  whatsappNumber?: true
   firmaWorkspaceId?: true
   firmaApiKey?: true
   firmaApiKeyAt?: true
+  subdomain?: true
 }
 
 export type TenantMaxAggregateInputType = {
@@ -218,9 +218,6 @@ export type TenantMaxAggregateInputType = {
   tenantName?: true
   email?: true
   number?: true
-  whatsappNumber?: true
-  whatsappNotifications?: true
-  emailNotifications?: true
   currencyId?: true
   createdAt?: true
   updatedAt?: true
@@ -239,16 +236,19 @@ export type TenantMaxAggregateInputType = {
   additionalDriverFee?: true
   daysInMonth?: true
   slug?: true
-  subdomain?: true
   merchantId?: true
   businessVerified?: true
   emailVerified?: true
   isDeleted?: true
   endTime?: true
   startTime?: true
+  emailNotifications?: true
+  whatsappNotifications?: true
+  whatsappNumber?: true
   firmaWorkspaceId?: true
   firmaApiKey?: true
   firmaApiKeyAt?: true
+  subdomain?: true
 }
 
 export type TenantCountAggregateInputType = {
@@ -257,9 +257,6 @@ export type TenantCountAggregateInputType = {
   tenantName?: true
   email?: true
   number?: true
-  whatsappNumber?: true
-  whatsappNotifications?: true
-  emailNotifications?: true
   currencyId?: true
   createdAt?: true
   updatedAt?: true
@@ -278,16 +275,19 @@ export type TenantCountAggregateInputType = {
   additionalDriverFee?: true
   daysInMonth?: true
   slug?: true
-  subdomain?: true
   merchantId?: true
   businessVerified?: true
   emailVerified?: true
   isDeleted?: true
   endTime?: true
   startTime?: true
+  emailNotifications?: true
+  whatsappNotifications?: true
+  whatsappNumber?: true
   firmaWorkspaceId?: true
   firmaApiKey?: true
   firmaApiKeyAt?: true
+  subdomain?: true
   _all?: true
 }
 
@@ -383,9 +383,6 @@ export type TenantGroupByOutputType = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber: string | null
-  whatsappNotifications: boolean
-  emailNotifications: boolean
   currencyId: string | null
   createdAt: Date
   updatedAt: Date | null
@@ -404,16 +401,19 @@ export type TenantGroupByOutputType = {
   additionalDriverFee: number
   daysInMonth: number
   slug: string | null
-  subdomain: string | null
   merchantId: string | null
   businessVerified: boolean
   emailVerified: boolean
   isDeleted: boolean
   endTime: string | null
   startTime: string | null
+  emailNotifications: boolean
+  whatsappNotifications: boolean
+  whatsappNumber: string | null
   firmaWorkspaceId: string | null
   firmaApiKey: string | null
   firmaApiKeyAt: Date | null
+  subdomain: string | null
   _count: TenantCountAggregateOutputType | null
   _avg: TenantAvgAggregateOutputType | null
   _sum: TenantSumAggregateOutputType | null
@@ -445,9 +445,6 @@ export type TenantWhereInput = {
   tenantName?: Prisma.StringFilter<"Tenant"> | string
   email?: Prisma.StringFilter<"Tenant"> | string
   number?: Prisma.StringFilter<"Tenant"> | string
-  whatsappNumber?: Prisma.StringNullableFilter<"Tenant"> | string | null
-  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
-  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
   currencyId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Tenant"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
@@ -466,16 +463,19 @@ export type TenantWhereInput = {
   additionalDriverFee?: Prisma.FloatFilter<"Tenant"> | number
   daysInMonth?: Prisma.IntFilter<"Tenant"> | number
   slug?: Prisma.StringNullableFilter<"Tenant"> | string | null
-  subdomain?: Prisma.StringNullableFilter<"Tenant"> | string | null
   merchantId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   businessVerified?: Prisma.BoolFilter<"Tenant"> | boolean
   emailVerified?: Prisma.BoolFilter<"Tenant"> | boolean
   isDeleted?: Prisma.BoolFilter<"Tenant"> | boolean
   endTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
   startTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
+  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
+  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
+  whatsappNumber?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaWorkspaceId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaApiKey?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaApiKeyAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
+  subdomain?: Prisma.StringNullableFilter<"Tenant"> | string | null
   address?: Prisma.XOR<Prisma.AddressNullableScalarRelationFilter, Prisma.AddressWhereInput> | null
   customers?: Prisma.CustomerListRelationFilter
   customerViolations?: Prisma.CustomerViolationListRelationFilter
@@ -484,6 +484,7 @@ export type TenantWhereInput = {
   forms?: Prisma.FormListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
+  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
   refunds?: Prisma.RefundListRelationFilter
   rentals?: Prisma.RentalListRelationFilter
   rentalActivity?: Prisma.RentalActivityListRelationFilter
@@ -517,7 +518,6 @@ export type TenantWhereInput = {
   maintenance?: Prisma.VehicleMaintenanceListRelationFilter
   verificationRequest?: Prisma.XOR<Prisma.VerificationRequestNullableScalarRelationFilter, Prisma.VerificationRequestWhereInput> | null
   paymentMethods?: Prisma.PaymentMethodListRelationFilter
-  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
 }
 
 export type TenantOrderByWithRelationInput = {
@@ -526,9 +526,6 @@ export type TenantOrderByWithRelationInput = {
   tenantName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   number?: Prisma.SortOrder
-  whatsappNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  whatsappNotifications?: Prisma.SortOrder
-  emailNotifications?: Prisma.SortOrder
   currencyId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -547,16 +544,19 @@ export type TenantOrderByWithRelationInput = {
   additionalDriverFee?: Prisma.SortOrder
   daysInMonth?: Prisma.SortOrder
   slug?: Prisma.SortOrderInput | Prisma.SortOrder
-  subdomain?: Prisma.SortOrderInput | Prisma.SortOrder
   merchantId?: Prisma.SortOrderInput | Prisma.SortOrder
   businessVerified?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   endTime?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  whatsappNotifications?: Prisma.SortOrder
+  whatsappNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaWorkspaceId?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaApiKey?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaApiKeyAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  subdomain?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.AddressOrderByWithRelationInput
   customers?: Prisma.CustomerOrderByRelationAggregateInput
   customerViolations?: Prisma.CustomerViolationOrderByRelationAggregateInput
@@ -565,6 +565,7 @@ export type TenantOrderByWithRelationInput = {
   forms?: Prisma.FormOrderByRelationAggregateInput
   invoices?: Prisma.InvoiceOrderByRelationAggregateInput
   payments?: Prisma.PaymentOrderByRelationAggregateInput
+  paymentReceipts?: Prisma.PaymentReceiptOrderByRelationAggregateInput
   refunds?: Prisma.RefundOrderByRelationAggregateInput
   rentals?: Prisma.RentalOrderByRelationAggregateInput
   rentalActivity?: Prisma.RentalActivityOrderByRelationAggregateInput
@@ -598,7 +599,6 @@ export type TenantOrderByWithRelationInput = {
   maintenance?: Prisma.VehicleMaintenanceOrderByRelationAggregateInput
   verificationRequest?: Prisma.VerificationRequestOrderByWithRelationInput
   paymentMethods?: Prisma.PaymentMethodOrderByRelationAggregateInput
-  paymentReceipts?: Prisma.PaymentReceiptOrderByRelationAggregateInput
 }
 
 export type TenantWhereUniqueInput = Prisma.AtLeast<{
@@ -606,18 +606,16 @@ export type TenantWhereUniqueInput = Prisma.AtLeast<{
   tenantCode?: string
   email?: string
   number?: string
-  whatsappNumber?: string
   cancellationPolicyId?: string
   latePolicyId?: string
   slug?: string
-  subdomain?: string
+  whatsappNumber?: string
   firmaWorkspaceId?: string
+  subdomain?: string
   AND?: Prisma.TenantWhereInput | Prisma.TenantWhereInput[]
   OR?: Prisma.TenantWhereInput[]
   NOT?: Prisma.TenantWhereInput | Prisma.TenantWhereInput[]
   tenantName?: Prisma.StringFilter<"Tenant"> | string
-  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
-  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
   currencyId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Tenant"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
@@ -639,6 +637,8 @@ export type TenantWhereUniqueInput = Prisma.AtLeast<{
   isDeleted?: Prisma.BoolFilter<"Tenant"> | boolean
   endTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
   startTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
+  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
+  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
   firmaApiKey?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaApiKeyAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
   address?: Prisma.XOR<Prisma.AddressNullableScalarRelationFilter, Prisma.AddressWhereInput> | null
@@ -649,6 +649,7 @@ export type TenantWhereUniqueInput = Prisma.AtLeast<{
   forms?: Prisma.FormListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
+  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
   refunds?: Prisma.RefundListRelationFilter
   rentals?: Prisma.RentalListRelationFilter
   rentalActivity?: Prisma.RentalActivityListRelationFilter
@@ -682,8 +683,7 @@ export type TenantWhereUniqueInput = Prisma.AtLeast<{
   maintenance?: Prisma.VehicleMaintenanceListRelationFilter
   verificationRequest?: Prisma.XOR<Prisma.VerificationRequestNullableScalarRelationFilter, Prisma.VerificationRequestWhereInput> | null
   paymentMethods?: Prisma.PaymentMethodListRelationFilter
-  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
-}, "id" | "tenantCode" | "email" | "number" | "whatsappNumber" | "cancellationPolicyId" | "latePolicyId" | "slug" | "subdomain" | "firmaWorkspaceId">
+}, "id" | "tenantCode" | "email" | "number" | "cancellationPolicyId" | "latePolicyId" | "slug" | "whatsappNumber" | "firmaWorkspaceId" | "subdomain">
 
 export type TenantOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -691,9 +691,6 @@ export type TenantOrderByWithAggregationInput = {
   tenantName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   number?: Prisma.SortOrder
-  whatsappNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  whatsappNotifications?: Prisma.SortOrder
-  emailNotifications?: Prisma.SortOrder
   currencyId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -712,16 +709,19 @@ export type TenantOrderByWithAggregationInput = {
   additionalDriverFee?: Prisma.SortOrder
   daysInMonth?: Prisma.SortOrder
   slug?: Prisma.SortOrderInput | Prisma.SortOrder
-  subdomain?: Prisma.SortOrderInput | Prisma.SortOrder
   merchantId?: Prisma.SortOrderInput | Prisma.SortOrder
   businessVerified?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   endTime?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  whatsappNotifications?: Prisma.SortOrder
+  whatsappNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaWorkspaceId?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaApiKey?: Prisma.SortOrderInput | Prisma.SortOrder
   firmaApiKeyAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  subdomain?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TenantCountOrderByAggregateInput
   _avg?: Prisma.TenantAvgOrderByAggregateInput
   _max?: Prisma.TenantMaxOrderByAggregateInput
@@ -738,9 +738,6 @@ export type TenantScalarWhereWithAggregatesInput = {
   tenantName?: Prisma.StringWithAggregatesFilter<"Tenant"> | string
   email?: Prisma.StringWithAggregatesFilter<"Tenant"> | string
   number?: Prisma.StringWithAggregatesFilter<"Tenant"> | string
-  whatsappNumber?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
-  whatsappNotifications?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
-  emailNotifications?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
   currencyId?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Tenant"> | Date | string
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Tenant"> | Date | string | null
@@ -759,16 +756,19 @@ export type TenantScalarWhereWithAggregatesInput = {
   additionalDriverFee?: Prisma.FloatWithAggregatesFilter<"Tenant"> | number
   daysInMonth?: Prisma.IntWithAggregatesFilter<"Tenant"> | number
   slug?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
-  subdomain?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   merchantId?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   businessVerified?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
   emailVerified?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
   isDeleted?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
   endTime?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   startTime?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
+  emailNotifications?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
+  whatsappNotifications?: Prisma.BoolWithAggregatesFilter<"Tenant"> | boolean
+  whatsappNumber?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   firmaWorkspaceId?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   firmaApiKey?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
   firmaApiKeyAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Tenant"> | Date | string | null
+  subdomain?: Prisma.StringNullableWithAggregatesFilter<"Tenant"> | string | null
 }
 
 export type TenantCreateInput = {
@@ -777,9 +777,6 @@ export type TenantCreateInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -794,16 +791,19 @@ export type TenantCreateInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -812,6 +812,7 @@ export type TenantCreateInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -845,7 +846,6 @@ export type TenantCreateInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateInput = {
@@ -854,9 +854,6 @@ export type TenantUncheckedCreateInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -875,16 +872,19 @@ export type TenantUncheckedCreateInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -893,6 +893,7 @@ export type TenantUncheckedCreateInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -922,7 +923,6 @@ export type TenantUncheckedCreateInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUpdateInput = {
@@ -931,9 +931,6 @@ export type TenantUpdateInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -948,16 +945,19 @@ export type TenantUpdateInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -966,6 +966,7 @@ export type TenantUpdateInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -999,7 +1000,6 @@ export type TenantUpdateInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateInput = {
@@ -1008,9 +1008,6 @@ export type TenantUncheckedUpdateInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1029,16 +1026,19 @@ export type TenantUncheckedUpdateInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -1047,6 +1047,7 @@ export type TenantUncheckedUpdateInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -1076,7 +1077,6 @@ export type TenantUncheckedUpdateInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateManyInput = {
@@ -1085,9 +1085,6 @@ export type TenantCreateManyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -1106,16 +1103,19 @@ export type TenantCreateManyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
 }
 
 export type TenantUpdateManyMutationInput = {
@@ -1124,9 +1124,6 @@ export type TenantUpdateManyMutationInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1141,16 +1138,19 @@ export type TenantUpdateManyMutationInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantUncheckedUpdateManyInput = {
@@ -1159,9 +1159,6 @@ export type TenantUncheckedUpdateManyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1180,16 +1177,19 @@ export type TenantUncheckedUpdateManyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantListRelationFilter = {
@@ -1213,9 +1213,6 @@ export type TenantCountOrderByAggregateInput = {
   tenantName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   number?: Prisma.SortOrder
-  whatsappNumber?: Prisma.SortOrder
-  whatsappNotifications?: Prisma.SortOrder
-  emailNotifications?: Prisma.SortOrder
   currencyId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -1234,16 +1231,19 @@ export type TenantCountOrderByAggregateInput = {
   additionalDriverFee?: Prisma.SortOrder
   daysInMonth?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  subdomain?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
   businessVerified?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  whatsappNotifications?: Prisma.SortOrder
+  whatsappNumber?: Prisma.SortOrder
   firmaWorkspaceId?: Prisma.SortOrder
   firmaApiKey?: Prisma.SortOrder
   firmaApiKeyAt?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
 }
 
 export type TenantAvgOrderByAggregateInput = {
@@ -1259,9 +1259,6 @@ export type TenantMaxOrderByAggregateInput = {
   tenantName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   number?: Prisma.SortOrder
-  whatsappNumber?: Prisma.SortOrder
-  whatsappNotifications?: Prisma.SortOrder
-  emailNotifications?: Prisma.SortOrder
   currencyId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -1280,16 +1277,19 @@ export type TenantMaxOrderByAggregateInput = {
   additionalDriverFee?: Prisma.SortOrder
   daysInMonth?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  subdomain?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
   businessVerified?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  whatsappNotifications?: Prisma.SortOrder
+  whatsappNumber?: Prisma.SortOrder
   firmaWorkspaceId?: Prisma.SortOrder
   firmaApiKey?: Prisma.SortOrder
   firmaApiKeyAt?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
 }
 
 export type TenantMinOrderByAggregateInput = {
@@ -1298,9 +1298,6 @@ export type TenantMinOrderByAggregateInput = {
   tenantName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   number?: Prisma.SortOrder
-  whatsappNumber?: Prisma.SortOrder
-  whatsappNotifications?: Prisma.SortOrder
-  emailNotifications?: Prisma.SortOrder
   currencyId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -1319,16 +1316,19 @@ export type TenantMinOrderByAggregateInput = {
   additionalDriverFee?: Prisma.SortOrder
   daysInMonth?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  subdomain?: Prisma.SortOrder
   merchantId?: Prisma.SortOrder
   businessVerified?: Prisma.SortOrder
   emailVerified?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
+  emailNotifications?: Prisma.SortOrder
+  whatsappNotifications?: Prisma.SortOrder
+  whatsappNumber?: Prisma.SortOrder
   firmaWorkspaceId?: Prisma.SortOrder
   firmaApiKey?: Prisma.SortOrder
   firmaApiKeyAt?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
 }
 
 export type TenantSumOrderByAggregateInput = {
@@ -1997,12 +1997,10 @@ export type TenantCreateNestedOneWithoutUsersInput = {
   connect?: Prisma.TenantWhereUniqueInput
 }
 
-export type TenantUpdateOneWithoutUsersNestedInput = {
+export type TenantUpdateOneRequiredWithoutUsersNestedInput = {
   create?: Prisma.XOR<Prisma.TenantCreateWithoutUsersInput, Prisma.TenantUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.TenantCreateOrConnectWithoutUsersInput
   upsert?: Prisma.TenantUpsertWithoutUsersInput
-  disconnect?: Prisma.TenantWhereInput | boolean
-  delete?: Prisma.TenantWhereInput | boolean
   connect?: Prisma.TenantWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TenantUpdateToOneWithWhereWithoutUsersInput, Prisma.TenantUpdateWithoutUsersInput>, Prisma.TenantUncheckedUpdateWithoutUsersInput>
 }
@@ -2059,9 +2057,6 @@ export type TenantCreateWithoutInvoiceSequenceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -2076,16 +2071,19 @@ export type TenantCreateWithoutInvoiceSequenceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -2094,6 +2092,7 @@ export type TenantCreateWithoutInvoiceSequenceInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -2126,7 +2125,6 @@ export type TenantCreateWithoutInvoiceSequenceInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutInvoiceSequenceInput = {
@@ -2135,9 +2133,6 @@ export type TenantUncheckedCreateWithoutInvoiceSequenceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -2155,16 +2150,19 @@ export type TenantUncheckedCreateWithoutInvoiceSequenceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -2173,6 +2171,7 @@ export type TenantUncheckedCreateWithoutInvoiceSequenceInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -2202,7 +2201,6 @@ export type TenantUncheckedCreateWithoutInvoiceSequenceInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutInvoiceSequenceInput = {
@@ -2240,9 +2238,6 @@ export type TenantScalarWhereInput = {
   tenantName?: Prisma.StringFilter<"Tenant"> | string
   email?: Prisma.StringFilter<"Tenant"> | string
   number?: Prisma.StringFilter<"Tenant"> | string
-  whatsappNumber?: Prisma.StringNullableFilter<"Tenant"> | string | null
-  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
-  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
   currencyId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Tenant"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
@@ -2261,16 +2256,19 @@ export type TenantScalarWhereInput = {
   additionalDriverFee?: Prisma.FloatFilter<"Tenant"> | number
   daysInMonth?: Prisma.IntFilter<"Tenant"> | number
   slug?: Prisma.StringNullableFilter<"Tenant"> | string | null
-  subdomain?: Prisma.StringNullableFilter<"Tenant"> | string | null
   merchantId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   businessVerified?: Prisma.BoolFilter<"Tenant"> | boolean
   emailVerified?: Prisma.BoolFilter<"Tenant"> | boolean
   isDeleted?: Prisma.BoolFilter<"Tenant"> | boolean
   endTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
   startTime?: Prisma.StringNullableFilter<"Tenant"> | string | null
+  emailNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
+  whatsappNotifications?: Prisma.BoolFilter<"Tenant"> | boolean
+  whatsappNumber?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaWorkspaceId?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaApiKey?: Prisma.StringNullableFilter<"Tenant"> | string | null
   firmaApiKeyAt?: Prisma.DateTimeNullableFilter<"Tenant"> | Date | string | null
+  subdomain?: Prisma.StringNullableFilter<"Tenant"> | string | null
 }
 
 export type TenantCreateWithoutCustomersInput = {
@@ -2279,9 +2277,6 @@ export type TenantCreateWithoutCustomersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -2296,16 +2291,19 @@ export type TenantCreateWithoutCustomersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationCreateNestedManyWithoutTenantInput
@@ -2313,6 +2311,7 @@ export type TenantCreateWithoutCustomersInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -2346,7 +2345,6 @@ export type TenantCreateWithoutCustomersInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCustomersInput = {
@@ -2355,9 +2353,6 @@ export type TenantUncheckedCreateWithoutCustomersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -2376,16 +2371,19 @@ export type TenantUncheckedCreateWithoutCustomersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationUncheckedCreateNestedManyWithoutTenantInput
@@ -2393,6 +2391,7 @@ export type TenantUncheckedCreateWithoutCustomersInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -2422,7 +2421,6 @@ export type TenantUncheckedCreateWithoutCustomersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCustomersInput = {
@@ -2447,9 +2445,6 @@ export type TenantUpdateWithoutCustomersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2464,16 +2459,19 @@ export type TenantUpdateWithoutCustomersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUpdateManyWithoutTenantNestedInput
@@ -2481,6 +2479,7 @@ export type TenantUpdateWithoutCustomersInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -2514,7 +2513,6 @@ export type TenantUpdateWithoutCustomersInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCustomersInput = {
@@ -2523,9 +2521,6 @@ export type TenantUncheckedUpdateWithoutCustomersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2544,16 +2539,19 @@ export type TenantUncheckedUpdateWithoutCustomersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUncheckedUpdateManyWithoutTenantNestedInput
@@ -2561,6 +2559,7 @@ export type TenantUncheckedUpdateWithoutCustomersInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -2590,7 +2589,6 @@ export type TenantUncheckedUpdateWithoutCustomersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutCustomerViolationsInput = {
@@ -2599,9 +2597,6 @@ export type TenantCreateWithoutCustomerViolationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -2616,16 +2611,19 @@ export type TenantCreateWithoutCustomerViolationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationCreateNestedManyWithoutTenantInput
@@ -2633,6 +2631,7 @@ export type TenantCreateWithoutCustomerViolationsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -2666,7 +2665,6 @@ export type TenantCreateWithoutCustomerViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCustomerViolationsInput = {
@@ -2675,9 +2673,6 @@ export type TenantUncheckedCreateWithoutCustomerViolationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -2696,16 +2691,19 @@ export type TenantUncheckedCreateWithoutCustomerViolationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationUncheckedCreateNestedManyWithoutTenantInput
@@ -2713,6 +2711,7 @@ export type TenantUncheckedCreateWithoutCustomerViolationsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -2742,7 +2741,6 @@ export type TenantUncheckedCreateWithoutCustomerViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCustomerViolationsInput = {
@@ -2767,9 +2765,6 @@ export type TenantUpdateWithoutCustomerViolationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2784,16 +2779,19 @@ export type TenantUpdateWithoutCustomerViolationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUpdateManyWithoutTenantNestedInput
@@ -2801,6 +2799,7 @@ export type TenantUpdateWithoutCustomerViolationsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -2834,7 +2833,6 @@ export type TenantUpdateWithoutCustomerViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCustomerViolationsInput = {
@@ -2843,9 +2841,6 @@ export type TenantUncheckedUpdateWithoutCustomerViolationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2864,16 +2859,19 @@ export type TenantUncheckedUpdateWithoutCustomerViolationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUncheckedUpdateManyWithoutTenantNestedInput
@@ -2881,6 +2879,7 @@ export type TenantUncheckedUpdateWithoutCustomerViolationsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -2910,7 +2909,6 @@ export type TenantUncheckedUpdateWithoutCustomerViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutAgreementsInput = {
@@ -2919,9 +2917,6 @@ export type TenantCreateWithoutAgreementsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -2936,16 +2931,19 @@ export type TenantCreateWithoutAgreementsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -2954,6 +2952,7 @@ export type TenantCreateWithoutAgreementsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -2986,7 +2985,6 @@ export type TenantCreateWithoutAgreementsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutAgreementsInput = {
@@ -2995,9 +2993,6 @@ export type TenantUncheckedCreateWithoutAgreementsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -3016,16 +3011,19 @@ export type TenantUncheckedCreateWithoutAgreementsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -3034,6 +3032,7 @@ export type TenantUncheckedCreateWithoutAgreementsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -3062,7 +3061,6 @@ export type TenantUncheckedCreateWithoutAgreementsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutAgreementsInput = {
@@ -3087,9 +3085,6 @@ export type TenantUpdateWithoutAgreementsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3104,16 +3099,19 @@ export type TenantUpdateWithoutAgreementsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -3122,6 +3120,7 @@ export type TenantUpdateWithoutAgreementsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -3154,7 +3153,6 @@ export type TenantUpdateWithoutAgreementsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutAgreementsInput = {
@@ -3163,9 +3161,6 @@ export type TenantUncheckedUpdateWithoutAgreementsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3184,16 +3179,19 @@ export type TenantUncheckedUpdateWithoutAgreementsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -3202,6 +3200,7 @@ export type TenantUncheckedUpdateWithoutAgreementsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -3230,7 +3229,6 @@ export type TenantUncheckedUpdateWithoutAgreementsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutInvoicesInput = {
@@ -3239,9 +3237,6 @@ export type TenantCreateWithoutInvoicesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -3256,16 +3251,19 @@ export type TenantCreateWithoutInvoicesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -3273,6 +3271,7 @@ export type TenantCreateWithoutInvoicesInput = {
   expenses?: Prisma.ExpenseCreateNestedManyWithoutTenantInput
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -3306,7 +3305,6 @@ export type TenantCreateWithoutInvoicesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutInvoicesInput = {
@@ -3315,9 +3313,6 @@ export type TenantUncheckedCreateWithoutInvoicesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -3336,16 +3331,19 @@ export type TenantUncheckedCreateWithoutInvoicesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -3353,6 +3351,7 @@ export type TenantUncheckedCreateWithoutInvoicesInput = {
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutTenantInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -3382,7 +3381,6 @@ export type TenantUncheckedCreateWithoutInvoicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutInvoicesInput = {
@@ -3407,9 +3405,6 @@ export type TenantUpdateWithoutInvoicesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3424,16 +3419,19 @@ export type TenantUpdateWithoutInvoicesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -3441,6 +3439,7 @@ export type TenantUpdateWithoutInvoicesInput = {
   expenses?: Prisma.ExpenseUpdateManyWithoutTenantNestedInput
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -3474,7 +3473,6 @@ export type TenantUpdateWithoutInvoicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutInvoicesInput = {
@@ -3483,9 +3481,6 @@ export type TenantUncheckedUpdateWithoutInvoicesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3504,16 +3499,19 @@ export type TenantUncheckedUpdateWithoutInvoicesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -3521,6 +3519,7 @@ export type TenantUncheckedUpdateWithoutInvoicesInput = {
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutTenantNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -3550,7 +3549,6 @@ export type TenantUncheckedUpdateWithoutInvoicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPaymentReceiptsInput = {
@@ -3559,9 +3557,6 @@ export type TenantCreateWithoutPaymentReceiptsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -3576,16 +3571,19 @@ export type TenantCreateWithoutPaymentReceiptsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -3635,9 +3633,6 @@ export type TenantUncheckedCreateWithoutPaymentReceiptsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -3656,16 +3651,19 @@ export type TenantUncheckedCreateWithoutPaymentReceiptsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -3727,9 +3725,6 @@ export type TenantUpdateWithoutPaymentReceiptsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3744,16 +3739,19 @@ export type TenantUpdateWithoutPaymentReceiptsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -3803,9 +3801,6 @@ export type TenantUncheckedUpdateWithoutPaymentReceiptsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3824,16 +3819,19 @@ export type TenantUncheckedUpdateWithoutPaymentReceiptsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -3879,9 +3877,6 @@ export type TenantCreateWithoutMerchantInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -3896,16 +3891,19 @@ export type TenantCreateWithoutMerchantInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -3914,6 +3912,7 @@ export type TenantCreateWithoutMerchantInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -3946,7 +3945,6 @@ export type TenantCreateWithoutMerchantInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMerchantInput = {
@@ -3955,9 +3953,6 @@ export type TenantUncheckedCreateWithoutMerchantInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -3976,16 +3971,19 @@ export type TenantUncheckedCreateWithoutMerchantInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -3994,6 +3992,7 @@ export type TenantUncheckedCreateWithoutMerchantInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -4022,7 +4021,6 @@ export type TenantUncheckedCreateWithoutMerchantInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMerchantInput = {
@@ -4047,9 +4045,6 @@ export type TenantUpdateWithoutMerchantInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4064,16 +4059,19 @@ export type TenantUpdateWithoutMerchantInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -4082,6 +4080,7 @@ export type TenantUpdateWithoutMerchantInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -4114,7 +4113,6 @@ export type TenantUpdateWithoutMerchantInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMerchantInput = {
@@ -4123,9 +4121,6 @@ export type TenantUncheckedUpdateWithoutMerchantInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4144,16 +4139,19 @@ export type TenantUncheckedUpdateWithoutMerchantInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -4162,6 +4160,7 @@ export type TenantUncheckedUpdateWithoutMerchantInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -4190,7 +4189,6 @@ export type TenantUncheckedUpdateWithoutMerchantInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutCurrencyInput = {
@@ -4199,9 +4197,6 @@ export type TenantCreateWithoutCurrencyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -4216,16 +4211,19 @@ export type TenantCreateWithoutCurrencyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -4234,6 +4232,7 @@ export type TenantCreateWithoutCurrencyInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -4266,7 +4265,6 @@ export type TenantCreateWithoutCurrencyInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCurrencyInput = {
@@ -4275,9 +4273,6 @@ export type TenantUncheckedCreateWithoutCurrencyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -4295,16 +4290,19 @@ export type TenantUncheckedCreateWithoutCurrencyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -4313,6 +4311,7 @@ export type TenantUncheckedCreateWithoutCurrencyInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -4342,7 +4341,6 @@ export type TenantUncheckedCreateWithoutCurrencyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCurrencyInput = {
@@ -4377,9 +4375,6 @@ export type TenantCreateWithoutCurrencyRatesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -4394,16 +4389,19 @@ export type TenantCreateWithoutCurrencyRatesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -4412,6 +4410,7 @@ export type TenantCreateWithoutCurrencyRatesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -4444,7 +4443,6 @@ export type TenantCreateWithoutCurrencyRatesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCurrencyRatesInput = {
@@ -4453,9 +4451,6 @@ export type TenantUncheckedCreateWithoutCurrencyRatesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -4474,16 +4469,19 @@ export type TenantUncheckedCreateWithoutCurrencyRatesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -4492,6 +4490,7 @@ export type TenantUncheckedCreateWithoutCurrencyRatesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -4520,7 +4519,6 @@ export type TenantUncheckedCreateWithoutCurrencyRatesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCurrencyRatesInput = {
@@ -4545,9 +4543,6 @@ export type TenantUpdateWithoutCurrencyRatesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4562,16 +4557,19 @@ export type TenantUpdateWithoutCurrencyRatesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -4580,6 +4578,7 @@ export type TenantUpdateWithoutCurrencyRatesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -4612,7 +4611,6 @@ export type TenantUpdateWithoutCurrencyRatesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCurrencyRatesInput = {
@@ -4621,9 +4619,6 @@ export type TenantUncheckedUpdateWithoutCurrencyRatesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4642,16 +4637,19 @@ export type TenantUncheckedUpdateWithoutCurrencyRatesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -4660,6 +4658,7 @@ export type TenantUncheckedUpdateWithoutCurrencyRatesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -4688,7 +4687,6 @@ export type TenantUncheckedUpdateWithoutCurrencyRatesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutFormsInput = {
@@ -4697,9 +4695,6 @@ export type TenantCreateWithoutFormsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -4714,16 +4709,19 @@ export type TenantCreateWithoutFormsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -4731,6 +4729,7 @@ export type TenantCreateWithoutFormsInput = {
   expenses?: Prisma.ExpenseCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -4764,7 +4763,6 @@ export type TenantCreateWithoutFormsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutFormsInput = {
@@ -4773,9 +4771,6 @@ export type TenantUncheckedCreateWithoutFormsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -4794,16 +4789,19 @@ export type TenantUncheckedCreateWithoutFormsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -4811,6 +4809,7 @@ export type TenantUncheckedCreateWithoutFormsInput = {
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -4840,7 +4839,6 @@ export type TenantUncheckedCreateWithoutFormsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutFormsInput = {
@@ -4865,9 +4863,6 @@ export type TenantUpdateWithoutFormsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4882,16 +4877,19 @@ export type TenantUpdateWithoutFormsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -4899,6 +4897,7 @@ export type TenantUpdateWithoutFormsInput = {
   expenses?: Prisma.ExpenseUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -4932,7 +4931,6 @@ export type TenantUpdateWithoutFormsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutFormsInput = {
@@ -4941,9 +4939,6 @@ export type TenantUncheckedUpdateWithoutFormsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4962,16 +4957,19 @@ export type TenantUncheckedUpdateWithoutFormsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -4979,6 +4977,7 @@ export type TenantUncheckedUpdateWithoutFormsInput = {
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -5008,7 +5007,6 @@ export type TenantUncheckedUpdateWithoutFormsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRentalActivityInput = {
@@ -5017,9 +5015,6 @@ export type TenantCreateWithoutRentalActivityInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -5034,16 +5029,19 @@ export type TenantCreateWithoutRentalActivityInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -5052,6 +5050,7 @@ export type TenantCreateWithoutRentalActivityInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutTenantInput
@@ -5084,7 +5083,6 @@ export type TenantCreateWithoutRentalActivityInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRentalActivityInput = {
@@ -5093,9 +5091,6 @@ export type TenantUncheckedCreateWithoutRentalActivityInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -5114,16 +5109,19 @@ export type TenantUncheckedCreateWithoutRentalActivityInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -5132,6 +5130,7 @@ export type TenantUncheckedCreateWithoutRentalActivityInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutTenantInput
@@ -5160,7 +5159,6 @@ export type TenantUncheckedCreateWithoutRentalActivityInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRentalActivityInput = {
@@ -5185,9 +5183,6 @@ export type TenantUpdateWithoutRentalActivityInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5202,16 +5197,19 @@ export type TenantUpdateWithoutRentalActivityInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -5220,6 +5218,7 @@ export type TenantUpdateWithoutRentalActivityInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutTenantNestedInput
@@ -5252,7 +5251,6 @@ export type TenantUpdateWithoutRentalActivityInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRentalActivityInput = {
@@ -5261,9 +5259,6 @@ export type TenantUncheckedUpdateWithoutRentalActivityInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5282,16 +5277,19 @@ export type TenantUncheckedUpdateWithoutRentalActivityInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -5300,6 +5298,7 @@ export type TenantUncheckedUpdateWithoutRentalActivityInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutTenantNestedInput
@@ -5328,7 +5327,6 @@ export type TenantUncheckedUpdateWithoutRentalActivityInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutNotificationsInput = {
@@ -5337,9 +5335,6 @@ export type TenantCreateWithoutNotificationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -5354,16 +5349,19 @@ export type TenantCreateWithoutNotificationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -5372,6 +5370,7 @@ export type TenantCreateWithoutNotificationsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -5404,7 +5403,6 @@ export type TenantCreateWithoutNotificationsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutNotificationsInput = {
@@ -5413,9 +5411,6 @@ export type TenantUncheckedCreateWithoutNotificationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -5434,16 +5429,19 @@ export type TenantUncheckedCreateWithoutNotificationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -5452,6 +5450,7 @@ export type TenantUncheckedCreateWithoutNotificationsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -5480,7 +5479,6 @@ export type TenantUncheckedCreateWithoutNotificationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutNotificationsInput = {
@@ -5505,9 +5503,6 @@ export type TenantUpdateWithoutNotificationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5522,16 +5517,19 @@ export type TenantUpdateWithoutNotificationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -5540,6 +5538,7 @@ export type TenantUpdateWithoutNotificationsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -5572,7 +5571,6 @@ export type TenantUpdateWithoutNotificationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutNotificationsInput = {
@@ -5581,9 +5579,6 @@ export type TenantUncheckedUpdateWithoutNotificationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5602,16 +5597,19 @@ export type TenantUncheckedUpdateWithoutNotificationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -5620,6 +5618,7 @@ export type TenantUncheckedUpdateWithoutNotificationsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -5648,7 +5647,6 @@ export type TenantUncheckedUpdateWithoutNotificationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRentalsInput = {
@@ -5657,9 +5655,6 @@ export type TenantCreateWithoutRentalsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -5674,16 +5669,19 @@ export type TenantCreateWithoutRentalsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -5692,6 +5690,7 @@ export type TenantCreateWithoutRentalsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutTenantInput
@@ -5724,7 +5723,6 @@ export type TenantCreateWithoutRentalsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRentalsInput = {
@@ -5733,9 +5731,6 @@ export type TenantUncheckedCreateWithoutRentalsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -5754,16 +5749,19 @@ export type TenantUncheckedCreateWithoutRentalsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -5772,6 +5770,7 @@ export type TenantUncheckedCreateWithoutRentalsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutTenantInput
@@ -5800,7 +5799,6 @@ export type TenantUncheckedCreateWithoutRentalsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRentalsInput = {
@@ -5825,9 +5823,6 @@ export type TenantUpdateWithoutRentalsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5842,16 +5837,19 @@ export type TenantUpdateWithoutRentalsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -5860,6 +5858,7 @@ export type TenantUpdateWithoutRentalsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutTenantNestedInput
@@ -5892,7 +5891,6 @@ export type TenantUpdateWithoutRentalsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRentalsInput = {
@@ -5901,9 +5899,6 @@ export type TenantUncheckedUpdateWithoutRentalsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5922,16 +5917,19 @@ export type TenantUncheckedUpdateWithoutRentalsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -5940,6 +5938,7 @@ export type TenantUncheckedUpdateWithoutRentalsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutTenantNestedInput
@@ -5968,7 +5967,6 @@ export type TenantUncheckedUpdateWithoutRentalsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutChargesInput = {
@@ -5977,9 +5975,6 @@ export type TenantCreateWithoutChargesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -5994,16 +5989,19 @@ export type TenantCreateWithoutChargesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -6012,6 +6010,7 @@ export type TenantCreateWithoutChargesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -6044,7 +6043,6 @@ export type TenantCreateWithoutChargesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutChargesInput = {
@@ -6053,9 +6051,6 @@ export type TenantUncheckedCreateWithoutChargesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -6074,16 +6069,19 @@ export type TenantUncheckedCreateWithoutChargesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -6092,6 +6090,7 @@ export type TenantUncheckedCreateWithoutChargesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -6120,7 +6119,6 @@ export type TenantUncheckedCreateWithoutChargesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutChargesInput = {
@@ -6145,9 +6143,6 @@ export type TenantUpdateWithoutChargesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6162,16 +6157,19 @@ export type TenantUpdateWithoutChargesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -6180,6 +6178,7 @@ export type TenantUpdateWithoutChargesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -6212,7 +6211,6 @@ export type TenantUpdateWithoutChargesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutChargesInput = {
@@ -6221,9 +6219,6 @@ export type TenantUncheckedUpdateWithoutChargesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6242,16 +6237,19 @@ export type TenantUncheckedUpdateWithoutChargesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -6260,6 +6258,7 @@ export type TenantUncheckedUpdateWithoutChargesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -6288,7 +6287,6 @@ export type TenantUncheckedUpdateWithoutChargesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutWeeklyStatsInput = {
@@ -6297,9 +6295,6 @@ export type TenantCreateWithoutWeeklyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -6314,16 +6309,19 @@ export type TenantCreateWithoutWeeklyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -6332,6 +6330,7 @@ export type TenantCreateWithoutWeeklyStatsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -6364,7 +6363,6 @@ export type TenantCreateWithoutWeeklyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutWeeklyStatsInput = {
@@ -6373,9 +6371,6 @@ export type TenantUncheckedCreateWithoutWeeklyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -6394,16 +6389,19 @@ export type TenantUncheckedCreateWithoutWeeklyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -6412,6 +6410,7 @@ export type TenantUncheckedCreateWithoutWeeklyStatsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -6440,7 +6439,6 @@ export type TenantUncheckedCreateWithoutWeeklyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutWeeklyStatsInput = {
@@ -6465,9 +6463,6 @@ export type TenantUpdateWithoutWeeklyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6482,16 +6477,19 @@ export type TenantUpdateWithoutWeeklyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -6500,6 +6498,7 @@ export type TenantUpdateWithoutWeeklyStatsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -6532,7 +6531,6 @@ export type TenantUpdateWithoutWeeklyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutWeeklyStatsInput = {
@@ -6541,9 +6539,6 @@ export type TenantUncheckedUpdateWithoutWeeklyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6562,16 +6557,19 @@ export type TenantUncheckedUpdateWithoutWeeklyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -6580,6 +6578,7 @@ export type TenantUncheckedUpdateWithoutWeeklyStatsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -6608,7 +6607,6 @@ export type TenantUncheckedUpdateWithoutWeeklyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutYearlyStatsInput = {
@@ -6617,9 +6615,6 @@ export type TenantCreateWithoutYearlyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -6634,16 +6629,19 @@ export type TenantCreateWithoutYearlyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -6652,6 +6650,7 @@ export type TenantCreateWithoutYearlyStatsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -6684,7 +6683,6 @@ export type TenantCreateWithoutYearlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutYearlyStatsInput = {
@@ -6693,9 +6691,6 @@ export type TenantUncheckedCreateWithoutYearlyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -6714,16 +6709,19 @@ export type TenantUncheckedCreateWithoutYearlyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -6732,6 +6730,7 @@ export type TenantUncheckedCreateWithoutYearlyStatsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -6760,7 +6759,6 @@ export type TenantUncheckedCreateWithoutYearlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutYearlyStatsInput = {
@@ -6785,9 +6783,6 @@ export type TenantUpdateWithoutYearlyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6802,16 +6797,19 @@ export type TenantUpdateWithoutYearlyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -6820,6 +6818,7 @@ export type TenantUpdateWithoutYearlyStatsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -6852,7 +6851,6 @@ export type TenantUpdateWithoutYearlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutYearlyStatsInput = {
@@ -6861,9 +6859,6 @@ export type TenantUncheckedUpdateWithoutYearlyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6882,16 +6877,19 @@ export type TenantUncheckedUpdateWithoutYearlyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -6900,6 +6898,7 @@ export type TenantUncheckedUpdateWithoutYearlyStatsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -6928,7 +6927,6 @@ export type TenantUncheckedUpdateWithoutYearlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutMonthlyStatsInput = {
@@ -6937,9 +6935,6 @@ export type TenantCreateWithoutMonthlyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -6954,16 +6949,19 @@ export type TenantCreateWithoutMonthlyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -6972,6 +6970,7 @@ export type TenantCreateWithoutMonthlyStatsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -7004,7 +7003,6 @@ export type TenantCreateWithoutMonthlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMonthlyStatsInput = {
@@ -7013,9 +7011,6 @@ export type TenantUncheckedCreateWithoutMonthlyStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -7034,16 +7029,19 @@ export type TenantUncheckedCreateWithoutMonthlyStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -7052,6 +7050,7 @@ export type TenantUncheckedCreateWithoutMonthlyStatsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -7080,7 +7079,6 @@ export type TenantUncheckedCreateWithoutMonthlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMonthlyStatsInput = {
@@ -7105,9 +7103,6 @@ export type TenantUpdateWithoutMonthlyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7122,16 +7117,19 @@ export type TenantUpdateWithoutMonthlyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -7140,6 +7138,7 @@ export type TenantUpdateWithoutMonthlyStatsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -7172,7 +7171,6 @@ export type TenantUpdateWithoutMonthlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMonthlyStatsInput = {
@@ -7181,9 +7179,6 @@ export type TenantUncheckedUpdateWithoutMonthlyStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7202,16 +7197,19 @@ export type TenantUncheckedUpdateWithoutMonthlyStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -7220,6 +7218,7 @@ export type TenantUncheckedUpdateWithoutMonthlyStatsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -7248,7 +7247,6 @@ export type TenantUncheckedUpdateWithoutMonthlyStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutMonthlyRentalStatsInput = {
@@ -7257,9 +7255,6 @@ export type TenantCreateWithoutMonthlyRentalStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -7274,16 +7269,19 @@ export type TenantCreateWithoutMonthlyRentalStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -7292,6 +7290,7 @@ export type TenantCreateWithoutMonthlyRentalStatsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -7324,7 +7323,6 @@ export type TenantCreateWithoutMonthlyRentalStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMonthlyRentalStatsInput = {
@@ -7333,9 +7331,6 @@ export type TenantUncheckedCreateWithoutMonthlyRentalStatsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -7354,16 +7349,19 @@ export type TenantUncheckedCreateWithoutMonthlyRentalStatsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -7372,6 +7370,7 @@ export type TenantUncheckedCreateWithoutMonthlyRentalStatsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -7400,7 +7399,6 @@ export type TenantUncheckedCreateWithoutMonthlyRentalStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMonthlyRentalStatsInput = {
@@ -7425,9 +7423,6 @@ export type TenantUpdateWithoutMonthlyRentalStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7442,16 +7437,19 @@ export type TenantUpdateWithoutMonthlyRentalStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -7460,6 +7458,7 @@ export type TenantUpdateWithoutMonthlyRentalStatsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -7492,7 +7491,6 @@ export type TenantUpdateWithoutMonthlyRentalStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMonthlyRentalStatsInput = {
@@ -7501,9 +7499,6 @@ export type TenantUncheckedUpdateWithoutMonthlyRentalStatsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7522,16 +7517,19 @@ export type TenantUncheckedUpdateWithoutMonthlyRentalStatsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -7540,6 +7538,7 @@ export type TenantUncheckedUpdateWithoutMonthlyRentalStatsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -7568,7 +7567,6 @@ export type TenantUncheckedUpdateWithoutMonthlyRentalStatsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRatingsInput = {
@@ -7577,9 +7575,6 @@ export type TenantCreateWithoutRatingsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -7594,16 +7589,19 @@ export type TenantCreateWithoutRatingsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -7612,6 +7610,7 @@ export type TenantCreateWithoutRatingsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -7644,7 +7643,6 @@ export type TenantCreateWithoutRatingsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRatingsInput = {
@@ -7653,9 +7651,6 @@ export type TenantUncheckedCreateWithoutRatingsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -7674,16 +7669,19 @@ export type TenantUncheckedCreateWithoutRatingsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -7692,6 +7690,7 @@ export type TenantUncheckedCreateWithoutRatingsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -7720,7 +7719,6 @@ export type TenantUncheckedCreateWithoutRatingsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRatingsInput = {
@@ -7745,9 +7743,6 @@ export type TenantUpdateWithoutRatingsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7762,16 +7757,19 @@ export type TenantUpdateWithoutRatingsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -7780,6 +7778,7 @@ export type TenantUpdateWithoutRatingsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -7812,7 +7811,6 @@ export type TenantUpdateWithoutRatingsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRatingsInput = {
@@ -7821,9 +7819,6 @@ export type TenantUncheckedUpdateWithoutRatingsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7842,16 +7837,19 @@ export type TenantUncheckedUpdateWithoutRatingsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -7860,6 +7858,7 @@ export type TenantUncheckedUpdateWithoutRatingsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -7888,7 +7887,6 @@ export type TenantUncheckedUpdateWithoutRatingsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutEmailTokensInput = {
@@ -7897,9 +7895,6 @@ export type TenantCreateWithoutEmailTokensInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -7914,16 +7909,19 @@ export type TenantCreateWithoutEmailTokensInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -7931,6 +7929,7 @@ export type TenantCreateWithoutEmailTokensInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -7964,7 +7963,6 @@ export type TenantCreateWithoutEmailTokensInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutEmailTokensInput = {
@@ -7973,9 +7971,6 @@ export type TenantUncheckedCreateWithoutEmailTokensInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -7994,16 +7989,19 @@ export type TenantUncheckedCreateWithoutEmailTokensInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -8011,6 +8009,7 @@ export type TenantUncheckedCreateWithoutEmailTokensInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -8040,7 +8039,6 @@ export type TenantUncheckedCreateWithoutEmailTokensInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutEmailTokensInput = {
@@ -8065,9 +8063,6 @@ export type TenantUpdateWithoutEmailTokensInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8082,16 +8077,19 @@ export type TenantUpdateWithoutEmailTokensInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -8099,6 +8097,7 @@ export type TenantUpdateWithoutEmailTokensInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -8132,7 +8131,6 @@ export type TenantUpdateWithoutEmailTokensInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutEmailTokensInput = {
@@ -8141,9 +8139,6 @@ export type TenantUncheckedUpdateWithoutEmailTokensInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8162,16 +8157,19 @@ export type TenantUncheckedUpdateWithoutEmailTokensInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -8179,6 +8177,7 @@ export type TenantUncheckedUpdateWithoutEmailTokensInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -8208,7 +8207,6 @@ export type TenantUncheckedUpdateWithoutEmailTokensInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPaymentMethodsInput = {
@@ -8217,9 +8215,6 @@ export type TenantCreateWithoutPaymentMethodsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -8234,16 +8229,19 @@ export type TenantCreateWithoutPaymentMethodsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -8252,6 +8250,7 @@ export type TenantCreateWithoutPaymentMethodsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -8284,7 +8283,6 @@ export type TenantCreateWithoutPaymentMethodsInput = {
   vehicles?: Prisma.VehicleCreateNestedManyWithoutTenantInput
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPaymentMethodsInput = {
@@ -8293,9 +8291,6 @@ export type TenantUncheckedCreateWithoutPaymentMethodsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -8314,16 +8309,19 @@ export type TenantUncheckedCreateWithoutPaymentMethodsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -8332,6 +8330,7 @@ export type TenantUncheckedCreateWithoutPaymentMethodsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -8360,7 +8359,6 @@ export type TenantUncheckedCreateWithoutPaymentMethodsInput = {
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutTenantInput
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPaymentMethodsInput = {
@@ -8390,9 +8388,6 @@ export type TenantCreateWithoutAddressInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -8407,16 +8402,19 @@ export type TenantCreateWithoutAddressInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationCreateNestedManyWithoutTenantInput
@@ -8424,6 +8422,7 @@ export type TenantCreateWithoutAddressInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -8457,7 +8456,6 @@ export type TenantCreateWithoutAddressInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutAddressInput = {
@@ -8466,9 +8464,6 @@ export type TenantUncheckedCreateWithoutAddressInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -8487,16 +8482,19 @@ export type TenantUncheckedCreateWithoutAddressInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
   emailTokens?: Prisma.EmailVerificationUncheckedCreateNestedManyWithoutTenantInput
@@ -8504,6 +8502,7 @@ export type TenantUncheckedCreateWithoutAddressInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -8533,7 +8532,6 @@ export type TenantUncheckedCreateWithoutAddressInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutAddressInput = {
@@ -8558,9 +8556,6 @@ export type TenantUpdateWithoutAddressInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8575,16 +8570,19 @@ export type TenantUpdateWithoutAddressInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUpdateManyWithoutTenantNestedInput
@@ -8592,6 +8590,7 @@ export type TenantUpdateWithoutAddressInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -8625,7 +8624,6 @@ export type TenantUpdateWithoutAddressInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutAddressInput = {
@@ -8634,9 +8632,6 @@ export type TenantUncheckedUpdateWithoutAddressInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8655,16 +8650,19 @@ export type TenantUncheckedUpdateWithoutAddressInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
   emailTokens?: Prisma.EmailVerificationUncheckedUpdateManyWithoutTenantNestedInput
@@ -8672,6 +8670,7 @@ export type TenantUncheckedUpdateWithoutAddressInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -8701,7 +8700,6 @@ export type TenantUncheckedUpdateWithoutAddressInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutTenantLocationsInput = {
@@ -8710,9 +8708,6 @@ export type TenantCreateWithoutTenantLocationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -8727,16 +8722,19 @@ export type TenantCreateWithoutTenantLocationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -8745,6 +8743,7 @@ export type TenantCreateWithoutTenantLocationsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -8777,7 +8776,6 @@ export type TenantCreateWithoutTenantLocationsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutTenantLocationsInput = {
@@ -8786,9 +8784,6 @@ export type TenantUncheckedCreateWithoutTenantLocationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -8807,16 +8802,19 @@ export type TenantUncheckedCreateWithoutTenantLocationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -8825,6 +8823,7 @@ export type TenantUncheckedCreateWithoutTenantLocationsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -8853,7 +8852,6 @@ export type TenantUncheckedCreateWithoutTenantLocationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutTenantLocationsInput = {
@@ -8878,9 +8876,6 @@ export type TenantUpdateWithoutTenantLocationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8895,16 +8890,19 @@ export type TenantUpdateWithoutTenantLocationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -8913,6 +8911,7 @@ export type TenantUpdateWithoutTenantLocationsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -8945,7 +8944,6 @@ export type TenantUpdateWithoutTenantLocationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutTenantLocationsInput = {
@@ -8954,9 +8952,6 @@ export type TenantUncheckedUpdateWithoutTenantLocationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -8975,16 +8970,19 @@ export type TenantUncheckedUpdateWithoutTenantLocationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -8993,6 +8991,7 @@ export type TenantUncheckedUpdateWithoutTenantLocationsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -9021,7 +9020,6 @@ export type TenantUncheckedUpdateWithoutTenantLocationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutInsuranceInput = {
@@ -9030,9 +9028,6 @@ export type TenantCreateWithoutInsuranceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -9047,16 +9042,19 @@ export type TenantCreateWithoutInsuranceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -9065,6 +9063,7 @@ export type TenantCreateWithoutInsuranceInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -9097,7 +9096,6 @@ export type TenantCreateWithoutInsuranceInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutInsuranceInput = {
@@ -9106,9 +9104,6 @@ export type TenantUncheckedCreateWithoutInsuranceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -9127,16 +9122,19 @@ export type TenantUncheckedCreateWithoutInsuranceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -9145,6 +9143,7 @@ export type TenantUncheckedCreateWithoutInsuranceInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -9173,7 +9172,6 @@ export type TenantUncheckedCreateWithoutInsuranceInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutInsuranceInput = {
@@ -9198,9 +9196,6 @@ export type TenantUpdateWithoutInsuranceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9215,16 +9210,19 @@ export type TenantUpdateWithoutInsuranceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -9233,6 +9231,7 @@ export type TenantUpdateWithoutInsuranceInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -9265,7 +9264,6 @@ export type TenantUpdateWithoutInsuranceInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutInsuranceInput = {
@@ -9274,9 +9272,6 @@ export type TenantUncheckedUpdateWithoutInsuranceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9295,16 +9290,19 @@ export type TenantUncheckedUpdateWithoutInsuranceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -9313,6 +9311,7 @@ export type TenantUncheckedUpdateWithoutInsuranceInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -9341,7 +9340,6 @@ export type TenantUncheckedUpdateWithoutInsuranceInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutEquipmentInput = {
@@ -9350,9 +9348,6 @@ export type TenantCreateWithoutEquipmentInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -9367,16 +9362,19 @@ export type TenantCreateWithoutEquipmentInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -9385,6 +9383,7 @@ export type TenantCreateWithoutEquipmentInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -9417,7 +9416,6 @@ export type TenantCreateWithoutEquipmentInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutEquipmentInput = {
@@ -9426,9 +9424,6 @@ export type TenantUncheckedCreateWithoutEquipmentInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -9447,16 +9442,19 @@ export type TenantUncheckedCreateWithoutEquipmentInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -9465,6 +9463,7 @@ export type TenantUncheckedCreateWithoutEquipmentInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -9493,7 +9492,6 @@ export type TenantUncheckedCreateWithoutEquipmentInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutEquipmentInput = {
@@ -9518,9 +9516,6 @@ export type TenantUpdateWithoutEquipmentInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9535,16 +9530,19 @@ export type TenantUpdateWithoutEquipmentInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -9553,6 +9551,7 @@ export type TenantUpdateWithoutEquipmentInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -9585,7 +9584,6 @@ export type TenantUpdateWithoutEquipmentInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutEquipmentInput = {
@@ -9594,9 +9592,6 @@ export type TenantUncheckedUpdateWithoutEquipmentInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9615,16 +9610,19 @@ export type TenantUncheckedUpdateWithoutEquipmentInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -9633,6 +9631,7 @@ export type TenantUncheckedUpdateWithoutEquipmentInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -9661,7 +9660,6 @@ export type TenantUncheckedUpdateWithoutEquipmentInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutServicesInput = {
@@ -9670,9 +9668,6 @@ export type TenantCreateWithoutServicesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -9687,16 +9682,19 @@ export type TenantCreateWithoutServicesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -9705,6 +9703,7 @@ export type TenantCreateWithoutServicesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -9737,7 +9736,6 @@ export type TenantCreateWithoutServicesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutServicesInput = {
@@ -9746,9 +9744,6 @@ export type TenantUncheckedCreateWithoutServicesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -9767,16 +9762,19 @@ export type TenantUncheckedCreateWithoutServicesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -9785,6 +9783,7 @@ export type TenantUncheckedCreateWithoutServicesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -9813,7 +9812,6 @@ export type TenantUncheckedCreateWithoutServicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutServicesInput = {
@@ -9838,9 +9836,6 @@ export type TenantUpdateWithoutServicesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9855,16 +9850,19 @@ export type TenantUpdateWithoutServicesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -9873,6 +9871,7 @@ export type TenantUpdateWithoutServicesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -9905,7 +9904,6 @@ export type TenantUpdateWithoutServicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutServicesInput = {
@@ -9914,9 +9912,6 @@ export type TenantUncheckedUpdateWithoutServicesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9935,16 +9930,19 @@ export type TenantUncheckedUpdateWithoutServicesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -9953,6 +9951,7 @@ export type TenantUncheckedUpdateWithoutServicesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -9981,7 +9980,6 @@ export type TenantUncheckedUpdateWithoutServicesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutSubscriptionInput = {
@@ -9990,9 +9988,6 @@ export type TenantCreateWithoutSubscriptionInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -10007,16 +10002,19 @@ export type TenantCreateWithoutSubscriptionInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -10025,6 +10023,7 @@ export type TenantCreateWithoutSubscriptionInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -10057,7 +10056,6 @@ export type TenantCreateWithoutSubscriptionInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutSubscriptionInput = {
@@ -10066,9 +10064,6 @@ export type TenantUncheckedCreateWithoutSubscriptionInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -10087,16 +10082,19 @@ export type TenantUncheckedCreateWithoutSubscriptionInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -10105,6 +10103,7 @@ export type TenantUncheckedCreateWithoutSubscriptionInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -10133,7 +10132,6 @@ export type TenantUncheckedCreateWithoutSubscriptionInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutSubscriptionInput = {
@@ -10158,9 +10156,6 @@ export type TenantUpdateWithoutSubscriptionInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10175,16 +10170,19 @@ export type TenantUpdateWithoutSubscriptionInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -10193,6 +10191,7 @@ export type TenantUpdateWithoutSubscriptionInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -10225,7 +10224,6 @@ export type TenantUpdateWithoutSubscriptionInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutSubscriptionInput = {
@@ -10234,9 +10232,6 @@ export type TenantUncheckedUpdateWithoutSubscriptionInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10255,16 +10250,19 @@ export type TenantUncheckedUpdateWithoutSubscriptionInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -10273,6 +10271,7 @@ export type TenantUncheckedUpdateWithoutSubscriptionInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -10301,7 +10300,6 @@ export type TenantUncheckedUpdateWithoutSubscriptionInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutContactsInput = {
@@ -10310,9 +10308,6 @@ export type TenantCreateWithoutContactsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -10327,16 +10322,19 @@ export type TenantCreateWithoutContactsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -10345,6 +10343,7 @@ export type TenantCreateWithoutContactsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -10377,7 +10376,6 @@ export type TenantCreateWithoutContactsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutContactsInput = {
@@ -10386,9 +10384,6 @@ export type TenantUncheckedCreateWithoutContactsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -10407,16 +10402,19 @@ export type TenantUncheckedCreateWithoutContactsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -10425,6 +10423,7 @@ export type TenantUncheckedCreateWithoutContactsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -10453,7 +10452,6 @@ export type TenantUncheckedCreateWithoutContactsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutContactsInput = {
@@ -10478,9 +10476,6 @@ export type TenantUpdateWithoutContactsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10495,16 +10490,19 @@ export type TenantUpdateWithoutContactsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -10513,6 +10511,7 @@ export type TenantUpdateWithoutContactsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -10545,7 +10544,6 @@ export type TenantUpdateWithoutContactsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutContactsInput = {
@@ -10554,9 +10552,6 @@ export type TenantUncheckedUpdateWithoutContactsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10575,16 +10570,19 @@ export type TenantUncheckedUpdateWithoutContactsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -10593,6 +10591,7 @@ export type TenantUncheckedUpdateWithoutContactsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -10621,7 +10620,6 @@ export type TenantUncheckedUpdateWithoutContactsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRemindersInput = {
@@ -10630,9 +10628,6 @@ export type TenantCreateWithoutRemindersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -10647,16 +10642,19 @@ export type TenantCreateWithoutRemindersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -10665,6 +10663,7 @@ export type TenantCreateWithoutRemindersInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -10697,7 +10696,6 @@ export type TenantCreateWithoutRemindersInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRemindersInput = {
@@ -10706,9 +10704,6 @@ export type TenantUncheckedCreateWithoutRemindersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -10727,16 +10722,19 @@ export type TenantUncheckedCreateWithoutRemindersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -10745,6 +10743,7 @@ export type TenantUncheckedCreateWithoutRemindersInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -10773,7 +10772,6 @@ export type TenantUncheckedCreateWithoutRemindersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRemindersInput = {
@@ -10798,9 +10796,6 @@ export type TenantUpdateWithoutRemindersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10815,16 +10810,19 @@ export type TenantUpdateWithoutRemindersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -10833,6 +10831,7 @@ export type TenantUpdateWithoutRemindersInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -10865,7 +10864,6 @@ export type TenantUpdateWithoutRemindersInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRemindersInput = {
@@ -10874,9 +10872,6 @@ export type TenantUncheckedUpdateWithoutRemindersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10895,16 +10890,19 @@ export type TenantUncheckedUpdateWithoutRemindersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -10913,6 +10911,7 @@ export type TenantUncheckedUpdateWithoutRemindersInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -10941,7 +10940,6 @@ export type TenantUncheckedUpdateWithoutRemindersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutCancellationPolicyInput = {
@@ -10950,9 +10948,6 @@ export type TenantCreateWithoutCancellationPolicyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -10967,16 +10962,19 @@ export type TenantCreateWithoutCancellationPolicyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -10985,6 +10983,7 @@ export type TenantCreateWithoutCancellationPolicyInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -11017,7 +11016,6 @@ export type TenantCreateWithoutCancellationPolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCancellationPolicyInput = {
@@ -11026,9 +11024,6 @@ export type TenantUncheckedCreateWithoutCancellationPolicyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -11046,16 +11041,19 @@ export type TenantUncheckedCreateWithoutCancellationPolicyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -11064,6 +11062,7 @@ export type TenantUncheckedCreateWithoutCancellationPolicyInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -11093,7 +11092,6 @@ export type TenantUncheckedCreateWithoutCancellationPolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCancellationPolicyInput = {
@@ -11118,9 +11116,6 @@ export type TenantUpdateWithoutCancellationPolicyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11135,16 +11130,19 @@ export type TenantUpdateWithoutCancellationPolicyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -11153,6 +11151,7 @@ export type TenantUpdateWithoutCancellationPolicyInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -11185,7 +11184,6 @@ export type TenantUpdateWithoutCancellationPolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCancellationPolicyInput = {
@@ -11194,9 +11192,6 @@ export type TenantUncheckedUpdateWithoutCancellationPolicyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11214,16 +11209,19 @@ export type TenantUncheckedUpdateWithoutCancellationPolicyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -11232,6 +11230,7 @@ export type TenantUncheckedUpdateWithoutCancellationPolicyInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -11261,7 +11260,6 @@ export type TenantUncheckedUpdateWithoutCancellationPolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutLatePolicyInput = {
@@ -11270,9 +11268,6 @@ export type TenantCreateWithoutLatePolicyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -11287,16 +11282,19 @@ export type TenantCreateWithoutLatePolicyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -11305,6 +11303,7 @@ export type TenantCreateWithoutLatePolicyInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -11337,7 +11336,6 @@ export type TenantCreateWithoutLatePolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutLatePolicyInput = {
@@ -11346,9 +11344,6 @@ export type TenantUncheckedCreateWithoutLatePolicyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -11366,16 +11361,19 @@ export type TenantUncheckedCreateWithoutLatePolicyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -11384,6 +11382,7 @@ export type TenantUncheckedCreateWithoutLatePolicyInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -11413,7 +11412,6 @@ export type TenantUncheckedCreateWithoutLatePolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutLatePolicyInput = {
@@ -11438,9 +11436,6 @@ export type TenantUpdateWithoutLatePolicyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11455,16 +11450,19 @@ export type TenantUpdateWithoutLatePolicyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -11473,6 +11471,7 @@ export type TenantUpdateWithoutLatePolicyInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -11505,7 +11504,6 @@ export type TenantUpdateWithoutLatePolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutLatePolicyInput = {
@@ -11514,9 +11512,6 @@ export type TenantUncheckedUpdateWithoutLatePolicyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11534,16 +11529,19 @@ export type TenantUncheckedUpdateWithoutLatePolicyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -11552,6 +11550,7 @@ export type TenantUncheckedUpdateWithoutLatePolicyInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -11581,7 +11580,6 @@ export type TenantUncheckedUpdateWithoutLatePolicyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutViolationsInput = {
@@ -11590,9 +11588,6 @@ export type TenantCreateWithoutViolationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -11607,16 +11602,19 @@ export type TenantCreateWithoutViolationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -11625,6 +11623,7 @@ export type TenantCreateWithoutViolationsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -11657,7 +11656,6 @@ export type TenantCreateWithoutViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutViolationsInput = {
@@ -11666,9 +11664,6 @@ export type TenantUncheckedCreateWithoutViolationsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -11687,16 +11682,19 @@ export type TenantUncheckedCreateWithoutViolationsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -11705,6 +11703,7 @@ export type TenantUncheckedCreateWithoutViolationsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -11733,7 +11732,6 @@ export type TenantUncheckedCreateWithoutViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutViolationsInput = {
@@ -11758,9 +11756,6 @@ export type TenantUpdateWithoutViolationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11775,16 +11770,19 @@ export type TenantUpdateWithoutViolationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -11793,6 +11791,7 @@ export type TenantUpdateWithoutViolationsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -11825,7 +11824,6 @@ export type TenantUpdateWithoutViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutViolationsInput = {
@@ -11834,9 +11832,6 @@ export type TenantUncheckedUpdateWithoutViolationsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11855,16 +11850,19 @@ export type TenantUncheckedUpdateWithoutViolationsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -11873,6 +11871,7 @@ export type TenantUncheckedUpdateWithoutViolationsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -11901,7 +11900,6 @@ export type TenantUncheckedUpdateWithoutViolationsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutVendorsInput = {
@@ -11910,9 +11908,6 @@ export type TenantCreateWithoutVendorsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -11927,16 +11922,19 @@ export type TenantCreateWithoutVendorsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -11945,6 +11943,7 @@ export type TenantCreateWithoutVendorsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -11977,7 +11976,6 @@ export type TenantCreateWithoutVendorsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutVendorsInput = {
@@ -11986,9 +11984,6 @@ export type TenantUncheckedCreateWithoutVendorsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -12007,16 +12002,19 @@ export type TenantUncheckedCreateWithoutVendorsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -12025,6 +12023,7 @@ export type TenantUncheckedCreateWithoutVendorsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -12053,7 +12052,6 @@ export type TenantUncheckedCreateWithoutVendorsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutVendorsInput = {
@@ -12078,9 +12076,6 @@ export type TenantUpdateWithoutVendorsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12095,16 +12090,19 @@ export type TenantUpdateWithoutVendorsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -12113,6 +12111,7 @@ export type TenantUpdateWithoutVendorsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -12145,7 +12144,6 @@ export type TenantUpdateWithoutVendorsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutVendorsInput = {
@@ -12154,9 +12152,6 @@ export type TenantUncheckedUpdateWithoutVendorsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12175,16 +12170,19 @@ export type TenantUncheckedUpdateWithoutVendorsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -12193,6 +12191,7 @@ export type TenantUncheckedUpdateWithoutVendorsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -12221,7 +12220,6 @@ export type TenantUncheckedUpdateWithoutVendorsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutVerificationRequestInput = {
@@ -12230,9 +12228,6 @@ export type TenantCreateWithoutVerificationRequestInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -12247,16 +12242,19 @@ export type TenantCreateWithoutVerificationRequestInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -12265,6 +12263,7 @@ export type TenantCreateWithoutVerificationRequestInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -12297,7 +12296,6 @@ export type TenantCreateWithoutVerificationRequestInput = {
   vehicles?: Prisma.VehicleCreateNestedManyWithoutTenantInput
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutVerificationRequestInput = {
@@ -12306,9 +12304,6 @@ export type TenantUncheckedCreateWithoutVerificationRequestInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -12327,16 +12322,19 @@ export type TenantUncheckedCreateWithoutVerificationRequestInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -12345,6 +12343,7 @@ export type TenantUncheckedCreateWithoutVerificationRequestInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -12373,7 +12372,6 @@ export type TenantUncheckedCreateWithoutVerificationRequestInput = {
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutTenantInput
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutVerificationRequestInput = {
@@ -12398,9 +12396,6 @@ export type TenantUpdateWithoutVerificationRequestInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12415,16 +12410,19 @@ export type TenantUpdateWithoutVerificationRequestInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -12433,6 +12431,7 @@ export type TenantUpdateWithoutVerificationRequestInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -12465,7 +12464,6 @@ export type TenantUpdateWithoutVerificationRequestInput = {
   vehicles?: Prisma.VehicleUpdateManyWithoutTenantNestedInput
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutVerificationRequestInput = {
@@ -12474,9 +12472,6 @@ export type TenantUncheckedUpdateWithoutVerificationRequestInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12495,16 +12490,19 @@ export type TenantUncheckedUpdateWithoutVerificationRequestInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -12513,6 +12511,7 @@ export type TenantUncheckedUpdateWithoutVerificationRequestInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -12541,7 +12540,6 @@ export type TenantUncheckedUpdateWithoutVerificationRequestInput = {
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutTenantNestedInput
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutTransactionsInput = {
@@ -12550,9 +12548,6 @@ export type TenantCreateWithoutTransactionsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -12567,16 +12562,19 @@ export type TenantCreateWithoutTransactionsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -12585,6 +12583,7 @@ export type TenantCreateWithoutTransactionsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -12617,7 +12616,6 @@ export type TenantCreateWithoutTransactionsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutTransactionsInput = {
@@ -12626,9 +12624,6 @@ export type TenantUncheckedCreateWithoutTransactionsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -12647,16 +12642,19 @@ export type TenantUncheckedCreateWithoutTransactionsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -12665,6 +12663,7 @@ export type TenantUncheckedCreateWithoutTransactionsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -12693,7 +12692,6 @@ export type TenantUncheckedCreateWithoutTransactionsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutTransactionsInput = {
@@ -12718,9 +12716,6 @@ export type TenantUpdateWithoutTransactionsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12735,16 +12730,19 @@ export type TenantUpdateWithoutTransactionsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -12753,6 +12751,7 @@ export type TenantUpdateWithoutTransactionsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -12785,7 +12784,6 @@ export type TenantUpdateWithoutTransactionsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutTransactionsInput = {
@@ -12794,9 +12792,6 @@ export type TenantUncheckedUpdateWithoutTransactionsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12815,16 +12810,19 @@ export type TenantUncheckedUpdateWithoutTransactionsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -12833,6 +12831,7 @@ export type TenantUncheckedUpdateWithoutTransactionsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -12861,7 +12860,6 @@ export type TenantUncheckedUpdateWithoutTransactionsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPaymentsInput = {
@@ -12870,9 +12868,6 @@ export type TenantCreateWithoutPaymentsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -12887,16 +12882,19 @@ export type TenantCreateWithoutPaymentsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -12904,6 +12902,7 @@ export type TenantCreateWithoutPaymentsInput = {
   expenses?: Prisma.ExpenseCreateNestedManyWithoutTenantInput
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -12937,7 +12936,6 @@ export type TenantCreateWithoutPaymentsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPaymentsInput = {
@@ -12946,9 +12944,6 @@ export type TenantUncheckedCreateWithoutPaymentsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -12967,16 +12962,19 @@ export type TenantUncheckedCreateWithoutPaymentsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -12984,6 +12982,7 @@ export type TenantUncheckedCreateWithoutPaymentsInput = {
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutTenantInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -13013,7 +13012,6 @@ export type TenantUncheckedCreateWithoutPaymentsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPaymentsInput = {
@@ -13038,9 +13036,6 @@ export type TenantUpdateWithoutPaymentsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13055,16 +13050,19 @@ export type TenantUpdateWithoutPaymentsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -13072,6 +13070,7 @@ export type TenantUpdateWithoutPaymentsInput = {
   expenses?: Prisma.ExpenseUpdateManyWithoutTenantNestedInput
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -13105,7 +13104,6 @@ export type TenantUpdateWithoutPaymentsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPaymentsInput = {
@@ -13114,9 +13112,6 @@ export type TenantUncheckedUpdateWithoutPaymentsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13135,16 +13130,19 @@ export type TenantUncheckedUpdateWithoutPaymentsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -13152,6 +13150,7 @@ export type TenantUncheckedUpdateWithoutPaymentsInput = {
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutTenantNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -13181,7 +13180,6 @@ export type TenantUncheckedUpdateWithoutPaymentsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRefundsInput = {
@@ -13190,9 +13188,6 @@ export type TenantCreateWithoutRefundsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -13207,16 +13202,19 @@ export type TenantCreateWithoutRefundsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -13225,6 +13223,7 @@ export type TenantCreateWithoutRefundsInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutTenantInput
@@ -13257,7 +13256,6 @@ export type TenantCreateWithoutRefundsInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRefundsInput = {
@@ -13266,9 +13264,6 @@ export type TenantUncheckedCreateWithoutRefundsInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -13287,16 +13282,19 @@ export type TenantUncheckedCreateWithoutRefundsInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -13305,6 +13303,7 @@ export type TenantUncheckedCreateWithoutRefundsInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutTenantInput
@@ -13333,7 +13332,6 @@ export type TenantUncheckedCreateWithoutRefundsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRefundsInput = {
@@ -13358,9 +13356,6 @@ export type TenantUpdateWithoutRefundsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13375,16 +13370,19 @@ export type TenantUpdateWithoutRefundsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -13393,6 +13391,7 @@ export type TenantUpdateWithoutRefundsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutTenantNestedInput
@@ -13425,7 +13424,6 @@ export type TenantUpdateWithoutRefundsInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRefundsInput = {
@@ -13434,9 +13432,6 @@ export type TenantUncheckedUpdateWithoutRefundsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13455,16 +13450,19 @@ export type TenantUncheckedUpdateWithoutRefundsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -13473,6 +13471,7 @@ export type TenantUncheckedUpdateWithoutRefundsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutTenantNestedInput
@@ -13501,7 +13500,6 @@ export type TenantUncheckedUpdateWithoutRefundsInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutExpensesInput = {
@@ -13510,9 +13508,6 @@ export type TenantCreateWithoutExpensesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -13527,16 +13522,19 @@ export type TenantCreateWithoutExpensesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -13544,6 +13542,7 @@ export type TenantCreateWithoutExpensesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -13577,7 +13576,6 @@ export type TenantCreateWithoutExpensesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutExpensesInput = {
@@ -13586,9 +13584,6 @@ export type TenantUncheckedCreateWithoutExpensesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -13607,16 +13602,19 @@ export type TenantUncheckedCreateWithoutExpensesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -13624,6 +13622,7 @@ export type TenantUncheckedCreateWithoutExpensesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -13653,7 +13652,6 @@ export type TenantUncheckedCreateWithoutExpensesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutExpensesInput = {
@@ -13678,9 +13676,6 @@ export type TenantUpdateWithoutExpensesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13695,16 +13690,19 @@ export type TenantUpdateWithoutExpensesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -13712,6 +13710,7 @@ export type TenantUpdateWithoutExpensesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -13745,7 +13744,6 @@ export type TenantUpdateWithoutExpensesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutExpensesInput = {
@@ -13754,9 +13752,6 @@ export type TenantUncheckedUpdateWithoutExpensesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13775,16 +13770,19 @@ export type TenantUncheckedUpdateWithoutExpensesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -13792,6 +13790,7 @@ export type TenantUncheckedUpdateWithoutExpensesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -13821,7 +13820,6 @@ export type TenantUncheckedUpdateWithoutExpensesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutUsersInput = {
@@ -13830,9 +13828,6 @@ export type TenantCreateWithoutUsersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -13847,16 +13842,19 @@ export type TenantCreateWithoutUsersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -13865,6 +13863,7 @@ export type TenantCreateWithoutUsersInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -13897,7 +13896,6 @@ export type TenantCreateWithoutUsersInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutUsersInput = {
@@ -13906,9 +13904,6 @@ export type TenantUncheckedCreateWithoutUsersInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -13927,16 +13922,19 @@ export type TenantUncheckedCreateWithoutUsersInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -13945,6 +13943,7 @@ export type TenantUncheckedCreateWithoutUsersInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -13973,7 +13972,6 @@ export type TenantUncheckedCreateWithoutUsersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutUsersInput = {
@@ -13998,9 +13996,6 @@ export type TenantUpdateWithoutUsersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14015,16 +14010,19 @@ export type TenantUpdateWithoutUsersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -14033,6 +14031,7 @@ export type TenantUpdateWithoutUsersInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -14065,7 +14064,6 @@ export type TenantUpdateWithoutUsersInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutUsersInput = {
@@ -14074,9 +14072,6 @@ export type TenantUncheckedUpdateWithoutUsersInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14095,16 +14090,19 @@ export type TenantUncheckedUpdateWithoutUsersInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -14113,6 +14111,7 @@ export type TenantUncheckedUpdateWithoutUsersInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -14141,7 +14140,6 @@ export type TenantUncheckedUpdateWithoutUsersInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutUserRolesInput = {
@@ -14150,9 +14148,6 @@ export type TenantCreateWithoutUserRolesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -14167,16 +14162,19 @@ export type TenantCreateWithoutUserRolesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -14185,6 +14183,7 @@ export type TenantCreateWithoutUserRolesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -14217,7 +14216,6 @@ export type TenantCreateWithoutUserRolesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutUserRolesInput = {
@@ -14226,9 +14224,6 @@ export type TenantUncheckedCreateWithoutUserRolesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -14247,16 +14242,19 @@ export type TenantUncheckedCreateWithoutUserRolesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -14265,6 +14263,7 @@ export type TenantUncheckedCreateWithoutUserRolesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -14293,7 +14292,6 @@ export type TenantUncheckedCreateWithoutUserRolesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutUserRolesInput = {
@@ -14318,9 +14316,6 @@ export type TenantUpdateWithoutUserRolesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14335,16 +14330,19 @@ export type TenantUpdateWithoutUserRolesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -14353,6 +14351,7 @@ export type TenantUpdateWithoutUserRolesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -14385,7 +14384,6 @@ export type TenantUpdateWithoutUserRolesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutUserRolesInput = {
@@ -14394,9 +14392,6 @@ export type TenantUncheckedUpdateWithoutUserRolesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14415,16 +14410,19 @@ export type TenantUncheckedUpdateWithoutUserRolesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -14433,6 +14431,7 @@ export type TenantUncheckedUpdateWithoutUserRolesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -14461,7 +14460,6 @@ export type TenantUncheckedUpdateWithoutUserRolesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutVehiclesInput = {
@@ -14470,9 +14468,6 @@ export type TenantCreateWithoutVehiclesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -14487,16 +14482,19 @@ export type TenantCreateWithoutVehiclesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -14505,6 +14503,7 @@ export type TenantCreateWithoutVehiclesInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -14537,7 +14536,6 @@ export type TenantCreateWithoutVehiclesInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutVehiclesInput = {
@@ -14546,9 +14544,6 @@ export type TenantUncheckedCreateWithoutVehiclesInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -14567,16 +14562,19 @@ export type TenantUncheckedCreateWithoutVehiclesInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -14585,6 +14583,7 @@ export type TenantUncheckedCreateWithoutVehiclesInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -14613,7 +14612,6 @@ export type TenantUncheckedCreateWithoutVehiclesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutVehiclesInput = {
@@ -14638,9 +14636,6 @@ export type TenantUpdateWithoutVehiclesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14655,16 +14650,19 @@ export type TenantUpdateWithoutVehiclesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -14673,6 +14671,7 @@ export type TenantUpdateWithoutVehiclesInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -14705,7 +14704,6 @@ export type TenantUpdateWithoutVehiclesInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutVehiclesInput = {
@@ -14714,9 +14712,6 @@ export type TenantUncheckedUpdateWithoutVehiclesInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14735,16 +14730,19 @@ export type TenantUncheckedUpdateWithoutVehiclesInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -14753,6 +14751,7 @@ export type TenantUncheckedUpdateWithoutVehiclesInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -14781,7 +14780,6 @@ export type TenantUncheckedUpdateWithoutVehiclesInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutMaintenanceInput = {
@@ -14790,9 +14788,6 @@ export type TenantCreateWithoutMaintenanceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -14807,16 +14802,19 @@ export type TenantCreateWithoutMaintenanceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationCreateNestedManyWithoutTenantInput
@@ -14825,6 +14823,7 @@ export type TenantCreateWithoutMaintenanceInput = {
   forms?: Prisma.FormCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutTenantInput
@@ -14857,7 +14856,6 @@ export type TenantCreateWithoutMaintenanceInput = {
   vehicles?: Prisma.VehicleCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMaintenanceInput = {
@@ -14866,9 +14864,6 @@ export type TenantUncheckedCreateWithoutMaintenanceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -14887,16 +14882,19 @@ export type TenantUncheckedCreateWithoutMaintenanceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
   address?: Prisma.AddressUncheckedCreateNestedOneWithoutTenantInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutTenantInput
   customerViolations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutTenantInput
@@ -14905,6 +14903,7 @@ export type TenantUncheckedCreateWithoutMaintenanceInput = {
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutTenantInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutTenantInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutTenantInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutTenantInput
   rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutTenantInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutTenantInput
@@ -14933,7 +14932,6 @@ export type TenantUncheckedCreateWithoutMaintenanceInput = {
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutTenantInput
   verificationRequest?: Prisma.VerificationRequestUncheckedCreateNestedOneWithoutTenantInput
   paymentMethods?: Prisma.PaymentMethodUncheckedCreateNestedManyWithoutTenantInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMaintenanceInput = {
@@ -14958,9 +14956,6 @@ export type TenantUpdateWithoutMaintenanceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14975,16 +14970,19 @@ export type TenantUpdateWithoutMaintenanceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -14993,6 +14991,7 @@ export type TenantUpdateWithoutMaintenanceInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -15025,7 +15024,6 @@ export type TenantUpdateWithoutMaintenanceInput = {
   vehicles?: Prisma.VehicleUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMaintenanceInput = {
@@ -15034,9 +15032,6 @@ export type TenantUncheckedUpdateWithoutMaintenanceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15055,16 +15050,19 @@ export type TenantUncheckedUpdateWithoutMaintenanceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -15073,6 +15071,7 @@ export type TenantUncheckedUpdateWithoutMaintenanceInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -15101,7 +15100,6 @@ export type TenantUncheckedUpdateWithoutMaintenanceInput = {
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateManyInvoiceSequenceInput = {
@@ -15110,9 +15108,6 @@ export type TenantCreateManyInvoiceSequenceInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -15130,16 +15125,19 @@ export type TenantCreateManyInvoiceSequenceInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
 }
 
 export type TenantUpdateWithoutInvoiceSequenceInput = {
@@ -15148,9 +15146,6 @@ export type TenantUpdateWithoutInvoiceSequenceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15165,16 +15160,19 @@ export type TenantUpdateWithoutInvoiceSequenceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -15183,6 +15181,7 @@ export type TenantUpdateWithoutInvoiceSequenceInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -15215,7 +15214,6 @@ export type TenantUpdateWithoutInvoiceSequenceInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutInvoiceSequenceInput = {
@@ -15224,9 +15222,6 @@ export type TenantUncheckedUpdateWithoutInvoiceSequenceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15244,16 +15239,19 @@ export type TenantUncheckedUpdateWithoutInvoiceSequenceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -15262,6 +15260,7 @@ export type TenantUncheckedUpdateWithoutInvoiceSequenceInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -15291,7 +15290,6 @@ export type TenantUncheckedUpdateWithoutInvoiceSequenceInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateManyWithoutInvoiceSequenceInput = {
@@ -15300,9 +15298,6 @@ export type TenantUncheckedUpdateManyWithoutInvoiceSequenceInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15320,16 +15315,19 @@ export type TenantUncheckedUpdateManyWithoutInvoiceSequenceInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantCreateManyCurrencyInput = {
@@ -15338,9 +15336,6 @@ export type TenantCreateManyCurrencyInput = {
   tenantName: string
   email: string
   number: string
-  whatsappNumber?: string | null
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
   logo?: string | null
@@ -15358,16 +15353,19 @@ export type TenantCreateManyCurrencyInput = {
   additionalDriverFee?: number
   daysInMonth?: number
   slug?: string | null
-  subdomain?: string | null
   merchantId?: string | null
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: string | null
   startTime?: string | null
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: string | null
   firmaWorkspaceId?: string | null
   firmaApiKey?: string | null
   firmaApiKeyAt?: Date | string | null
+  subdomain?: string | null
 }
 
 export type TenantUpdateWithoutCurrencyInput = {
@@ -15376,9 +15374,6 @@ export type TenantUpdateWithoutCurrencyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15393,16 +15388,19 @@ export type TenantUpdateWithoutCurrencyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -15411,6 +15409,7 @@ export type TenantUpdateWithoutCurrencyInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -15443,7 +15442,6 @@ export type TenantUpdateWithoutCurrencyInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCurrencyInput = {
@@ -15452,9 +15450,6 @@ export type TenantUncheckedUpdateWithoutCurrencyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15472,16 +15467,19 @@ export type TenantUncheckedUpdateWithoutCurrencyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -15490,6 +15488,7 @@ export type TenantUncheckedUpdateWithoutCurrencyInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -15519,7 +15518,6 @@ export type TenantUncheckedUpdateWithoutCurrencyInput = {
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
   paymentMethods?: Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateManyWithoutCurrencyInput = {
@@ -15528,9 +15526,6 @@ export type TenantUncheckedUpdateManyWithoutCurrencyInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15548,16 +15543,19 @@ export type TenantUncheckedUpdateManyWithoutCurrencyInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantUpdateWithoutPaymentMethodsInput = {
@@ -15566,9 +15564,6 @@ export type TenantUpdateWithoutPaymentMethodsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15583,16 +15578,19 @@ export type TenantUpdateWithoutPaymentMethodsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUpdateManyWithoutTenantNestedInput
@@ -15601,6 +15599,7 @@ export type TenantUpdateWithoutPaymentMethodsInput = {
   forms?: Prisma.FormUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutTenantNestedInput
@@ -15633,7 +15632,6 @@ export type TenantUpdateWithoutPaymentMethodsInput = {
   vehicles?: Prisma.VehicleUpdateManyWithoutTenantNestedInput
   maintenance?: Prisma.VehicleMaintenanceUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUpdateOneWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPaymentMethodsInput = {
@@ -15642,9 +15640,6 @@ export type TenantUncheckedUpdateWithoutPaymentMethodsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15663,16 +15658,19 @@ export type TenantUncheckedUpdateWithoutPaymentMethodsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.AddressUncheckedUpdateOneWithoutTenantNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutTenantNestedInput
   customerViolations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutTenantNestedInput
@@ -15681,6 +15679,7 @@ export type TenantUncheckedUpdateWithoutPaymentMethodsInput = {
   forms?: Prisma.FormUncheckedUpdateManyWithoutTenantNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutTenantNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutTenantNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutTenantNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutTenantNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutTenantNestedInput
@@ -15709,7 +15708,6 @@ export type TenantUncheckedUpdateWithoutPaymentMethodsInput = {
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutTenantNestedInput
   maintenance?: Prisma.VehicleMaintenanceUncheckedUpdateManyWithoutTenantNestedInput
   verificationRequest?: Prisma.VerificationRequestUncheckedUpdateOneWithoutTenantNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateManyWithoutPaymentMethodsInput = {
@@ -15718,9 +15716,6 @@ export type TenantUncheckedUpdateManyWithoutPaymentMethodsInput = {
   tenantName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   number?: Prisma.StringFieldUpdateOperationsInput | string
-  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -15739,16 +15734,19 @@ export type TenantUncheckedUpdateManyWithoutPaymentMethodsInput = {
   additionalDriverFee?: Prisma.FloatFieldUpdateOperationsInput | number
   daysInMonth?: Prisma.IntFieldUpdateOperationsInput | number
   slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   merchantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   businessVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   endTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNotifications?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  whatsappNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaWorkspaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firmaApiKeyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subdomain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -15764,6 +15762,7 @@ export type TenantCountOutputType = {
   forms: number
   invoices: number
   payments: number
+  paymentReceipts: number
   refunds: number
   rentals: number
   rentalActivity: number
@@ -15790,7 +15789,6 @@ export type TenantCountOutputType = {
   vehicles: number
   maintenance: number
   paymentMethods: number
-  paymentReceipts: number
 }
 
 export type TenantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -15801,6 +15799,7 @@ export type TenantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   forms?: boolean | TenantCountOutputTypeCountFormsArgs
   invoices?: boolean | TenantCountOutputTypeCountInvoicesArgs
   payments?: boolean | TenantCountOutputTypeCountPaymentsArgs
+  paymentReceipts?: boolean | TenantCountOutputTypeCountPaymentReceiptsArgs
   refunds?: boolean | TenantCountOutputTypeCountRefundsArgs
   rentals?: boolean | TenantCountOutputTypeCountRentalsArgs
   rentalActivity?: boolean | TenantCountOutputTypeCountRentalActivityArgs
@@ -15827,7 +15826,6 @@ export type TenantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   vehicles?: boolean | TenantCountOutputTypeCountVehiclesArgs
   maintenance?: boolean | TenantCountOutputTypeCountMaintenanceArgs
   paymentMethods?: boolean | TenantCountOutputTypeCountPaymentMethodsArgs
-  paymentReceipts?: boolean | TenantCountOutputTypeCountPaymentReceiptsArgs
 }
 
 /**
@@ -15887,6 +15885,13 @@ export type TenantCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types
  */
 export type TenantCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PaymentWhereInput
+}
+
+/**
+ * TenantCountOutputType without action
+ */
+export type TenantCountOutputTypeCountPaymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentReceiptWhereInput
 }
 
 /**
@@ -16071,13 +16076,6 @@ export type TenantCountOutputTypeCountPaymentMethodsArgs<ExtArgs extends runtime
   where?: Prisma.PaymentMethodWhereInput
 }
 
-/**
- * TenantCountOutputType without action
- */
-export type TenantCountOutputTypeCountPaymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PaymentReceiptWhereInput
-}
-
 
 export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -16085,9 +16083,6 @@ export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   tenantName?: boolean
   email?: boolean
   number?: boolean
-  whatsappNumber?: boolean
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -16106,16 +16101,19 @@ export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   additionalDriverFee?: boolean
   daysInMonth?: boolean
   slug?: boolean
-  subdomain?: boolean
   merchantId?: boolean
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: boolean
   startTime?: boolean
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: boolean
   firmaWorkspaceId?: boolean
   firmaApiKey?: boolean
   firmaApiKeyAt?: boolean
+  subdomain?: boolean
   address?: boolean | Prisma.Tenant$addressArgs<ExtArgs>
   customers?: boolean | Prisma.Tenant$customersArgs<ExtArgs>
   customerViolations?: boolean | Prisma.Tenant$customerViolationsArgs<ExtArgs>
@@ -16124,6 +16122,7 @@ export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   forms?: boolean | Prisma.Tenant$formsArgs<ExtArgs>
   invoices?: boolean | Prisma.Tenant$invoicesArgs<ExtArgs>
   payments?: boolean | Prisma.Tenant$paymentsArgs<ExtArgs>
+  paymentReceipts?: boolean | Prisma.Tenant$paymentReceiptsArgs<ExtArgs>
   refunds?: boolean | Prisma.Tenant$refundsArgs<ExtArgs>
   rentals?: boolean | Prisma.Tenant$rentalsArgs<ExtArgs>
   rentalActivity?: boolean | Prisma.Tenant$rentalActivityArgs<ExtArgs>
@@ -16157,7 +16156,6 @@ export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   maintenance?: boolean | Prisma.Tenant$maintenanceArgs<ExtArgs>
   verificationRequest?: boolean | Prisma.Tenant$verificationRequestArgs<ExtArgs>
   paymentMethods?: boolean | Prisma.Tenant$paymentMethodsArgs<ExtArgs>
-  paymentReceipts?: boolean | Prisma.Tenant$paymentReceiptsArgs<ExtArgs>
   _count?: boolean | Prisma.TenantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tenant"]>
 
@@ -16167,9 +16165,6 @@ export type TenantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   tenantName?: boolean
   email?: boolean
   number?: boolean
-  whatsappNumber?: boolean
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -16188,16 +16183,19 @@ export type TenantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   additionalDriverFee?: boolean
   daysInMonth?: boolean
   slug?: boolean
-  subdomain?: boolean
   merchantId?: boolean
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: boolean
   startTime?: boolean
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: boolean
   firmaWorkspaceId?: boolean
   firmaApiKey?: boolean
   firmaApiKeyAt?: boolean
+  subdomain?: boolean
   cancellationPolicy?: boolean | Prisma.Tenant$cancellationPolicyArgs<ExtArgs>
   currency?: boolean | Prisma.Tenant$currencyArgs<ExtArgs>
   invoiceSequence?: boolean | Prisma.Tenant$invoiceSequenceArgs<ExtArgs>
@@ -16210,9 +16208,6 @@ export type TenantSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   tenantName?: boolean
   email?: boolean
   number?: boolean
-  whatsappNumber?: boolean
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -16231,16 +16226,19 @@ export type TenantSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   additionalDriverFee?: boolean
   daysInMonth?: boolean
   slug?: boolean
-  subdomain?: boolean
   merchantId?: boolean
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: boolean
   startTime?: boolean
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: boolean
   firmaWorkspaceId?: boolean
   firmaApiKey?: boolean
   firmaApiKeyAt?: boolean
+  subdomain?: boolean
   cancellationPolicy?: boolean | Prisma.Tenant$cancellationPolicyArgs<ExtArgs>
   currency?: boolean | Prisma.Tenant$currencyArgs<ExtArgs>
   invoiceSequence?: boolean | Prisma.Tenant$invoiceSequenceArgs<ExtArgs>
@@ -16253,9 +16251,6 @@ export type TenantSelectScalar = {
   tenantName?: boolean
   email?: boolean
   number?: boolean
-  whatsappNumber?: boolean
-  whatsappNotifications?: boolean
-  emailNotifications?: boolean
   currencyId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -16274,19 +16269,22 @@ export type TenantSelectScalar = {
   additionalDriverFee?: boolean
   daysInMonth?: boolean
   slug?: boolean
-  subdomain?: boolean
   merchantId?: boolean
   businessVerified?: boolean
   emailVerified?: boolean
   isDeleted?: boolean
   endTime?: boolean
   startTime?: boolean
+  emailNotifications?: boolean
+  whatsappNotifications?: boolean
+  whatsappNumber?: boolean
   firmaWorkspaceId?: boolean
   firmaApiKey?: boolean
   firmaApiKeyAt?: boolean
+  subdomain?: boolean
 }
 
-export type TenantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantCode" | "tenantName" | "email" | "number" | "whatsappNumber" | "whatsappNotifications" | "emailNotifications" | "currencyId" | "createdAt" | "updatedAt" | "logo" | "setupCompleted" | "financialYearStart" | "invoiceSequenceId" | "invoiceFootNotes" | "storefrontEnabled" | "subscriptionId" | "securityDeposit" | "rating" | "description" | "cancellationPolicyId" | "latePolicyId" | "additionalDriverFee" | "daysInMonth" | "slug" | "subdomain" | "merchantId" | "businessVerified" | "emailVerified" | "isDeleted" | "endTime" | "startTime" | "firmaWorkspaceId" | "firmaApiKey" | "firmaApiKeyAt", ExtArgs["result"]["tenant"]>
+export type TenantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantCode" | "tenantName" | "email" | "number" | "currencyId" | "createdAt" | "updatedAt" | "logo" | "setupCompleted" | "financialYearStart" | "invoiceSequenceId" | "invoiceFootNotes" | "storefrontEnabled" | "subscriptionId" | "securityDeposit" | "rating" | "description" | "cancellationPolicyId" | "latePolicyId" | "additionalDriverFee" | "daysInMonth" | "slug" | "merchantId" | "businessVerified" | "emailVerified" | "isDeleted" | "endTime" | "startTime" | "emailNotifications" | "whatsappNotifications" | "whatsappNumber" | "firmaWorkspaceId" | "firmaApiKey" | "firmaApiKeyAt" | "subdomain", ExtArgs["result"]["tenant"]>
 export type TenantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   address?: boolean | Prisma.Tenant$addressArgs<ExtArgs>
   customers?: boolean | Prisma.Tenant$customersArgs<ExtArgs>
@@ -16296,6 +16294,7 @@ export type TenantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   forms?: boolean | Prisma.Tenant$formsArgs<ExtArgs>
   invoices?: boolean | Prisma.Tenant$invoicesArgs<ExtArgs>
   payments?: boolean | Prisma.Tenant$paymentsArgs<ExtArgs>
+  paymentReceipts?: boolean | Prisma.Tenant$paymentReceiptsArgs<ExtArgs>
   refunds?: boolean | Prisma.Tenant$refundsArgs<ExtArgs>
   rentals?: boolean | Prisma.Tenant$rentalsArgs<ExtArgs>
   rentalActivity?: boolean | Prisma.Tenant$rentalActivityArgs<ExtArgs>
@@ -16329,7 +16328,6 @@ export type TenantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   maintenance?: boolean | Prisma.Tenant$maintenanceArgs<ExtArgs>
   verificationRequest?: boolean | Prisma.Tenant$verificationRequestArgs<ExtArgs>
   paymentMethods?: boolean | Prisma.Tenant$paymentMethodsArgs<ExtArgs>
-  paymentReceipts?: boolean | Prisma.Tenant$paymentReceiptsArgs<ExtArgs>
   _count?: boolean | Prisma.TenantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TenantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -16356,6 +16354,7 @@ export type $TenantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     forms: Prisma.$FormPayload<ExtArgs>[]
     invoices: Prisma.$InvoicePayload<ExtArgs>[]
     payments: Prisma.$PaymentPayload<ExtArgs>[]
+    paymentReceipts: Prisma.$PaymentReceiptPayload<ExtArgs>[]
     refunds: Prisma.$RefundPayload<ExtArgs>[]
     rentals: Prisma.$RentalPayload<ExtArgs>[]
     rentalActivity: Prisma.$RentalActivityPayload<ExtArgs>[]
@@ -16389,7 +16388,6 @@ export type $TenantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     maintenance: Prisma.$VehicleMaintenancePayload<ExtArgs>[]
     verificationRequest: Prisma.$VerificationRequestPayload<ExtArgs> | null
     paymentMethods: Prisma.$PaymentMethodPayload<ExtArgs>[]
-    paymentReceipts: Prisma.$PaymentReceiptPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -16397,9 +16395,6 @@ export type $TenantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     tenantName: string
     email: string
     number: string
-    whatsappNumber: string | null
-    whatsappNotifications: boolean
-    emailNotifications: boolean
     currencyId: string | null
     createdAt: Date
     updatedAt: Date | null
@@ -16418,16 +16413,19 @@ export type $TenantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     additionalDriverFee: number
     daysInMonth: number
     slug: string | null
-    subdomain: string | null
     merchantId: string | null
     businessVerified: boolean
     emailVerified: boolean
     isDeleted: boolean
     endTime: string | null
     startTime: string | null
+    emailNotifications: boolean
+    whatsappNotifications: boolean
+    whatsappNumber: string | null
     firmaWorkspaceId: string | null
     firmaApiKey: string | null
     firmaApiKeyAt: Date | null
+    subdomain: string | null
   }, ExtArgs["result"]["tenant"]>
   composites: {}
 }
@@ -16830,6 +16828,7 @@ export interface Prisma__TenantClient<T, Null = never, ExtArgs extends runtime.T
   forms<T extends Prisma.Tenant$formsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$formsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invoices<T extends Prisma.Tenant$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payments<T extends Prisma.Tenant$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  paymentReceipts<T extends Prisma.Tenant$paymentReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$paymentReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   refunds<T extends Prisma.Tenant$refundsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$refundsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefundPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   rentals<T extends Prisma.Tenant$rentalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$rentalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   rentalActivity<T extends Prisma.Tenant$rentalActivityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$rentalActivityArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -16863,7 +16862,6 @@ export interface Prisma__TenantClient<T, Null = never, ExtArgs extends runtime.T
   maintenance<T extends Prisma.Tenant$maintenanceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$maintenanceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleMaintenancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   verificationRequest<T extends Prisma.Tenant$verificationRequestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$verificationRequestArgs<ExtArgs>>): Prisma.Prisma__VerificationRequestClient<runtime.Types.Result.GetResult<Prisma.$VerificationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   paymentMethods<T extends Prisma.Tenant$paymentMethodsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$paymentMethodsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentMethodPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  paymentReceipts<T extends Prisma.Tenant$paymentReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$paymentReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16898,9 +16896,6 @@ export interface TenantFieldRefs {
   readonly tenantName: Prisma.FieldRef<"Tenant", 'String'>
   readonly email: Prisma.FieldRef<"Tenant", 'String'>
   readonly number: Prisma.FieldRef<"Tenant", 'String'>
-  readonly whatsappNumber: Prisma.FieldRef<"Tenant", 'String'>
-  readonly whatsappNotifications: Prisma.FieldRef<"Tenant", 'Boolean'>
-  readonly emailNotifications: Prisma.FieldRef<"Tenant", 'Boolean'>
   readonly currencyId: Prisma.FieldRef<"Tenant", 'String'>
   readonly createdAt: Prisma.FieldRef<"Tenant", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Tenant", 'DateTime'>
@@ -16919,16 +16914,19 @@ export interface TenantFieldRefs {
   readonly additionalDriverFee: Prisma.FieldRef<"Tenant", 'Float'>
   readonly daysInMonth: Prisma.FieldRef<"Tenant", 'Int'>
   readonly slug: Prisma.FieldRef<"Tenant", 'String'>
-  readonly subdomain: Prisma.FieldRef<"Tenant", 'String'>
   readonly merchantId: Prisma.FieldRef<"Tenant", 'String'>
   readonly businessVerified: Prisma.FieldRef<"Tenant", 'Boolean'>
   readonly emailVerified: Prisma.FieldRef<"Tenant", 'Boolean'>
   readonly isDeleted: Prisma.FieldRef<"Tenant", 'Boolean'>
   readonly endTime: Prisma.FieldRef<"Tenant", 'String'>
   readonly startTime: Prisma.FieldRef<"Tenant", 'String'>
+  readonly emailNotifications: Prisma.FieldRef<"Tenant", 'Boolean'>
+  readonly whatsappNotifications: Prisma.FieldRef<"Tenant", 'Boolean'>
+  readonly whatsappNumber: Prisma.FieldRef<"Tenant", 'String'>
   readonly firmaWorkspaceId: Prisma.FieldRef<"Tenant", 'String'>
   readonly firmaApiKey: Prisma.FieldRef<"Tenant", 'String'>
   readonly firmaApiKeyAt: Prisma.FieldRef<"Tenant", 'DateTime'>
+  readonly subdomain: Prisma.FieldRef<"Tenant", 'String'>
 }
     
 
@@ -17514,6 +17512,30 @@ export type Tenant$paymentsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[]
+}
+
+/**
+ * Tenant.paymentReceipts
+ */
+export type Tenant$paymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PaymentReceipt
+   */
+  select?: Prisma.PaymentReceiptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PaymentReceipt
+   */
+  omit?: Prisma.PaymentReceiptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentReceiptInclude<ExtArgs> | null
+  where?: Prisma.PaymentReceiptWhereInput
+  orderBy?: Prisma.PaymentReceiptOrderByWithRelationInput | Prisma.PaymentReceiptOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentReceiptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentReceiptScalarFieldEnum | Prisma.PaymentReceiptScalarFieldEnum[]
 }
 
 /**
@@ -18271,30 +18293,6 @@ export type Tenant$paymentMethodsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.PaymentMethodScalarFieldEnum | Prisma.PaymentMethodScalarFieldEnum[]
-}
-
-/**
- * Tenant.paymentReceipts
- */
-export type Tenant$paymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PaymentReceipt
-   */
-  select?: Prisma.PaymentReceiptSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PaymentReceipt
-   */
-  omit?: Prisma.PaymentReceiptOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PaymentReceiptInclude<ExtArgs> | null
-  where?: Prisma.PaymentReceiptWhereInput
-  orderBy?: Prisma.PaymentReceiptOrderByWithRelationInput | Prisma.PaymentReceiptOrderByWithRelationInput[]
-  cursor?: Prisma.PaymentReceiptWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PaymentReceiptScalarFieldEnum | Prisma.PaymentReceiptScalarFieldEnum[]
 }
 
 /**

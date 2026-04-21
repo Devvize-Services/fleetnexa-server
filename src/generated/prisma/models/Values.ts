@@ -37,11 +37,11 @@ export type ValuesAvgAggregateOutputType = {
   totalExtras: number | null
   subTotal: number | null
   netTotal: number | null
-  amountDue: number | null
   discountAmount: number | null
   additionalDriverFees: number | null
   cancellationFee: number | null
   lateFee: number | null
+  amountDue: number | null
 }
 
 export type ValuesSumAggregateOutputType = {
@@ -55,11 +55,11 @@ export type ValuesSumAggregateOutputType = {
   totalExtras: number | null
   subTotal: number | null
   netTotal: number | null
-  amountDue: number | null
   discountAmount: number | null
   additionalDriverFees: number | null
   cancellationFee: number | null
   lateFee: number | null
+  amountDue: number | null
 }
 
 export type ValuesMinAggregateOutputType = {
@@ -74,7 +74,6 @@ export type ValuesMinAggregateOutputType = {
   totalExtras: number | null
   subTotal: number | null
   netTotal: number | null
-  amountDue: number | null
   rentalId: string | null
   discountAmount: number | null
   discountPolicy: string | null
@@ -89,6 +88,7 @@ export type ValuesMinAggregateOutputType = {
   customDeposit: boolean | null
   customDiscount: boolean | null
   customTotalCost: boolean | null
+  amountDue: number | null
 }
 
 export type ValuesMaxAggregateOutputType = {
@@ -103,7 +103,6 @@ export type ValuesMaxAggregateOutputType = {
   totalExtras: number | null
   subTotal: number | null
   netTotal: number | null
-  amountDue: number | null
   rentalId: string | null
   discountAmount: number | null
   discountPolicy: string | null
@@ -118,6 +117,7 @@ export type ValuesMaxAggregateOutputType = {
   customDeposit: boolean | null
   customDiscount: boolean | null
   customTotalCost: boolean | null
+  amountDue: number | null
 }
 
 export type ValuesCountAggregateOutputType = {
@@ -132,7 +132,6 @@ export type ValuesCountAggregateOutputType = {
   totalExtras: number
   subTotal: number
   netTotal: number
-  amountDue: number
   rentalId: number
   discountAmount: number
   discountPolicy: number
@@ -147,6 +146,7 @@ export type ValuesCountAggregateOutputType = {
   customDeposit: number
   customDiscount: number
   customTotalCost: number
+  amountDue: number
   _all: number
 }
 
@@ -162,11 +162,11 @@ export type ValuesAvgAggregateInputType = {
   totalExtras?: true
   subTotal?: true
   netTotal?: true
-  amountDue?: true
   discountAmount?: true
   additionalDriverFees?: true
   cancellationFee?: true
   lateFee?: true
+  amountDue?: true
 }
 
 export type ValuesSumAggregateInputType = {
@@ -180,11 +180,11 @@ export type ValuesSumAggregateInputType = {
   totalExtras?: true
   subTotal?: true
   netTotal?: true
-  amountDue?: true
   discountAmount?: true
   additionalDriverFees?: true
   cancellationFee?: true
   lateFee?: true
+  amountDue?: true
 }
 
 export type ValuesMinAggregateInputType = {
@@ -199,7 +199,6 @@ export type ValuesMinAggregateInputType = {
   totalExtras?: true
   subTotal?: true
   netTotal?: true
-  amountDue?: true
   rentalId?: true
   discountAmount?: true
   discountPolicy?: true
@@ -214,6 +213,7 @@ export type ValuesMinAggregateInputType = {
   customDeposit?: true
   customDiscount?: true
   customTotalCost?: true
+  amountDue?: true
 }
 
 export type ValuesMaxAggregateInputType = {
@@ -228,7 +228,6 @@ export type ValuesMaxAggregateInputType = {
   totalExtras?: true
   subTotal?: true
   netTotal?: true
-  amountDue?: true
   rentalId?: true
   discountAmount?: true
   discountPolicy?: true
@@ -243,6 +242,7 @@ export type ValuesMaxAggregateInputType = {
   customDeposit?: true
   customDiscount?: true
   customTotalCost?: true
+  amountDue?: true
 }
 
 export type ValuesCountAggregateInputType = {
@@ -257,7 +257,6 @@ export type ValuesCountAggregateInputType = {
   totalExtras?: true
   subTotal?: true
   netTotal?: true
-  amountDue?: true
   rentalId?: true
   discountAmount?: true
   discountPolicy?: true
@@ -272,6 +271,7 @@ export type ValuesCountAggregateInputType = {
   customDeposit?: true
   customDiscount?: true
   customTotalCost?: true
+  amountDue?: true
   _all?: true
 }
 
@@ -373,7 +373,6 @@ export type ValuesGroupByOutputType = {
   totalExtras: number
   subTotal: number
   netTotal: number
-  amountDue: number
   rentalId: string
   discountAmount: number
   discountPolicy: string
@@ -388,6 +387,7 @@ export type ValuesGroupByOutputType = {
   customDeposit: boolean
   customDiscount: boolean
   customTotalCost: boolean
+  amountDue: number
   _count: ValuesCountAggregateOutputType | null
   _avg: ValuesAvgAggregateOutputType | null
   _sum: ValuesSumAggregateOutputType | null
@@ -425,7 +425,6 @@ export type ValuesWhereInput = {
   totalExtras?: Prisma.FloatFilter<"Values"> | number
   subTotal?: Prisma.FloatFilter<"Values"> | number
   netTotal?: Prisma.FloatFilter<"Values"> | number
-  amountDue?: Prisma.FloatFilter<"Values"> | number
   rentalId?: Prisma.StringFilter<"Values"> | string
   discountAmount?: Prisma.FloatFilter<"Values"> | number
   discountPolicy?: Prisma.StringFilter<"Values"> | string
@@ -440,6 +439,7 @@ export type ValuesWhereInput = {
   customDeposit?: Prisma.BoolFilter<"Values"> | boolean
   customDiscount?: Prisma.BoolFilter<"Values"> | boolean
   customTotalCost?: Prisma.BoolFilter<"Values"> | boolean
+  amountDue?: Prisma.FloatFilter<"Values"> | number
   extras?: Prisma.RentalExtraListRelationFilter
   rental?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
 }
@@ -456,7 +456,6 @@ export type ValuesOrderByWithRelationInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   discountPolicy?: Prisma.SortOrder
@@ -471,6 +470,7 @@ export type ValuesOrderByWithRelationInput = {
   customDeposit?: Prisma.SortOrder
   customDiscount?: Prisma.SortOrder
   customTotalCost?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
   extras?: Prisma.RentalExtraOrderByRelationAggregateInput
   rental?: Prisma.RentalOrderByWithRelationInput
 }
@@ -491,7 +491,6 @@ export type ValuesWhereUniqueInput = Prisma.AtLeast<{
   totalExtras?: Prisma.FloatFilter<"Values"> | number
   subTotal?: Prisma.FloatFilter<"Values"> | number
   netTotal?: Prisma.FloatFilter<"Values"> | number
-  amountDue?: Prisma.FloatFilter<"Values"> | number
   discountAmount?: Prisma.FloatFilter<"Values"> | number
   discountPolicy?: Prisma.StringFilter<"Values"> | string
   createdAt?: Prisma.DateTimeFilter<"Values"> | Date | string
@@ -505,6 +504,7 @@ export type ValuesWhereUniqueInput = Prisma.AtLeast<{
   customDeposit?: Prisma.BoolFilter<"Values"> | boolean
   customDiscount?: Prisma.BoolFilter<"Values"> | boolean
   customTotalCost?: Prisma.BoolFilter<"Values"> | boolean
+  amountDue?: Prisma.FloatFilter<"Values"> | number
   extras?: Prisma.RentalExtraListRelationFilter
   rental?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
 }, "id" | "rentalId">
@@ -521,7 +521,6 @@ export type ValuesOrderByWithAggregationInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   discountPolicy?: Prisma.SortOrder
@@ -536,6 +535,7 @@ export type ValuesOrderByWithAggregationInput = {
   customDeposit?: Prisma.SortOrder
   customDiscount?: Prisma.SortOrder
   customTotalCost?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
   _count?: Prisma.ValuesCountOrderByAggregateInput
   _avg?: Prisma.ValuesAvgOrderByAggregateInput
   _max?: Prisma.ValuesMaxOrderByAggregateInput
@@ -558,7 +558,6 @@ export type ValuesScalarWhereWithAggregatesInput = {
   totalExtras?: Prisma.FloatWithAggregatesFilter<"Values"> | number
   subTotal?: Prisma.FloatWithAggregatesFilter<"Values"> | number
   netTotal?: Prisma.FloatWithAggregatesFilter<"Values"> | number
-  amountDue?: Prisma.FloatWithAggregatesFilter<"Values"> | number
   rentalId?: Prisma.StringWithAggregatesFilter<"Values"> | string
   discountAmount?: Prisma.FloatWithAggregatesFilter<"Values"> | number
   discountPolicy?: Prisma.StringWithAggregatesFilter<"Values"> | string
@@ -573,6 +572,7 @@ export type ValuesScalarWhereWithAggregatesInput = {
   customDeposit?: Prisma.BoolWithAggregatesFilter<"Values"> | boolean
   customDiscount?: Prisma.BoolWithAggregatesFilter<"Values"> | boolean
   customTotalCost?: Prisma.BoolWithAggregatesFilter<"Values"> | boolean
+  amountDue?: Prisma.FloatWithAggregatesFilter<"Values"> | number
 }
 
 export type ValuesCreateInput = {
@@ -587,7 +587,6 @@ export type ValuesCreateInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   discountAmount: number
   discountPolicy: string
   createdAt?: Date | string
@@ -601,6 +600,7 @@ export type ValuesCreateInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
   extras?: Prisma.RentalExtraCreateNestedManyWithoutValuesInput
   rental: Prisma.RentalCreateNestedOneWithoutValuesInput
 }
@@ -617,7 +617,6 @@ export type ValuesUncheckedCreateInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   rentalId: string
   discountAmount: number
   discountPolicy: string
@@ -632,6 +631,7 @@ export type ValuesUncheckedCreateInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
   extras?: Prisma.RentalExtraUncheckedCreateNestedManyWithoutValuesInput
 }
 
@@ -647,7 +647,6 @@ export type ValuesUpdateInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -661,6 +660,7 @@ export type ValuesUpdateInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   extras?: Prisma.RentalExtraUpdateManyWithoutValuesNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutValuesNestedInput
 }
@@ -677,7 +677,6 @@ export type ValuesUncheckedUpdateInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   rentalId?: Prisma.StringFieldUpdateOperationsInput | string
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -692,6 +691,7 @@ export type ValuesUncheckedUpdateInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   extras?: Prisma.RentalExtraUncheckedUpdateManyWithoutValuesNestedInput
 }
 
@@ -707,7 +707,6 @@ export type ValuesCreateManyInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   rentalId: string
   discountAmount: number
   discountPolicy: string
@@ -722,6 +721,7 @@ export type ValuesCreateManyInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
 }
 
 export type ValuesUpdateManyMutationInput = {
@@ -736,7 +736,6 @@ export type ValuesUpdateManyMutationInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -750,6 +749,7 @@ export type ValuesUpdateManyMutationInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type ValuesUncheckedUpdateManyInput = {
@@ -764,7 +764,6 @@ export type ValuesUncheckedUpdateManyInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   rentalId?: Prisma.StringFieldUpdateOperationsInput | string
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -779,6 +778,7 @@ export type ValuesUncheckedUpdateManyInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type ValuesNullableScalarRelationFilter = {
@@ -798,7 +798,6 @@ export type ValuesCountOrderByAggregateInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   discountPolicy?: Prisma.SortOrder
@@ -813,6 +812,7 @@ export type ValuesCountOrderByAggregateInput = {
   customDeposit?: Prisma.SortOrder
   customDiscount?: Prisma.SortOrder
   customTotalCost?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
 }
 
 export type ValuesAvgOrderByAggregateInput = {
@@ -826,11 +826,11 @@ export type ValuesAvgOrderByAggregateInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   additionalDriverFees?: Prisma.SortOrder
   cancellationFee?: Prisma.SortOrder
   lateFee?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
 }
 
 export type ValuesMaxOrderByAggregateInput = {
@@ -845,7 +845,6 @@ export type ValuesMaxOrderByAggregateInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   discountPolicy?: Prisma.SortOrder
@@ -860,6 +859,7 @@ export type ValuesMaxOrderByAggregateInput = {
   customDeposit?: Prisma.SortOrder
   customDiscount?: Prisma.SortOrder
   customTotalCost?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
 }
 
 export type ValuesMinOrderByAggregateInput = {
@@ -874,7 +874,6 @@ export type ValuesMinOrderByAggregateInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   discountPolicy?: Prisma.SortOrder
@@ -889,6 +888,7 @@ export type ValuesMinOrderByAggregateInput = {
   customDeposit?: Prisma.SortOrder
   customDiscount?: Prisma.SortOrder
   customTotalCost?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
 }
 
 export type ValuesSumOrderByAggregateInput = {
@@ -902,11 +902,11 @@ export type ValuesSumOrderByAggregateInput = {
   totalExtras?: Prisma.SortOrder
   subTotal?: Prisma.SortOrder
   netTotal?: Prisma.SortOrder
-  amountDue?: Prisma.SortOrder
   discountAmount?: Prisma.SortOrder
   additionalDriverFees?: Prisma.SortOrder
   cancellationFee?: Prisma.SortOrder
   lateFee?: Prisma.SortOrder
+  amountDue?: Prisma.SortOrder
 }
 
 export type ValuesScalarRelationFilter = {
@@ -980,7 +980,6 @@ export type ValuesCreateWithoutRentalInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   discountAmount: number
   discountPolicy: string
   createdAt?: Date | string
@@ -994,6 +993,7 @@ export type ValuesCreateWithoutRentalInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
   extras?: Prisma.RentalExtraCreateNestedManyWithoutValuesInput
 }
 
@@ -1009,7 +1009,6 @@ export type ValuesUncheckedCreateWithoutRentalInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   discountAmount: number
   discountPolicy: string
   createdAt?: Date | string
@@ -1023,6 +1022,7 @@ export type ValuesUncheckedCreateWithoutRentalInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
   extras?: Prisma.RentalExtraUncheckedCreateNestedManyWithoutValuesInput
 }
 
@@ -1054,7 +1054,6 @@ export type ValuesUpdateWithoutRentalInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1068,6 +1067,7 @@ export type ValuesUpdateWithoutRentalInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   extras?: Prisma.RentalExtraUpdateManyWithoutValuesNestedInput
 }
 
@@ -1083,7 +1083,6 @@ export type ValuesUncheckedUpdateWithoutRentalInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1097,6 +1096,7 @@ export type ValuesUncheckedUpdateWithoutRentalInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   extras?: Prisma.RentalExtraUncheckedUpdateManyWithoutValuesNestedInput
 }
 
@@ -1112,7 +1112,6 @@ export type ValuesCreateWithoutExtrasInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   discountAmount: number
   discountPolicy: string
   createdAt?: Date | string
@@ -1126,6 +1125,7 @@ export type ValuesCreateWithoutExtrasInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
   rental: Prisma.RentalCreateNestedOneWithoutValuesInput
 }
 
@@ -1141,7 +1141,6 @@ export type ValuesUncheckedCreateWithoutExtrasInput = {
   totalExtras: number
   subTotal?: number
   netTotal?: number
-  amountDue?: number
   rentalId: string
   discountAmount: number
   discountPolicy: string
@@ -1156,6 +1155,7 @@ export type ValuesUncheckedCreateWithoutExtrasInput = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: number
 }
 
 export type ValuesCreateOrConnectWithoutExtrasInput = {
@@ -1186,7 +1186,6 @@ export type ValuesUpdateWithoutExtrasInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1200,6 +1199,7 @@ export type ValuesUpdateWithoutExtrasInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   rental?: Prisma.RentalUpdateOneRequiredWithoutValuesNestedInput
 }
 
@@ -1215,7 +1215,6 @@ export type ValuesUncheckedUpdateWithoutExtrasInput = {
   totalExtras?: Prisma.FloatFieldUpdateOperationsInput | number
   subTotal?: Prisma.FloatFieldUpdateOperationsInput | number
   netTotal?: Prisma.FloatFieldUpdateOperationsInput | number
-  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
   rentalId?: Prisma.StringFieldUpdateOperationsInput | string
   discountAmount?: Prisma.FloatFieldUpdateOperationsInput | number
   discountPolicy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1230,6 +1229,7 @@ export type ValuesUncheckedUpdateWithoutExtrasInput = {
   customDeposit?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customDiscount?: Prisma.BoolFieldUpdateOperationsInput | boolean
   customTotalCost?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  amountDue?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 
@@ -1275,7 +1275,6 @@ export type ValuesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   totalExtras?: boolean
   subTotal?: boolean
   netTotal?: boolean
-  amountDue?: boolean
   rentalId?: boolean
   discountAmount?: boolean
   discountPolicy?: boolean
@@ -1290,6 +1289,7 @@ export type ValuesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: boolean
   extras?: boolean | Prisma.Values$extrasArgs<ExtArgs>
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ValuesCountOutputTypeDefaultArgs<ExtArgs>
@@ -1307,7 +1307,6 @@ export type ValuesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   totalExtras?: boolean
   subTotal?: boolean
   netTotal?: boolean
-  amountDue?: boolean
   rentalId?: boolean
   discountAmount?: boolean
   discountPolicy?: boolean
@@ -1322,6 +1321,7 @@ export type ValuesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: boolean
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["values"]>
 
@@ -1337,7 +1337,6 @@ export type ValuesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   totalExtras?: boolean
   subTotal?: boolean
   netTotal?: boolean
-  amountDue?: boolean
   rentalId?: boolean
   discountAmount?: boolean
   discountPolicy?: boolean
@@ -1352,6 +1351,7 @@ export type ValuesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: boolean
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["values"]>
 
@@ -1367,7 +1367,6 @@ export type ValuesSelectScalar = {
   totalExtras?: boolean
   subTotal?: boolean
   netTotal?: boolean
-  amountDue?: boolean
   rentalId?: boolean
   discountAmount?: boolean
   discountPolicy?: boolean
@@ -1382,9 +1381,10 @@ export type ValuesSelectScalar = {
   customDeposit?: boolean
   customDiscount?: boolean
   customTotalCost?: boolean
+  amountDue?: boolean
 }
 
-export type ValuesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "numberOfDays" | "basePrice" | "totalCost" | "discount" | "deliveryFee" | "collectionFee" | "deposit" | "totalExtras" | "subTotal" | "netTotal" | "amountDue" | "rentalId" | "discountAmount" | "discountPolicy" | "createdAt" | "updatedAt" | "additionalDriverFees" | "cancellationFee" | "lateFee" | "customBasePrice" | "customCollectionFee" | "customDeliveryFee" | "customDeposit" | "customDiscount" | "customTotalCost", ExtArgs["result"]["values"]>
+export type ValuesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "numberOfDays" | "basePrice" | "totalCost" | "discount" | "deliveryFee" | "collectionFee" | "deposit" | "totalExtras" | "subTotal" | "netTotal" | "rentalId" | "discountAmount" | "discountPolicy" | "createdAt" | "updatedAt" | "additionalDriverFees" | "cancellationFee" | "lateFee" | "customBasePrice" | "customCollectionFee" | "customDeliveryFee" | "customDeposit" | "customDiscount" | "customTotalCost" | "amountDue", ExtArgs["result"]["values"]>
 export type ValuesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   extras?: boolean | Prisma.Values$extrasArgs<ExtArgs>
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
@@ -1415,7 +1415,6 @@ export type $ValuesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     totalExtras: number
     subTotal: number
     netTotal: number
-    amountDue: number
     rentalId: string
     discountAmount: number
     discountPolicy: string
@@ -1430,6 +1429,7 @@ export type $ValuesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     customDeposit: boolean
     customDiscount: boolean
     customTotalCost: boolean
+    amountDue: number
   }, ExtArgs["result"]["values"]>
   composites: {}
 }
@@ -1866,7 +1866,6 @@ export interface ValuesFieldRefs {
   readonly totalExtras: Prisma.FieldRef<"Values", 'Float'>
   readonly subTotal: Prisma.FieldRef<"Values", 'Float'>
   readonly netTotal: Prisma.FieldRef<"Values", 'Float'>
-  readonly amountDue: Prisma.FieldRef<"Values", 'Float'>
   readonly rentalId: Prisma.FieldRef<"Values", 'String'>
   readonly discountAmount: Prisma.FieldRef<"Values", 'Float'>
   readonly discountPolicy: Prisma.FieldRef<"Values", 'String'>
@@ -1881,6 +1880,7 @@ export interface ValuesFieldRefs {
   readonly customDeposit: Prisma.FieldRef<"Values", 'Boolean'>
   readonly customDiscount: Prisma.FieldRef<"Values", 'Boolean'>
   readonly customTotalCost: Prisma.FieldRef<"Values", 'Boolean'>
+  readonly amountDue: Prisma.FieldRef<"Values", 'Float'>
 }
     
 

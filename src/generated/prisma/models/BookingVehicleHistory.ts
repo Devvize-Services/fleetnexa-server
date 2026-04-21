@@ -200,8 +200,8 @@ export type BookingVehicleHistoryWhereInput = {
   swappedBy?: Prisma.StringFilter<"BookingVehicleHistory"> | string
   booking?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   fromVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
-  toVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  toVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }
 
 export type BookingVehicleHistoryOrderByWithRelationInput = {
@@ -214,8 +214,8 @@ export type BookingVehicleHistoryOrderByWithRelationInput = {
   swappedBy?: Prisma.SortOrder
   booking?: Prisma.RentalOrderByWithRelationInput
   fromVehicle?: Prisma.VehicleOrderByWithRelationInput
-  toVehicle?: Prisma.VehicleOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  toVehicle?: Prisma.VehicleOrderByWithRelationInput
 }
 
 export type BookingVehicleHistoryWhereUniqueInput = Prisma.AtLeast<{
@@ -231,8 +231,8 @@ export type BookingVehicleHistoryWhereUniqueInput = Prisma.AtLeast<{
   swappedBy?: Prisma.StringFilter<"BookingVehicleHistory"> | string
   booking?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   fromVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
-  toVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  toVehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }, "id">
 
 export type BookingVehicleHistoryOrderByWithAggregationInput = {
@@ -267,8 +267,8 @@ export type BookingVehicleHistoryCreateInput = {
   swappedAt?: Date | string
   booking: Prisma.RentalCreateNestedOneWithoutVehicleHistoryInput
   fromVehicle: Prisma.VehicleCreateNestedOneWithoutSwapFromHistoryInput
-  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
   user: Prisma.UserCreateNestedOneWithoutBookingVehicleHistoryInput
+  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
 }
 
 export type BookingVehicleHistoryUncheckedCreateInput = {
@@ -287,8 +287,8 @@ export type BookingVehicleHistoryUpdateInput = {
   swappedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   booking?: Prisma.RentalUpdateOneRequiredWithoutVehicleHistoryNestedInput
   fromVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapFromHistoryNestedInput
-  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBookingVehicleHistoryNestedInput
+  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
 }
 
 export type BookingVehicleHistoryUncheckedUpdateInput = {
@@ -540,8 +540,8 @@ export type BookingVehicleHistoryCreateWithoutBookingInput = {
   reason: string
   swappedAt?: Date | string
   fromVehicle: Prisma.VehicleCreateNestedOneWithoutSwapFromHistoryInput
-  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
   user: Prisma.UserCreateNestedOneWithoutBookingVehicleHistoryInput
+  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
 }
 
 export type BookingVehicleHistoryUncheckedCreateWithoutBookingInput = {
@@ -641,8 +641,8 @@ export type BookingVehicleHistoryCreateWithoutFromVehicleInput = {
   reason: string
   swappedAt?: Date | string
   booking: Prisma.RentalCreateNestedOneWithoutVehicleHistoryInput
-  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
   user: Prisma.UserCreateNestedOneWithoutBookingVehicleHistoryInput
+  toVehicle: Prisma.VehicleCreateNestedOneWithoutSwapToHistoryInput
 }
 
 export type BookingVehicleHistoryUncheckedCreateWithoutFromVehicleInput = {
@@ -738,8 +738,8 @@ export type BookingVehicleHistoryUpdateWithoutBookingInput = {
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   swappedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapFromHistoryNestedInput
-  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBookingVehicleHistoryNestedInput
+  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
 }
 
 export type BookingVehicleHistoryUncheckedUpdateWithoutBookingInput = {
@@ -819,8 +819,8 @@ export type BookingVehicleHistoryUpdateWithoutFromVehicleInput = {
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   swappedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   booking?: Prisma.RentalUpdateOneRequiredWithoutVehicleHistoryNestedInput
-  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBookingVehicleHistoryNestedInput
+  toVehicle?: Prisma.VehicleUpdateOneRequiredWithoutSwapToHistoryNestedInput
 }
 
 export type BookingVehicleHistoryUncheckedUpdateWithoutFromVehicleInput = {
@@ -880,8 +880,8 @@ export type BookingVehicleHistorySelect<ExtArgs extends runtime.Types.Extensions
   swappedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bookingVehicleHistory"]>
 
 export type BookingVehicleHistorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -894,8 +894,8 @@ export type BookingVehicleHistorySelectCreateManyAndReturn<ExtArgs extends runti
   swappedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bookingVehicleHistory"]>
 
 export type BookingVehicleHistorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -908,8 +908,8 @@ export type BookingVehicleHistorySelectUpdateManyAndReturn<ExtArgs extends runti
   swappedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bookingVehicleHistory"]>
 
 export type BookingVehicleHistorySelectScalar = {
@@ -926,20 +926,20 @@ export type BookingVehicleHistoryOmit<ExtArgs extends runtime.Types.Extensions.I
 export type BookingVehicleHistoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 export type BookingVehicleHistoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 export type BookingVehicleHistoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   fromVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
-  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  toVehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 
 export type $BookingVehicleHistoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -947,8 +947,8 @@ export type $BookingVehicleHistoryPayload<ExtArgs extends runtime.Types.Extensio
   objects: {
     booking: Prisma.$RentalPayload<ExtArgs>
     fromVehicle: Prisma.$VehiclePayload<ExtArgs>
-    toVehicle: Prisma.$VehiclePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
+    toVehicle: Prisma.$VehiclePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1354,8 +1354,8 @@ export interface Prisma__BookingVehicleHistoryClient<T, Null = never, ExtArgs ex
   readonly [Symbol.toStringTag]: "PrismaPromise"
   booking<T extends Prisma.RentalDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RentalDefaultArgs<ExtArgs>>): Prisma.Prisma__RentalClient<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   fromVehicle<T extends Prisma.VehicleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  toVehicle<T extends Prisma.VehicleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  toVehicle<T extends Prisma.VehicleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

@@ -272,13 +272,13 @@ export type InvoiceSequenceScalarFieldEnum = (typeof InvoiceSequenceScalarFieldE
 export const CountryScalarFieldEnum = {
   id: 'id',
   code: 'code',
-  iso3: 'iso3',
-  phoneCode: 'phoneCode',
-  currency: 'currency',
-  cscId: 'cscId',
   country: 'country',
   createdAt: 'createdAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  cscId: 'cscId',
+  currency: 'currency',
+  iso3: 'iso3',
+  phoneCode: 'phoneCode'
 } as const
 
 export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
@@ -546,16 +546,16 @@ export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeo
 export const PaymentReceiptScalarFieldEnum = {
   id: 'id',
   receiptNumber: 'receiptNumber',
-  paymentId: 'paymentId',
   amount: 'amount',
-  bookingId: 'bookingId',
   tenantId: 'tenantId',
   customerId: 'customerId',
   receiptUrl: 'receiptUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  paymentId: 'paymentId',
+  bookingId: 'bookingId'
 } as const
 
 export type PaymentReceiptScalarFieldEnum = (typeof PaymentReceiptScalarFieldEnum)[keyof typeof PaymentReceiptScalarFieldEnum]
@@ -711,8 +711,6 @@ export const RentalScalarFieldEnum = {
   pickupLocationId: 'pickupLocationId',
   returnLocationId: 'returnLocationId',
   vehicleId: 'vehicleId',
-  originalVehicleId: 'originalVehicleId',
-  vehicleSwapped: 'vehicleSwapped',
   agent: 'agent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -724,7 +722,9 @@ export const RentalScalarFieldEnum = {
   isDeleted: 'isDeleted',
   chargeTypeId: 'chargeTypeId',
   bookingCode: 'bookingCode',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  originalVehicleId: 'originalVehicleId',
+  vehicleSwapped: 'vehicleSwapped'
 } as const
 
 export type RentalScalarFieldEnum = (typeof RentalScalarFieldEnum)[keyof typeof RentalScalarFieldEnum]
@@ -763,7 +763,6 @@ export const ValuesScalarFieldEnum = {
   totalExtras: 'totalExtras',
   subTotal: 'subTotal',
   netTotal: 'netTotal',
-  amountDue: 'amountDue',
   rentalId: 'rentalId',
   discountAmount: 'discountAmount',
   discountPolicy: 'discountPolicy',
@@ -777,7 +776,8 @@ export const ValuesScalarFieldEnum = {
   customDeliveryFee: 'customDeliveryFee',
   customDeposit: 'customDeposit',
   customDiscount: 'customDiscount',
-  customTotalCost: 'customTotalCost'
+  customTotalCost: 'customTotalCost',
+  amountDue: 'amountDue'
 } as const
 
 export type ValuesScalarFieldEnum = (typeof ValuesScalarFieldEnum)[keyof typeof ValuesScalarFieldEnum]
@@ -953,9 +953,6 @@ export const TenantScalarFieldEnum = {
   tenantName: 'tenantName',
   email: 'email',
   number: 'number',
-  whatsappNumber: 'whatsappNumber',
-  whatsappNotifications: 'whatsappNotifications',
-  emailNotifications: 'emailNotifications',
   currencyId: 'currencyId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -974,16 +971,19 @@ export const TenantScalarFieldEnum = {
   additionalDriverFee: 'additionalDriverFee',
   daysInMonth: 'daysInMonth',
   slug: 'slug',
-  subdomain: 'subdomain',
   merchantId: 'merchantId',
   businessVerified: 'businessVerified',
   emailVerified: 'emailVerified',
   isDeleted: 'isDeleted',
   endTime: 'endTime',
   startTime: 'startTime',
+  emailNotifications: 'emailNotifications',
+  whatsappNotifications: 'whatsappNotifications',
+  whatsappNumber: 'whatsappNumber',
   firmaWorkspaceId: 'firmaWorkspaceId',
   firmaApiKey: 'firmaApiKey',
-  firmaApiKeyAt: 'firmaApiKeyAt'
+  firmaApiKeyAt: 'firmaApiKeyAt',
+  subdomain: 'subdomain'
 } as const
 
 export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
@@ -1212,7 +1212,6 @@ export type VerificationRequestScalarFieldEnum = (typeof VerificationRequestScal
 
 export const TransactionsScalarFieldEnum = {
   id: 'id',
-  number: 'number',
   amount: 'amount',
   type: 'type',
   isDeleted: 'isDeleted',
@@ -1226,7 +1225,8 @@ export const TransactionsScalarFieldEnum = {
   refundId: 'refundId',
   expenseId: 'expenseId',
   updatedAt: 'updatedAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  number: 'number'
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
@@ -1354,6 +1354,8 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   username: 'username',
   tenantId: 'tenantId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   roleId: 'roleId',
   lastChanged: 'lastChanged',
   email: 'email',
@@ -1362,8 +1364,6 @@ export const UserScalarFieldEnum = {
   deletedAt: 'deletedAt',
   isDeleted: 'isDeleted',
   requirePasswordChange: 'requirePasswordChange',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   updatedBy: 'updatedBy'
 } as const
 

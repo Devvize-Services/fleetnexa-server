@@ -230,8 +230,8 @@ export type VehicleInsuranceHistoryWhereInput = {
   updatedAt?: Prisma.DateTimeNullableFilter<"VehicleInsuranceHistory"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"VehicleInsuranceHistory"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"VehicleInsuranceHistory"> | string | null
-  vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
   insuranceCompany?: Prisma.XOR<Prisma.InsuranceCompanyScalarRelationFilter, Prisma.InsuranceCompanyWhereInput>
+  vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }
 
 export type VehicleInsuranceHistoryOrderByWithRelationInput = {
@@ -246,8 +246,8 @@ export type VehicleInsuranceHistoryOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
-  vehicle?: Prisma.VehicleOrderByWithRelationInput
   insuranceCompany?: Prisma.InsuranceCompanyOrderByWithRelationInput
+  vehicle?: Prisma.VehicleOrderByWithRelationInput
 }
 
 export type VehicleInsuranceHistoryWhereUniqueInput = Prisma.AtLeast<{
@@ -265,8 +265,8 @@ export type VehicleInsuranceHistoryWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeNullableFilter<"VehicleInsuranceHistory"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"VehicleInsuranceHistory"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"VehicleInsuranceHistory"> | string | null
-  vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
   insuranceCompany?: Prisma.XOR<Prisma.InsuranceCompanyScalarRelationFilter, Prisma.InsuranceCompanyWhereInput>
+  vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }, "id">
 
 export type VehicleInsuranceHistoryOrderByWithAggregationInput = {
@@ -313,8 +313,8 @@ export type VehicleInsuranceHistoryCreateInput = {
   updatedAt?: Date | string | null
   createdBy?: string | null
   updatedBy?: string | null
-  vehicle: Prisma.VehicleCreateNestedOneWithoutInsuranceHistoryInput
   insuranceCompany: Prisma.InsuranceCompanyCreateNestedOneWithoutVehiclesInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutInsuranceHistoryInput
 }
 
 export type VehicleInsuranceHistoryUncheckedCreateInput = {
@@ -341,8 +341,8 @@ export type VehicleInsuranceHistoryUpdateInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutInsuranceHistoryNestedInput
   insuranceCompany?: Prisma.InsuranceCompanyUpdateOneRequiredWithoutVehiclesNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutInsuranceHistoryNestedInput
 }
 
 export type VehicleInsuranceHistoryUncheckedUpdateInput = {
@@ -774,8 +774,8 @@ export type VehicleInsuranceHistorySelect<ExtArgs extends runtime.Types.Extensio
   updatedAt?: boolean
   createdBy?: boolean
   updatedBy?: boolean
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleInsuranceHistory"]>
 
 export type VehicleInsuranceHistorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -790,8 +790,8 @@ export type VehicleInsuranceHistorySelectCreateManyAndReturn<ExtArgs extends run
   updatedAt?: boolean
   createdBy?: boolean
   updatedBy?: boolean
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleInsuranceHistory"]>
 
 export type VehicleInsuranceHistorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -806,8 +806,8 @@ export type VehicleInsuranceHistorySelectUpdateManyAndReturn<ExtArgs extends run
   updatedAt?: boolean
   createdBy?: boolean
   updatedBy?: boolean
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleInsuranceHistory"]>
 
 export type VehicleInsuranceHistorySelectScalar = {
@@ -826,23 +826,23 @@ export type VehicleInsuranceHistorySelectScalar = {
 
 export type VehicleInsuranceHistoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "insuranceCompanyId" | "policyNumber" | "validFrom" | "validTo" | "expired" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy", ExtArgs["result"]["vehicleInsuranceHistory"]>
 export type VehicleInsuranceHistoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 export type VehicleInsuranceHistoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 export type VehicleInsuranceHistoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
   insuranceCompany?: boolean | Prisma.InsuranceCompanyDefaultArgs<ExtArgs>
+  vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
 
 export type $VehicleInsuranceHistoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "VehicleInsuranceHistory"
   objects: {
-    vehicle: Prisma.$VehiclePayload<ExtArgs>
     insuranceCompany: Prisma.$InsuranceCompanyPayload<ExtArgs>
+    vehicle: Prisma.$VehiclePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1250,8 +1250,8 @@ readonly fields: VehicleInsuranceHistoryFieldRefs;
  */
 export interface Prisma__VehicleInsuranceHistoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  vehicle<T extends Prisma.VehicleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   insuranceCompany<T extends Prisma.InsuranceCompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InsuranceCompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__InsuranceCompanyClient<runtime.Types.Result.GetResult<Prisma.$InsuranceCompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  vehicle<T extends Prisma.VehicleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
