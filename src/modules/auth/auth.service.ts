@@ -1,5 +1,6 @@
 import {
   ConflictException,
+  Inject,
   Injectable,
   Logger,
   UnauthorizedException,
@@ -9,6 +10,10 @@ import bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from '../user/user.repository.js';
 import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
+import { SessionService } from './services/session.service.js';
+import refreshJwtConfig from '../../config/refresh-jwt.config.js';
+import type { ConfigType } from '@nestjs/config';
+import { AuditLogService } from './services/audit-log.service.js';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +23,10 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly userRepo: UserRepository,
+    private readonly sessionService: SessionService,
+    private readonly auditLogService: AuditLogService,
+    @Inject(refreshJwtConfig.KEY)
+    private refreshTokenConfig: ConfigType<typeof refreshJwtConfig>,
   ) {}
 
   async validateUser(username: string, password: string, role: string) {
@@ -161,27 +170,52 @@ export class AuthService {
     }
   }
 
-  async loginTenantUser(userId: string) {
+  async loginTenantUser(req: any) {
     try {
+      const userId = req.user.id;
+      const ip = req.ip;
+      const userAgent = req.headers['user-agent'] || '';
+      const meta = req.body?.meta || {};
+
       const user = await this.userRepo.getTenantUserById(userId);
 
       if (!user) {
+        this.auditLogService.logEvent({
+          userId: userId,
+          userType: 'TENANT',
+          action: 'LOGIN_FAILED',
+          ip,
+          meta,
+          userAgent,
+        });
+
         this.logger.warn(`Login failed: User with ID ${userId} not found.`);
         throw new UnauthorizedException('User not found');
       }
 
-      const payload = {
-        sub: user.id,
-        tenantId: user.tenantId,
+      const session = await this.createLoginSession({
+        userId: user.id,
+        userType: 'TENANT_USER',
+      });
+
+      this.auditLogService.logEvent({
+        userId: user.id,
+        userType: 'TENANT',
+        action: 'LOGIN_SUCCESS',
+        ip,
+        meta,
+        userAgent,
+      });
+
+      return {
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
+        user,
         role: 'TENANT_USER',
       };
-
-      const token = this.jwtService.sign(payload);
-
-      return { token, user, role: 'TENANT_USER' };
     } catch (error) {
       this.logger.error(
-        `Error logging in tenant user with ID ${userId}: ${error.message}`,
+        `Error logging in tenant user with ID ${req.user.id}: ${error.message}`,
       );
       throw error;
     }
@@ -200,14 +234,17 @@ export class AuthService {
         throw new UnauthorizedException('User not found');
       }
 
-      const payload = {
-        sub: user.id,
+      const session = await this.createLoginSession({
+        userId: user.id,
+        userType: 'ADMIN',
+      });
+
+      return {
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
+        user,
         role: 'ADMIN',
       };
-
-      const token = this.jwtService.sign(payload);
-
-      return { token, user, role: 'ADMIN' };
     } catch (error) {
       this.logger.error(
         `Error logging in admin user with ID ${userId}: ${error.message}`,
@@ -229,17 +266,53 @@ export class AuthService {
         throw new UnauthorizedException('User not found');
       }
 
-      const payload = {
-        sub: user.id,
+      const session = await this.createLoginSession({
+        userId: user.id,
+        userType: 'STOREFRONT',
+      });
+
+      return {
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
+        user,
         role: 'STOREFRONT',
       };
-
-      const token = this.jwtService.sign(payload);
-
-      return { token, user, role: 'STOREFRONT' };
     } catch (error) {
       this.logger.error(
         `Error logging in storefront user with ID ${userId}: ${error.message}`,
+      );
+      throw error;
+    }
+  }
+
+  async createLoginSession(params: {
+    userId: string;
+    userType: 'TENANT_USER' | 'ADMIN' | 'STOREFRONT';
+  }) {
+    try {
+      const session = await this.sessionService.createSession({
+        userId: params.userId,
+        userType: params.userType,
+      });
+
+      const payload = {
+        sub: params.userId,
+        role: params.userType,
+        sessionId: session.id,
+      };
+
+      const accessToken = this.jwtService.sign(payload);
+      const refreshToken = this.jwtService.sign(
+        payload,
+        this.refreshTokenConfig,
+      );
+
+      await this.sessionService.updateSessionToken(session.id, refreshToken);
+
+      return { accessToken, refreshToken, session };
+    } catch (error) {
+      this.logger.error(
+        `Error creating login session for userId ${params.userId}: ${error.message}`,
       );
       throw error;
     }

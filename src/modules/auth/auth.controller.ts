@@ -19,17 +19,17 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('tenant/login')
   async login(@Request() req, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.loginTenantUser(req.user.id);
+    const result = await this.authService.loginTenantUser(req);
 
     if (!result) {
       throw new Error('Login failed');
     }
 
-    const { token, user } = result;
+    const { accessToken, refreshToken, user } = result;
 
     const isProd = process.env.NODE_ENV === 'production';
 
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
       domain: isProd ? '.fleetnexa.com' : undefined,
       httpOnly: true,
       secure: isProd,
@@ -49,11 +49,19 @@ export class AuthController {
       throw new Error('Login failed');
     }
 
-    const { token, user } = result;
+    const { accessToken, refreshToken, user } = result;
 
     const isProd = process.env.NODE_ENV === 'production';
 
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
+      domain: isProd ? '.fleetnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    res.cookie('refresh_token', refreshToken, {
       domain: isProd ? '.fleetnexa.com' : undefined,
       httpOnly: true,
       secure: isProd,
@@ -76,11 +84,19 @@ export class AuthController {
       throw new Error('Login failed');
     }
 
-    const { token, user } = result;
+    const { accessToken, refreshToken, user } = result;
 
     const isProd = process.env.NODE_ENV === 'production';
 
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
+      domain: isProd ? '.rentnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+
+    res.cookie('refresh_token', refreshToken, {
       domain: isProd ? '.rentnexa.com' : undefined,
       httpOnly: true,
       secure: isProd,
