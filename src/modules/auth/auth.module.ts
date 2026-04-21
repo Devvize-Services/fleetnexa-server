@@ -13,6 +13,8 @@ import { SessionService } from './services/session.service.js';
 import refreshJwtConfig from '../../config/refresh-jwt.config.js';
 import { AuditLogService } from './services/audit-log.service.js';
 import { RefreshStrategy } from './strategies/refresh.strategy.js';
+import { OtpService } from './services/otp.service.js';
+import { PasswordService } from './services/password.service.js';
 
 @Module({
   imports: [
@@ -27,11 +29,14 @@ import { RefreshStrategy } from './strategies/refresh.strategy.js';
     AuthService,
     SessionService,
     AuditLogService,
+    OtpService,
+    PasswordService,
     UserRepository,
     TenantRepository,
     LocalStrategy,
     JwtStrategy,
     RefreshStrategy,
   ],
+  exports: [OtpService],
 })
 export class AuthModule {}

@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsString, Max, Min } from 'class-validator';
-import { UserType } from 'src/generated/prisma/enums.js';
+import { UserType } from '../../../generated/prisma/enums.js';
 
 export class NewPasswordDto {
   @IsString()

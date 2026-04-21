@@ -1,15 +1,15 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { UserType } from 'src/generated/prisma/client.js';
-import { UserRepository } from 'src/modules/user/user.repository.js';
-import { PrismaService } from 'src/prisma/prisma.service.js';
+import { UserType } from '../../../generated/prisma/client.js';
+import { UserRepository } from '../../../modules/user/user.repository.js';
+import { PrismaService } from '../../../prisma/prisma.service.js';
 import {
   ResetPasswordDto,
   ResetPasswordRequestDto,
 } from '../dto/reset-password.dto.js';
 import { OtpService } from './otp.service.js';
 import { AuditLogService } from './audit-log.service.js';
-import { EmailService } from 'src/common/email/email.service.js';
+import { EmailService } from '../../../common/email/email.service.js';
 
 @Injectable()
 export class PasswordService {

@@ -8,7 +8,7 @@ import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../../../prisma/prisma.service.js';
 import { UserType } from '../../../generated/prisma/enums.js';
 import { JwtService } from '@nestjs/jwt';
-import refreshJwtConfig from 'src/config/refresh-jwt.config.js';
+import refreshJwtConfig from '../../../config/refresh-jwt.config.js';
 import type { ConfigType } from '@nestjs/config';
 
 @Injectable()
