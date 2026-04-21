@@ -80,14 +80,13 @@ model InvoiceSequence {
 model Country {
   id                 String            @id @default(dbgenerated("gen_random_uuid()"))
   code               String            @unique
-  iso3               String?           @unique
-  phoneCode          String?
-  currency           String?
-  cscId              String?
   country            String            @unique
   createdAt          DateTime          @default(now())
   updatedBy          String?
-
+  cscId              String?
+  currency           String?
+  iso3               String?           @unique
+  phoneCode          String?
   addresses          Address[]
   caribbeanCountries CaribbeanCountry?
   adminUser          AdminUser?        @relation(fields: [updatedBy], references: [username])
@@ -107,7 +106,6 @@ model State {
   cscId             String?
   iso2              String?
   type              String?
-
   addresses         Address[]
   customerAddresses CustomerAddress[]
   presetLocations   PresetLocation[]
@@ -121,7 +119,6 @@ model Village {
   stateId           String
   village           String
   cscId             String?
-
   addresses         Address[]
   customerAddresses CustomerAddress[]
   presetLocations   PresetLocation[]
@@ -209,9 +206,8 @@ model Port {
 }
 
 model InsuranceCompany {
-  id         String     @id @default(dbgenerated("gen_random_uuid()"))
-  company    String
-  code       String     @unique
-
-  vehicles   VehicleInsuranceHistory[]
+  id       String                    @id @default(dbgenerated("gen_random_uuid()"))
+  company  String
+  code     String                    @unique
+  vehicles VehicleInsuranceHistory[]
 }

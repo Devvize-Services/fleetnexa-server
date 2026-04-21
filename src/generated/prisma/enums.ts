@@ -209,6 +209,37 @@ export const VerificationStatus = {
 export type VerificationStatus = (typeof VerificationStatus)[keyof typeof VerificationStatus]
 
 
+export const UserType = {
+  TENANT: 'TENANT',
+  STOREFRONT: 'STOREFRONT',
+  ADMIN: 'ADMIN'
+} as const
+
+export type UserType = (typeof UserType)[keyof typeof UserType]
+
+
+export const AuthAction = {
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILED: 'LOGIN_FAILED',
+  LOGOUT: 'LOGOUT',
+  PASSWORD_CHANGED: 'PASSWORD_CHANGED',
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  ACCOUNT_LOCKED: 'ACCOUNT_LOCKED'
+} as const
+
+export type AuthAction = (typeof AuthAction)[keyof typeof AuthAction]
+
+
+export const OtpType = {
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  EMAIL_VERIFICATION: 'EMAIL_VERIFICATION',
+  PHONE_VERIFICATION: 'PHONE_VERIFICATION',
+  TWO_FACTOR: 'TWO_FACTOR'
+} as const
+
+export type OtpType = (typeof OtpType)[keyof typeof OtpType]
+
+
 export const VehicleEventType = {
   MAINTENANCE: 'MAINTENANCE',
   ACCIDENT: 'ACCIDENT',

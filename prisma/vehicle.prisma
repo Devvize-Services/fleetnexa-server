@@ -1,8 +1,8 @@
 model Vehicle {
-  id                   String                   @id @default(dbgenerated("gen_random_uuid()"))
+  id                   String                       @id @default(dbgenerated("gen_random_uuid()"))
   year                 Int
   color                String
-  licensePlate         String                   @unique
+  licensePlate         String                       @unique
   engineVolume         Int
   vehicleStatusId      String
   fuelTypeId           String
@@ -10,7 +10,7 @@ model Vehicle {
   wheelDriveId         String
   fuelLevel            Int
   odometer             Int
-  steering             String                   @default("left")
+  steering             String                       @default("left")
   featuredImage        String
   images               String[]
   numberOfSeats        Int
@@ -20,45 +20,45 @@ model Vehicle {
   modelId              String
   tenantId             String?
   locationId           String?
-  isActive             Boolean                  @default(false)
-  isDeleted            Boolean                  @default(false)
-  createdAt            DateTime                 @default(now())
-  updatedAt            DateTime?                @updatedAt
+  isActive             Boolean                      @default(false)
+  isDeleted            Boolean                      @default(false)
+  createdAt            DateTime                     @default(now())
+  updatedAt            DateTime?                    @updatedAt
   createdBy            String?
   updatedBy            String?
-  drivingExperience    Int                      @default(1)
+  drivingExperience    Int                          @default(1)
   fuelPolicyId         String?
   minimumAge           Int
   minimumRental        Int
-  refundAmount         Int                      @default(100)
+  refundAmount         Int                          @default(100)
   timeBetweenRentals   Int
-  dayPrice             Float                    @default(0)
-  monthPrice           Float                    @default(0)
-  weekPrice            Float                    @default(0)
-  storefrontEnabled    Boolean                  @default(true)
+  dayPrice             Float                        @default(0)
+  monthPrice           Float                        @default(0)
+  weekPrice            Float                        @default(0)
+  storefrontEnabled    Boolean                      @default(true)
+  swapFromHistory      BookingVehicleHistory[]      @relation("FromVehicleHistory")
+  swapToHistory        BookingVehicleHistory[]      @relation("ToVehicleHistory")
   expenses             Expense[]
   rentals              Rental[]
   rentalActivity       RentalActivity[]
-  brand                VehicleBrand             @relation(fields: [brandId], references: [id])
-  fuelPolicy           FuelPolicy?              @relation(fields: [fuelPolicyId], references: [id])
-  fuelType             FuelType                 @relation(fields: [fuelTypeId], references: [id])
-  location             TenantLocation?          @relation(fields: [locationId], references: [id])
-  model                VehicleModel             @relation(fields: [modelId], references: [id])
-  tenant               Tenant?                  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  transmission         Transmission             @relation(fields: [transmissionId], references: [id])
-  vehicleStatus        VehicleStatus            @relation(fields: [vehicleStatusId], references: [id])
-  wheelDrive           WheelDrive               @relation(fields: [wheelDriveId], references: [id])
+  brand                VehicleBrand                 @relation(fields: [brandId], references: [id])
+  fuelPolicy           FuelPolicy?                  @relation(fields: [fuelPolicyId], references: [id])
+  fuelType             FuelType                     @relation(fields: [fuelTypeId], references: [id])
+  location             TenantLocation?              @relation(fields: [locationId], references: [id])
+  model                VehicleModel                 @relation(fields: [modelId], references: [id])
+  tenant               Tenant?                      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  transmission         Transmission                 @relation(fields: [transmissionId], references: [id])
+  vehicleStatus        VehicleStatus                @relation(fields: [vehicleStatusId], references: [id])
+  wheelDrive           WheelDrive                   @relation(fields: [wheelDriveId], references: [id])
   damages              VehicleDamage[]
   discounts            VehicleDiscount[]
-  scheduledMaintenance VehicleMaintenance[]
-  serviceLogs          VehicleServiceLog[]
-  scheduledServices    VehicleServiceSchedule[]
-  features             VehicleFeature[]         @relation("VehicleToVehicleFeature")
-  swapFromHistory      BookingVehicleHistory[]  @relation("FromVehicleHistory")
-  swapToHistory        BookingVehicleHistory[]  @relation("ToVehicleHistory")
   events               VehicleEvent[]
   insuranceHistory     VehicleInsuranceHistory[]
+  scheduledMaintenance VehicleMaintenance[]
   registrationHistory  VehicleRegistrationHistory[]
+  serviceLogs          VehicleServiceLog[]
+  scheduledServices    VehicleServiceSchedule[]
+  features             VehicleFeature[]             @relation("VehicleToVehicleFeature")
 }
 
 model VehicleDiscount {
@@ -170,45 +170,43 @@ model VehicleServiceSchedule {
 }
 
 model BookingVehicleHistory {
-  id              String   @id @default(dbgenerated("gen_random_uuid()"))
-  bookingId       String
-  fromVehicleId   String
-  toVehicleId     String
-  reason          String
-  swappedAt       DateTime @default(now())
-  swappedBy       String
-
-  booking         Rental   @relation(fields: [bookingId], references: [id])
-  fromVehicle     Vehicle  @relation("FromVehicleHistory", fields: [fromVehicleId], references: [id])
-  toVehicle       Vehicle  @relation("ToVehicleHistory", fields: [toVehicleId], references: [id])
-  user            User     @relation(fields: [swappedBy], references: [username])
+  id            String   @id @default(dbgenerated("gen_random_uuid()"))
+  bookingId     String
+  fromVehicleId String
+  toVehicleId   String
+  reason        String
+  swappedAt     DateTime @default(now())
+  swappedBy     String
+  booking       Rental   @relation(fields: [bookingId], references: [id])
+  fromVehicle   Vehicle  @relation("FromVehicleHistory", fields: [fromVehicleId], references: [id])
+  user          User     @relation(fields: [swappedBy], references: [username])
+  toVehicle     Vehicle  @relation("ToVehicleHistory", fields: [toVehicleId], references: [id])
 }
 
 model VehicleEvent {
-  id              String    @id @default(dbgenerated("gen_random_uuid()"))
-  vehicleId       String
-  event           String
-  type            VehicleEventType
-  date            DateTime
-  notes           String?
-  vehicle         Vehicle   @relation(fields: [vehicleId], references: [id])
+  id        String           @id @default(dbgenerated("gen_random_uuid()"))
+  vehicleId String
+  event     String
+  type      VehicleEventType
+  date      DateTime
+  notes     String?
+  vehicle   Vehicle          @relation(fields: [vehicleId], references: [id])
 }
 
 model VehicleInsuranceHistory {
-  id                  String    @id @default(dbgenerated("gen_random_uuid()"))
-  vehicleId           String
-  insuranceCompanyId  String
-  policyNumber        String
-  validFrom           DateTime
-  validTo             DateTime
-  expired             Boolean   @default(false)
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime? @updatedAt
-  createdBy           String?
-  updatedBy           String?
-
-  vehicle             Vehicle   @relation(fields: [vehicleId], references: [id])
-  insuranceCompany    InsuranceCompany @relation(fields: [insuranceCompanyId], references: [id])
+  id                 String           @id @default(dbgenerated("gen_random_uuid()"))
+  vehicleId          String
+  insuranceCompanyId String
+  policyNumber       String
+  validFrom          DateTime
+  validTo            DateTime
+  expired            Boolean          @default(false)
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime?        @updatedAt
+  createdBy          String?
+  updatedBy          String?
+  insuranceCompany   InsuranceCompany @relation(fields: [insuranceCompanyId], references: [id])
+  vehicle            Vehicle          @relation(fields: [vehicleId], references: [id])
 }
 
 model VehicleRegistrationHistory {
@@ -222,6 +220,5 @@ model VehicleRegistrationHistory {
   updatedAt          DateTime? @updatedAt
   createdBy          String?
   updatedBy          String?
-
-  vehicle           Vehicle   @relation(fields: [vehicleId], references: [id])
+  vehicle            Vehicle   @relation(fields: [vehicleId], references: [id])
 }

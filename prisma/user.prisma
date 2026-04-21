@@ -1,31 +1,28 @@
 model User {
   id                       String                   @id @default(dbgenerated("gen_random_uuid()"))
   password                 String
-  firstName                 String
+  firstName                String
   lastName                 String
   username                 String                   @unique
   tenantId                 String
+  createdAt                DateTime                 @default(now())
+  updatedAt                DateTime?                @updatedAt
   roleId                   String
   lastChanged              DateTime?
   email                    String?                  @unique
-  profilePicture            String                   @default("https://fleetnexa.s3.us-east-1.amazonaws.com/Global+Images/fallback.png")
+  profilePicture           String                   @default("https://fleetnexa.s3.us-east-1.amazonaws.com/Global+Images/fallback.png")
   show                     Boolean                  @default(true)
   deletedAt                DateTime?
   isDeleted                Boolean                  @default(false)
   requirePasswordChange    Boolean                  @default(true)
-  
-  createdAt                DateTime                 @default(now())
-  updatedAt                DateTime?                @updatedAt
   updatedBy                String?
-
+  bookingVehicleHistory    BookingVehicleHistory[]
   expenses                 Expense[]
-  notificationReadStatuses  NotificationReadStatus[]
+  notificationReadStatuses NotificationReadStatus[]
   rentals                  Rental[]
   transactions             Transactions[]
-  role                     UserRole?                @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  tenant                   Tenant?                  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  bookingVehicleHistory    BookingVehicleHistory[]
-
+  role                     UserRole                 @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  tenant                   Tenant                   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
   @@unique([username, tenantId])
 }

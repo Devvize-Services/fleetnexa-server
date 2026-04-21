@@ -1,6 +1,5 @@
 model Transactions {
   id              String          @id @default(dbgenerated("gen_random_uuid()"))
-  number          String?         @unique
   amount          Float
   type            TransactionType
   isDeleted       Boolean         @default(false)
@@ -15,6 +14,7 @@ model Transactions {
   expenseId       String?         @unique
   updatedAt       DateTime?       @updatedAt
   updatedBy       String?
+  number          String?         @unique
   user            User?           @relation(fields: [createdBy], references: [username])
   expense         Expense?        @relation(fields: [expenseId], references: [id])
   payment         Payment?        @relation(fields: [paymentId], references: [id])
@@ -26,30 +26,30 @@ model Transactions {
 }
 
 model Payment {
-  id              String        @id @default(dbgenerated("gen_random_uuid()"))
+  id              String          @id @default(dbgenerated("gen_random_uuid()"))
   amount          Float
   paymentMethodId String
   paymentTypeId   String
   tenantId        String
   rentalId        String
   notes           String?
-  isDeleted       Boolean       @default(false) 
+  isDeleted       Boolean         @default(false)
   paymentDate     DateTime
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime?     @updatedAt
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime?       @updatedAt
   updatedBy       String?
   customerId      String?
   currencyId      String?
   payer           String?
   payment         String?
-  currency        Currency?     @relation(fields: [currencyId], references: [id])
-  customer        Customer?     @relation(fields: [customerId], references: [id])
-  paymentMethod   PaymentMethod @relation(fields: [paymentMethodId], references: [id])
-  paymentType     PaymentType   @relation(fields: [paymentTypeId], references: [id])
-  rental          Rental        @relation(fields: [rentalId], references: [id])
-  tenant          Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  transaction     Transactions?
+  currency        Currency?       @relation(fields: [currencyId], references: [id])
+  customer        Customer?       @relation(fields: [customerId], references: [id])
+  paymentMethod   PaymentMethod   @relation(fields: [paymentMethodId], references: [id])
+  paymentType     PaymentType     @relation(fields: [paymentTypeId], references: [id])
+  rental          Rental          @relation(fields: [rentalId], references: [id])
+  tenant          Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   receipt         PaymentReceipt?
+  transaction     Transactions?
 }
 
 model Refund {
