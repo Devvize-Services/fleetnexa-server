@@ -12,6 +12,7 @@ import { UserRepository } from '../user/user.repository.js';
 import { SessionService } from './services/session.service.js';
 import refreshJwtConfig from '../../config/refresh-jwt.config.js';
 import { AuditLogService } from './services/audit-log.service.js';
+import { RefreshStrategy } from './strategies/refresh.strategy.js';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { AuditLogService } from './services/audit-log.service.js';
     TenantRepository,
     LocalStrategy,
     JwtStrategy,
+    RefreshStrategy,
   ],
 })
 export class AuthModule {}

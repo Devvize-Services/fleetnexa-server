@@ -22,13 +22,14 @@ export class AuditLogService {
           userId: params.userId,
           userType: params.userType,
           action: params.action,
-          metaData: params.meta,
+          metaData: params.meta ? JSON.stringify(params.meta) : '{}',
           ipAddress: params.ip || '',
           userAgent: params.userAgent || '',
         },
       });
     } catch (error) {
       this.logger.error('Failed to write audit log', error);
+      throw error;
     }
   }
 }

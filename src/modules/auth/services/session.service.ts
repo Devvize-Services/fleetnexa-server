@@ -9,6 +9,26 @@ export class SessionService {
 
   constructor(private readonly prisma: PrismaService) {}
 
+  async getBySessionId(sessionId: string) {
+    try {
+      const session = await this.prisma.session.findUnique({
+        where: { id: sessionId },
+      });
+
+      if (!session) {
+        this.logger.warn(`Session with ID ${sessionId} not found.`);
+        throw new UnauthorizedException('Invalid session');
+      }
+
+      return session;
+    } catch (error) {
+      this.logger.error(
+        `Error retrieving session with ID ${sessionId}: ${error.message}`,
+      );
+      throw error;
+    }
+  }
+
   async createSession(params: { userId: string; userType: UserType }) {
     try {
       return this.prisma.session.create({

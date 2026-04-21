@@ -30,20 +30,31 @@ export class AuthService {
     private refreshTokenConfig: ConfigType<typeof refreshJwtConfig>,
   ) {}
 
-  async validateUser(username: string, password: string, role: string) {
+  async validateUser(
+    username: string,
+    password: string,
+    role: string,
+    ip: string,
+    userAgent: string,
+  ) {
     if (role === 'TENANT_USER') {
-      return this.validateTenantUser(username, password);
+      return this.validateTenantUser(username, password, ip, userAgent);
     } else if (role === 'ADMIN') {
-      return this.validateAdminUser(username, password);
+      return this.validateAdminUser(username, password, ip, userAgent);
     } else if (role === 'STOREFRONT') {
-      return this.validateStorefrontUser(username, password);
+      return this.validateStorefrontUser(username, password, ip, userAgent);
     }
 
     this.logger.warn(`Unsupported role ${role} provided for user ${username}.`);
     throw new UnauthorizedException('Invalid role');
   }
 
-  async validateTenantUser(username: string, password: string) {
+  async validateTenantUser(
+    username: string,
+    password: string,
+    ip: string,
+    userAgent: string,
+  ) {
     try {
       let user: any | null = null;
 
@@ -65,6 +76,14 @@ export class AuthService {
 
       const passwordValid = await bcrypt.compare(password, user.password);
       if (!passwordValid) {
+        this.auditLogService.logEvent({
+          userId: user.id,
+          userType: 'TENANT',
+          action: 'LOGIN_FAILED',
+          ip,
+          userAgent,
+        });
+
         this.logger.warn(
           `Login failed: Invalid password for user ${username}.`,
         );
@@ -86,7 +105,12 @@ export class AuthService {
     }
   }
 
-  async validateAdminUser(username: string, password: string) {
+  async validateAdminUser(
+    username: string,
+    password: string,
+    ip: string,
+    userAgent: string,
+  ) {
     try {
       const adminUser = await this.prisma.adminUser.findUnique({
         where: { username },
@@ -126,7 +150,12 @@ export class AuthService {
     }
   }
 
-  async validateStorefrontUser(username: string, password: string) {
+  async validateStorefrontUser(
+    username: string,
+    password: string,
+    ip: string,
+    userAgent: string,
+  ) {
     try {
       const storefrontUser = await this.prisma.storefrontUser.findUnique({
         where: { email: username },
@@ -286,6 +315,33 @@ export class AuthService {
       this.logger.error(
         `Error logging in storefront user with ID ${userId}: ${error.message}`,
       );
+      throw error;
+    }
+  }
+
+  async refreshToken(payload: any) {
+    try {
+      const sessionId = payload.sessionId;
+
+      const session = await this.sessionService.getBySessionId(sessionId);
+
+      if (!session) {
+        this.logger.warn(
+          `Refresh token failed: Session with ID ${sessionId} not found.`,
+        );
+        throw new UnauthorizedException('Invalid session');
+      }
+
+      const newAccessToken = this.jwtService.sign({
+        sub: payload.sub,
+        role: payload.role,
+        sessionId: session.id,
+        tenantId: payload.tenantId,
+      });
+
+      return { accessToken: newAccessToken };
+    } catch (error) {
+      this.logger.error(`Error refreshing token: ${error.message}`);
       throw error;
     }
   }

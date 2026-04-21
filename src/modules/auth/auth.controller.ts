@@ -11,10 +11,33 @@ import { AuthService } from './auth.service.js';
 import { LocalAuthGuard } from './guards/local.guard.js';
 import type { Response } from 'express';
 import { StorefrontAuthDto } from './dto/storefront-auth.dto.js';
+import { RefreshAuthGuard } from './guards/refresh-auth.guard.js';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @UseGuards(RefreshAuthGuard)
+  @Post('refresh')
+  async refreshToken(
+    @Request() req,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    console.log('Received refresh token request:', req.user);
+    const result = await this.authService.refreshToken(req.user);
+
+    const { accessToken } = result;
+
+    const isProd = process.env.NODE_ENV === 'production';
+
+    res.cookie('access_token', accessToken, {
+      domain: isProd ? '.fleetnexa.com' : undefined,
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      path: '/',
+    });
+  }
 
   @UseGuards(LocalAuthGuard)
   @Post('tenant/login')
