@@ -14,6 +14,7 @@ import { SessionService } from './services/session.service.js';
 import refreshJwtConfig from '../../config/refresh-jwt.config.js';
 import type { ConfigType } from '@nestjs/config';
 import { AuditLogService } from './services/audit-log.service.js';
+import { UserType } from '../../generated/prisma/enums.js';
 
 @Injectable()
 export class AuthService {
@@ -195,7 +196,7 @@ export class AuthService {
 
       const session = await this.createLoginSession({
         userId: user.id,
-        userType: 'TENANT_USER',
+        userType: 'TENANT',
       });
 
       this.auditLogService.logEvent({
@@ -285,10 +286,7 @@ export class AuthService {
     }
   }
 
-  async createLoginSession(params: {
-    userId: string;
-    userType: 'TENANT_USER' | 'ADMIN' | 'STOREFRONT';
-  }) {
+  async createLoginSession(params: { userId: string; userType: UserType }) {
     try {
       const session = await this.sessionService.createSession({
         userId: params.userId,

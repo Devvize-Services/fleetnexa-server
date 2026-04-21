@@ -1,6 +1,7 @@
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../../../prisma/prisma.service.js';
+import { UserType } from '../../../generated/prisma/enums.js';
 
 @Injectable()
 export class SessionService {
@@ -8,7 +9,7 @@ export class SessionService {
 
   constructor(private readonly prisma: PrismaService) {}
 
-  async createSession(params: { userId: string; userType: any }) {
+  async createSession(params: { userId: string; userType: UserType }) {
     try {
       return this.prisma.session.create({
         data: {
