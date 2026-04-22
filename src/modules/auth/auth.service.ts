@@ -92,9 +92,11 @@ export class AuthService {
     }
   }
 
-  async login(userId: string, userType: UserType, tenantId?: string) {
+  async login(userId: string, userType: UserType) {
     try {
       const user = await this.userRepo.getAnyUserById(userId, userType);
+
+      this.logger.log(user);
 
       if (!user) throw new UnauthorizedException('User not found');
 
@@ -102,7 +104,7 @@ export class AuthService {
         userId: user.id,
         userType,
         role: userType,
-        tenantId,
+        tenantId: 'tenantId' in user ? user.tenantId : '',
       });
 
       return {
@@ -110,6 +112,7 @@ export class AuthService {
         refreshToken: session.refreshToken,
         user,
         role: userType,
+        tenantId: 'tenantId' in user ? user.tenantId : '',
       };
     } catch (error) {
       this.logger.error(
