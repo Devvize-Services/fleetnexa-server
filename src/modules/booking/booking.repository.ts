@@ -249,7 +249,6 @@ export class BookingRepository {
           extras.map((extra: any) =>
             tx.rentalExtra.create({
               data: {
-                id: extra.id,
                 extraId: extra.extraId,
                 amount: extra.amount,
                 customAmount: extra.customAmount,
