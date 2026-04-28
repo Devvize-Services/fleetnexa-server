@@ -20,6 +20,7 @@ import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
 import { StorefrontGuestBookingDto } from './dto/storefront-guest-booking.dto.js';
 import { ApiGuard } from '../auth/guards/api.guard.js';
+import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 
 @Controller('booking')
 export class BookingController {

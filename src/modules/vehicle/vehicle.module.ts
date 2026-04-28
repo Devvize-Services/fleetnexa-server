@@ -12,6 +12,10 @@ import { PrismaModule } from '../../prisma/prisma.module.js';
 import { VehicleMaintenanceModule } from './modules/vehicle-maintenance/vehicle-maintenance.module.js';
 import { VehicleDamageModule } from './modules/vehicle-damage/vehicle-damage.module.js';
 import { UserRepository } from '../user/user.repository.js';
+import { VehicleBookingService } from './services/vehicle-booking.service.js';
+import { VehicleLocationService } from './services/vehicle-location.service.js';
+import { VehiclePricingService } from './services/vehicle-pricing.service.js';
+import { VehicleStatusService } from './services/vehicle-status.service.js';
 
 @Module({
   imports: [
@@ -25,6 +29,10 @@ import { UserRepository } from '../user/user.repository.js';
   controllers: [VehicleController],
   providers: [
     VehicleService,
+    VehicleBookingService,
+    VehicleLocationService,
+    VehiclePricingService,
+    VehicleStatusService,
     VehicleRepository,
     ApiGuard,
     TenantRepository,
