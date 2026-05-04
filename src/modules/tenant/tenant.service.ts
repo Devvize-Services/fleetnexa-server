@@ -54,23 +54,35 @@ export class TenantService {
 
   async getCurrentTenant(tenant: Tenant, user: User) {
     try {
-      const fetched = await this.tenantRepo.getTenantById(tenant.id);
-      const extras = await this.extraService.getTenantExtras(tenant);
-      const locations = await this.locations.getAllTenantLocations(tenant);
-      const vendors = await this.vendors.getTenantVendors(tenant);
-      const vehicles = await this.vehicles.getTenantVehicles(tenant);
-      const customers = await this.customers.getCustomers(tenant);
-      const activity = await this.activities.getTenantActivities(tenant);
-      const currencyRates = await this.rates.getTenantRates(tenant);
-      const notifications = await this.notifications.getTenantNotifications(
-        tenant,
-        user,
-      );
-      const users = await this.userService.getTenantUsers(tenant);
-      const roles = await this.userRoleService.getAllRoles(tenant);
-      const bookings = await this.bookingService.getBookings(tenant);
-      const violations =
-        await this.violationService.getTenantViolations(tenant);
+      const [
+        fetched,
+        extras,
+        locations,
+        vendors,
+        vehicles,
+        customers,
+        activity,
+        currencyRates,
+        notifications,
+        users,
+        roles,
+        bookings,
+        violations,
+      ] = await Promise.all([
+        this.tenantRepo.getTenantById(tenant.id),
+        this.extraService.getTenantExtras(tenant),
+        this.locations.getAllTenantLocations(tenant),
+        this.vendors.getTenantVendors(tenant),
+        this.vehicles.getTenantVehicles(tenant),
+        this.customers.getCustomers(tenant),
+        this.activities.getTenantActivities(tenant),
+        this.rates.getTenantRates(tenant),
+        this.notifications.getTenantNotifications(tenant, user),
+        this.userService.getTenantUsers(tenant),
+        this.userRoleService.getAllRoles(tenant),
+        this.bookingService.getBookings(tenant),
+        this.violationService.getTenantViolations(tenant),
+      ]);
 
       const data = {
         tenant: fetched,
