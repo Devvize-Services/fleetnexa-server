@@ -28,7 +28,6 @@ export class AuthController {
     @Request() req,
     @Res({ passthrough: true }) res: Response,
   ) {
-    console.log('Received refresh token request:', req.user);
     const result = await this.authService.refreshToken(req.user);
 
     const { accessToken } = result;

@@ -96,8 +96,6 @@ export class AuthService {
     try {
       const user = await this.userRepo.getAnyUserById(userId, userType);
 
-      this.logger.log(user);
-
       if (!user) throw new UnauthorizedException('User not found');
 
       const session = await this.sessionService.createLoginSession({

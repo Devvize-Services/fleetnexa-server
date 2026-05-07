@@ -27,6 +27,7 @@ import { BookingModule } from './modules/booking/booking.module.js';
 import { UserModule } from './modules/user/user.module.js';
 import { CustomerModule } from './modules/customer/customer.module.js';
 import { NotificationModule } from './common/notification/notification.module.js';
+import { PaymentModule } from './modules/payment/payment.module.js';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { NotificationModule } from './common/notification/notification.module.js
     EmailModule,
     WhatsappModule,
     NotificationModule,
+    PaymentModule,
 
     AdminModule,
 

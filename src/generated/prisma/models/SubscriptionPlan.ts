@@ -28,10 +28,12 @@ export type AggregateSubscriptionPlan = {
 
 export type SubscriptionPlanAvgAggregateOutputType = {
   price: number | null
+  tier: number | null
 }
 
 export type SubscriptionPlanSumAggregateOutputType = {
   price: number | null
+  tier: number | null
 }
 
 export type SubscriptionPlanMinAggregateOutputType = {
@@ -42,6 +44,7 @@ export type SubscriptionPlanMinAggregateOutputType = {
   planId: string | null
   period: $Enums.BillingPeriod | null
   price: number | null
+  tier: number | null
 }
 
 export type SubscriptionPlanMaxAggregateOutputType = {
@@ -52,6 +55,7 @@ export type SubscriptionPlanMaxAggregateOutputType = {
   planId: string | null
   period: $Enums.BillingPeriod | null
   price: number | null
+  tier: number | null
 }
 
 export type SubscriptionPlanCountAggregateOutputType = {
@@ -62,16 +66,19 @@ export type SubscriptionPlanCountAggregateOutputType = {
   planId: number
   period: number
   price: number
+  tier: number
   _all: number
 }
 
 
 export type SubscriptionPlanAvgAggregateInputType = {
   price?: true
+  tier?: true
 }
 
 export type SubscriptionPlanSumAggregateInputType = {
   price?: true
+  tier?: true
 }
 
 export type SubscriptionPlanMinAggregateInputType = {
@@ -82,6 +89,7 @@ export type SubscriptionPlanMinAggregateInputType = {
   planId?: true
   period?: true
   price?: true
+  tier?: true
 }
 
 export type SubscriptionPlanMaxAggregateInputType = {
@@ -92,6 +100,7 @@ export type SubscriptionPlanMaxAggregateInputType = {
   planId?: true
   period?: true
   price?: true
+  tier?: true
 }
 
 export type SubscriptionPlanCountAggregateInputType = {
@@ -102,6 +111,7 @@ export type SubscriptionPlanCountAggregateInputType = {
   planId?: true
   period?: true
   price?: true
+  tier?: true
   _all?: true
 }
 
@@ -199,6 +209,7 @@ export type SubscriptionPlanGroupByOutputType = {
   planId: string | null
   period: $Enums.BillingPeriod
   price: number
+  tier: number
   _count: SubscriptionPlanCountAggregateOutputType | null
   _avg: SubscriptionPlanAvgAggregateOutputType | null
   _sum: SubscriptionPlanSumAggregateOutputType | null
@@ -232,6 +243,7 @@ export type SubscriptionPlanWhereInput = {
   planId?: Prisma.StringNullableFilter<"SubscriptionPlan"> | string | null
   period?: Prisma.EnumBillingPeriodFilter<"SubscriptionPlan"> | $Enums.BillingPeriod
   price?: Prisma.FloatFilter<"SubscriptionPlan"> | number
+  tier?: Prisma.IntFilter<"SubscriptionPlan"> | number
   details?: Prisma.XOR<Prisma.PlanDetailsNullableScalarRelationFilter, Prisma.PlanDetailsWhereInput> | null
   features?: Prisma.PlanFeaturesListRelationFilter
   tenantSubscription?: Prisma.TenantSubscriptionListRelationFilter
@@ -246,6 +258,7 @@ export type SubscriptionPlanOrderByWithRelationInput = {
   planId?: Prisma.SortOrderInput | Prisma.SortOrder
   period?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
   details?: Prisma.PlanDetailsOrderByWithRelationInput
   features?: Prisma.PlanFeaturesOrderByRelationAggregateInput
   tenantSubscription?: Prisma.TenantSubscriptionOrderByRelationAggregateInput
@@ -263,6 +276,7 @@ export type SubscriptionPlanWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"SubscriptionPlan"> | string
   period?: Prisma.EnumBillingPeriodFilter<"SubscriptionPlan"> | $Enums.BillingPeriod
   price?: Prisma.FloatFilter<"SubscriptionPlan"> | number
+  tier?: Prisma.IntFilter<"SubscriptionPlan"> | number
   details?: Prisma.XOR<Prisma.PlanDetailsNullableScalarRelationFilter, Prisma.PlanDetailsWhereInput> | null
   features?: Prisma.PlanFeaturesListRelationFilter
   tenantSubscription?: Prisma.TenantSubscriptionListRelationFilter
@@ -277,6 +291,7 @@ export type SubscriptionPlanOrderByWithAggregationInput = {
   planId?: Prisma.SortOrderInput | Prisma.SortOrder
   period?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
   _count?: Prisma.SubscriptionPlanCountOrderByAggregateInput
   _avg?: Prisma.SubscriptionPlanAvgOrderByAggregateInput
   _max?: Prisma.SubscriptionPlanMaxOrderByAggregateInput
@@ -295,6 +310,7 @@ export type SubscriptionPlanScalarWhereWithAggregatesInput = {
   planId?: Prisma.StringNullableWithAggregatesFilter<"SubscriptionPlan"> | string | null
   period?: Prisma.EnumBillingPeriodWithAggregatesFilter<"SubscriptionPlan"> | $Enums.BillingPeriod
   price?: Prisma.FloatWithAggregatesFilter<"SubscriptionPlan"> | number
+  tier?: Prisma.IntWithAggregatesFilter<"SubscriptionPlan"> | number
 }
 
 export type SubscriptionPlanCreateInput = {
@@ -305,6 +321,7 @@ export type SubscriptionPlanCreateInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionCreateNestedManyWithoutPlanInput
@@ -319,6 +336,7 @@ export type SubscriptionPlanUncheckedCreateInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsUncheckedCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesUncheckedCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedCreateNestedManyWithoutPlanInput
@@ -333,6 +351,7 @@ export type SubscriptionPlanUpdateInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUpdateManyWithoutPlanNestedInput
@@ -347,6 +366,7 @@ export type SubscriptionPlanUncheckedUpdateInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUncheckedUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUncheckedUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedUpdateManyWithoutPlanNestedInput
@@ -361,6 +381,7 @@ export type SubscriptionPlanCreateManyInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
 }
 
 export type SubscriptionPlanUpdateManyMutationInput = {
@@ -371,6 +392,7 @@ export type SubscriptionPlanUpdateManyMutationInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SubscriptionPlanUncheckedUpdateManyInput = {
@@ -381,6 +403,7 @@ export type SubscriptionPlanUncheckedUpdateManyInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SubscriptionPlanListRelationFilter = {
@@ -401,10 +424,12 @@ export type SubscriptionPlanCountOrderByAggregateInput = {
   planId?: Prisma.SortOrder
   period?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
 }
 
 export type SubscriptionPlanAvgOrderByAggregateInput = {
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
 }
 
 export type SubscriptionPlanMaxOrderByAggregateInput = {
@@ -415,6 +440,7 @@ export type SubscriptionPlanMaxOrderByAggregateInput = {
   planId?: Prisma.SortOrder
   period?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
 }
 
 export type SubscriptionPlanMinOrderByAggregateInput = {
@@ -425,10 +451,12 @@ export type SubscriptionPlanMinOrderByAggregateInput = {
   planId?: Prisma.SortOrder
   period?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
 }
 
 export type SubscriptionPlanSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
+  tier?: Prisma.SortOrder
 }
 
 export type SubscriptionPlanScalarRelationFilter = {
@@ -535,6 +563,7 @@ export type SubscriptionPlanCreateWithoutCategoriesInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionCreateNestedManyWithoutPlanInput
@@ -548,6 +577,7 @@ export type SubscriptionPlanUncheckedCreateWithoutCategoriesInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsUncheckedCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesUncheckedCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedCreateNestedManyWithoutPlanInput
@@ -585,6 +615,7 @@ export type SubscriptionPlanScalarWhereInput = {
   planId?: Prisma.StringNullableFilter<"SubscriptionPlan"> | string | null
   period?: Prisma.EnumBillingPeriodFilter<"SubscriptionPlan"> | $Enums.BillingPeriod
   price?: Prisma.FloatFilter<"SubscriptionPlan"> | number
+  tier?: Prisma.IntFilter<"SubscriptionPlan"> | number
 }
 
 export type SubscriptionPlanCreateWithoutFeaturesInput = {
@@ -595,6 +626,7 @@ export type SubscriptionPlanCreateWithoutFeaturesInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsCreateNestedOneWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryCreateNestedManyWithoutPlansInput
@@ -608,6 +640,7 @@ export type SubscriptionPlanUncheckedCreateWithoutFeaturesInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsUncheckedCreateNestedOneWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryUncheckedCreateNestedManyWithoutPlansInput
@@ -637,6 +670,7 @@ export type SubscriptionPlanUpdateWithoutFeaturesInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUpdateOneWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUpdateManyWithoutPlansNestedInput
@@ -650,6 +684,7 @@ export type SubscriptionPlanUncheckedUpdateWithoutFeaturesInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUncheckedUpdateOneWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUncheckedUpdateManyWithoutPlansNestedInput
@@ -663,6 +698,7 @@ export type SubscriptionPlanCreateWithoutDetailsInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   features?: Prisma.PlanFeaturesCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryCreateNestedManyWithoutPlansInput
@@ -676,6 +712,7 @@ export type SubscriptionPlanUncheckedCreateWithoutDetailsInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   features?: Prisma.PlanFeaturesUncheckedCreateNestedManyWithoutPlanInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryUncheckedCreateNestedManyWithoutPlansInput
@@ -705,6 +742,7 @@ export type SubscriptionPlanUpdateWithoutDetailsInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   features?: Prisma.PlanFeaturesUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUpdateManyWithoutPlansNestedInput
@@ -718,6 +756,7 @@ export type SubscriptionPlanUncheckedUpdateWithoutDetailsInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   features?: Prisma.PlanFeaturesUncheckedUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUncheckedUpdateManyWithoutPlansNestedInput
@@ -731,6 +770,7 @@ export type SubscriptionPlanCreateWithoutTenantSubscriptionInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryCreateNestedManyWithoutPlansInput
@@ -744,6 +784,7 @@ export type SubscriptionPlanUncheckedCreateWithoutTenantSubscriptionInput = {
   planId?: string | null
   period?: $Enums.BillingPeriod
   price?: number
+  tier?: number
   details?: Prisma.PlanDetailsUncheckedCreateNestedOneWithoutPlanInput
   features?: Prisma.PlanFeaturesUncheckedCreateNestedManyWithoutPlanInput
   categories?: Prisma.PermissionCategoryUncheckedCreateNestedManyWithoutPlansInput
@@ -773,6 +814,7 @@ export type SubscriptionPlanUpdateWithoutTenantSubscriptionInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUpdateManyWithoutPlansNestedInput
@@ -786,6 +828,7 @@ export type SubscriptionPlanUncheckedUpdateWithoutTenantSubscriptionInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUncheckedUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUncheckedUpdateManyWithoutPlanNestedInput
   categories?: Prisma.PermissionCategoryUncheckedUpdateManyWithoutPlansNestedInput
@@ -799,6 +842,7 @@ export type SubscriptionPlanUpdateWithoutCategoriesInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUpdateManyWithoutPlanNestedInput
@@ -812,6 +856,7 @@ export type SubscriptionPlanUncheckedUpdateWithoutCategoriesInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
   details?: Prisma.PlanDetailsUncheckedUpdateOneWithoutPlanNestedInput
   features?: Prisma.PlanFeaturesUncheckedUpdateManyWithoutPlanNestedInput
   tenantSubscription?: Prisma.TenantSubscriptionUncheckedUpdateManyWithoutPlanNestedInput
@@ -825,6 +870,7 @@ export type SubscriptionPlanUncheckedUpdateManyWithoutCategoriesInput = {
   planId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   period?: Prisma.EnumBillingPeriodFieldUpdateOperationsInput | $Enums.BillingPeriod
   price?: Prisma.FloatFieldUpdateOperationsInput | number
+  tier?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -884,6 +930,7 @@ export type SubscriptionPlanSelect<ExtArgs extends runtime.Types.Extensions.Inte
   planId?: boolean
   period?: boolean
   price?: boolean
+  tier?: boolean
   details?: boolean | Prisma.SubscriptionPlan$detailsArgs<ExtArgs>
   features?: boolean | Prisma.SubscriptionPlan$featuresArgs<ExtArgs>
   tenantSubscription?: boolean | Prisma.SubscriptionPlan$tenantSubscriptionArgs<ExtArgs>
@@ -899,6 +946,7 @@ export type SubscriptionPlanSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   planId?: boolean
   period?: boolean
   price?: boolean
+  tier?: boolean
 }, ExtArgs["result"]["subscriptionPlan"]>
 
 export type SubscriptionPlanSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -909,6 +957,7 @@ export type SubscriptionPlanSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   planId?: boolean
   period?: boolean
   price?: boolean
+  tier?: boolean
 }, ExtArgs["result"]["subscriptionPlan"]>
 
 export type SubscriptionPlanSelectScalar = {
@@ -919,9 +968,10 @@ export type SubscriptionPlanSelectScalar = {
   planId?: boolean
   period?: boolean
   price?: boolean
+  tier?: boolean
 }
 
-export type SubscriptionPlanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "name" | "planCode" | "planId" | "period" | "price", ExtArgs["result"]["subscriptionPlan"]>
+export type SubscriptionPlanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "description" | "name" | "planCode" | "planId" | "period" | "price" | "tier", ExtArgs["result"]["subscriptionPlan"]>
 export type SubscriptionPlanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   details?: boolean | Prisma.SubscriptionPlan$detailsArgs<ExtArgs>
   features?: boolean | Prisma.SubscriptionPlan$featuresArgs<ExtArgs>
@@ -948,6 +998,7 @@ export type $SubscriptionPlanPayload<ExtArgs extends runtime.Types.Extensions.In
     planId: string | null
     period: $Enums.BillingPeriod
     price: number
+    tier: number
   }, ExtArgs["result"]["subscriptionPlan"]>
   composites: {}
 }
@@ -1382,6 +1433,7 @@ export interface SubscriptionPlanFieldRefs {
   readonly planId: Prisma.FieldRef<"SubscriptionPlan", 'String'>
   readonly period: Prisma.FieldRef<"SubscriptionPlan", 'BillingPeriod'>
   readonly price: Prisma.FieldRef<"SubscriptionPlan", 'Float'>
+  readonly tier: Prisma.FieldRef<"SubscriptionPlan", 'Int'>
 }
     
 
