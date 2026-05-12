@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: <explanation> */
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service.js';
 
@@ -10,100 +9,153 @@ export class AdminService {
 
   async getClientData() {
     try {
-      const models = {
-        vehicleParts: this.prisma.vehiclePart,
-        currencies: this.prisma.currency,
-        fuelTypes: this.prisma.fuelType,
-        paymentMethods: this.prisma.paymentMethod,
-        chargeTypes: this.prisma.chargeType,
-        transmissions: this.prisma.transmission,
-        vehicleFeatures: this.prisma.vehicleFeature,
-        vehicleStatuses: this.prisma.vehicleStatus,
-        wheelDrives: this.prisma.wheelDrive,
-        fuelPolicies: this.prisma.fuelPolicy,
-        countries: this.prisma.country,
-        states: this.prisma.state,
-        villages: this.prisma.village,
-        invoiceSequences: this.prisma.invoiceSequence,
-        vehicleModels: this.prisma.vehicleModel,
-        vehicleBrands: this.prisma.vehicleBrand,
-        vehicleBodyTypes: this.prisma.vehicleBodyType,
-        maintenanceServices: this.prisma.maintenanceService,
-        documentTypes: this.prisma.documentType,
-        presetLocations: this.prisma.presetLocation,
-        services: this.prisma.service,
-        licenseClasses: this.prisma.licenseClass,
-        messengerApps: this.prisma.messengerApp,
-        equipments: this.prisma.equipment,
-        contactTypes: this.prisma.contactType,
-        paymentTypes: this.prisma.paymentType,
-        permissions: this.prisma.appPermission,
-        vendorTypes: this.prisma.vendorType,
-        permissionCategories: this.prisma.permissionCategory,
+      const [
+        permissions,
+        countries,
+        states,
+        categories,
+        vehicleParts,
+        currencies,
+        fuelTypes,
+        paymentMethods,
+        chargeTypes,
+        transmissions,
+        vehicleFeatures,
+        vehicleStatuses,
+        wheelDrives,
+        fuelPolicies,
+        villages,
+        invoiceSequences,
+        vehicleModels,
+        vehicleBrands,
+        vehicleBodyTypes,
+        maintenanceServices,
+        documentTypes,
+        presetLocations,
+        services,
+        licenseClasses,
+        messengerApps,
+        equipments,
+        contactTypes,
+        paymentTypes,
+        vendorTypes,
+        subscriptionPlans,
+        insuranceCompanies,
+      ] = await Promise.all([
+        this.prisma.appPermission.findMany({}),
+        this.prisma.country.findMany({}),
+        this.prisma.state.findMany({}),
+        this.prisma.permissionCategory.findMany({}),
+        this.prisma.vehiclePart.findMany({}),
+        this.prisma.currency.findMany({}),
+        this.prisma.fuelType.findMany({}),
+        this.prisma.paymentMethod.findMany({}),
+        this.prisma.chargeType.findMany({}),
+        this.prisma.transmission.findMany({}),
+        this.prisma.vehicleFeature.findMany({}),
+        this.prisma.vehicleStatus.findMany({}),
+        this.prisma.wheelDrive.findMany({}),
+        this.prisma.fuelPolicy.findMany({}),
+        this.prisma.village.findMany({}),
+        this.prisma.invoiceSequence.findMany({}),
+        this.prisma.vehicleModel.findMany({}),
+        this.prisma.vehicleBrand.findMany({}),
+        this.prisma.vehicleBodyType.findMany({}),
+        this.prisma.maintenanceService.findMany({}),
+        this.prisma.documentType.findMany({}),
+        this.prisma.presetLocation.findMany({}),
+        this.prisma.service.findMany({}),
+        this.prisma.licenseClass.findMany({}),
+        this.prisma.messengerApp.findMany({}),
+        this.prisma.equipment.findMany({}),
+        this.prisma.contactType.findMany({}),
+        this.prisma.paymentType.findMany({}),
+        this.prisma.vendorType.findMany({}),
+        this.prisma.subscriptionPlan.findMany({ include: { features: true } }),
+        this.prisma.insuranceCompany.findMany({}),
+      ]);
+
+      return {
+        permissions,
+        countries,
+        states,
+        categories,
+        vehicleParts,
+        currencies,
+        fuelTypes,
+        paymentMethods,
+        chargeTypes,
+        transmissions,
+        vehicleFeatures,
+        vehicleStatuses,
+        wheelDrives,
+        fuelPolicies,
+        villages,
+        invoiceSequences,
+        vehicleModels,
+        vehicleBrands,
+        vehicleBodyTypes,
+        maintenanceServices,
+        documentTypes,
+        presetLocations,
+        services,
+        licenseClasses,
+        messengerApps,
+        equipments,
+        contactTypes,
+        paymentTypes,
+        vendorTypes,
+        subscriptionPlans,
+        insuranceCompanies,
       };
-
-      const entries = await Promise.all(
-        Object.entries(models).map(async ([key, model]) => {
-          if (key === 'permissions')
-            return [
-              key,
-              await (model as any).findMany({
-                include: { category: true },
-              }),
-            ];
-
-          return [key, await (model as any).findMany()];
-        }),
-      );
-
-      const data = Object.fromEntries(entries);
-
-      return data;
     } catch (error) {}
   }
 
   async getStorefrontData() {
     try {
-      const models = {
-        countries: this.prisma.country,
-        states: this.prisma.state,
-        villages: this.prisma.village,
-      };
-
-      const vehicleFeatures = await this.prisma.vehicleFeature.findMany({
-        where: {
-          vehicles: { some: {} },
-        },
-      });
-
-      const vehicleBodyTypes = await this.prisma.vehicleBodyType.findMany({
-        where: {
-          models: {
-            some: { vehicles: { some: {} } },
+      const [
+        countries,
+        states,
+        villages,
+        vehicleFeatures,
+        vehicleBodyTypes,
+        caribbeanCountries,
+      ] = await Promise.all([
+        this.prisma.country.findMany({}),
+        this.prisma.state.findMany({}),
+        this.prisma.village.findMany({}),
+        this.prisma.vehicleFeature.findMany({
+          where: {
+            vehicles: { some: {} },
           },
-        },
-      });
-
-      const caribbeanCountries = await this.prisma.caribbeanCountry.findMany({
-        where: {
-          country: {
-            addresses: {
-              some: {},
+        }),
+        this.prisma.vehicleBodyType.findMany({
+          where: {
+            models: {
+              some: { vehicles: { some: {} } },
             },
           },
-        },
-        include: { country: true },
-      });
-
-      const entries = await Promise.all(
-        Object.entries(models).map(async ([key, model]) => {
-          return [key, await (model as any).findMany()];
         }),
-      );
+        this.prisma.caribbeanCountry.findMany({
+          where: {
+            country: {
+              addresses: {
+                some: {},
+              },
+            },
+          },
+          include: { country: true },
+        }),
+      ]);
 
-      const data = Object.fromEntries(entries);
-
-      return { ...data, caribbeanCountries, vehicleFeatures, vehicleBodyTypes };
+      return {
+        countries,
+        states,
+        villages,
+        caribbeanCountries,
+        vehicleFeatures,
+        vehicleBodyTypes,
+      };
     } catch (error) {
       this.logger.error('Failed to get storefront data', error);
       throw error;
@@ -112,47 +164,99 @@ export class AdminService {
 
   async getDashboardAdminData() {
     try {
-      const models = {
-        vehicleParts: this.prisma.vehiclePart,
-        currencies: this.prisma.currency,
-        fuelTypes: this.prisma.fuelType,
-        paymentMethods: this.prisma.paymentMethod,
-        chargeTypes: this.prisma.chargeType,
-        transmissions: this.prisma.transmission,
-        vehicleFeatures: this.prisma.vehicleFeature,
-        vehicleStatuses: this.prisma.vehicleStatus,
-        wheelDrives: this.prisma.wheelDrive,
-        fuelPolicies: this.prisma.fuelPolicy,
-        countries: this.prisma.country,
-        states: this.prisma.state,
-        villages: this.prisma.village,
-        invoiceSequences: this.prisma.invoiceSequence,
-        vehicleModels: this.prisma.vehicleModel,
-        vehicleBrands: this.prisma.vehicleBrand,
-        vehicleBodyTypes: this.prisma.vehicleBodyType,
-        maintenanceServices: this.prisma.maintenanceService,
-        documentTypes: this.prisma.documentType,
-        presetLocations: this.prisma.presetLocation,
-        services: this.prisma.service,
-        licenseClasses: this.prisma.licenseClass,
-        messengerApps: this.prisma.messengerApp,
-        equipments: this.prisma.equipment,
-        contactTypes: this.prisma.contactType,
-        paymentTypes: this.prisma.paymentType,
-        permissions: this.prisma.appPermission,
-        vendorTypes: this.prisma.vendorType,
-        categories: this.prisma.permissionCategory,
+      const [
+        permissions,
+        countries,
+        states,
+        categories,
+        vehicleParts,
+        currencies,
+        fuelTypes,
+        paymentMethods,
+        chargeTypes,
+        transmissions,
+        vehicleFeatures,
+        vehicleStatuses,
+        wheelDrives,
+        fuelPolicies,
+        villages,
+        invoiceSequences,
+        vehicleModels,
+        vehicleBrands,
+        vehicleBodyTypes,
+        maintenanceServices,
+        documentTypes,
+        presetLocations,
+        services,
+        licenseClasses,
+        messengerApps,
+        equipments,
+        contactTypes,
+        paymentTypes,
+        vendorTypes,
+      ] = await Promise.all([
+        this.prisma.appPermission.findMany({}),
+        this.prisma.country.findMany({}),
+        this.prisma.state.findMany({}),
+        this.prisma.permissionCategory.findMany({}),
+        this.prisma.vehiclePart.findMany({}),
+        this.prisma.currency.findMany({}),
+        this.prisma.fuelType.findMany({}),
+        this.prisma.paymentMethod.findMany({}),
+        this.prisma.chargeType.findMany({}),
+        this.prisma.transmission.findMany({}),
+        this.prisma.vehicleFeature.findMany({}),
+        this.prisma.vehicleStatus.findMany({}),
+        this.prisma.wheelDrive.findMany({}),
+        this.prisma.fuelPolicy.findMany({}),
+        this.prisma.village.findMany({}),
+        this.prisma.invoiceSequence.findMany({}),
+        this.prisma.vehicleModel.findMany({}),
+        this.prisma.vehicleBrand.findMany({}),
+        this.prisma.vehicleBodyType.findMany({}),
+        this.prisma.maintenanceService.findMany({}),
+        this.prisma.documentType.findMany({}),
+        this.prisma.presetLocation.findMany({}),
+        this.prisma.service.findMany({}),
+        this.prisma.licenseClass.findMany({}),
+        this.prisma.messengerApp.findMany({}),
+        this.prisma.equipment.findMany({}),
+        this.prisma.contactType.findMany({}),
+        this.prisma.paymentType.findMany({}),
+        this.prisma.vendorType.findMany({}),
+      ]);
+
+      return {
+        permissions,
+        countries,
+        states,
+        categories,
+        vehicleParts,
+        currencies,
+        fuelTypes,
+        paymentMethods,
+        chargeTypes,
+        transmissions,
+        vehicleFeatures,
+        vehicleStatuses,
+        wheelDrives,
+        fuelPolicies,
+        villages,
+        invoiceSequences,
+        vehicleModels,
+        vehicleBrands,
+        vehicleBodyTypes,
+        maintenanceServices,
+        documentTypes,
+        presetLocations,
+        services,
+        licenseClasses,
+        messengerApps,
+        equipments,
+        contactTypes,
+        paymentTypes,
+        vendorTypes,
       };
-
-      const entries = await Promise.all(
-        Object.entries(models).map(async ([key, model]) => {
-          return [key, await (model as any).findMany()];
-        }),
-      );
-
-      const data = Object.fromEntries(entries);
-
-      return data;
     } catch (error) {
       this.logger.error('Error fetching admin data', error);
       throw error;

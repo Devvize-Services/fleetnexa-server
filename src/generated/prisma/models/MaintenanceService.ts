@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -1250,6 +1250,11 @@ export type MaintenanceServiceFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` MaintenanceServices.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of MaintenanceServices.
+   */
   distinct?: Prisma.MaintenanceServiceScalarFieldEnum | Prisma.MaintenanceServiceScalarFieldEnum[]
 }
 

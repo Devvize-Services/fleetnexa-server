@@ -1,34 +1,36 @@
 model Rental {
-  id                String             @id @default(dbgenerated("gen_random_uuid()"))
+  id                String                  @id @default(dbgenerated("gen_random_uuid()"))
   rentalNumber      String?
   startDate         DateTime
   endDate           DateTime
   pickupLocationId  String
   returnLocationId  String
   vehicleId         String
-  originalVehicleId String?
-  vehicleSwapped    Boolean            @default(false)
   agent             Agent
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime?          @updatedAt
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime?               @updatedAt
   tenantId          String
-  status            RentalStatus       @default(PENDING)
+  status            RentalStatus            @default(PENDING)
   createdBy         String?
   updatedBy         String?
   notes             String?
-  isDeleted         Boolean            @default(false)
+  isDeleted         Boolean                 @default(false)
   chargeTypeId      String?
-  bookingCode       String?            @unique
+  bookingCode       String?                 @unique
   deletedAt         DateTime?
+  originalVehicleId String?
+  vehicleSwapped    Boolean                 @default(false)
+  vehicleHistory    BookingVehicleHistory[]
   invoice           Invoice?
   payments          Payment[]
+  paymentReceipts   PaymentReceipt[]
   refunds           Refund[]
-  chargeType        ChargeType?        @relation(fields: [chargeTypeId], references: [id])
-  user              User?              @relation(fields: [createdBy], references: [id])
-  pickup            TenantLocation     @relation("PickupLocation", fields: [pickupLocationId], references: [id])
-  return            TenantLocation     @relation("ReturnLocation", fields: [returnLocationId], references: [id])
-  tenant            Tenant             @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  vehicle           Vehicle            @relation(fields: [vehicleId], references: [id])
+  chargeType        ChargeType?             @relation(fields: [chargeTypeId], references: [id])
+  user              User?                   @relation(fields: [createdBy], references: [id])
+  pickup            TenantLocation          @relation("PickupLocation", fields: [pickupLocationId], references: [id])
+  return            TenantLocation          @relation("ReturnLocation", fields: [returnLocationId], references: [id])
+  tenant            Tenant                  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  vehicle           Vehicle                 @relation(fields: [vehicleId], references: [id])
   rentalActivity    RentalActivity[]
   agreement         RentalAgreement?
   charges           RentalCharge[]
@@ -37,8 +39,6 @@ model Rental {
   transactions      Transactions[]
   values            Values?
   vessels           VesselInfo[]
-  vehicleHistory    BookingVehicleHistory[]
-  paymentReceipts   PaymentReceipt[]
 }
 
 model StorefrontBooking {
@@ -74,7 +74,6 @@ model Values {
   totalExtras          Float
   subTotal             Float         @default(0.0)
   netTotal             Float         @default(0.0)
-  amountDue            Float         @default(0.0)
   rentalId             String        @unique
   discountAmount       Float
   discountPolicy       String
@@ -89,6 +88,7 @@ model Values {
   customDeposit        Boolean       @default(false)
   customDiscount       Boolean       @default(false)
   customTotalCost      Boolean       @default(false)
+  amountDue            Float         @default(0.0)
   extras               RentalExtra[]
   rental               Rental        @relation(fields: [rentalId], references: [id])
 }
@@ -130,4 +130,3 @@ model VesselInfo {
   booking   Rental        @relation(fields: [bookingId], references: [id])
   port      Port          @relation(fields: [portId], references: [id])
 }
-

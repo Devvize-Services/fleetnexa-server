@@ -15,10 +15,14 @@ export class SubscriptionPlanFeatureDto {
   feature: string;
 }
 
+export class SubscriptionPlanCategoryDto {
+  @IsUUID()
+  id: string;
+}
+
 export class SubscriptionPlanDto {
   @IsUUID()
-  @IsOptional()
-  id?: string;
+  id: string;
 
   @IsString()
   name: string;
@@ -43,7 +47,7 @@ export class SubscriptionPlanDto {
   description?: string;
 
   @IsArray()
-  categories: string[];
+  categories: SubscriptionPlanCategoryDto[];
 
   @IsArray()
   features: SubscriptionPlanFeatureDto[];

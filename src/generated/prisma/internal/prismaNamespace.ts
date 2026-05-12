@@ -15,7 +15,7 @@
  * model files in the `model` directory!
  */
 
-import * as runtime from "@prisma/client/runtime/library"
+import * as runtime from "@prisma/client/runtime/client"
 import type * as Prisma from "../models.js"
 import { type PrismaClient } from "./class.js"
 
@@ -65,14 +65,6 @@ export type Decimal = runtime.Decimal
 export type DecimalJsLike = runtime.DecimalJsLike
 
 /**
- * Metrics
- */
-export type Metrics = runtime.Metrics
-export type Metric<T> = runtime.Metric<T>
-export type MetricHistogram = runtime.MetricHistogram
-export type MetricHistogramBucket = runtime.MetricHistogramBucket
-
-/**
 * Extensions
 */
 export type Extension = runtime.Types.Extensions.UserArgs
@@ -88,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 6.19.0
- * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
+ * Prisma Client JS version: 7.5.0
+ * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
  */
 export const prismaVersion: PrismaVersion = {
-  client: "6.19.0",
-  engine: "2ba551f319ab1df4bc874a89965d8b3641056773"
+  client: "7.5.0",
+  engine: "280c870be64f457428992c43c1f6d557fab6e29e"
 }
 
 /**
@@ -110,28 +102,30 @@ export type InputJsonValue = runtime.InputJsonValue
 
 
 export const NullTypes = {
-  DbNull: runtime.objectEnumValues.classes.DbNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.DbNull),
-  JsonNull: runtime.objectEnumValues.classes.JsonNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.JsonNull),
-  AnyNull: runtime.objectEnumValues.classes.AnyNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.AnyNull),
+  DbNull: runtime.NullTypes.DbNull as (new (secret: never) => typeof runtime.DbNull),
+  JsonNull: runtime.NullTypes.JsonNull as (new (secret: never) => typeof runtime.JsonNull),
+  AnyNull: runtime.NullTypes.AnyNull as (new (secret: never) => typeof runtime.AnyNull),
 }
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const DbNull = runtime.objectEnumValues.instances.DbNull
+export const DbNull = runtime.DbNull
+
 /**
  * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const JsonNull = runtime.objectEnumValues.instances.JsonNull
+export const JsonNull = runtime.JsonNull
+
 /**
  * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const AnyNull = runtime.objectEnumValues.instances.AnyNull
+export const AnyNull = runtime.AnyNull
 
 
 type SelectAndInclude = {
@@ -414,6 +408,7 @@ export const ModelName = {
   PaymentType: 'PaymentType',
   VendorType: 'VendorType',
   Port: 'Port',
+  InsuranceCompany: 'InsuranceCompany',
   Customer: 'Customer',
   CustomerMessengerApp: 'CustomerMessengerApp',
   CustomerAddress: 'CustomerAddress',
@@ -471,12 +466,15 @@ export const ModelName = {
   Payment: 'Payment',
   Refund: 'Refund',
   Expense: 'Expense',
+  Session: 'Session',
+  AuditLog: 'AuditLog',
+  PasswordHistory: 'PasswordHistory',
+  Otp: 'Otp',
   User: 'User',
   StorefrontUser: 'StorefrontUser',
   AdminUser: 'AdminUser',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission',
-  EmailTokens: 'EmailTokens',
   Vehicle: 'Vehicle',
   VehicleDiscount: 'VehicleDiscount',
   VehicleDamage: 'VehicleDamage',
@@ -486,7 +484,9 @@ export const ModelName = {
   VehicleMaintenance: 'VehicleMaintenance',
   VehicleServiceSchedule: 'VehicleServiceSchedule',
   BookingVehicleHistory: 'BookingVehicleHistory',
-  VehicleEvent: 'VehicleEvent'
+  VehicleEvent: 'VehicleEvent',
+  VehicleInsuranceHistory: 'VehicleInsuranceHistory',
+  VehicleRegistrationHistory: 'VehicleRegistrationHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -502,7 +502,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "service" | "chargeType" | "vehicleBrand" | "vehicleModel" | "vehicleBodyType" | "vehicleStatus" | "fuelType" | "transmission" | "vehicleFeature" | "wheelDrive" | "invoiceSequence" | "country" | "state" | "village" | "maintenanceService" | "documentType" | "presetLocation" | "licenseClass" | "messengerApp" | "equipment" | "contactType" | "paymentType" | "vendorType" | "port" | "customer" | "customerMessengerApp" | "customerAddress" | "customerDocument" | "driverLicense" | "customerViolation" | "rentalAgreement" | "invoice" | "paymentReceipt" | "caribbeanCountry" | "shopDMMerchant" | "currency" | "tenantCurrencyRate" | "exchangeRate" | "form" | "formResponse" | "rentalActivity" | "tenantNotification" | "notificationReadStatus" | "appPermission" | "permissionCategory" | "rental" | "storefrontBooking" | "rentalDriver" | "values" | "rentalExtra" | "rentalCharge" | "vesselInfo" | "tenantWeeklyStats" | "tenantYearlyStats" | "tenantMonthlyStats" | "tenantMonthlyRentalStats" | "tenantRatings" | "siteRatings" | "subscriptionPlan" | "planFeatures" | "planDetails" | "tenant" | "emailVerification" | "paymentMethod" | "address" | "tenantLocation" | "tenantInsurance" | "tenantEquipment" | "tenantService" | "tenantSubscription" | "tenantContact" | "tenantReminders" | "cancellationPolicy" | "latePolicy" | "tenantViolation" | "tenantVendor" | "verificationRequest" | "transactions" | "payment" | "refund" | "expense" | "user" | "storefrontUser" | "adminUser" | "userRole" | "userRolePermission" | "emailTokens" | "vehicle" | "vehicleDiscount" | "vehicleDamage" | "vehiclePart" | "fuelPolicy" | "vehicleServiceLog" | "vehicleMaintenance" | "vehicleServiceSchedule" | "bookingVehicleHistory" | "vehicleEvent"
+    modelProps: "service" | "chargeType" | "vehicleBrand" | "vehicleModel" | "vehicleBodyType" | "vehicleStatus" | "fuelType" | "transmission" | "vehicleFeature" | "wheelDrive" | "invoiceSequence" | "country" | "state" | "village" | "maintenanceService" | "documentType" | "presetLocation" | "licenseClass" | "messengerApp" | "equipment" | "contactType" | "paymentType" | "vendorType" | "port" | "insuranceCompany" | "customer" | "customerMessengerApp" | "customerAddress" | "customerDocument" | "driverLicense" | "customerViolation" | "rentalAgreement" | "invoice" | "paymentReceipt" | "caribbeanCountry" | "shopDMMerchant" | "currency" | "tenantCurrencyRate" | "exchangeRate" | "form" | "formResponse" | "rentalActivity" | "tenantNotification" | "notificationReadStatus" | "appPermission" | "permissionCategory" | "rental" | "storefrontBooking" | "rentalDriver" | "values" | "rentalExtra" | "rentalCharge" | "vesselInfo" | "tenantWeeklyStats" | "tenantYearlyStats" | "tenantMonthlyStats" | "tenantMonthlyRentalStats" | "tenantRatings" | "siteRatings" | "subscriptionPlan" | "planFeatures" | "planDetails" | "tenant" | "emailVerification" | "paymentMethod" | "address" | "tenantLocation" | "tenantInsurance" | "tenantEquipment" | "tenantService" | "tenantSubscription" | "tenantContact" | "tenantReminders" | "cancellationPolicy" | "latePolicy" | "tenantViolation" | "tenantVendor" | "verificationRequest" | "transactions" | "payment" | "refund" | "expense" | "session" | "auditLog" | "passwordHistory" | "otp" | "user" | "storefrontUser" | "adminUser" | "userRole" | "userRolePermission" | "vehicle" | "vehicleDiscount" | "vehicleDamage" | "vehiclePart" | "fuelPolicy" | "vehicleServiceLog" | "vehicleMaintenance" | "vehicleServiceSchedule" | "bookingVehicleHistory" | "vehicleEvent" | "vehicleInsuranceHistory" | "vehicleRegistrationHistory"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2279,6 +2279,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.PortCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.PortCountAggregateOutputType> | number
+        }
+      }
+    }
+    InsuranceCompany: {
+      payload: Prisma.$InsuranceCompanyPayload<ExtArgs>
+      fields: Prisma.InsuranceCompanyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InsuranceCompanyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InsuranceCompanyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        findFirst: {
+          args: Prisma.InsuranceCompanyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InsuranceCompanyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        findMany: {
+          args: Prisma.InsuranceCompanyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>[]
+        }
+        create: {
+          args: Prisma.InsuranceCompanyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        createMany: {
+          args: Prisma.InsuranceCompanyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InsuranceCompanyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>[]
+        }
+        delete: {
+          args: Prisma.InsuranceCompanyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        update: {
+          args: Prisma.InsuranceCompanyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        deleteMany: {
+          args: Prisma.InsuranceCompanyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InsuranceCompanyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InsuranceCompanyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>[]
+        }
+        upsert: {
+          args: Prisma.InsuranceCompanyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InsuranceCompanyPayload>
+        }
+        aggregate: {
+          args: Prisma.InsuranceCompanyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInsuranceCompany>
+        }
+        groupBy: {
+          args: Prisma.InsuranceCompanyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InsuranceCompanyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InsuranceCompanyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InsuranceCompanyCountAggregateOutputType> | number
         }
       }
     }
@@ -6500,6 +6574,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Session: {
+      payload: Prisma.$SessionPayload<ExtArgs>
+      fields: Prisma.SessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        findFirst: {
+          args: Prisma.SessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        findMany: {
+          args: Prisma.SessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
+        }
+        create: {
+          args: Prisma.SessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        createMany: {
+          args: Prisma.SessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
+        }
+        delete: {
+          args: Prisma.SessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        update: {
+          args: Prisma.SessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.SessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
+        }
+        aggregate: {
+          args: Prisma.SessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSession>
+        }
+        groupBy: {
+          args: Prisma.SessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    AuditLog: {
+      payload: Prisma.$AuditLogPayload<ExtArgs>
+      fields: Prisma.AuditLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AuditLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AuditLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        findFirst: {
+          args: Prisma.AuditLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AuditLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        findMany: {
+          args: Prisma.AuditLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        create: {
+          args: Prisma.AuditLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        createMany: {
+          args: Prisma.AuditLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AuditLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        delete: {
+          args: Prisma.AuditLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        update: {
+          args: Prisma.AuditLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.AuditLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AuditLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AuditLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.AuditLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        aggregate: {
+          args: Prisma.AuditLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAuditLog>
+        }
+        groupBy: {
+          args: Prisma.AuditLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AuditLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditLogCountAggregateOutputType> | number
+        }
+      }
+    }
+    PasswordHistory: {
+      payload: Prisma.$PasswordHistoryPayload<ExtArgs>
+      fields: Prisma.PasswordHistoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PasswordHistoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PasswordHistoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        findFirst: {
+          args: Prisma.PasswordHistoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PasswordHistoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        findMany: {
+          args: Prisma.PasswordHistoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>[]
+        }
+        create: {
+          args: Prisma.PasswordHistoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        createMany: {
+          args: Prisma.PasswordHistoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PasswordHistoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>[]
+        }
+        delete: {
+          args: Prisma.PasswordHistoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        update: {
+          args: Prisma.PasswordHistoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.PasswordHistoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PasswordHistoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PasswordHistoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.PasswordHistoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasswordHistoryPayload>
+        }
+        aggregate: {
+          args: Prisma.PasswordHistoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePasswordHistory>
+        }
+        groupBy: {
+          args: Prisma.PasswordHistoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PasswordHistoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PasswordHistoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PasswordHistoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    Otp: {
+      payload: Prisma.$OtpPayload<ExtArgs>
+      fields: Prisma.OtpFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OtpFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OtpFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        findFirst: {
+          args: Prisma.OtpFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OtpFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        findMany: {
+          args: Prisma.OtpFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>[]
+        }
+        create: {
+          args: Prisma.OtpCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        createMany: {
+          args: Prisma.OtpCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.OtpCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>[]
+        }
+        delete: {
+          args: Prisma.OtpDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        update: {
+          args: Prisma.OtpUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        deleteMany: {
+          args: Prisma.OtpDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OtpUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.OtpUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>[]
+        }
+        upsert: {
+          args: Prisma.OtpUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OtpPayload>
+        }
+        aggregate: {
+          args: Prisma.OtpAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOtp>
+        }
+        groupBy: {
+          args: Prisma.OtpGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OtpGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OtpCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OtpCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -6867,80 +7237,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserRolePermissionCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserRolePermissionCountAggregateOutputType> | number
-        }
-      }
-    }
-    EmailTokens: {
-      payload: Prisma.$EmailTokensPayload<ExtArgs>
-      fields: Prisma.EmailTokensFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.EmailTokensFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.EmailTokensFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        findFirst: {
-          args: Prisma.EmailTokensFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.EmailTokensFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        findMany: {
-          args: Prisma.EmailTokensFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>[]
-        }
-        create: {
-          args: Prisma.EmailTokensCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        createMany: {
-          args: Prisma.EmailTokensCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.EmailTokensCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>[]
-        }
-        delete: {
-          args: Prisma.EmailTokensDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        update: {
-          args: Prisma.EmailTokensUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        deleteMany: {
-          args: Prisma.EmailTokensDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.EmailTokensUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.EmailTokensUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>[]
-        }
-        upsert: {
-          args: Prisma.EmailTokensUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailTokensPayload>
-        }
-        aggregate: {
-          args: Prisma.EmailTokensAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateEmailTokens>
-        }
-        groupBy: {
-          args: Prisma.EmailTokensGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EmailTokensGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.EmailTokensCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EmailTokensCountAggregateOutputType> | number
         }
       }
     }
@@ -7684,6 +7980,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VehicleInsuranceHistory: {
+      payload: Prisma.$VehicleInsuranceHistoryPayload<ExtArgs>
+      fields: Prisma.VehicleInsuranceHistoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VehicleInsuranceHistoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VehicleInsuranceHistoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        findFirst: {
+          args: Prisma.VehicleInsuranceHistoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VehicleInsuranceHistoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        findMany: {
+          args: Prisma.VehicleInsuranceHistoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
+        }
+        create: {
+          args: Prisma.VehicleInsuranceHistoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        createMany: {
+          args: Prisma.VehicleInsuranceHistoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VehicleInsuranceHistoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
+        }
+        delete: {
+          args: Prisma.VehicleInsuranceHistoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        update: {
+          args: Prisma.VehicleInsuranceHistoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.VehicleInsuranceHistoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VehicleInsuranceHistoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VehicleInsuranceHistoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.VehicleInsuranceHistoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
+        }
+        aggregate: {
+          args: Prisma.VehicleInsuranceHistoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleInsuranceHistory>
+        }
+        groupBy: {
+          args: Prisma.VehicleInsuranceHistoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleInsuranceHistoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VehicleInsuranceHistoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleInsuranceHistoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    VehicleRegistrationHistory: {
+      payload: Prisma.$VehicleRegistrationHistoryPayload<ExtArgs>
+      fields: Prisma.VehicleRegistrationHistoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VehicleRegistrationHistoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VehicleRegistrationHistoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        findFirst: {
+          args: Prisma.VehicleRegistrationHistoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VehicleRegistrationHistoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        findMany: {
+          args: Prisma.VehicleRegistrationHistoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
+        }
+        create: {
+          args: Prisma.VehicleRegistrationHistoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        createMany: {
+          args: Prisma.VehicleRegistrationHistoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VehicleRegistrationHistoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
+        }
+        delete: {
+          args: Prisma.VehicleRegistrationHistoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        update: {
+          args: Prisma.VehicleRegistrationHistoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.VehicleRegistrationHistoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VehicleRegistrationHistoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VehicleRegistrationHistoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.VehicleRegistrationHistoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
+        }
+        aggregate: {
+          args: Prisma.VehicleRegistrationHistoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleRegistrationHistory>
+        }
+        groupBy: {
+          args: Prisma.VehicleRegistrationHistoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleRegistrationHistoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VehicleRegistrationHistoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleRegistrationHistoryCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -7822,13 +8266,13 @@ export type InvoiceSequenceScalarFieldEnum = (typeof InvoiceSequenceScalarFieldE
 export const CountryScalarFieldEnum = {
   id: 'id',
   code: 'code',
-  iso3: 'iso3',
-  phoneCode: 'phoneCode',
-  currency: 'currency',
-  cscId: 'cscId',
   country: 'country',
   createdAt: 'createdAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  cscId: 'cscId',
+  currency: 'currency',
+  iso3: 'iso3',
+  phoneCode: 'phoneCode'
 } as const
 
 export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
@@ -7948,6 +8392,15 @@ export const PortScalarFieldEnum = {
 } as const
 
 export type PortScalarFieldEnum = (typeof PortScalarFieldEnum)[keyof typeof PortScalarFieldEnum]
+
+
+export const InsuranceCompanyScalarFieldEnum = {
+  id: 'id',
+  company: 'company',
+  code: 'code'
+} as const
+
+export type InsuranceCompanyScalarFieldEnum = (typeof InsuranceCompanyScalarFieldEnum)[keyof typeof InsuranceCompanyScalarFieldEnum]
 
 
 export const CustomerScalarFieldEnum = {
@@ -8087,16 +8540,16 @@ export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeo
 export const PaymentReceiptScalarFieldEnum = {
   id: 'id',
   receiptNumber: 'receiptNumber',
-  paymentId: 'paymentId',
   amount: 'amount',
-  bookingId: 'bookingId',
   tenantId: 'tenantId',
   customerId: 'customerId',
   receiptUrl: 'receiptUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  paymentId: 'paymentId',
+  bookingId: 'bookingId'
 } as const
 
 export type PaymentReceiptScalarFieldEnum = (typeof PaymentReceiptScalarFieldEnum)[keyof typeof PaymentReceiptScalarFieldEnum]
@@ -8252,8 +8705,6 @@ export const RentalScalarFieldEnum = {
   pickupLocationId: 'pickupLocationId',
   returnLocationId: 'returnLocationId',
   vehicleId: 'vehicleId',
-  originalVehicleId: 'originalVehicleId',
-  vehicleSwapped: 'vehicleSwapped',
   agent: 'agent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -8265,7 +8716,9 @@ export const RentalScalarFieldEnum = {
   isDeleted: 'isDeleted',
   chargeTypeId: 'chargeTypeId',
   bookingCode: 'bookingCode',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  originalVehicleId: 'originalVehicleId',
+  vehicleSwapped: 'vehicleSwapped'
 } as const
 
 export type RentalScalarFieldEnum = (typeof RentalScalarFieldEnum)[keyof typeof RentalScalarFieldEnum]
@@ -8304,7 +8757,6 @@ export const ValuesScalarFieldEnum = {
   totalExtras: 'totalExtras',
   subTotal: 'subTotal',
   netTotal: 'netTotal',
-  amountDue: 'amountDue',
   rentalId: 'rentalId',
   discountAmount: 'discountAmount',
   discountPolicy: 'discountPolicy',
@@ -8318,7 +8770,8 @@ export const ValuesScalarFieldEnum = {
   customDeliveryFee: 'customDeliveryFee',
   customDeposit: 'customDeposit',
   customDiscount: 'customDiscount',
-  customTotalCost: 'customTotalCost'
+  customTotalCost: 'customTotalCost',
+  amountDue: 'amountDue'
 } as const
 
 export type ValuesScalarFieldEnum = (typeof ValuesScalarFieldEnum)[keyof typeof ValuesScalarFieldEnum]
@@ -8494,9 +8947,6 @@ export const TenantScalarFieldEnum = {
   tenantName: 'tenantName',
   email: 'email',
   number: 'number',
-  whatsappNumber: 'whatsappNumber',
-  whatsappNotifications: 'whatsappNotifications',
-  emailNotifications: 'emailNotifications',
   currencyId: 'currencyId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -8515,16 +8965,19 @@ export const TenantScalarFieldEnum = {
   additionalDriverFee: 'additionalDriverFee',
   daysInMonth: 'daysInMonth',
   slug: 'slug',
-  subdomain: 'subdomain',
   merchantId: 'merchantId',
   businessVerified: 'businessVerified',
   emailVerified: 'emailVerified',
   isDeleted: 'isDeleted',
   endTime: 'endTime',
   startTime: 'startTime',
+  emailNotifications: 'emailNotifications',
+  whatsappNotifications: 'whatsappNotifications',
+  whatsappNumber: 'whatsappNumber',
   firmaWorkspaceId: 'firmaWorkspaceId',
   firmaApiKey: 'firmaApiKey',
-  firmaApiKeyAt: 'firmaApiKeyAt'
+  firmaApiKeyAt: 'firmaApiKeyAt',
+  subdomain: 'subdomain'
 } as const
 
 export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
@@ -8753,7 +9206,6 @@ export type VerificationRequestScalarFieldEnum = (typeof VerificationRequestScal
 
 export const TransactionsScalarFieldEnum = {
   id: 'id',
-  number: 'number',
   amount: 'amount',
   type: 'type',
   isDeleted: 'isDeleted',
@@ -8767,7 +9219,8 @@ export const TransactionsScalarFieldEnum = {
   refundId: 'refundId',
   expenseId: 'expenseId',
   updatedAt: 'updatedAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  number: 'number'
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
@@ -8836,6 +9289,58 @@ export const ExpenseScalarFieldEnum = {
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metaData: 'metaData',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const PasswordHistoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  password: 'password',
+  createdAt: 'createdAt'
+} as const
+
+export type PasswordHistoryScalarFieldEnum = (typeof PasswordHistoryScalarFieldEnum)[keyof typeof PasswordHistoryScalarFieldEnum]
+
+
+export const OtpScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  codeHash: 'codeHash',
+  type: 'type',
+  expiresAt: 'expiresAt',
+  used: 'used',
+  createdAt: 'createdAt',
+  ipAddress: 'ipAddress'
+} as const
+
+export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   password: 'password',
@@ -8843,6 +9348,8 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   username: 'username',
   tenantId: 'tenantId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   roleId: 'roleId',
   lastChanged: 'lastChanged',
   email: 'email',
@@ -8851,8 +9358,6 @@ export const UserScalarFieldEnum = {
   deletedAt: 'deletedAt',
   isDeleted: 'isDeleted',
   requirePasswordChange: 'requirePasswordChange',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   updatedBy: 'updatedBy'
 } as const
 
@@ -8924,19 +9429,6 @@ export const UserRolePermissionScalarFieldEnum = {
 } as const
 
 export type UserRolePermissionScalarFieldEnum = (typeof UserRolePermissionScalarFieldEnum)[keyof typeof UserRolePermissionScalarFieldEnum]
-
-
-export const EmailTokensScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  token: 'token',
-  createdAt: 'createdAt',
-  expiresAt: 'expiresAt',
-  verified: 'verified',
-  expired: 'expired'
-} as const
-
-export type EmailTokensScalarFieldEnum = (typeof EmailTokensScalarFieldEnum)[keyof typeof EmailTokensScalarFieldEnum]
 
 
 export const VehicleScalarFieldEnum = {
@@ -9116,6 +9608,39 @@ export const VehicleEventScalarFieldEnum = {
 } as const
 
 export type VehicleEventScalarFieldEnum = (typeof VehicleEventScalarFieldEnum)[keyof typeof VehicleEventScalarFieldEnum]
+
+
+export const VehicleInsuranceHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  insuranceCompanyId: 'insuranceCompanyId',
+  policyNumber: 'policyNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleInsuranceHistoryScalarFieldEnum = (typeof VehicleInsuranceHistoryScalarFieldEnum)[keyof typeof VehicleInsuranceHistoryScalarFieldEnum]
+
+
+export const VehicleRegistrationHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  registrationNumber: 'registrationNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleRegistrationHistoryScalarFieldEnum = (typeof VehicleRegistrationHistoryScalarFieldEnum)[keyof typeof VehicleRegistrationHistoryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -9466,6 +9991,48 @@ export type ListEnumTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
+ * Reference to a field of type 'UserType'
+ */
+export type EnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType'>
+    
+
+
+/**
+ * Reference to a field of type 'UserType[]'
+ */
+export type ListEnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AuthAction'
+ */
+export type EnumAuthActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuthAction'>
+    
+
+
+/**
+ * Reference to a field of type 'AuthAction[]'
+ */
+export type ListEnumAuthActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuthAction[]'>
+    
+
+
+/**
+ * Reference to a field of type 'OtpType'
+ */
+export type EnumOtpTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OtpType'>
+    
+
+
+/**
+ * Reference to a field of type 'OtpType[]'
+ */
+export type ListEnumOtpTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OtpType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -9541,26 +10108,22 @@ export type BatchPayload = {
   count: number
 }
 
-
-export type Datasource = {
-  url?: string
-}
-export type Datasources = {
-  db?: Datasource
-}
-
 export const defineExtension = runtime.Extensions.defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
 export type DefaultPrismaClient = PrismaClient
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
-export interface PrismaClientOptions {
+export type PrismaClientOptions = ({
   /**
-   * Overwrites the datasource url from your schema.prisma file
+   * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-pg`.
    */
-  datasources?: Datasources
+  adapter: runtime.SqlDriverAdapterFactory
+  accelerateUrl?: never
+} | {
   /**
-   * Overwrites the datasource url from your schema.prisma file
+   * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
    */
-  datasourceUrl?: string
+  accelerateUrl: string
+  adapter?: never
+}) & {
   /**
    * @default "colorless"
    */
@@ -9587,7 +10150,7 @@ export interface PrismaClientOptions {
    *  { emit: 'stdout', level: 'error' }
    * 
    * ```
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
+   * Read more in our [docs](https://pris.ly/d/logging).
    */
   log?: (LogLevel | LogDefinition)[]
   /**
@@ -9600,10 +10163,6 @@ export interface PrismaClientOptions {
     timeout?: number
     isolationLevel?: TransactionIsolationLevel
   }
-  /**
-   * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
-   */
-  adapter?: runtime.SqlDriverAdapterFactory | null
   /**
    * Global configuration for omitting model fields by default.
    * 
@@ -9619,6 +10178,22 @@ export interface PrismaClientOptions {
    * ```
    */
   omit?: GlobalOmitConfig
+  /**
+   * SQL commenter plugins that add metadata to SQL queries as comments.
+   * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
+   * 
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter,
+   *   comments: [
+   *     traceContext(),
+   *     queryInsights(),
+   *   ],
+   * })
+   * ```
+   */
+  comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
   service?: Prisma.ServiceOmit
@@ -9645,6 +10220,7 @@ export type GlobalOmitConfig = {
   paymentType?: Prisma.PaymentTypeOmit
   vendorType?: Prisma.VendorTypeOmit
   port?: Prisma.PortOmit
+  insuranceCompany?: Prisma.InsuranceCompanyOmit
   customer?: Prisma.CustomerOmit
   customerMessengerApp?: Prisma.CustomerMessengerAppOmit
   customerAddress?: Prisma.CustomerAddressOmit
@@ -9702,12 +10278,15 @@ export type GlobalOmitConfig = {
   payment?: Prisma.PaymentOmit
   refund?: Prisma.RefundOmit
   expense?: Prisma.ExpenseOmit
+  session?: Prisma.SessionOmit
+  auditLog?: Prisma.AuditLogOmit
+  passwordHistory?: Prisma.PasswordHistoryOmit
+  otp?: Prisma.OtpOmit
   user?: Prisma.UserOmit
   storefrontUser?: Prisma.StorefrontUserOmit
   adminUser?: Prisma.AdminUserOmit
   userRole?: Prisma.UserRoleOmit
   userRolePermission?: Prisma.UserRolePermissionOmit
-  emailTokens?: Prisma.EmailTokensOmit
   vehicle?: Prisma.VehicleOmit
   vehicleDiscount?: Prisma.VehicleDiscountOmit
   vehicleDamage?: Prisma.VehicleDamageOmit
@@ -9718,6 +10297,8 @@ export type GlobalOmitConfig = {
   vehicleServiceSchedule?: Prisma.VehicleServiceScheduleOmit
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryOmit
   vehicleEvent?: Prisma.VehicleEventOmit
+  vehicleInsuranceHistory?: Prisma.VehicleInsuranceHistoryOmit
+  vehicleRegistrationHistory?: Prisma.VehicleRegistrationHistoryOmit
 }
 
 /* Types for Logging */

@@ -1,11 +1,11 @@
-import { IsNotEmpty, IsString, IsUUID } from "class-validator";
+import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
 
 export class VehicleStatusDto {
-	@IsUUID()
-	@IsNotEmpty()
-	vehicleId: string;
+  @IsUUID()
+  @IsNotEmpty()
+  vehicleId: string;
 
-	@IsString()
-	@IsNotEmpty()
-	status: string;
+  @IsString()
+  @IsNotEmpty()
+  status: string;
 }

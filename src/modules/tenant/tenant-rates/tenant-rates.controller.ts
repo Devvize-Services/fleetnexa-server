@@ -1,26 +1,25 @@
-import { Body, Controller, Get, Put, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Put, UseGuards, Request } from '@nestjs/common';
 import { TenantRatesService } from './tenant-rates.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
 import { TenantRateDto } from './tenant-rate.dto.js';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/rate')
-@UseGuards(AuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT)
 export class TenantRatesController {
   constructor(private readonly service: TenantRatesService) {}
 
   @Get()
-  async getTenantRates(@Req() req: AuthenticatedRequest) {
-    const tenant = req.context.tenant;
+  async getTenantRates(@Request() req) {
+    const tenant = req.user.tenant;
     return this.service.getTenantRates(tenant);
   }
 
   @Put()
-  async updateTenantRate(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: TenantRateDto,
-  ) {
-    const tenant = req.context.tenant;
+  async updateTenantRate(@Request() req, @Body() data: TenantRateDto) {
+    const tenant = req.user.tenant;
     return this.service.updateTenantRate(data, tenant);
   }
 }

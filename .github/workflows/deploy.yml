@@ -1,0 +1,90 @@
+name: Deploy FleetNexa Server
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DEV server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_EC2_HOST }}
+          username: ${{ secrets.DEV_EC2_USER }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          script: |
+            cd /wwwroot/dev-fleetnexa
+            git reset --hard
+            git clean -fd
+            git pull origin develop
+            npm ci
+            npx prisma migrate deploy
+            npx prisma generate
+            npm run build
+            sudo systemctl restart dev-fleetnexa-server.service
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to PROD server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_EC2_HOST }}
+          username: ${{ secrets.PROD_EC2_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /wwwroot/fleetnexa-server
+            git reset --hard
+            git clean -fd
+            git pull origin main
+            npm ci
+            npx prisma migrate deploy
+            npx prisma generate
+            npm run build
+            sudo systemctl restart fleetnexa-server.service
+
+  notify:
+    needs: [deploy-dev, deploy-prod]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Notify
+        run: |
+          STATUS="success"
+          if [ "${{ needs.deploy-dev.result }}" = "failure" ] || [ "${{ needs.deploy-prod.result }}" = "failure" ]; then
+            STATUS="failure"
+          fi
+
+          ENVIRONMENT=$([ "${{ github.ref }}" = "refs/heads/main" ] && echo "PRODUCTION" || echo "DEVELOPMENT")
+
+          if [ "$STATUS" = "success" ]; then
+            COLOR=3066993
+          else
+            COLOR=15158332
+          fi
+
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"username\": \"FleetNexa Deploy Bot\",
+              \"embeds\": [{
+                \"title\": \"FleetNexa Server Deployment\",
+                \"color\": $COLOR,
+                \"fields\": [
+                  {\"name\": \"Status\", \"value\": \"$STATUS\", \"inline\": true},
+                  {\"name\": \"Environment\", \"value\": \"$ENVIRONMENT\", \"inline\": true},
+                  {\"name\": \"Branch\", \"value\": \"${{ github.ref_name }}\", \"inline\": true},
+                  {\"name\": \"Author\", \"value\": \"${{ github.actor }}\", \"inline\": true},
+                  {\"name\": \"Commit\", \"value\": \"${{ github.sha }}\", \"inline\": false},
+                  {\"name\": \"Message\", \"value\": \"${{ github.event.head_commit.message }}\", \"inline\": false}
+                ],
+                \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+              }]
+            }" \
+            "${{ secrets.DISCORD_WEBHOOK }}"

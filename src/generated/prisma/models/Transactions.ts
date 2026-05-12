@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -36,7 +36,6 @@ export type TransactionsSumAggregateOutputType = {
 
 export type TransactionsMinAggregateOutputType = {
   id: string | null
-  number: string | null
   amount: number | null
   type: $Enums.TransactionType | null
   isDeleted: boolean | null
@@ -51,11 +50,11 @@ export type TransactionsMinAggregateOutputType = {
   expenseId: string | null
   updatedAt: Date | null
   updatedBy: string | null
+  number: string | null
 }
 
 export type TransactionsMaxAggregateOutputType = {
   id: string | null
-  number: string | null
   amount: number | null
   type: $Enums.TransactionType | null
   isDeleted: boolean | null
@@ -70,11 +69,11 @@ export type TransactionsMaxAggregateOutputType = {
   expenseId: string | null
   updatedAt: Date | null
   updatedBy: string | null
+  number: string | null
 }
 
 export type TransactionsCountAggregateOutputType = {
   id: number
-  number: number
   amount: number
   type: number
   isDeleted: number
@@ -89,6 +88,7 @@ export type TransactionsCountAggregateOutputType = {
   expenseId: number
   updatedAt: number
   updatedBy: number
+  number: number
   _all: number
 }
 
@@ -103,7 +103,6 @@ export type TransactionsSumAggregateInputType = {
 
 export type TransactionsMinAggregateInputType = {
   id?: true
-  number?: true
   amount?: true
   type?: true
   isDeleted?: true
@@ -118,11 +117,11 @@ export type TransactionsMinAggregateInputType = {
   expenseId?: true
   updatedAt?: true
   updatedBy?: true
+  number?: true
 }
 
 export type TransactionsMaxAggregateInputType = {
   id?: true
-  number?: true
   amount?: true
   type?: true
   isDeleted?: true
@@ -137,11 +136,11 @@ export type TransactionsMaxAggregateInputType = {
   expenseId?: true
   updatedAt?: true
   updatedBy?: true
+  number?: true
 }
 
 export type TransactionsCountAggregateInputType = {
   id?: true
-  number?: true
   amount?: true
   type?: true
   isDeleted?: true
@@ -156,6 +155,7 @@ export type TransactionsCountAggregateInputType = {
   expenseId?: true
   updatedAt?: true
   updatedBy?: true
+  number?: true
   _all?: true
 }
 
@@ -247,7 +247,6 @@ export type TransactionsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type TransactionsGroupByOutputType = {
   id: string
-  number: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted: boolean
@@ -262,6 +261,7 @@ export type TransactionsGroupByOutputType = {
   expenseId: string | null
   updatedAt: Date | null
   updatedBy: string | null
+  number: string | null
   _count: TransactionsCountAggregateOutputType | null
   _avg: TransactionsAvgAggregateOutputType | null
   _sum: TransactionsSumAggregateOutputType | null
@@ -289,7 +289,6 @@ export type TransactionsWhereInput = {
   OR?: Prisma.TransactionsWhereInput[]
   NOT?: Prisma.TransactionsWhereInput | Prisma.TransactionsWhereInput[]
   id?: Prisma.StringFilter<"Transactions"> | string
-  number?: Prisma.StringNullableFilter<"Transactions"> | string | null
   amount?: Prisma.FloatFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeFilter<"Transactions"> | $Enums.TransactionType
   isDeleted?: Prisma.BoolFilter<"Transactions"> | boolean
@@ -304,6 +303,7 @@ export type TransactionsWhereInput = {
   expenseId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"Transactions"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"Transactions"> | string | null
+  number?: Prisma.StringNullableFilter<"Transactions"> | string | null
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   expense?: Prisma.XOR<Prisma.ExpenseNullableScalarRelationFilter, Prisma.ExpenseWhereInput> | null
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
@@ -314,7 +314,6 @@ export type TransactionsWhereInput = {
 
 export type TransactionsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  number?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -329,6 +328,7 @@ export type TransactionsOrderByWithRelationInput = {
   expenseId?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  number?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   expense?: Prisma.ExpenseOrderByWithRelationInput
   payment?: Prisma.PaymentOrderByWithRelationInput
@@ -339,10 +339,10 @@ export type TransactionsOrderByWithRelationInput = {
 
 export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  number?: string
   paymentId?: string
   refundId?: string
   expenseId?: string
+  number?: string
   transactionNumber_tenantId?: Prisma.TransactionsTransactionNumber_tenantIdCompoundUniqueInput
   AND?: Prisma.TransactionsWhereInput | Prisma.TransactionsWhereInput[]
   OR?: Prisma.TransactionsWhereInput[]
@@ -364,11 +364,10 @@ export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
   refund?: Prisma.XOR<Prisma.RefundNullableScalarRelationFilter, Prisma.RefundWhereInput> | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-}, "id" | "number" | "paymentId" | "refundId" | "expenseId" | "transactionNumber_tenantId">
+}, "id" | "paymentId" | "refundId" | "expenseId" | "number" | "transactionNumber_tenantId">
 
 export type TransactionsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  number?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -383,6 +382,7 @@ export type TransactionsOrderByWithAggregationInput = {
   expenseId?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  number?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TransactionsCountOrderByAggregateInput
   _avg?: Prisma.TransactionsAvgOrderByAggregateInput
   _max?: Prisma.TransactionsMaxOrderByAggregateInput
@@ -395,7 +395,6 @@ export type TransactionsScalarWhereWithAggregatesInput = {
   OR?: Prisma.TransactionsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TransactionsScalarWhereWithAggregatesInput | Prisma.TransactionsScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Transactions"> | string
-  number?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   amount?: Prisma.FloatWithAggregatesFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeWithAggregatesFilter<"Transactions"> | $Enums.TransactionType
   isDeleted?: Prisma.BoolWithAggregatesFilter<"Transactions"> | boolean
@@ -410,11 +409,11 @@ export type TransactionsScalarWhereWithAggregatesInput = {
   expenseId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Transactions"> | Date | string | null
   updatedBy?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
+  number?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
 }
 
 export type TransactionsCreateInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -423,6 +422,7 @@ export type TransactionsCreateInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
@@ -433,7 +433,6 @@ export type TransactionsCreateInput = {
 
 export type TransactionsUncheckedCreateInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -448,11 +447,11 @@ export type TransactionsUncheckedCreateInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -461,6 +460,7 @@ export type TransactionsUpdateInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
@@ -471,7 +471,6 @@ export type TransactionsUpdateInput = {
 
 export type TransactionsUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -486,11 +485,11 @@ export type TransactionsUncheckedUpdateInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateManyInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -505,11 +504,11 @@ export type TransactionsCreateManyInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -518,11 +517,11 @@ export type TransactionsUpdateManyMutationInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -537,6 +536,7 @@ export type TransactionsUncheckedUpdateManyInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsListRelationFilter = {
@@ -556,7 +556,6 @@ export type TransactionsTransactionNumber_tenantIdCompoundUniqueInput = {
 
 export type TransactionsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  number?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -571,6 +570,7 @@ export type TransactionsCountOrderByAggregateInput = {
   expenseId?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  number?: Prisma.SortOrder
 }
 
 export type TransactionsAvgOrderByAggregateInput = {
@@ -579,7 +579,6 @@ export type TransactionsAvgOrderByAggregateInput = {
 
 export type TransactionsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  number?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -594,11 +593,11 @@ export type TransactionsMaxOrderByAggregateInput = {
   expenseId?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  number?: Prisma.SortOrder
 }
 
 export type TransactionsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  number?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   type?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -613,6 +612,7 @@ export type TransactionsMinOrderByAggregateInput = {
   expenseId?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  number?: Prisma.SortOrder
 }
 
 export type TransactionsSumOrderByAggregateInput = {
@@ -852,7 +852,6 @@ export type TransactionsUncheckedUpdateManyWithoutUserNestedInput = {
 
 export type TransactionsCreateWithoutRentalInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -861,6 +860,7 @@ export type TransactionsCreateWithoutRentalInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
@@ -870,7 +870,6 @@ export type TransactionsCreateWithoutRentalInput = {
 
 export type TransactionsUncheckedCreateWithoutRentalInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -884,6 +883,7 @@ export type TransactionsUncheckedCreateWithoutRentalInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutRentalInput = {
@@ -917,7 +917,6 @@ export type TransactionsScalarWhereInput = {
   OR?: Prisma.TransactionsScalarWhereInput[]
   NOT?: Prisma.TransactionsScalarWhereInput | Prisma.TransactionsScalarWhereInput[]
   id?: Prisma.StringFilter<"Transactions"> | string
-  number?: Prisma.StringNullableFilter<"Transactions"> | string | null
   amount?: Prisma.FloatFilter<"Transactions"> | number
   type?: Prisma.EnumTransactionTypeFilter<"Transactions"> | $Enums.TransactionType
   isDeleted?: Prisma.BoolFilter<"Transactions"> | boolean
@@ -932,11 +931,11 @@ export type TransactionsScalarWhereInput = {
   expenseId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"Transactions"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"Transactions"> | string | null
+  number?: Prisma.StringNullableFilter<"Transactions"> | string | null
 }
 
 export type TransactionsCreateWithoutTenantInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -945,6 +944,7 @@ export type TransactionsCreateWithoutTenantInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
@@ -954,7 +954,6 @@ export type TransactionsCreateWithoutTenantInput = {
 
 export type TransactionsUncheckedCreateWithoutTenantInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -968,6 +967,7 @@ export type TransactionsUncheckedCreateWithoutTenantInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutTenantInput = {
@@ -998,7 +998,6 @@ export type TransactionsUpdateManyWithWhereWithoutTenantInput = {
 
 export type TransactionsCreateWithoutPaymentInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1007,6 +1006,7 @@ export type TransactionsCreateWithoutPaymentInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
@@ -1016,7 +1016,6 @@ export type TransactionsCreateWithoutPaymentInput = {
 
 export type TransactionsUncheckedCreateWithoutPaymentInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1030,6 +1029,7 @@ export type TransactionsUncheckedCreateWithoutPaymentInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutPaymentInput = {
@@ -1050,7 +1050,6 @@ export type TransactionsUpdateToOneWithWhereWithoutPaymentInput = {
 
 export type TransactionsUpdateWithoutPaymentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1059,6 +1058,7 @@ export type TransactionsUpdateWithoutPaymentInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
@@ -1068,7 +1068,6 @@ export type TransactionsUpdateWithoutPaymentInput = {
 
 export type TransactionsUncheckedUpdateWithoutPaymentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1082,11 +1081,11 @@ export type TransactionsUncheckedUpdateWithoutPaymentInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateWithoutRefundInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1095,6 +1094,7 @@ export type TransactionsCreateWithoutRefundInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
@@ -1104,7 +1104,6 @@ export type TransactionsCreateWithoutRefundInput = {
 
 export type TransactionsUncheckedCreateWithoutRefundInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1118,6 +1117,7 @@ export type TransactionsUncheckedCreateWithoutRefundInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutRefundInput = {
@@ -1138,7 +1138,6 @@ export type TransactionsUpdateToOneWithWhereWithoutRefundInput = {
 
 export type TransactionsUpdateWithoutRefundInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1147,6 +1146,7 @@ export type TransactionsUpdateWithoutRefundInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
@@ -1156,7 +1156,6 @@ export type TransactionsUpdateWithoutRefundInput = {
 
 export type TransactionsUncheckedUpdateWithoutRefundInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1170,11 +1169,11 @@ export type TransactionsUncheckedUpdateWithoutRefundInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateWithoutExpenseInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1183,6 +1182,7 @@ export type TransactionsCreateWithoutExpenseInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
@@ -1192,7 +1192,6 @@ export type TransactionsCreateWithoutExpenseInput = {
 
 export type TransactionsUncheckedCreateWithoutExpenseInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1206,6 +1205,7 @@ export type TransactionsUncheckedCreateWithoutExpenseInput = {
   refundId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutExpenseInput = {
@@ -1226,7 +1226,6 @@ export type TransactionsUpdateToOneWithWhereWithoutExpenseInput = {
 
 export type TransactionsUpdateWithoutExpenseInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1235,6 +1234,7 @@ export type TransactionsUpdateWithoutExpenseInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
@@ -1244,7 +1244,6 @@ export type TransactionsUpdateWithoutExpenseInput = {
 
 export type TransactionsUncheckedUpdateWithoutExpenseInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1258,11 +1257,11 @@ export type TransactionsUncheckedUpdateWithoutExpenseInput = {
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateWithoutUserInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1271,6 +1270,7 @@ export type TransactionsCreateWithoutUserInput = {
   details?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
   expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
@@ -1280,7 +1280,6 @@ export type TransactionsCreateWithoutUserInput = {
 
 export type TransactionsUncheckedCreateWithoutUserInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1294,6 +1293,7 @@ export type TransactionsUncheckedCreateWithoutUserInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsCreateOrConnectWithoutUserInput = {
@@ -1324,7 +1324,6 @@ export type TransactionsUpdateManyWithWhereWithoutUserInput = {
 
 export type TransactionsCreateManyRentalInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1338,11 +1337,11 @@ export type TransactionsCreateManyRentalInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsUpdateWithoutRentalInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1351,6 +1350,7 @@ export type TransactionsUpdateWithoutRentalInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
@@ -1360,7 +1360,6 @@ export type TransactionsUpdateWithoutRentalInput = {
 
 export type TransactionsUncheckedUpdateWithoutRentalInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1374,11 +1373,11 @@ export type TransactionsUncheckedUpdateWithoutRentalInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsUncheckedUpdateManyWithoutRentalInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1392,11 +1391,11 @@ export type TransactionsUncheckedUpdateManyWithoutRentalInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateManyTenantInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1410,11 +1409,11 @@ export type TransactionsCreateManyTenantInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsUpdateWithoutTenantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1423,6 +1422,7 @@ export type TransactionsUpdateWithoutTenantInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
@@ -1432,7 +1432,6 @@ export type TransactionsUpdateWithoutTenantInput = {
 
 export type TransactionsUncheckedUpdateWithoutTenantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1446,11 +1445,11 @@ export type TransactionsUncheckedUpdateWithoutTenantInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsUncheckedUpdateManyWithoutTenantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1464,11 +1463,11 @@ export type TransactionsUncheckedUpdateManyWithoutTenantInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateManyUserInput = {
   id?: string
-  number?: string | null
   amount: number
   type: $Enums.TransactionType
   isDeleted?: boolean
@@ -1482,11 +1481,11 @@ export type TransactionsCreateManyUserInput = {
   expenseId?: string | null
   updatedAt?: Date | string | null
   updatedBy?: string | null
+  number?: string | null
 }
 
 export type TransactionsUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1495,6 +1494,7 @@ export type TransactionsUpdateWithoutUserInput = {
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
@@ -1504,7 +1504,6 @@ export type TransactionsUpdateWithoutUserInput = {
 
 export type TransactionsUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1518,11 +1517,11 @@ export type TransactionsUncheckedUpdateWithoutUserInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1536,13 +1535,13 @@ export type TransactionsUncheckedUpdateManyWithoutUserInput = {
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
 
 export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  number?: boolean
   amount?: boolean
   type?: boolean
   isDeleted?: boolean
@@ -1557,6 +1556,7 @@ export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   expenseId?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
+  number?: boolean
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
   expense?: boolean | Prisma.Transactions$expenseArgs<ExtArgs>
   payment?: boolean | Prisma.Transactions$paymentArgs<ExtArgs>
@@ -1567,7 +1567,6 @@ export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  number?: boolean
   amount?: boolean
   type?: boolean
   isDeleted?: boolean
@@ -1582,6 +1581,7 @@ export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   expenseId?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
+  number?: boolean
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
   expense?: boolean | Prisma.Transactions$expenseArgs<ExtArgs>
   payment?: boolean | Prisma.Transactions$paymentArgs<ExtArgs>
@@ -1592,7 +1592,6 @@ export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  number?: boolean
   amount?: boolean
   type?: boolean
   isDeleted?: boolean
@@ -1607,6 +1606,7 @@ export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   expenseId?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
+  number?: boolean
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
   expense?: boolean | Prisma.Transactions$expenseArgs<ExtArgs>
   payment?: boolean | Prisma.Transactions$paymentArgs<ExtArgs>
@@ -1617,7 +1617,6 @@ export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type TransactionsSelectScalar = {
   id?: boolean
-  number?: boolean
   amount?: boolean
   type?: boolean
   isDeleted?: boolean
@@ -1632,9 +1631,10 @@ export type TransactionsSelectScalar = {
   expenseId?: boolean
   updatedAt?: boolean
   updatedBy?: boolean
+  number?: boolean
 }
 
-export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "number" | "amount" | "type" | "isDeleted" | "transactionDate" | "createdAt" | "createdBy" | "paymentId" | "tenantId" | "rentalId" | "details" | "refundId" | "expenseId" | "updatedAt" | "updatedBy", ExtArgs["result"]["transactions"]>
+export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "type" | "isDeleted" | "transactionDate" | "createdAt" | "createdBy" | "paymentId" | "tenantId" | "rentalId" | "details" | "refundId" | "expenseId" | "updatedAt" | "updatedBy" | "number", ExtArgs["result"]["transactions"]>
 export type TransactionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
   expense?: boolean | Prisma.Transactions$expenseArgs<ExtArgs>
@@ -1672,7 +1672,6 @@ export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    number: string | null
     amount: number
     type: $Enums.TransactionType
     isDeleted: boolean
@@ -1687,6 +1686,7 @@ export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     expenseId: string | null
     updatedAt: Date | null
     updatedBy: string | null
+    number: string | null
   }, ExtArgs["result"]["transactions"]>
   composites: {}
 }
@@ -2117,7 +2117,6 @@ export interface Prisma__TransactionsClient<T, Null = never, ExtArgs extends run
  */
 export interface TransactionsFieldRefs {
   readonly id: Prisma.FieldRef<"Transactions", 'String'>
-  readonly number: Prisma.FieldRef<"Transactions", 'String'>
   readonly amount: Prisma.FieldRef<"Transactions", 'Float'>
   readonly type: Prisma.FieldRef<"Transactions", 'TransactionType'>
   readonly isDeleted: Prisma.FieldRef<"Transactions", 'Boolean'>
@@ -2132,6 +2131,7 @@ export interface TransactionsFieldRefs {
   readonly expenseId: Prisma.FieldRef<"Transactions", 'String'>
   readonly updatedAt: Prisma.FieldRef<"Transactions", 'DateTime'>
   readonly updatedBy: Prisma.FieldRef<"Transactions", 'String'>
+  readonly number: Prisma.FieldRef<"Transactions", 'String'>
 }
     
 
@@ -2328,6 +2328,11 @@ export type TransactionsFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` Transactions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Transactions.
+   */
   distinct?: Prisma.TransactionsScalarFieldEnum | Prisma.TransactionsScalarFieldEnum[]
 }
 

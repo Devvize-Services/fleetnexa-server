@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -383,9 +383,9 @@ export type UserRoleOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type UserRoleNullableScalarRelationFilter = {
-  is?: Prisma.UserRoleWhereInput | null
-  isNot?: Prisma.UserRoleWhereInput | null
+export type UserRoleScalarRelationFilter = {
+  is?: Prisma.UserRoleWhereInput
+  isNot?: Prisma.UserRoleWhereInput
 }
 
 export type UserRoleCountOrderByAggregateInput = {
@@ -422,11 +422,6 @@ export type UserRoleMinOrderByAggregateInput = {
   isDeleted?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
   show?: Prisma.SortOrder
-}
-
-export type UserRoleScalarRelationFilter = {
-  is?: Prisma.UserRoleWhereInput
-  isNot?: Prisma.UserRoleWhereInput
 }
 
 export type UserRoleCreateNestedManyWithoutTenantInput = {
@@ -477,12 +472,10 @@ export type UserRoleCreateNestedOneWithoutUsersInput = {
   connect?: Prisma.UserRoleWhereUniqueInput
 }
 
-export type UserRoleUpdateOneWithoutUsersNestedInput = {
+export type UserRoleUpdateOneRequiredWithoutUsersNestedInput = {
   create?: Prisma.XOR<Prisma.UserRoleCreateWithoutUsersInput, Prisma.UserRoleUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.UserRoleCreateOrConnectWithoutUsersInput
   upsert?: Prisma.UserRoleUpsertWithoutUsersInput
-  disconnect?: Prisma.UserRoleWhereInput | boolean
-  delete?: Prisma.UserRoleWhereInput | boolean
   connect?: Prisma.UserRoleWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserRoleUpdateToOneWithWhereWithoutUsersInput, Prisma.UserRoleUpdateWithoutUsersInput>, Prisma.UserRoleUncheckedUpdateWithoutUsersInput>
 }
@@ -1512,6 +1505,11 @@ export type UserRoleFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` UserRoles.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of UserRoles.
+   */
   distinct?: Prisma.UserRoleScalarFieldEnum | Prisma.UserRoleScalarFieldEnum[]
 }
 

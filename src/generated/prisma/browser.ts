@@ -138,6 +138,11 @@ export type VendorType = Prisma.VendorTypeModel
  */
 export type Port = Prisma.PortModel
 /**
+ * Model InsuranceCompany
+ * 
+ */
+export type InsuranceCompany = Prisma.InsuranceCompanyModel
+/**
  * Model Customer
  * 
  */
@@ -423,6 +428,26 @@ export type Refund = Prisma.RefundModel
  */
 export type Expense = Prisma.ExpenseModel
 /**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model PasswordHistory
+ * 
+ */
+export type PasswordHistory = Prisma.PasswordHistoryModel
+/**
+ * Model Otp
+ * 
+ */
+export type Otp = Prisma.OtpModel
+/**
  * Model User
  * 
  */
@@ -447,11 +472,6 @@ export type UserRole = Prisma.UserRoleModel
  * 
  */
 export type UserRolePermission = Prisma.UserRolePermissionModel
-/**
- * Model EmailTokens
- * 
- */
-export type EmailTokens = Prisma.EmailTokensModel
 /**
  * Model Vehicle
  * 
@@ -502,3 +522,13 @@ export type BookingVehicleHistory = Prisma.BookingVehicleHistoryModel
  * 
  */
 export type VehicleEvent = Prisma.VehicleEventModel
+/**
+ * Model VehicleInsuranceHistory
+ * 
+ */
+export type VehicleInsuranceHistory = Prisma.VehicleInsuranceHistoryModel
+/**
+ * Model VehicleRegistrationHistory
+ * 
+ */
+export type VehicleRegistrationHistory = Prisma.VehicleRegistrationHistoryModel

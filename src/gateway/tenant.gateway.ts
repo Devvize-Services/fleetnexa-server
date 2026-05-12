@@ -1,47 +1,50 @@
-import { Global, Logger } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
+import { Global, Logger } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import {
-	WebSocketGateway,
-	WebSocketServer,
-	OnGatewayConnection,
-	OnGatewayDisconnect,
-} from "@nestjs/websockets";
-import { Server, Socket } from "socket.io";
+  WebSocketGateway,
+  WebSocketServer,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+} from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
+import { TenantNotification } from '../generated/prisma/client.js';
 
 @Global()
 @WebSocketGateway({
-	cors: { origin: "*" },
+  cors: { origin: '*' },
 })
 export class TenantGateway implements OnGatewayConnection, OnGatewayDisconnect {
-	private readonly logger = new Logger(TenantGateway.name);
-	constructor(private readonly jwt: JwtService) {}
+  private readonly logger = new Logger(TenantGateway.name);
+  constructor(private readonly jwt: JwtService) {}
 
-	@WebSocketServer()
-	io: Server;
+  @WebSocketServer()
+  io: Server;
 
-	handleConnection(socket: Socket) {
-		const token = socket.handshake.auth?.token;
+  handleConnection(socket: Socket) {
+    const token = socket.handshake.auth?.token;
 
-		if (!token) {
-			socket.disconnect();
-			return;
-		}
+    if (!token) {
+      socket.disconnect();
+      return;
+    }
 
-		try {
-			const decoded: any = this.jwt.verify(token);
-			socket.data.user = decoded.user;
-			socket.join(decoded.user.tenantId);
-		} catch (error) {
-			this.logger.error("❌ Invalid socket token");
-			socket.disconnect();
-		}
-	}
+    try {
+      const decoded: any = this.jwt.verify(token);
+      socket.data.user = decoded.user;
+      socket.join(decoded.user.tenantId);
+    } catch (error) {
+      this.logger.error('❌ Invalid socket token', error);
+      socket.disconnect();
+    }
+  }
 
-	handleDisconnect(socket: Socket) {
-		this.logger.log(`🔌 Client disconnected: ${socket.id}`);
-	}
+  handleDisconnect(socket: Socket) {
+    this.logger.log(`🔌 Client disconnected: ${socket.id}`);
+  }
 
-	sendTenantNotification(tenantId: string, data: any) {
-		this.io.to(tenantId).emit("tenant-notification", data);
-	}
+  sendTenantNotification(tenantId: string, data: TenantNotification) {
+    this.io.to(tenantId).emit('tenant-notification', data);
+
+    this.logger.log(`Sent notification to tenant ${tenantId}: ${data.message}`);
+  }
 }

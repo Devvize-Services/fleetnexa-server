@@ -1,127 +1,127 @@
 import {
-	IsArray,
-	IsNumber,
-	IsOptional,
-	IsString,
-	IsUrl,
-	IsUUID,
-} from "class-validator";
+  IsArray,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+  IsUUID,
+} from 'class-validator';
 
 export class VehicleFeatureDto {
-	@IsUUID()
-	id: string;
+  @IsUUID()
+  id: string;
 
-	@IsString()
-	feature: string;
+  @IsString()
+  feature: string;
 }
 
 export class VehicleDiscountDto {
-	@IsUUID()
-	id: string;
+  @IsUUID()
+  id: string;
 
-	@IsNumber()
-	period: number;
+  @IsNumber()
+  period: number;
 
-	@IsString()
-	periodPolicy: string;
+  @IsString()
+  periodPolicy: string;
 
-	@IsNumber()
-	amount: number;
+  @IsNumber()
+  amount: number;
 
-	@IsString()
-	discountPolicy: string;
+  @IsString()
+  discountPolicy: string;
 }
 
 export class VehicleDto {
-	@IsUUID()
-	id: string;
+  @IsUUID()
+  id: string;
 
-	@IsString()
-	color: string;
+  @IsString()
+  color: string;
 
-	@IsNumber()
-	engineVolume: number;
+  @IsNumber()
+  engineVolume: number;
 
-	@IsUrl()
-	featuredImage: string;
+  @IsString()
+  featuredImage: string;
 
-	@IsArray()
-	features: VehicleFeatureDto[];
+  @IsArray()
+  features: VehicleFeatureDto[];
 
-	@IsNumber()
-	fuelLevel: number;
+  @IsNumber()
+  fuelLevel: number;
 
-	@IsArray()
-	images: string[];
+  @IsArray()
+  images: string[];
 
-	@IsString()
-	licensePlate: string;
+  @IsString()
+  licensePlate: string;
 
-	@IsUUID()
-	brandId: string;
+  @IsUUID()
+  brandId: string;
 
-	@IsUUID()
-	modelId: string;
+  @IsUUID()
+  modelId: string;
 
-	@IsNumber()
-	numberOfSeats: number;
+  @IsNumber()
+  numberOfSeats: number;
 
-	@IsNumber()
-	numberOfDoors: number;
+  @IsNumber()
+  numberOfDoors: number;
 
-	@IsNumber()
-	odometer: number;
+  @IsNumber()
+  odometer: number;
 
-	@IsString()
-	steering: string;
+  @IsString()
+  steering: string;
 
-	@IsString()
-	@IsOptional()
-	vin?: string;
+  @IsString()
+  @IsOptional()
+  vin?: string;
 
-	@IsNumber()
-	year: number;
+  @IsNumber()
+  year: number;
 
-	@IsUUID()
-	transmissionId: string;
+  @IsUUID()
+  transmissionId: string;
 
-	@IsUUID()
-	vehicleStatusId: string;
+  @IsUUID()
+  vehicleStatusId: string;
 
-	@IsUUID()
-	wheelDriveId: string;
+  @IsUUID()
+  wheelDriveId: string;
 
-	@IsUUID()
-	fuelTypeId: string;
+  @IsUUID()
+  fuelTypeId: string;
 
-	@IsUUID()
-	fuelPolicyId: string;
+  @IsUUID()
+  fuelPolicyId: string;
 
-	@IsUUID()
-	locationId: string;
+  @IsUUID()
+  locationId: string;
 
-	@IsNumber()
-	dayPrice: number;
+  @IsNumber()
+  dayPrice: number;
 
-	@IsNumber()
-	weekPrice: number;
+  @IsNumber()
+  weekPrice: number;
 
-	@IsNumber()
-	monthPrice: number;
+  @IsNumber()
+  monthPrice: number;
 
-	@IsNumber()
-	timeBetweenRentals: number;
+  @IsNumber()
+  timeBetweenRentals: number;
 
-	@IsNumber()
-	minimumAge: number;
+  @IsNumber()
+  minimumAge: number;
 
-	@IsNumber()
-	minimumRental: number;
+  @IsNumber()
+  minimumRental: number;
 
-	@IsNumber()
-	drivingExperience: number;
+  @IsNumber()
+  drivingExperience: number;
 
-	@IsArray()
-	@IsOptional()
-	discounts?: VehicleDiscountDto[];
+  @IsArray()
+  @IsOptional()
+  discounts?: VehicleDiscountDto[];
 }

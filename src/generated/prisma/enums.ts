@@ -128,7 +128,8 @@ export const StatItem = {
   YEARLY_RENTALS: 'YEARLY_RENTALS',
   YEARLY_CUSTOMERS: 'YEARLY_CUSTOMERS',
   AVERAGE_RENTAL_DURATION: 'AVERAGE_RENTAL_DURATION',
-  YEARLY_EXPENSES: 'YEARLY_EXPENSES'
+  YEARLY_EXPENSES: 'YEARLY_EXPENSES',
+  YEARLY_VEHICLES: 'YEARLY_VEHICLES'
 } as const
 
 export type StatItem = (typeof StatItem)[keyof typeof StatItem]
@@ -208,6 +209,37 @@ export const VerificationStatus = {
 export type VerificationStatus = (typeof VerificationStatus)[keyof typeof VerificationStatus]
 
 
+export const UserType = {
+  TENANT: 'TENANT',
+  STOREFRONT: 'STOREFRONT',
+  ADMIN: 'ADMIN'
+} as const
+
+export type UserType = (typeof UserType)[keyof typeof UserType]
+
+
+export const AuthAction = {
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILED: 'LOGIN_FAILED',
+  LOGOUT: 'LOGOUT',
+  PASSWORD_CHANGED: 'PASSWORD_CHANGED',
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  ACCOUNT_LOCKED: 'ACCOUNT_LOCKED'
+} as const
+
+export type AuthAction = (typeof AuthAction)[keyof typeof AuthAction]
+
+
+export const OtpType = {
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  EMAIL_VERIFICATION: 'EMAIL_VERIFICATION',
+  PHONE_VERIFICATION: 'PHONE_VERIFICATION',
+  TWO_FACTOR: 'TWO_FACTOR'
+} as const
+
+export type OtpType = (typeof OtpType)[keyof typeof OtpType]
+
+
 export const VehicleEventType = {
   MAINTENANCE: 'MAINTENANCE',
   ACCIDENT: 'ACCIDENT',
@@ -224,9 +256,6 @@ export const VehicleEventType = {
   MAINTENANCE_SCHEDULED: 'MAINTENANCE_SCHEDULED',
   MAINTENANCE_STARTED: 'MAINTENANCE_STARTED',
   MAINTENANCE_COMPLETED: 'MAINTENANCE_COMPLETED',
-  ASSIGNED_TO_BOOKING: 'ASSIGNED_TO_BOOKING',
-  UNASSIGNED_FROM_BOOKING: 'UNASSIGNED_FROM_BOOKING',
-  EXTENDED_BOOKING: 'EXTENDED_BOOKING',
   OUT_OF_SERVICE: 'OUT_OF_SERVICE',
   BACK_IN_SERVICE: 'BACK_IN_SERVICE',
   REGISTRATION_RENEWED: 'REGISTRATION_RENEWED',
@@ -238,7 +267,10 @@ export const VehicleEventType = {
   DAMAGE_REPORTED: 'DAMAGE_REPORTED',
   DAMAGE_REPAIRED: 'DAMAGE_REPAIRED',
   THEFT_REPORTED: 'THEFT_REPORTED',
-  RECOVERED: 'RECOVERED'
+  RECOVERED: 'RECOVERED',
+  ASSIGNED_TO_BOOKING: 'ASSIGNED_TO_BOOKING',
+  UNASSIGNED_FROM_BOOKING: 'UNASSIGNED_FROM_BOOKING',
+  EXTENDED_BOOKING: 'EXTENDED_BOOKING'
 } as const
 
 export type VehicleEventType = (typeof VehicleEventType)[keyof typeof VehicleEventType]

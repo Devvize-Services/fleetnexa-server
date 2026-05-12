@@ -24,28 +24,30 @@ export const Decimal = runtime.Decimal
 
 
 export const NullTypes = {
-  DbNull: runtime.objectEnumValues.classes.DbNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.DbNull),
-  JsonNull: runtime.objectEnumValues.classes.JsonNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.JsonNull),
-  AnyNull: runtime.objectEnumValues.classes.AnyNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.AnyNull),
+  DbNull: runtime.NullTypes.DbNull as (new (secret: never) => typeof runtime.DbNull),
+  JsonNull: runtime.NullTypes.JsonNull as (new (secret: never) => typeof runtime.JsonNull),
+  AnyNull: runtime.NullTypes.AnyNull as (new (secret: never) => typeof runtime.AnyNull),
 }
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const DbNull = runtime.objectEnumValues.instances.DbNull
+export const DbNull = runtime.DbNull
+
 /**
  * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const JsonNull = runtime.objectEnumValues.instances.JsonNull
+export const JsonNull = runtime.JsonNull
+
 /**
  * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const AnyNull = runtime.objectEnumValues.instances.AnyNull
+export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
@@ -73,6 +75,7 @@ export const ModelName = {
   PaymentType: 'PaymentType',
   VendorType: 'VendorType',
   Port: 'Port',
+  InsuranceCompany: 'InsuranceCompany',
   Customer: 'Customer',
   CustomerMessengerApp: 'CustomerMessengerApp',
   CustomerAddress: 'CustomerAddress',
@@ -130,12 +133,15 @@ export const ModelName = {
   Payment: 'Payment',
   Refund: 'Refund',
   Expense: 'Expense',
+  Session: 'Session',
+  AuditLog: 'AuditLog',
+  PasswordHistory: 'PasswordHistory',
+  Otp: 'Otp',
   User: 'User',
   StorefrontUser: 'StorefrontUser',
   AdminUser: 'AdminUser',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission',
-  EmailTokens: 'EmailTokens',
   Vehicle: 'Vehicle',
   VehicleDiscount: 'VehicleDiscount',
   VehicleDamage: 'VehicleDamage',
@@ -145,7 +151,9 @@ export const ModelName = {
   VehicleMaintenance: 'VehicleMaintenance',
   VehicleServiceSchedule: 'VehicleServiceSchedule',
   BookingVehicleHistory: 'BookingVehicleHistory',
-  VehicleEvent: 'VehicleEvent'
+  VehicleEvent: 'VehicleEvent',
+  VehicleInsuranceHistory: 'VehicleInsuranceHistory',
+  VehicleRegistrationHistory: 'VehicleRegistrationHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -263,13 +271,13 @@ export type InvoiceSequenceScalarFieldEnum = (typeof InvoiceSequenceScalarFieldE
 export const CountryScalarFieldEnum = {
   id: 'id',
   code: 'code',
-  iso3: 'iso3',
-  phoneCode: 'phoneCode',
-  currency: 'currency',
-  cscId: 'cscId',
   country: 'country',
   createdAt: 'createdAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  cscId: 'cscId',
+  currency: 'currency',
+  iso3: 'iso3',
+  phoneCode: 'phoneCode'
 } as const
 
 export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
@@ -389,6 +397,15 @@ export const PortScalarFieldEnum = {
 } as const
 
 export type PortScalarFieldEnum = (typeof PortScalarFieldEnum)[keyof typeof PortScalarFieldEnum]
+
+
+export const InsuranceCompanyScalarFieldEnum = {
+  id: 'id',
+  company: 'company',
+  code: 'code'
+} as const
+
+export type InsuranceCompanyScalarFieldEnum = (typeof InsuranceCompanyScalarFieldEnum)[keyof typeof InsuranceCompanyScalarFieldEnum]
 
 
 export const CustomerScalarFieldEnum = {
@@ -528,16 +545,16 @@ export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeo
 export const PaymentReceiptScalarFieldEnum = {
   id: 'id',
   receiptNumber: 'receiptNumber',
-  paymentId: 'paymentId',
   amount: 'amount',
-  bookingId: 'bookingId',
   tenantId: 'tenantId',
   customerId: 'customerId',
   receiptUrl: 'receiptUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  paymentId: 'paymentId',
+  bookingId: 'bookingId'
 } as const
 
 export type PaymentReceiptScalarFieldEnum = (typeof PaymentReceiptScalarFieldEnum)[keyof typeof PaymentReceiptScalarFieldEnum]
@@ -693,8 +710,6 @@ export const RentalScalarFieldEnum = {
   pickupLocationId: 'pickupLocationId',
   returnLocationId: 'returnLocationId',
   vehicleId: 'vehicleId',
-  originalVehicleId: 'originalVehicleId',
-  vehicleSwapped: 'vehicleSwapped',
   agent: 'agent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -706,7 +721,9 @@ export const RentalScalarFieldEnum = {
   isDeleted: 'isDeleted',
   chargeTypeId: 'chargeTypeId',
   bookingCode: 'bookingCode',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  originalVehicleId: 'originalVehicleId',
+  vehicleSwapped: 'vehicleSwapped'
 } as const
 
 export type RentalScalarFieldEnum = (typeof RentalScalarFieldEnum)[keyof typeof RentalScalarFieldEnum]
@@ -745,7 +762,6 @@ export const ValuesScalarFieldEnum = {
   totalExtras: 'totalExtras',
   subTotal: 'subTotal',
   netTotal: 'netTotal',
-  amountDue: 'amountDue',
   rentalId: 'rentalId',
   discountAmount: 'discountAmount',
   discountPolicy: 'discountPolicy',
@@ -759,7 +775,8 @@ export const ValuesScalarFieldEnum = {
   customDeliveryFee: 'customDeliveryFee',
   customDeposit: 'customDeposit',
   customDiscount: 'customDiscount',
-  customTotalCost: 'customTotalCost'
+  customTotalCost: 'customTotalCost',
+  amountDue: 'amountDue'
 } as const
 
 export type ValuesScalarFieldEnum = (typeof ValuesScalarFieldEnum)[keyof typeof ValuesScalarFieldEnum]
@@ -935,9 +952,6 @@ export const TenantScalarFieldEnum = {
   tenantName: 'tenantName',
   email: 'email',
   number: 'number',
-  whatsappNumber: 'whatsappNumber',
-  whatsappNotifications: 'whatsappNotifications',
-  emailNotifications: 'emailNotifications',
   currencyId: 'currencyId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -956,16 +970,19 @@ export const TenantScalarFieldEnum = {
   additionalDriverFee: 'additionalDriverFee',
   daysInMonth: 'daysInMonth',
   slug: 'slug',
-  subdomain: 'subdomain',
   merchantId: 'merchantId',
   businessVerified: 'businessVerified',
   emailVerified: 'emailVerified',
   isDeleted: 'isDeleted',
   endTime: 'endTime',
   startTime: 'startTime',
+  emailNotifications: 'emailNotifications',
+  whatsappNotifications: 'whatsappNotifications',
+  whatsappNumber: 'whatsappNumber',
   firmaWorkspaceId: 'firmaWorkspaceId',
   firmaApiKey: 'firmaApiKey',
-  firmaApiKeyAt: 'firmaApiKeyAt'
+  firmaApiKeyAt: 'firmaApiKeyAt',
+  subdomain: 'subdomain'
 } as const
 
 export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
@@ -1194,7 +1211,6 @@ export type VerificationRequestScalarFieldEnum = (typeof VerificationRequestScal
 
 export const TransactionsScalarFieldEnum = {
   id: 'id',
-  number: 'number',
   amount: 'amount',
   type: 'type',
   isDeleted: 'isDeleted',
@@ -1208,7 +1224,8 @@ export const TransactionsScalarFieldEnum = {
   refundId: 'refundId',
   expenseId: 'expenseId',
   updatedAt: 'updatedAt',
-  updatedBy: 'updatedBy'
+  updatedBy: 'updatedBy',
+  number: 'number'
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
@@ -1277,6 +1294,58 @@ export const ExpenseScalarFieldEnum = {
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metaData: 'metaData',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const PasswordHistoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  password: 'password',
+  createdAt: 'createdAt'
+} as const
+
+export type PasswordHistoryScalarFieldEnum = (typeof PasswordHistoryScalarFieldEnum)[keyof typeof PasswordHistoryScalarFieldEnum]
+
+
+export const OtpScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userType: 'userType',
+  codeHash: 'codeHash',
+  type: 'type',
+  expiresAt: 'expiresAt',
+  used: 'used',
+  createdAt: 'createdAt',
+  ipAddress: 'ipAddress'
+} as const
+
+export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   password: 'password',
@@ -1284,6 +1353,8 @@ export const UserScalarFieldEnum = {
   lastName: 'lastName',
   username: 'username',
   tenantId: 'tenantId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   roleId: 'roleId',
   lastChanged: 'lastChanged',
   email: 'email',
@@ -1292,8 +1363,6 @@ export const UserScalarFieldEnum = {
   deletedAt: 'deletedAt',
   isDeleted: 'isDeleted',
   requirePasswordChange: 'requirePasswordChange',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   updatedBy: 'updatedBy'
 } as const
 
@@ -1365,19 +1434,6 @@ export const UserRolePermissionScalarFieldEnum = {
 } as const
 
 export type UserRolePermissionScalarFieldEnum = (typeof UserRolePermissionScalarFieldEnum)[keyof typeof UserRolePermissionScalarFieldEnum]
-
-
-export const EmailTokensScalarFieldEnum = {
-  id: 'id',
-  email: 'email',
-  token: 'token',
-  createdAt: 'createdAt',
-  expiresAt: 'expiresAt',
-  verified: 'verified',
-  expired: 'expired'
-} as const
-
-export type EmailTokensScalarFieldEnum = (typeof EmailTokensScalarFieldEnum)[keyof typeof EmailTokensScalarFieldEnum]
 
 
 export const VehicleScalarFieldEnum = {
@@ -1557,6 +1613,39 @@ export const VehicleEventScalarFieldEnum = {
 } as const
 
 export type VehicleEventScalarFieldEnum = (typeof VehicleEventScalarFieldEnum)[keyof typeof VehicleEventScalarFieldEnum]
+
+
+export const VehicleInsuranceHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  insuranceCompanyId: 'insuranceCompanyId',
+  policyNumber: 'policyNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleInsuranceHistoryScalarFieldEnum = (typeof VehicleInsuranceHistoryScalarFieldEnum)[keyof typeof VehicleInsuranceHistoryScalarFieldEnum]
+
+
+export const VehicleRegistrationHistoryScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  registrationNumber: 'registrationNumber',
+  validFrom: 'validFrom',
+  validTo: 'validTo',
+  expired: 'expired',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+} as const
+
+export type VehicleRegistrationHistoryScalarFieldEnum = (typeof VehicleRegistrationHistoryScalarFieldEnum)[keyof typeof VehicleRegistrationHistoryScalarFieldEnum]
 
 
 export const SortOrder = {

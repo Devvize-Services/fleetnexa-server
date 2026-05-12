@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -27,37 +27,37 @@ export type AggregateCountry = {
 export type CountryMinAggregateOutputType = {
   id: string | null
   code: string | null
-  iso3: string | null
-  phoneCode: string | null
-  currency: string | null
-  cscId: string | null
   country: string | null
   createdAt: Date | null
   updatedBy: string | null
+  cscId: string | null
+  currency: string | null
+  iso3: string | null
+  phoneCode: string | null
 }
 
 export type CountryMaxAggregateOutputType = {
   id: string | null
   code: string | null
-  iso3: string | null
-  phoneCode: string | null
-  currency: string | null
-  cscId: string | null
   country: string | null
   createdAt: Date | null
   updatedBy: string | null
+  cscId: string | null
+  currency: string | null
+  iso3: string | null
+  phoneCode: string | null
 }
 
 export type CountryCountAggregateOutputType = {
   id: number
   code: number
-  iso3: number
-  phoneCode: number
-  currency: number
-  cscId: number
   country: number
   createdAt: number
   updatedBy: number
+  cscId: number
+  currency: number
+  iso3: number
+  phoneCode: number
   _all: number
 }
 
@@ -65,37 +65,37 @@ export type CountryCountAggregateOutputType = {
 export type CountryMinAggregateInputType = {
   id?: true
   code?: true
-  iso3?: true
-  phoneCode?: true
-  currency?: true
-  cscId?: true
   country?: true
   createdAt?: true
   updatedBy?: true
+  cscId?: true
+  currency?: true
+  iso3?: true
+  phoneCode?: true
 }
 
 export type CountryMaxAggregateInputType = {
   id?: true
   code?: true
-  iso3?: true
-  phoneCode?: true
-  currency?: true
-  cscId?: true
   country?: true
   createdAt?: true
   updatedBy?: true
+  cscId?: true
+  currency?: true
+  iso3?: true
+  phoneCode?: true
 }
 
 export type CountryCountAggregateInputType = {
   id?: true
   code?: true
-  iso3?: true
-  phoneCode?: true
-  currency?: true
-  cscId?: true
   country?: true
   createdAt?: true
   updatedBy?: true
+  cscId?: true
+  currency?: true
+  iso3?: true
+  phoneCode?: true
   _all?: true
 }
 
@@ -174,13 +174,13 @@ export type CountryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type CountryGroupByOutputType = {
   id: string
   code: string
-  iso3: string | null
-  phoneCode: string | null
-  currency: string | null
-  cscId: string | null
   country: string
   createdAt: Date
   updatedBy: string | null
+  cscId: string | null
+  currency: string | null
+  iso3: string | null
+  phoneCode: string | null
   _count: CountryCountAggregateOutputType | null
   _min: CountryMinAggregateOutputType | null
   _max: CountryMaxAggregateOutputType | null
@@ -207,13 +207,13 @@ export type CountryWhereInput = {
   NOT?: Prisma.CountryWhereInput | Prisma.CountryWhereInput[]
   id?: Prisma.StringFilter<"Country"> | string
   code?: Prisma.StringFilter<"Country"> | string
-  iso3?: Prisma.StringNullableFilter<"Country"> | string | null
-  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
-  currency?: Prisma.StringNullableFilter<"Country"> | string | null
-  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
   country?: Prisma.StringFilter<"Country"> | string
   createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   updatedBy?: Prisma.StringNullableFilter<"Country"> | string | null
+  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
+  currency?: Prisma.StringNullableFilter<"Country"> | string | null
+  iso3?: Prisma.StringNullableFilter<"Country"> | string | null
+  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
   addresses?: Prisma.AddressListRelationFilter
   caribbeanCountries?: Prisma.XOR<Prisma.CaribbeanCountryNullableScalarRelationFilter, Prisma.CaribbeanCountryWhereInput> | null
   adminUser?: Prisma.XOR<Prisma.AdminUserNullableScalarRelationFilter, Prisma.AdminUserWhereInput> | null
@@ -229,13 +229,13 @@ export type CountryWhereInput = {
 export type CountryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  iso3?: Prisma.SortOrderInput | Prisma.SortOrder
-  phoneCode?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrderInput | Prisma.SortOrder
-  cscId?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  cscId?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  iso3?: Prisma.SortOrderInput | Prisma.SortOrder
+  phoneCode?: Prisma.SortOrderInput | Prisma.SortOrder
   addresses?: Prisma.AddressOrderByRelationAggregateInput
   caribbeanCountries?: Prisma.CaribbeanCountryOrderByWithRelationInput
   adminUser?: Prisma.AdminUserOrderByWithRelationInput
@@ -251,16 +251,16 @@ export type CountryOrderByWithRelationInput = {
 export type CountryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   code?: string
-  iso3?: string
   country?: string
+  iso3?: string
   AND?: Prisma.CountryWhereInput | Prisma.CountryWhereInput[]
   OR?: Prisma.CountryWhereInput[]
   NOT?: Prisma.CountryWhereInput | Prisma.CountryWhereInput[]
-  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
-  currency?: Prisma.StringNullableFilter<"Country"> | string | null
-  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   updatedBy?: Prisma.StringNullableFilter<"Country"> | string | null
+  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
+  currency?: Prisma.StringNullableFilter<"Country"> | string | null
+  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
   addresses?: Prisma.AddressListRelationFilter
   caribbeanCountries?: Prisma.XOR<Prisma.CaribbeanCountryNullableScalarRelationFilter, Prisma.CaribbeanCountryWhereInput> | null
   adminUser?: Prisma.XOR<Prisma.AdminUserNullableScalarRelationFilter, Prisma.AdminUserWhereInput> | null
@@ -271,18 +271,18 @@ export type CountryWhereUniqueInput = Prisma.AtLeast<{
   presetLocations?: Prisma.PresetLocationListRelationFilter
   states?: Prisma.StateListRelationFilter
   storefrontUser?: Prisma.StorefrontUserListRelationFilter
-}, "id" | "code" | "iso3" | "country">
+}, "id" | "code" | "country" | "iso3">
 
 export type CountryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  iso3?: Prisma.SortOrderInput | Prisma.SortOrder
-  phoneCode?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrderInput | Prisma.SortOrder
-  cscId?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  cscId?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrderInput | Prisma.SortOrder
+  iso3?: Prisma.SortOrderInput | Prisma.SortOrder
+  phoneCode?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CountryCountOrderByAggregateInput
   _max?: Prisma.CountryMaxOrderByAggregateInput
   _min?: Prisma.CountryMinOrderByAggregateInput
@@ -294,24 +294,24 @@ export type CountryScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CountryScalarWhereWithAggregatesInput | Prisma.CountryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Country"> | string
   code?: Prisma.StringWithAggregatesFilter<"Country"> | string
-  iso3?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
-  phoneCode?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
-  currency?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
-  cscId?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
   country?: Prisma.StringWithAggregatesFilter<"Country"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Country"> | Date | string
   updatedBy?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
+  cscId?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
+  currency?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
+  iso3?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
+  phoneCode?: Prisma.StringNullableWithAggregatesFilter<"Country"> | string | null
 }
 
 export type CountryCreateInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -327,13 +327,13 @@ export type CountryCreateInput = {
 export type CountryUncheckedCreateInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -348,12 +348,12 @@ export type CountryUncheckedCreateInput = {
 export type CountryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -369,13 +369,13 @@ export type CountryUpdateInput = {
 export type CountryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -390,72 +390,72 @@ export type CountryUncheckedUpdateInput = {
 export type CountryCreateManyInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
 }
 
 export type CountryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CountryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CountryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  iso3?: Prisma.SortOrder
-  phoneCode?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  cscId?: Prisma.SortOrder
   country?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  cscId?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  iso3?: Prisma.SortOrder
+  phoneCode?: Prisma.SortOrder
 }
 
 export type CountryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  iso3?: Prisma.SortOrder
-  phoneCode?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  cscId?: Prisma.SortOrder
   country?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  cscId?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  iso3?: Prisma.SortOrder
+  phoneCode?: Prisma.SortOrder
 }
 
 export type CountryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  iso3?: Prisma.SortOrder
-  phoneCode?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  cscId?: Prisma.SortOrder
   country?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
+  cscId?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  iso3?: Prisma.SortOrder
+  phoneCode?: Prisma.SortOrder
 }
 
 export type CountryScalarRelationFilter = {
@@ -661,12 +661,12 @@ export type CountryUncheckedUpdateManyWithoutAdminUserNestedInput = {
 export type CountryCreateWithoutStatesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -681,13 +681,13 @@ export type CountryCreateWithoutStatesInput = {
 export type CountryUncheckedCreateWithoutStatesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -717,12 +717,12 @@ export type CountryUpdateToOneWithWhereWithoutStatesInput = {
 export type CountryUpdateWithoutStatesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -737,13 +737,13 @@ export type CountryUpdateWithoutStatesInput = {
 export type CountryUncheckedUpdateWithoutStatesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -757,12 +757,12 @@ export type CountryUncheckedUpdateWithoutStatesInput = {
 export type CountryCreateWithoutPresetLocationsInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -777,13 +777,13 @@ export type CountryCreateWithoutPresetLocationsInput = {
 export type CountryUncheckedCreateWithoutPresetLocationsInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -813,12 +813,12 @@ export type CountryUpdateToOneWithWhereWithoutPresetLocationsInput = {
 export type CountryUpdateWithoutPresetLocationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -833,13 +833,13 @@ export type CountryUpdateWithoutPresetLocationsInput = {
 export type CountryUncheckedUpdateWithoutPresetLocationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -853,12 +853,12 @@ export type CountryUncheckedUpdateWithoutPresetLocationsInput = {
 export type CountryCreateWithoutLicenseClassesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -873,13 +873,13 @@ export type CountryCreateWithoutLicenseClassesInput = {
 export type CountryUncheckedCreateWithoutLicenseClassesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -909,12 +909,12 @@ export type CountryUpdateToOneWithWhereWithoutLicenseClassesInput = {
 export type CountryUpdateWithoutLicenseClassesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -929,13 +929,13 @@ export type CountryUpdateWithoutLicenseClassesInput = {
 export type CountryUncheckedUpdateWithoutLicenseClassesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -949,12 +949,12 @@ export type CountryUncheckedUpdateWithoutLicenseClassesInput = {
 export type CountryCreateWithoutPortsInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -969,13 +969,13 @@ export type CountryCreateWithoutPortsInput = {
 export type CountryUncheckedCreateWithoutPortsInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -1005,12 +1005,12 @@ export type CountryUpdateToOneWithWhereWithoutPortsInput = {
 export type CountryUpdateWithoutPortsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -1025,13 +1025,13 @@ export type CountryUpdateWithoutPortsInput = {
 export type CountryUncheckedUpdateWithoutPortsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -1045,12 +1045,12 @@ export type CountryUncheckedUpdateWithoutPortsInput = {
 export type CountryCreateWithoutCustomerAddressesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -1065,13 +1065,13 @@ export type CountryCreateWithoutCustomerAddressesInput = {
 export type CountryUncheckedCreateWithoutCustomerAddressesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   driverLicenses?: Prisma.DriverLicenseUncheckedCreateNestedManyWithoutCountryInput
@@ -1101,12 +1101,12 @@ export type CountryUpdateToOneWithWhereWithoutCustomerAddressesInput = {
 export type CountryUpdateWithoutCustomerAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -1121,13 +1121,13 @@ export type CountryUpdateWithoutCustomerAddressesInput = {
 export type CountryUncheckedUpdateWithoutCustomerAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   driverLicenses?: Prisma.DriverLicenseUncheckedUpdateManyWithoutCountryNestedInput
@@ -1141,12 +1141,12 @@ export type CountryUncheckedUpdateWithoutCustomerAddressesInput = {
 export type CountryCreateWithoutDriverLicensesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -1161,13 +1161,13 @@ export type CountryCreateWithoutDriverLicensesInput = {
 export type CountryUncheckedCreateWithoutDriverLicensesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -1197,12 +1197,12 @@ export type CountryUpdateToOneWithWhereWithoutDriverLicensesInput = {
 export type CountryUpdateWithoutDriverLicensesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -1217,13 +1217,13 @@ export type CountryUpdateWithoutDriverLicensesInput = {
 export type CountryUncheckedUpdateWithoutDriverLicensesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -1237,12 +1237,12 @@ export type CountryUncheckedUpdateWithoutDriverLicensesInput = {
 export type CountryCreateWithoutCaribbeanCountriesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
   customerAddresses?: Prisma.CustomerAddressCreateNestedManyWithoutCountryInput
@@ -1257,13 +1257,13 @@ export type CountryCreateWithoutCaribbeanCountriesInput = {
 export type CountryUncheckedCreateWithoutCaribbeanCountriesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
   driverLicenses?: Prisma.DriverLicenseUncheckedCreateNestedManyWithoutCountryInput
@@ -1293,12 +1293,12 @@ export type CountryUpdateToOneWithWhereWithoutCaribbeanCountriesInput = {
 export type CountryUpdateWithoutCaribbeanCountriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
   customerAddresses?: Prisma.CustomerAddressUpdateManyWithoutCountryNestedInput
@@ -1313,13 +1313,13 @@ export type CountryUpdateWithoutCaribbeanCountriesInput = {
 export type CountryUncheckedUpdateWithoutCaribbeanCountriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
   driverLicenses?: Prisma.DriverLicenseUncheckedUpdateManyWithoutCountryNestedInput
@@ -1333,12 +1333,12 @@ export type CountryUncheckedUpdateWithoutCaribbeanCountriesInput = {
 export type CountryCreateWithoutAddressesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
   customerAddresses?: Prisma.CustomerAddressCreateNestedManyWithoutCountryInput
@@ -1353,13 +1353,13 @@ export type CountryCreateWithoutAddressesInput = {
 export type CountryUncheckedCreateWithoutAddressesInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
   driverLicenses?: Prisma.DriverLicenseUncheckedCreateNestedManyWithoutCountryInput
@@ -1389,12 +1389,12 @@ export type CountryUpdateToOneWithWhereWithoutAddressesInput = {
 export type CountryUpdateWithoutAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
   customerAddresses?: Prisma.CustomerAddressUpdateManyWithoutCountryNestedInput
@@ -1409,13 +1409,13 @@ export type CountryUpdateWithoutAddressesInput = {
 export type CountryUncheckedUpdateWithoutAddressesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
   driverLicenses?: Prisma.DriverLicenseUncheckedUpdateManyWithoutCountryNestedInput
@@ -1429,12 +1429,12 @@ export type CountryUncheckedUpdateWithoutAddressesInput = {
 export type CountryCreateWithoutStorefrontUserInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   adminUser?: Prisma.AdminUserCreateNestedOneWithoutCountriesInput
@@ -1449,13 +1449,13 @@ export type CountryCreateWithoutStorefrontUserInput = {
 export type CountryUncheckedCreateWithoutStorefrontUserInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
   updatedBy?: string | null
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -1485,12 +1485,12 @@ export type CountryUpdateToOneWithWhereWithoutStorefrontUserInput = {
 export type CountryUpdateWithoutStorefrontUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   adminUser?: Prisma.AdminUserUpdateOneWithoutCountriesNestedInput
@@ -1505,13 +1505,13 @@ export type CountryUpdateWithoutStorefrontUserInput = {
 export type CountryUncheckedUpdateWithoutStorefrontUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -1525,12 +1525,12 @@ export type CountryUncheckedUpdateWithoutStorefrontUserInput = {
 export type CountryCreateWithoutAdminUserInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressCreateNestedManyWithoutCountryInput
@@ -1545,12 +1545,12 @@ export type CountryCreateWithoutAdminUserInput = {
 export type CountryUncheckedCreateWithoutAdminUserInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutCountryInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedCreateNestedOneWithoutCountryInput
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutCountryInput
@@ -1594,35 +1594,35 @@ export type CountryScalarWhereInput = {
   NOT?: Prisma.CountryScalarWhereInput | Prisma.CountryScalarWhereInput[]
   id?: Prisma.StringFilter<"Country"> | string
   code?: Prisma.StringFilter<"Country"> | string
-  iso3?: Prisma.StringNullableFilter<"Country"> | string | null
-  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
-  currency?: Prisma.StringNullableFilter<"Country"> | string | null
-  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
   country?: Prisma.StringFilter<"Country"> | string
   createdAt?: Prisma.DateTimeFilter<"Country"> | Date | string
   updatedBy?: Prisma.StringNullableFilter<"Country"> | string | null
+  cscId?: Prisma.StringNullableFilter<"Country"> | string | null
+  currency?: Prisma.StringNullableFilter<"Country"> | string | null
+  iso3?: Prisma.StringNullableFilter<"Country"> | string | null
+  phoneCode?: Prisma.StringNullableFilter<"Country"> | string | null
 }
 
 export type CountryCreateManyAdminUserInput = {
   id?: string
   code: string
-  iso3?: string | null
-  phoneCode?: string | null
-  currency?: string | null
-  cscId?: string | null
   country: string
   createdAt?: Date | string
+  cscId?: string | null
+  currency?: string | null
+  iso3?: string | null
+  phoneCode?: string | null
 }
 
 export type CountryUpdateWithoutAdminUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUpdateManyWithoutCountryNestedInput
@@ -1637,12 +1637,12 @@ export type CountryUpdateWithoutAdminUserInput = {
 export type CountryUncheckedUpdateWithoutAdminUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutCountryNestedInput
   caribbeanCountries?: Prisma.CaribbeanCountryUncheckedUpdateOneWithoutCountryNestedInput
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutCountryNestedInput
@@ -1657,12 +1657,12 @@ export type CountryUncheckedUpdateWithoutAdminUserInput = {
 export type CountryUncheckedUpdateManyWithoutAdminUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso3?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phoneCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1762,13 +1762,13 @@ export type CountryCountOutputTypeCountStorefrontUserArgs<ExtArgs extends runtim
 export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   code?: boolean
-  iso3?: boolean
-  phoneCode?: boolean
-  currency?: boolean
-  cscId?: boolean
   country?: boolean
   createdAt?: boolean
   updatedBy?: boolean
+  cscId?: boolean
+  currency?: boolean
+  iso3?: boolean
+  phoneCode?: boolean
   addresses?: boolean | Prisma.Country$addressesArgs<ExtArgs>
   caribbeanCountries?: boolean | Prisma.Country$caribbeanCountriesArgs<ExtArgs>
   adminUser?: boolean | Prisma.Country$adminUserArgs<ExtArgs>
@@ -1785,42 +1785,42 @@ export type CountrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type CountrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   code?: boolean
-  iso3?: boolean
-  phoneCode?: boolean
-  currency?: boolean
-  cscId?: boolean
   country?: boolean
   createdAt?: boolean
   updatedBy?: boolean
+  cscId?: boolean
+  currency?: boolean
+  iso3?: boolean
+  phoneCode?: boolean
   adminUser?: boolean | Prisma.Country$adminUserArgs<ExtArgs>
 }, ExtArgs["result"]["country"]>
 
 export type CountrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   code?: boolean
-  iso3?: boolean
-  phoneCode?: boolean
-  currency?: boolean
-  cscId?: boolean
   country?: boolean
   createdAt?: boolean
   updatedBy?: boolean
+  cscId?: boolean
+  currency?: boolean
+  iso3?: boolean
+  phoneCode?: boolean
   adminUser?: boolean | Prisma.Country$adminUserArgs<ExtArgs>
 }, ExtArgs["result"]["country"]>
 
 export type CountrySelectScalar = {
   id?: boolean
   code?: boolean
-  iso3?: boolean
-  phoneCode?: boolean
-  currency?: boolean
-  cscId?: boolean
   country?: boolean
   createdAt?: boolean
   updatedBy?: boolean
+  cscId?: boolean
+  currency?: boolean
+  iso3?: boolean
+  phoneCode?: boolean
 }
 
-export type CountryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "iso3" | "phoneCode" | "currency" | "cscId" | "country" | "createdAt" | "updatedBy", ExtArgs["result"]["country"]>
+export type CountryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "country" | "createdAt" | "updatedBy" | "cscId" | "currency" | "iso3" | "phoneCode", ExtArgs["result"]["country"]>
 export type CountryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   addresses?: boolean | Prisma.Country$addressesArgs<ExtArgs>
   caribbeanCountries?: boolean | Prisma.Country$caribbeanCountriesArgs<ExtArgs>
@@ -1858,13 +1858,13 @@ export type $CountryPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     code: string
-    iso3: string | null
-    phoneCode: string | null
-    currency: string | null
-    cscId: string | null
     country: string
     createdAt: Date
     updatedBy: string | null
+    cscId: string | null
+    currency: string | null
+    iso3: string | null
+    phoneCode: string | null
   }, ExtArgs["result"]["country"]>
   composites: {}
 }
@@ -2300,13 +2300,13 @@ export interface Prisma__CountryClient<T, Null = never, ExtArgs extends runtime.
 export interface CountryFieldRefs {
   readonly id: Prisma.FieldRef<"Country", 'String'>
   readonly code: Prisma.FieldRef<"Country", 'String'>
-  readonly iso3: Prisma.FieldRef<"Country", 'String'>
-  readonly phoneCode: Prisma.FieldRef<"Country", 'String'>
-  readonly currency: Prisma.FieldRef<"Country", 'String'>
-  readonly cscId: Prisma.FieldRef<"Country", 'String'>
   readonly country: Prisma.FieldRef<"Country", 'String'>
   readonly createdAt: Prisma.FieldRef<"Country", 'DateTime'>
   readonly updatedBy: Prisma.FieldRef<"Country", 'String'>
+  readonly cscId: Prisma.FieldRef<"Country", 'String'>
+  readonly currency: Prisma.FieldRef<"Country", 'String'>
+  readonly iso3: Prisma.FieldRef<"Country", 'String'>
+  readonly phoneCode: Prisma.FieldRef<"Country", 'String'>
 }
     
 
@@ -2503,6 +2503,11 @@ export type CountryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Countries.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Countries.
+   */
   distinct?: Prisma.CountryScalarFieldEnum | Prisma.CountryScalarFieldEnum[]
 }
 

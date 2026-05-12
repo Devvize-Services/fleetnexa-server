@@ -1,21 +1,24 @@
-import { Module } from "@nestjs/common";
-import { TransactionService } from "./transaction.service.js";
-import { TransactionController } from "./transaction.controller.js";
-import { AuthGuard } from "../../common/guards/auth.guard.js";
-import { TenantRepository } from "../tenant/tenant.repository.js";
-import { TenantUserRepository } from "../user/tenant-user/tenant-user.repository.js";
-import { TransactionRepository } from "./transaction.repository.js";
+import { Module, forwardRef } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
+import { TransactionService } from './transaction.service.js';
+import { TransactionController } from './transaction.controller.js';
+import { TransactionRepository } from './transaction.repository.js';
+import jwtConfig from '../../config/jwt.config.js';
+import { ExpenseModule } from './modules/expense/expense.module.js';
+import { PaymentModule } from './modules/payment/payment.module.js';
+import { RefundModule } from './modules/refund/refund.module.js';
 
 @Module({
-	imports: [],
-	providers: [
-		TransactionService,
-		AuthGuard,
-		TenantRepository,
-		TenantUserRepository,
-		TransactionRepository,
-	],
-	controllers: [TransactionController],
-	exports: [TransactionService],
+  imports: [
+    ConfigModule.forFeature(jwtConfig),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
+    forwardRef(() => ExpenseModule),
+    forwardRef(() => PaymentModule),
+    forwardRef(() => RefundModule),
+  ],
+  providers: [TransactionService, TransactionRepository],
+  controllers: [TransactionController],
+  exports: [TransactionService],
 })
 export class TransactionModule {}

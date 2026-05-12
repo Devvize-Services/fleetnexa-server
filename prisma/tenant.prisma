@@ -1,82 +1,82 @@
 model Tenant {
-  id                   String                     @id @default(dbgenerated("gen_random_uuid()"))
-  tenantCode           String                     @unique
-  tenantName           String
-  email                String                     @unique
-  number               String                     @unique
-  whatsappNumber       String?                    @unique
-  whatsappNotifications Boolean                    @default(false)
-  emailNotifications    Boolean                    @default(true)
-  currencyId           String?
-  createdAt            DateTime                   @default(now())
-  updatedAt            DateTime?                  @updatedAt
-  logo                 String?
-  setupCompleted       Boolean                    @default(false)
-  financialYearStart   String                     @default("January")
-  invoiceSequenceId    String?
-  invoiceFootNotes     String                     @default("")
-  storefrontEnabled    Boolean                    @default(false)
-  subscriptionId       String?
-  securityDeposit      Float                      @default(0)
-  rating               Float                      @default(0)
-  description          String?                    @default("")
-  cancellationPolicyId String?                    @unique
-  latePolicyId         String?                    @unique
-  additionalDriverFee  Float                      @default(0)
-  daysInMonth          Int                        @default(28)
-  slug                 String?                    @unique
-  subdomain            String?                    @unique
-  merchantId           String?
+  id                    String                     @id @default(dbgenerated("gen_random_uuid()"))
+  tenantCode            String                     @unique
+  tenantName            String
+  email                 String                     @unique
+  number                String                     @unique
+  currencyId            String?
+  createdAt             DateTime                   @default(now())
+  updatedAt             DateTime?                  @updatedAt
+  logo                  String?
+  setupCompleted        Boolean                    @default(false)
+  financialYearStart    String                     @default("January")
+  invoiceSequenceId     String?
+  invoiceFootNotes      String                     @default("")
+  storefrontEnabled     Boolean                    @default(false)
+  subscriptionId        String?
+  securityDeposit       Float                      @default(0)
+  rating                Float                      @default(0)
+  description           String?                    @default("")
+  cancellationPolicyId  String?                    @unique
+  latePolicyId          String?                    @unique
+  additionalDriverFee   Float                      @default(0)
+  daysInMonth           Int                        @default(28)
+  slug                  String?                    @unique
+  merchantId            String?
   businessVerified      Boolean                    @default(false)
   emailVerified         Boolean                    @default(false)
-  isDeleted            Boolean                    @default(false)
-  endTime              String?                    @default("11:30 PM")
-  startTime            String?                    @default("12:00 AM")
-  address              Address?
+  isDeleted             Boolean                    @default(false)
+  endTime               String?                    @default("11:30 PM")
+  startTime             String?                    @default("12:00 AM")
+  emailNotifications    Boolean                    @default(true)
+  whatsappNotifications Boolean                    @default(false)
+  whatsappNumber        String?                    @unique
   firmaWorkspaceId      String?                    @unique
   firmaApiKey           String?
   firmaApiKeyAt         DateTime?
-  customers            Customer[]
-  customerViolations   CustomerViolation[]
-  emailTokens          EmailVerification[]
-  expenses             Expense[]
-  forms                Form[]
-  invoices             Invoice[]
-  payments             Payment[]
-  refunds              Refund[]
-  rentals              Rental[]
-  rentalActivity       RentalActivity[]
-  agreements           RentalAgreement[]
-  charges              RentalCharge[]
-  merchant             ShopDMMerchant?
-  cancellationPolicy   CancellationPolicy?        @relation(fields: [cancellationPolicyId], references: [id], onDelete: Cascade)
-  currency             Currency?                  @relation(fields: [currencyId], references: [id], onDelete: Cascade)
-  invoiceSequence      InvoiceSequence?           @relation(fields: [invoiceSequenceId], references: [id], onDelete: Cascade)
-  latePolicy           LatePolicy?                @relation(fields: [latePolicyId], references: [id], onDelete: Cascade)
-  contacts             TenantContact[]
-  currencyRates        TenantCurrencyRate[]
-  equipment            TenantEquipment[]
-  insurance            TenantInsurance[]
-  tenantLocations      TenantLocation[]
-  monthlyRentalStats   TenantMonthlyRentalStats[]
-  monthlyStats         TenantMonthlyStats[]
+  subdomain             String?                    @unique
+  address               Address?
+  customers             Customer[]
+  customerViolations    CustomerViolation[]
+  emailTokens           EmailVerification[]
+  expenses              Expense[]
+  forms                 Form[]
+  invoices              Invoice[]
+  payments              Payment[]
+  paymentReceipts       PaymentReceipt[]
+  refunds               Refund[]
+  rentals               Rental[]
+  rentalActivity        RentalActivity[]
+  agreements            RentalAgreement[]
+  charges               RentalCharge[]
+  merchant              ShopDMMerchant?
+  cancellationPolicy    CancellationPolicy?        @relation(fields: [cancellationPolicyId], references: [id], onDelete: Cascade)
+  currency              Currency?                  @relation(fields: [currencyId], references: [id], onDelete: Cascade)
+  invoiceSequence       InvoiceSequence?           @relation(fields: [invoiceSequenceId], references: [id], onDelete: Cascade)
+  latePolicy            LatePolicy?                @relation(fields: [latePolicyId], references: [id], onDelete: Cascade)
+  contacts              TenantContact[]
+  currencyRates         TenantCurrencyRate[]
+  equipment             TenantEquipment[]
+  insurance             TenantInsurance[]
+  tenantLocations       TenantLocation[]
+  monthlyRentalStats    TenantMonthlyRentalStats[]
+  monthlyStats          TenantMonthlyStats[]
   notifications         TenantNotification[]
-  ratings              TenantRatings[]
-  reminders            TenantReminders[]
-  services             TenantService[]
-  subscription         TenantSubscription?
-  vendors              TenantVendor[]
-  violations           TenantViolation[]
-  weeklyStats          TenantWeeklyStats[]
-  yearlyStats          TenantYearlyStats[]
-  transactions         Transactions[]
-  users                User[]
-  userRoles            UserRole[]
-  vehicles             Vehicle[]
-  maintenance          VehicleMaintenance[]
+  ratings               TenantRatings[]
+  reminders             TenantReminders[]
+  services              TenantService[]
+  subscription          TenantSubscription?
+  vendors               TenantVendor[]
+  violations            TenantViolation[]
+  weeklyStats           TenantWeeklyStats[]
+  yearlyStats           TenantYearlyStats[]
+  transactions          Transactions[]
+  users                 User[]
+  userRoles             UserRole[]
+  vehicles              Vehicle[]
+  maintenance           VehicleMaintenance[]
   verificationRequest   VerificationRequest?
-  paymentMethods       PaymentMethod[]            @relation("PaymentMethodToTenant")
-  paymentReceipts      PaymentReceipt[]
+  paymentMethods        PaymentMethod[]            @relation("PaymentMethodToTenant")
 }
 
 model EmailVerification {
@@ -190,7 +190,7 @@ model TenantSubscription {
   createdAt DateTime           @default(now())
   updatedAt DateTime?          @updatedAt
   planId    String?
-  plan      SubscriptionPlan?  @relation(fields: [planId], references: [planId])
+  plan      SubscriptionPlan?  @relation(fields: [planId], references: [id])
   tenant    Tenant             @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 }
 

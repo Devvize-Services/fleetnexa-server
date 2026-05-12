@@ -1,35 +1,34 @@
-import { IsNumber, IsOptional, IsString, IsUUID, Max } from "class-validator";
+import { IsNumber, IsOptional, IsString, IsUUID, Max } from 'class-validator';
 
 export class ExpenseDto {
-	@IsUUID()
-	id: string;
+  @IsUUID()
+  id: string;
 
-	@IsNumber()
-	amount: number;
+  @IsNumber()
+  amount: number;
 
-	@IsString()
-	expenseDate: string;
+  @IsString()
+  expenseDate: string;
 
-	@IsString()
-	expense: string;
+  @IsString()
+  expense: string;
 
-	@IsString()
-	payee: string;
+  @IsString()
+  payee: string;
 
-	@IsString()
-	@IsOptional()
-	@Max(500)
-	notes: string;
+  @IsString()
+  @IsOptional()
+  notes: string;
 
-	@IsUUID()
-	@IsOptional()
-	vendorId: string;
+  @IsUUID()
+  @IsOptional()
+  vendorId: string;
 
-	@IsUUID()
-	@IsOptional()
-	vehicleId: string;
+  @IsUUID()
+  @IsOptional()
+  vehicleId: string;
 
-	@IsUUID()
-	@IsOptional()
-	maintenanceId: string;
+  @IsUUID()
+  @IsOptional()
+  maintenanceId: string;
 }

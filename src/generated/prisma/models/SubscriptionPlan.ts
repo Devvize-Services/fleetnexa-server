@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -254,20 +254,20 @@ export type SubscriptionPlanOrderByWithRelationInput = {
 
 export type SubscriptionPlanWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  name?: string
   planCode?: string
   planId?: string
   AND?: Prisma.SubscriptionPlanWhereInput | Prisma.SubscriptionPlanWhereInput[]
   OR?: Prisma.SubscriptionPlanWhereInput[]
   NOT?: Prisma.SubscriptionPlanWhereInput | Prisma.SubscriptionPlanWhereInput[]
   description?: Prisma.StringNullableFilter<"SubscriptionPlan"> | string | null
+  name?: Prisma.StringFilter<"SubscriptionPlan"> | string
   period?: Prisma.EnumBillingPeriodFilter<"SubscriptionPlan"> | $Enums.BillingPeriod
   price?: Prisma.FloatFilter<"SubscriptionPlan"> | number
   details?: Prisma.XOR<Prisma.PlanDetailsNullableScalarRelationFilter, Prisma.PlanDetailsWhereInput> | null
   features?: Prisma.PlanFeaturesListRelationFilter
   tenantSubscription?: Prisma.TenantSubscriptionListRelationFilter
   categories?: Prisma.PermissionCategoryListRelationFilter
-}, "id" | "name" | "planCode" | "planId">
+}, "id" | "planCode" | "planId">
 
 export type SubscriptionPlanOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -1578,6 +1578,11 @@ export type SubscriptionPlanFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Skip the first `n` SubscriptionPlans.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of SubscriptionPlans.
+   */
   distinct?: Prisma.SubscriptionPlanScalarFieldEnum | Prisma.SubscriptionPlanScalarFieldEnum[]
 }
 

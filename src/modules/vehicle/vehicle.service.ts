@@ -8,10 +8,24 @@ import {
 import { VehicleRepository } from './vehicle.repository.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { TenantExtraService } from '../tenant/tenant-extra/tenant-extra.service.js';
-import { Tenant, User, Vehicle } from '../../generated/prisma/client.js';
+import {
+  Tenant,
+  User,
+  Vehicle,
+  VehicleEventType,
+} from '../../generated/prisma/client.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { StorageService } from '../storage/storage.service.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
+import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
+import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
+import { VehicleEventService } from './modules/vehicle-event/vehicle-event.service.js';
+import { VehicleEventDto } from './dto/vehicle-event.dto.js';
+import { BookingRepository } from '../booking/booking.repository.js';
+import { VehiclePricingService } from './services/vehicle-pricing.service.js';
+import { VehicleStatusService } from './services/vehicle-status.service.js';
+import { VehicleLocationService } from './services/vehicle-location.service.js';
+import { VehicleBookingService } from './services/vehicle-booking.service.js';
 
 @Injectable()
 export class VehicleService {
@@ -22,6 +36,12 @@ export class VehicleService {
     private readonly prisma: PrismaService,
     private readonly extrasService: TenantExtraService,
     private readonly storage: StorageService,
+    private readonly bookingRepo: BookingRepository,
+    private readonly vehicleEvent: VehicleEventService,
+    private readonly vehiclePricingService: VehiclePricingService,
+    private readonly vehicleStatusService: VehicleStatusService,
+    private readonly vehicleLocationService: VehicleLocationService,
+    private readonly vehicleBookingService: VehicleBookingService,
   ) {}
 
   async getTenantVehicles(tenant: Tenant) {
@@ -169,34 +189,12 @@ export class VehicleService {
             },
           });
 
-          if (data.discounts && data.discounts.length > 0) {
-            await Promise.all(
-              data.discounts.map((discount) =>
-                tx.vehicleDiscount.upsert({
-                  where: { id: discount.id },
-                  create: {
-                    id: discount.id,
-                    vehicleId: data.id,
-                    period: Number(discount.period),
-                    periodPolicy: discount.periodPolicy,
-                    amount: discount.amount,
-                    discountPolicy: discount.discountPolicy,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                    createdBy: user.username,
-                  },
-                  update: {
-                    amount: discount.amount,
-                    period: Number(discount.period),
-                    periodPolicy: discount.periodPolicy,
-                    discountPolicy: discount.discountPolicy,
-                    updatedAt: new Date(),
-                    updatedBy: user.username,
-                  },
-                }),
-              ),
-            );
-          }
+          await this.vehiclePricingService.upsertVehicleDiscount(
+            tx,
+            data.id,
+            data.discounts || [],
+            user,
+          );
         },
         { maxWait: 5000, timeout: 10000 },
       );
@@ -276,45 +274,12 @@ export class VehicleService {
             },
           });
 
-          if (data.discounts && data.discounts.length > 0) {
-            const newDiscountIds = data.discounts
-              .map((discount: any) => discount.id)
-              .filter(Boolean);
-
-            await tx.vehicleDiscount.deleteMany({
-              where: {
-                vehicleId: vehicle.id,
-                NOT: { id: { in: newDiscountIds } },
-              },
-            });
-
-            await Promise.all(
-              data.discounts.map((discount) =>
-                tx.vehicleDiscount.upsert({
-                  where: { id: discount.id },
-                  create: {
-                    id: discount.id,
-                    vehicleId: data.id,
-                    amount: discount.amount,
-                    discountPolicy: discount.discountPolicy,
-                    period: Number(discount.period),
-                    periodPolicy: discount.periodPolicy,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                    createdBy: user.username,
-                  },
-                  update: {
-                    amount: discount.amount,
-                    discountPolicy: discount.discountPolicy,
-                    period: Number(discount.period),
-                    periodPolicy: discount.periodPolicy,
-                    updatedAt: new Date(),
-                    updatedBy: user.username,
-                  },
-                }),
-              ),
-            );
-          }
+          await this.vehiclePricingService.upsertVehicleDiscount(
+            tx,
+            data.id,
+            data.discounts || [],
+            user,
+          );
 
           return tx.vehicle.findUnique({ where: { id: data.id } });
         },
@@ -341,68 +306,6 @@ export class VehicleService {
       };
     } catch (error) {
       this.logger.error(error, 'Failed to update vehicle', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        data,
-      });
-      throw error;
-    }
-  }
-
-  async updateVehicleStatus(
-    data: VehicleStatusDto,
-    tenant: Tenant,
-    user: User,
-  ) {
-    try {
-      const vehicle = await this.prisma.vehicle.findUnique({
-        where: { id: data.vehicleId, tenantId: tenant.id },
-      });
-
-      if (!vehicle) {
-        this.logger.warn(
-          `Vehicle with id ${data.vehicleId} not found for status update`,
-        );
-        throw new NotFoundException('Vehicle not found');
-      }
-
-      await this.prisma.$transaction(async (tx) => {
-        const foundStatus = await tx.vehicleStatus.findFirst({
-          where: {
-            status: {
-              equals: data.status,
-              mode: 'insensitive',
-            },
-          },
-        });
-
-        if (!foundStatus) {
-          this.logger.warn(`Vehicle status ${data.status} not found`);
-          throw new NotFoundException('Vehicle status not found');
-        }
-
-        await tx.vehicle.update({
-          where: { id: data.vehicleId },
-          data: {
-            vehicleStatusId: foundStatus.id,
-            updatedBy: user.username,
-          },
-        });
-      });
-
-      const updatedVehicle = await this.vehicleRepo.getVehicleById(
-        data.vehicleId,
-        tenant.id,
-      );
-      const vehicles = await this.vehicleRepo.getVehicles(tenant.id);
-
-      return {
-        message: 'Vehicle status updated successfully',
-        vehicles,
-        vehicle: updatedVehicle,
-      };
-    } catch (error) {
-      this.logger.error(error, 'Failed to update vehicle status', {
         tenantId: tenant.id,
         tenantCode: tenant.tenantCode,
         data,
@@ -441,66 +344,11 @@ export class VehicleService {
   }
 
   async updateVehicleStorefrontStatus(id: string, tenant: Tenant, user: User) {
-    try {
-      const vehicle = await this.prisma.vehicle.findUnique({
-        where: { id, tenantId: tenant.id },
-      });
-
-      if (!vehicle) {
-        this.logger.warn(`Vehicle with id ${id} not found for status update`);
-        throw new NotFoundException('Vehicle not found');
-      }
-
-      const updatedVehicle = await this.prisma.$transaction(async (tx) => {
-        if (!tenant.storefrontEnabled) {
-          this.logger.warn(
-            'Tenant storefront is disabled, tried to list vehicle',
-            {
-              tenantId: tenant.id,
-              tenantCode: tenant.tenantCode,
-            },
-          );
-          throw new BadRequestException(
-            'Your storefront is disabled, enable it to list vehicles',
-          );
-        }
-
-        await tx.vehicle.update({
-          where: { id },
-          data: {
-            storefrontEnabled: !vehicle.storefrontEnabled,
-            updatedBy: user.username,
-          },
-        });
-
-        return tx.vehicle.findUnique({ where: { id } });
-      });
-      let message = '';
-
-      if (!updatedVehicle?.storefrontEnabled) {
-        this.logger.log(
-          `Vehicle delisted from storefront by tenant ${user.username}`,
-        );
-        message = 'Vehicle delisted from storefront successfully';
-      } else {
-        message = 'Vehicle listed on storefront successfully';
-      }
-
-      const vehicles = await this.vehicleRepo.getVehicles(tenant.id);
-
-      return {
-        message,
-        vehicle: updatedVehicle,
-        vehicles,
-      };
-    } catch (error) {
-      this.logger.error(error, 'Failed to update vehicle storefront status', {
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-        vehicleId: id,
-      });
-      throw error;
-    }
+    return await this.vehicleStatusService.updateVehicleStorefrontStatus(
+      id,
+      tenant,
+      user,
+    );
   }
 
   private async attachTenantExtras(vehicle: any) {
@@ -526,6 +374,38 @@ export class VehicleService {
   private async attachExtrasToVehicles(vehicles: any[]) {
     return Promise.all(
       vehicles.map((vehicle) => this.attachTenantExtras(vehicle)),
+    );
+  }
+
+  async swapBookingVehicle(data: SwapVehicleDto, tenant: Tenant, user: User) {
+    return await this.vehicleBookingService.swapBookingVehicle(
+      data,
+      tenant,
+      user,
+    );
+  }
+
+  async updateVehicleStatus(
+    data: VehicleStatusDto,
+    tenant: Tenant,
+    user: User,
+  ) {
+    return await this.vehicleStatusService.updateVehicleStatus(
+      data,
+      tenant,
+      user,
+    );
+  }
+
+  async updateVehicleLocation(
+    data: VehicleLocationDto,
+    tenant: Tenant,
+    user: User,
+  ) {
+    return await this.vehicleLocationService.updateVehicleLocation(
+      data,
+      tenant,
+      user,
     );
   }
 }

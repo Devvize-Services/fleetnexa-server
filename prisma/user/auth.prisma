@@ -1,0 +1,39 @@
+model Session {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  userType  UserType
+  tokenHash String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String     @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  userType  UserType
+  action    AuthAction
+  ipAddress String
+  userAgent String
+  metaData  Json
+  createdAt DateTime   @default(now())
+}
+
+model PasswordHistory {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  userType  UserType
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Otp {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  userId    String
+  userType  UserType
+  codeHash  String
+  type      OtpType
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  ipAddress String?
+}

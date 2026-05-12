@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -1501,6 +1501,11 @@ export type VillageFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Villages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Villages.
+   */
   distinct?: Prisma.VillageScalarFieldEnum | Prisma.VillageScalarFieldEnum[]
 }
 

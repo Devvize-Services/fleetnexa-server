@@ -7,8 +7,6 @@ import {
 import { GeneratorService } from '../../common/generator/generator.service.js';
 import { Tenant, User } from '../../generated/prisma/client.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
-import { TenantUserService } from '../user/tenant-user/tenant-user.service.js';
-import { UserRoleService } from '../user/tenant-user/modules/user-role/user-role.service.js';
 import { CreateTenantDto } from './dto/create-tenant.dto.js';
 import { TenantExtraService } from './tenant-extra/tenant-extra.service.js';
 import { TenantLocationService } from './tenant-location/tenant-location.service.js';
@@ -18,9 +16,16 @@ import { UpdateStorefrontDto } from './dto/update-storefront.dto.js';
 import { TenantNotificationService } from './tenant-notification/tenant-notification.service.js';
 import { TenantVendorService } from './tenant-vendor/tenant-vendor.service.js';
 import { VehicleService } from '../vehicle/vehicle.service.js';
-import { TenantCustomerService } from '../customer/tenant-customer/tenant-customer.service.js';
 import { TenantActivityService } from './tenant-activity/tenant-activity.service.js';
 import { TenantRatesService } from './tenant-rates/tenant-rates.service.js';
+import { Activity, ActivityType } from 'src/types/tenant.js';
+import { VehicleMaintenanceService } from '../vehicle/modules/vehicle-maintenance/vehicle-maintenance.service.js';
+import { EmailService } from '../../common/email/email.service.js';
+import { BookingService } from '../booking/booking.service.js';
+import { CustomerService } from '../customer/customer.service.js';
+import { UserService } from '../user/user.service.js';
+import { UserRoleService } from '../user/modules/user-role/user-role.service.js';
+import { TenantViolationService } from './tenant-violation/tenant-violation.service.js';
 
 @Injectable()
 export class TenantService {
@@ -31,37 +36,56 @@ export class TenantService {
     private readonly generator: GeneratorService,
     private readonly locationService: TenantLocationService,
     private readonly userRoleService: UserRoleService,
-    private readonly userService: TenantUserService,
+    private readonly userService: UserService,
     private readonly extraService: TenantExtraService,
     private readonly tenantRepo: TenantRepository,
     private readonly notifications: TenantNotificationService,
     private readonly locations: TenantLocationService,
     private readonly vendors: TenantVendorService,
     private readonly vehicles: VehicleService,
-    private readonly customers: TenantCustomerService,
+    private readonly customers: CustomerService,
     private readonly activities: TenantActivityService,
     private readonly rates: TenantRatesService,
-    private readonly roles: UserRoleService,
+    private readonly bookingService: BookingService,
+    private readonly maintenanceService: VehicleMaintenanceService,
+    private readonly emailService: EmailService,
+    private readonly violationService: TenantViolationService,
   ) {}
 
   async getCurrentTenant(tenant: Tenant, user: User) {
     try {
-      const extras = await this.extraService.getTenantExtras(tenant);
-      const locations = await this.locations.getAllTenantLocations(tenant);
-      const vendors = await this.vendors.getTenantVendors(tenant);
-      const vehicles = await this.vehicles.getTenantVehicles(tenant);
-      const customers = await this.customers.getCustomers(tenant);
-      const activity = await this.activities.getTenantActivities(tenant);
-      const currencyRates = await this.rates.getTenantRates(tenant);
-      const notifications = await this.notifications.getTenantNotifications(
-        tenant,
-        user,
-      );
-      const users = await this.userService.getTenantUsers(tenant);
-      const roles = await this.roles.getAllRoles(tenant);
+      const [
+        fetched,
+        extras,
+        locations,
+        vendors,
+        vehicles,
+        customers,
+        activity,
+        currencyRates,
+        notifications,
+        users,
+        roles,
+        bookings,
+        violations,
+      ] = await Promise.all([
+        this.tenantRepo.getTenantById(tenant.id),
+        this.extraService.getTenantExtras(tenant),
+        this.locations.getAllTenantLocations(tenant),
+        this.vendors.getTenantVendors(tenant),
+        this.vehicles.getTenantVehicles(tenant),
+        this.customers.getCustomers(tenant),
+        this.activities.getTenantActivities(tenant),
+        this.rates.getTenantRates(tenant),
+        this.notifications.getTenantNotifications(tenant, user),
+        this.userService.getTenantUsers(tenant),
+        this.userRoleService.getAllRoles(tenant),
+        this.bookingService.getBookings(tenant),
+        this.violationService.getTenantViolations(tenant),
+      ]);
 
       const data = {
-        tenant,
+        tenant: fetched,
         extras,
         locations,
         notifications,
@@ -72,6 +96,8 @@ export class TenantService {
         currencyRates,
         users,
         roles,
+        bookings,
+        violations,
       };
 
       return data;
@@ -176,23 +202,18 @@ export class TenantService {
         return { tenant, country };
       });
 
-      this.logger.log(data.user);
-
       await this.locationService.initializeTenantLocation(country, tenant);
       const role = await this.userRoleService.createDefaultRole(tenant);
 
       data.user.roleId = role.id;
-      const user = await this.userService.createUser(data.user, tenant);
+      const { user } = await this.userService.createTenantUser(
+        data.user,
+        tenant,
+      );
 
-      // if (user.email) {
-      //   const emailData: WelcomeEmailDto = {
-      //     username: user.username,
-      //     name: `${user.firstName} ${user.lastName}`,
-      //     email: user.email,
-      //   };
-
-      //   await this.emailService.sendWelcomeEmail(emailData, tenant);
-      // }
+      if (user.email) {
+        await this.emailService.sendWelcomeEmail(user, tenant);
+      }
 
       return tenant;
     } catch (error) {
@@ -381,6 +402,158 @@ export class TenantService {
         tenantId: tenant.id,
         data,
       });
+      throw error;
+    }
+  }
+
+  async getTodayActivities(tenant: Tenant) {
+    try {
+      const activities: Activity[] = [];
+      const today = new Date();
+
+      const bookings = await this.bookingService.getBookingsByDate(
+        today.toISOString(),
+        tenant,
+      );
+
+      const maintenances =
+        await this.maintenanceService.getVehicleMaintenanceByDate(
+          today.toISOString(),
+          tenant,
+        );
+
+      const bookingActivities = bookings.map((booking) => {
+        const customer = booking.drivers.find((d) => d.isPrimary)?.customer;
+        const activityType =
+          booking.endDate > today ? 'booking_start' : 'booking_end';
+
+        const time =
+          activityType === 'booking_start'
+            ? booking.startDate
+            : booking.endDate;
+
+        const vehicleName = `${booking.vehicle.year} ${booking.vehicle.brand.brand} ${booking.vehicle.model.model}`;
+
+        const title = `${activityType === 'booking_start' ? 'Vehicle Pickup' : 'Vehicle Return'} - ${vehicleName}`;
+
+        const description = `Booking Ref: ${booking.bookingCode}`;
+
+        const act: Activity = {
+          id: booking.id,
+          time: time.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          }),
+          type: activityType as ActivityType,
+          title,
+          description,
+          vehicle: booking.vehicle,
+          customer: customer,
+          location:
+            activityType === 'booking_start' ? booking.pickup : booking.return,
+        };
+
+        return act;
+      });
+
+      const inspectionActivities = bookings
+        .filter((booking) => {
+          const isTodayReturn =
+            booking.endDate.toDateString() === today.toDateString();
+
+          return isTodayReturn;
+        })
+        .map((booking) => {
+          const vehicleName = `${booking.vehicle.year} ${booking.vehicle.brand.brand} ${booking.vehicle.model.model}`;
+
+          const title = `Post-Booking Inspection - ${vehicleName}`;
+
+          const description = `Damage Assessment - Booking Ref: ${booking.bookingCode}`;
+
+          const inspectionTime = new Date(booking.endDate);
+          inspectionTime.setMinutes(inspectionTime.getMinutes() + 5);
+
+          const act: Activity = {
+            id: booking.id,
+            time: inspectionTime.toLocaleTimeString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            }),
+            type: 'inspection' as ActivityType,
+            title,
+            description,
+            vehicle: booking.vehicle,
+            location: booking.return,
+          };
+
+          return act;
+        });
+
+      const maintenanceActivities = maintenances.flatMap((maintenance) => {
+        const isStartToday =
+          maintenance.startDate.toDateString() === today.toDateString();
+        const isEndToday =
+          maintenance.endDate.toDateString() === today.toDateString();
+
+        const vehicleName = `${maintenance.vehicle.year} ${maintenance.vehicle.brand.brand} ${maintenance.vehicle.model.model}`;
+        const servicesText = maintenance.services
+          .map((s) => s.service)
+          .join(', ');
+
+        const activities: Activity[] = [];
+
+        if (isStartToday) {
+          activities.push({
+            id: `${maintenance.id}-out`,
+            time: maintenance.startDate.toLocaleTimeString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            }),
+            type: 'maintenance',
+            title: `${vehicleName} Out for Maintenance`,
+            description: `Vehicle has to go out for scheduled maintenance: ${servicesText}`,
+            vehicle: maintenance.vehicle,
+            vendor: maintenance.vendor || undefined,
+          });
+        }
+
+        if (isEndToday) {
+          activities.push({
+            id: `${maintenance.id}-in`,
+            time: maintenance.endDate.toLocaleTimeString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            }),
+            type: 'maintenance',
+            title: `${vehicleName} Returns from Maintenance`,
+            description: `Vehicle has to be returned from scheduled maintenance: ${servicesText}`,
+            vehicle: maintenance.vehicle,
+            vendor: maintenance.vendor || undefined,
+          });
+        }
+
+        return activities;
+      });
+
+      activities.push(
+        ...bookingActivities,
+        ...maintenanceActivities,
+        ...inspectionActivities,
+      );
+
+      activities.sort((a, b) => {
+        const timeA = new Date(`1970-01-01 ${a.time}`);
+        const timeB = new Date(`1970-01-01 ${b.time}`);
+        return timeA.getTime() - timeB.getTime();
+      });
+
+      return activities;
+    } catch (error) {
+      this.logger.error('Failed to get tenant activities for today', error);
       throw error;
     }
   }

@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -321,13 +321,13 @@ export type CustomerWhereInput = {
   license?: Prisma.XOR<Prisma.DriverLicenseNullableScalarRelationFilter, Prisma.DriverLicenseWhereInput> | null
   invoices?: Prisma.InvoiceListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
+  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
   refunds?: Prisma.RefundListRelationFilter
   rentalActivity?: Prisma.RentalActivityListRelationFilter
   agreements?: Prisma.RentalAgreementListRelationFilter
   charges?: Prisma.RentalChargeListRelationFilter
   drivers?: Prisma.RentalDriverListRelationFilter
   damages?: Prisma.VehicleDamageListRelationFilter
-  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
 }
 
 export type CustomerOrderByWithRelationInput = {
@@ -357,13 +357,13 @@ export type CustomerOrderByWithRelationInput = {
   license?: Prisma.DriverLicenseOrderByWithRelationInput
   invoices?: Prisma.InvoiceOrderByRelationAggregateInput
   payments?: Prisma.PaymentOrderByRelationAggregateInput
+  paymentReceipts?: Prisma.PaymentReceiptOrderByRelationAggregateInput
   refunds?: Prisma.RefundOrderByRelationAggregateInput
   rentalActivity?: Prisma.RentalActivityOrderByRelationAggregateInput
   agreements?: Prisma.RentalAgreementOrderByRelationAggregateInput
   charges?: Prisma.RentalChargeOrderByRelationAggregateInput
   drivers?: Prisma.RentalDriverOrderByRelationAggregateInput
   damages?: Prisma.VehicleDamageOrderByRelationAggregateInput
-  paymentReceipts?: Prisma.PaymentReceiptOrderByRelationAggregateInput
 }
 
 export type CustomerWhereUniqueInput = Prisma.AtLeast<{
@@ -397,13 +397,13 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   license?: Prisma.XOR<Prisma.DriverLicenseNullableScalarRelationFilter, Prisma.DriverLicenseWhereInput> | null
   invoices?: Prisma.InvoiceListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
+  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
   refunds?: Prisma.RefundListRelationFilter
   rentalActivity?: Prisma.RentalActivityListRelationFilter
   agreements?: Prisma.RentalAgreementListRelationFilter
   charges?: Prisma.RentalChargeListRelationFilter
   drivers?: Prisma.RentalDriverListRelationFilter
   damages?: Prisma.VehicleDamageListRelationFilter
-  paymentReceipts?: Prisma.PaymentReceiptListRelationFilter
 }, "id" | "tenantId_storefrontId">
 
 export type CustomerOrderByWithAggregationInput = {
@@ -479,13 +479,13 @@ export type CustomerCreateInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateInput = {
@@ -513,13 +513,13 @@ export type CustomerUncheckedCreateInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUpdateInput = {
@@ -547,13 +547,13 @@ export type CustomerUpdateInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateInput = {
@@ -581,13 +581,13 @@ export type CustomerUncheckedUpdateInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateManyInput = {
@@ -1071,13 +1071,13 @@ export type CustomerCreateWithoutAppsInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutAppsInput = {
@@ -1104,13 +1104,13 @@ export type CustomerUncheckedCreateWithoutAppsInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutAppsInput = {
@@ -1153,13 +1153,13 @@ export type CustomerUpdateWithoutAppsInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutAppsInput = {
@@ -1186,13 +1186,13 @@ export type CustomerUncheckedUpdateWithoutAppsInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutAddressInput = {
@@ -1219,13 +1219,13 @@ export type CustomerCreateWithoutAddressInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutAddressInput = {
@@ -1252,13 +1252,13 @@ export type CustomerUncheckedCreateWithoutAddressInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutAddressInput = {
@@ -1301,13 +1301,13 @@ export type CustomerUpdateWithoutAddressInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutAddressInput = {
@@ -1334,13 +1334,13 @@ export type CustomerUncheckedUpdateWithoutAddressInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutDocumentsInput = {
@@ -1367,13 +1367,13 @@ export type CustomerCreateWithoutDocumentsInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutDocumentsInput = {
@@ -1400,13 +1400,13 @@ export type CustomerUncheckedCreateWithoutDocumentsInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutDocumentsInput = {
@@ -1449,13 +1449,13 @@ export type CustomerUpdateWithoutDocumentsInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutDocumentsInput = {
@@ -1482,13 +1482,13 @@ export type CustomerUncheckedUpdateWithoutDocumentsInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutLicenseInput = {
@@ -1515,13 +1515,13 @@ export type CustomerCreateWithoutLicenseInput = {
   violations?: Prisma.CustomerViolationCreateNestedManyWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutLicenseInput = {
@@ -1548,13 +1548,13 @@ export type CustomerUncheckedCreateWithoutLicenseInput = {
   violations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutLicenseInput = {
@@ -1597,13 +1597,13 @@ export type CustomerUpdateWithoutLicenseInput = {
   violations?: Prisma.CustomerViolationUpdateManyWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutLicenseInput = {
@@ -1630,13 +1630,13 @@ export type CustomerUncheckedUpdateWithoutLicenseInput = {
   violations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutViolationsInput = {
@@ -1663,13 +1663,13 @@ export type CustomerCreateWithoutViolationsInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutViolationsInput = {
@@ -1696,13 +1696,13 @@ export type CustomerUncheckedCreateWithoutViolationsInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutViolationsInput = {
@@ -1745,13 +1745,13 @@ export type CustomerUpdateWithoutViolationsInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutViolationsInput = {
@@ -1778,13 +1778,13 @@ export type CustomerUncheckedUpdateWithoutViolationsInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutAgreementsInput = {
@@ -1812,12 +1812,12 @@ export type CustomerCreateWithoutAgreementsInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutAgreementsInput = {
@@ -1845,12 +1845,12 @@ export type CustomerUncheckedCreateWithoutAgreementsInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutAgreementsInput = {
@@ -1894,12 +1894,12 @@ export type CustomerUpdateWithoutAgreementsInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutAgreementsInput = {
@@ -1927,12 +1927,12 @@ export type CustomerUncheckedUpdateWithoutAgreementsInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutInvoicesInput = {
@@ -1959,13 +1959,13 @@ export type CustomerCreateWithoutInvoicesInput = {
   violations?: Prisma.CustomerViolationCreateNestedManyWithoutCustomerInput
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutInvoicesInput = {
@@ -1992,13 +1992,13 @@ export type CustomerUncheckedCreateWithoutInvoicesInput = {
   violations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutCustomerInput
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutInvoicesInput = {
@@ -2041,13 +2041,13 @@ export type CustomerUpdateWithoutInvoicesInput = {
   violations?: Prisma.CustomerViolationUpdateManyWithoutCustomerNestedInput
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutInvoicesInput = {
@@ -2074,13 +2074,13 @@ export type CustomerUncheckedUpdateWithoutInvoicesInput = {
   violations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutCustomerNestedInput
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutPaymentReceiptsInput = {
@@ -2256,12 +2256,12 @@ export type CustomerCreateWithoutRentalActivityInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutRentalActivityInput = {
@@ -2289,12 +2289,12 @@ export type CustomerUncheckedCreateWithoutRentalActivityInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutRentalActivityInput = {
@@ -2338,12 +2338,12 @@ export type CustomerUpdateWithoutRentalActivityInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutRentalActivityInput = {
@@ -2371,12 +2371,12 @@ export type CustomerUncheckedUpdateWithoutRentalActivityInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutDriversInput = {
@@ -2404,12 +2404,12 @@ export type CustomerCreateWithoutDriversInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutDriversInput = {
@@ -2437,12 +2437,12 @@ export type CustomerUncheckedCreateWithoutDriversInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutDriversInput = {
@@ -2486,12 +2486,12 @@ export type CustomerUpdateWithoutDriversInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutDriversInput = {
@@ -2519,12 +2519,12 @@ export type CustomerUncheckedUpdateWithoutDriversInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutChargesInput = {
@@ -2552,12 +2552,12 @@ export type CustomerCreateWithoutChargesInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutChargesInput = {
@@ -2585,12 +2585,12 @@ export type CustomerUncheckedCreateWithoutChargesInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutChargesInput = {
@@ -2634,12 +2634,12 @@ export type CustomerUpdateWithoutChargesInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutChargesInput = {
@@ -2667,12 +2667,12 @@ export type CustomerUncheckedUpdateWithoutChargesInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutTenantInput = {
@@ -2699,13 +2699,13 @@ export type CustomerCreateWithoutTenantInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutTenantInput = {
@@ -2732,13 +2732,13 @@ export type CustomerUncheckedCreateWithoutTenantInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutTenantInput = {
@@ -2814,13 +2814,13 @@ export type CustomerCreateWithoutPaymentsInput = {
   violations?: Prisma.CustomerViolationCreateNestedManyWithoutCustomerInput
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutPaymentsInput = {
@@ -2847,13 +2847,13 @@ export type CustomerUncheckedCreateWithoutPaymentsInput = {
   violations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutCustomerInput
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutPaymentsInput = {
@@ -2896,13 +2896,13 @@ export type CustomerUpdateWithoutPaymentsInput = {
   violations?: Prisma.CustomerViolationUpdateManyWithoutCustomerNestedInput
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutPaymentsInput = {
@@ -2929,13 +2929,13 @@ export type CustomerUncheckedUpdateWithoutPaymentsInput = {
   violations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutCustomerNestedInput
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutRefundsInput = {
@@ -2963,12 +2963,12 @@ export type CustomerCreateWithoutRefundsInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutRefundsInput = {
@@ -2996,12 +2996,12 @@ export type CustomerUncheckedCreateWithoutRefundsInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutRefundsInput = {
@@ -3045,12 +3045,12 @@ export type CustomerUpdateWithoutRefundsInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutRefundsInput = {
@@ -3078,12 +3078,12 @@ export type CustomerUncheckedUpdateWithoutRefundsInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutStorefrontUserInput = {
@@ -3110,13 +3110,13 @@ export type CustomerCreateWithoutStorefrontUserInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutStorefrontUserInput = {
@@ -3143,13 +3143,13 @@ export type CustomerUncheckedCreateWithoutStorefrontUserInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
   damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutStorefrontUserInput = {
@@ -3203,12 +3203,12 @@ export type CustomerCreateWithoutDamagesInput = {
   license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateWithoutDamagesInput = {
@@ -3236,12 +3236,12 @@ export type CustomerUncheckedCreateWithoutDamagesInput = {
   license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
   agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
   charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
   drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerCreateOrConnectWithoutDamagesInput = {
@@ -3285,12 +3285,12 @@ export type CustomerUpdateWithoutDamagesInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutDamagesInput = {
@@ -3318,12 +3318,12 @@ export type CustomerUncheckedUpdateWithoutDamagesInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateManyTenantInput = {
@@ -3369,13 +3369,13 @@ export type CustomerUpdateWithoutTenantInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutTenantInput = {
@@ -3402,13 +3402,13 @@ export type CustomerUncheckedUpdateWithoutTenantInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateManyWithoutTenantInput = {
@@ -3473,13 +3473,13 @@ export type CustomerUpdateWithoutStorefrontUserInput = {
   license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateWithoutStorefrontUserInput = {
@@ -3506,13 +3506,13 @@ export type CustomerUncheckedUpdateWithoutStorefrontUserInput = {
   license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
   agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
   charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateManyWithoutStorefrontUserInput = {
@@ -3544,13 +3544,13 @@ export type CustomerCountOutputType = {
   violations: number
   invoices: number
   payments: number
+  paymentReceipts: number
   refunds: number
   rentalActivity: number
   agreements: number
   charges: number
   drivers: number
   damages: number
-  paymentReceipts: number
 }
 
 export type CustomerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3558,13 +3558,13 @@ export type CustomerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   violations?: boolean | CustomerCountOutputTypeCountViolationsArgs
   invoices?: boolean | CustomerCountOutputTypeCountInvoicesArgs
   payments?: boolean | CustomerCountOutputTypeCountPaymentsArgs
+  paymentReceipts?: boolean | CustomerCountOutputTypeCountPaymentReceiptsArgs
   refunds?: boolean | CustomerCountOutputTypeCountRefundsArgs
   rentalActivity?: boolean | CustomerCountOutputTypeCountRentalActivityArgs
   agreements?: boolean | CustomerCountOutputTypeCountAgreementsArgs
   charges?: boolean | CustomerCountOutputTypeCountChargesArgs
   drivers?: boolean | CustomerCountOutputTypeCountDriversArgs
   damages?: boolean | CustomerCountOutputTypeCountDamagesArgs
-  paymentReceipts?: boolean | CustomerCountOutputTypeCountPaymentReceiptsArgs
 }
 
 /**
@@ -3603,6 +3603,13 @@ export type CustomerCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Typ
  */
 export type CustomerCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PaymentWhereInput
+}
+
+/**
+ * CustomerCountOutputType without action
+ */
+export type CustomerCountOutputTypeCountPaymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentReceiptWhereInput
 }
 
 /**
@@ -3647,13 +3654,6 @@ export type CustomerCountOutputTypeCountDamagesArgs<ExtArgs extends runtime.Type
   where?: Prisma.VehicleDamageWhereInput
 }
 
-/**
- * CustomerCountOutputType without action
- */
-export type CustomerCountOutputTypeCountPaymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PaymentReceiptWhereInput
-}
-
 
 export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3682,13 +3682,13 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   license?: boolean | Prisma.Customer$licenseArgs<ExtArgs>
   invoices?: boolean | Prisma.Customer$invoicesArgs<ExtArgs>
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
+  paymentReceipts?: boolean | Prisma.Customer$paymentReceiptsArgs<ExtArgs>
   refunds?: boolean | Prisma.Customer$refundsArgs<ExtArgs>
   rentalActivity?: boolean | Prisma.Customer$rentalActivityArgs<ExtArgs>
   agreements?: boolean | Prisma.Customer$agreementsArgs<ExtArgs>
   charges?: boolean | Prisma.Customer$chargesArgs<ExtArgs>
   drivers?: boolean | Prisma.Customer$driversArgs<ExtArgs>
   damages?: boolean | Prisma.Customer$damagesArgs<ExtArgs>
-  paymentReceipts?: boolean | Prisma.Customer$paymentReceiptsArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customer"]>
 
@@ -3767,13 +3767,13 @@ export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   license?: boolean | Prisma.Customer$licenseArgs<ExtArgs>
   invoices?: boolean | Prisma.Customer$invoicesArgs<ExtArgs>
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
+  paymentReceipts?: boolean | Prisma.Customer$paymentReceiptsArgs<ExtArgs>
   refunds?: boolean | Prisma.Customer$refundsArgs<ExtArgs>
   rentalActivity?: boolean | Prisma.Customer$rentalActivityArgs<ExtArgs>
   agreements?: boolean | Prisma.Customer$agreementsArgs<ExtArgs>
   charges?: boolean | Prisma.Customer$chargesArgs<ExtArgs>
   drivers?: boolean | Prisma.Customer$driversArgs<ExtArgs>
   damages?: boolean | Prisma.Customer$damagesArgs<ExtArgs>
-  paymentReceipts?: boolean | Prisma.Customer$paymentReceiptsArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CustomerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3797,13 +3797,13 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     license: Prisma.$DriverLicensePayload<ExtArgs> | null
     invoices: Prisma.$InvoicePayload<ExtArgs>[]
     payments: Prisma.$PaymentPayload<ExtArgs>[]
+    paymentReceipts: Prisma.$PaymentReceiptPayload<ExtArgs>[]
     refunds: Prisma.$RefundPayload<ExtArgs>[]
     rentalActivity: Prisma.$RentalActivityPayload<ExtArgs>[]
     agreements: Prisma.$RentalAgreementPayload<ExtArgs>[]
     charges: Prisma.$RentalChargePayload<ExtArgs>[]
     drivers: Prisma.$RentalDriverPayload<ExtArgs>[]
     damages: Prisma.$VehicleDamagePayload<ExtArgs>[]
-    paymentReceipts: Prisma.$PaymentReceiptPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4226,13 +4226,13 @@ export interface Prisma__CustomerClient<T, Null = never, ExtArgs extends runtime
   license<T extends Prisma.Customer$licenseArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$licenseArgs<ExtArgs>>): Prisma.Prisma__DriverLicenseClient<runtime.Types.Result.GetResult<Prisma.$DriverLicensePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   invoices<T extends Prisma.Customer$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payments<T extends Prisma.Customer$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  paymentReceipts<T extends Prisma.Customer$paymentReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$paymentReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   refunds<T extends Prisma.Customer$refundsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$refundsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefundPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   rentalActivity<T extends Prisma.Customer$rentalActivityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$rentalActivityArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   agreements<T extends Prisma.Customer$agreementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$agreementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalAgreementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   charges<T extends Prisma.Customer$chargesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$chargesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalChargePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   drivers<T extends Prisma.Customer$driversArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$driversArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalDriverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   damages<T extends Prisma.Customer$damagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$damagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleDamagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  paymentReceipts<T extends Prisma.Customer$paymentReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$paymentReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4475,6 +4475,11 @@ export type CustomerFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` Customers.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Customers.
+   */
   distinct?: Prisma.CustomerScalarFieldEnum | Prisma.CustomerScalarFieldEnum[]
 }
 
@@ -4847,6 +4852,30 @@ export type Customer$paymentsArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Customer.paymentReceipts
+ */
+export type Customer$paymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PaymentReceipt
+   */
+  select?: Prisma.PaymentReceiptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PaymentReceipt
+   */
+  omit?: Prisma.PaymentReceiptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentReceiptInclude<ExtArgs> | null
+  where?: Prisma.PaymentReceiptWhereInput
+  orderBy?: Prisma.PaymentReceiptOrderByWithRelationInput | Prisma.PaymentReceiptOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentReceiptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentReceiptScalarFieldEnum | Prisma.PaymentReceiptScalarFieldEnum[]
+}
+
+/**
  * Customer.refunds
  */
 export type Customer$refundsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -4988,30 +5017,6 @@ export type Customer$damagesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.VehicleDamageScalarFieldEnum | Prisma.VehicleDamageScalarFieldEnum[]
-}
-
-/**
- * Customer.paymentReceipts
- */
-export type Customer$paymentReceiptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PaymentReceipt
-   */
-  select?: Prisma.PaymentReceiptSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PaymentReceipt
-   */
-  omit?: Prisma.PaymentReceiptOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PaymentReceiptInclude<ExtArgs> | null
-  where?: Prisma.PaymentReceiptWhereInput
-  orderBy?: Prisma.PaymentReceiptOrderByWithRelationInput | Prisma.PaymentReceiptOrderByWithRelationInput[]
-  cursor?: Prisma.PaymentReceiptWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PaymentReceiptScalarFieldEnum | Prisma.PaymentReceiptScalarFieldEnum[]
 }
 
 /**

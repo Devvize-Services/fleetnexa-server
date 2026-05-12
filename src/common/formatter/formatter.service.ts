@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: <explanation> */
 import { Global, Injectable, Logger } from '@nestjs/common';
-import { Decimal } from '@prisma/client/runtime/binary';
+import { Decimal } from '@prisma/client/runtime/client';
 
 @Global()
 @Injectable()

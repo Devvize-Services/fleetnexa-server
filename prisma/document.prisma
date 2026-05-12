@@ -34,22 +34,22 @@ model Invoice {
 }
 
 model PaymentReceipt {
-  id               String    @id @default(dbgenerated("gen_random_uuid()"))
-  receiptNumber    String
-  paymentId        String    @unique
-  amount           Float
-  bookingId        String?   
-  tenantId         String
-  customerId       String
-  receiptUrl       String?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime? @updatedAt
-  createdBy        String?
-  updatedBy        String?
-  customer         Customer   @relation(fields: [customerId], references: [id])
-  rental           Rental?    @relation(fields: [bookingId], references: [id])
-  tenant           Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  payment          Payment    @relation(fields: [paymentId], references: [id])
+  id            String    @id @default(dbgenerated("gen_random_uuid()"))
+  receiptNumber String
+  amount        Float
+  tenantId      String
+  customerId    String
+  receiptUrl    String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+  createdBy     String?
+  updatedBy     String?
+  paymentId     String    @unique
+  bookingId     String?
+  rental        Rental?   @relation(fields: [bookingId], references: [id])
+  customer      Customer  @relation(fields: [customerId], references: [id])
+  payment       Payment   @relation(fields: [paymentId], references: [id])
+  tenant        Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
   @@unique([receiptNumber, tenantId], name: "receiptNumber_tenantId")
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put } from '@nestjs/common';
 import { SubscriptionPlanService } from './subscription-plan.service.js';
 import { SubscriptionPlanDto } from './subscription-plan.dto.js';
 
@@ -14,5 +14,10 @@ export class SubscriptionPlanController {
   @Post()
   async createPlan(@Body() data: SubscriptionPlanDto) {
     return this.service.createPlan(data);
+  }
+
+  @Put()
+  async updatePlan(@Body() data: SubscriptionPlanDto) {
+    return this.service.updatePlan(data);
   }
 }

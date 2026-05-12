@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
+import type * as runtime from "@prisma/client/runtime/client"
 import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
@@ -310,8 +310,8 @@ export type PaymentWhereInput = {
   paymentType?: Prisma.XOR<Prisma.PaymentTypeScalarRelationFilter, Prisma.PaymentTypeWhereInput>
   rental?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
   receipt?: Prisma.XOR<Prisma.PaymentReceiptNullableScalarRelationFilter, Prisma.PaymentReceiptWhereInput> | null
+  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }
 
 export type PaymentOrderByWithRelationInput = {
@@ -337,8 +337,8 @@ export type PaymentOrderByWithRelationInput = {
   paymentType?: Prisma.PaymentTypeOrderByWithRelationInput
   rental?: Prisma.RentalOrderByWithRelationInput
   tenant?: Prisma.TenantOrderByWithRelationInput
-  transaction?: Prisma.TransactionsOrderByWithRelationInput
   receipt?: Prisma.PaymentReceiptOrderByWithRelationInput
+  transaction?: Prisma.TransactionsOrderByWithRelationInput
 }
 
 export type PaymentWhereUniqueInput = Prisma.AtLeast<{
@@ -367,8 +367,8 @@ export type PaymentWhereUniqueInput = Prisma.AtLeast<{
   paymentType?: Prisma.XOR<Prisma.PaymentTypeScalarRelationFilter, Prisma.PaymentTypeWhereInput>
   rental?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
   receipt?: Prisma.XOR<Prisma.PaymentReceiptNullableScalarRelationFilter, Prisma.PaymentReceiptWhereInput> | null
+  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }, "id">
 
 export type PaymentOrderByWithAggregationInput = {
@@ -434,8 +434,8 @@ export type PaymentCreateInput = {
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateInput = {
@@ -455,8 +455,8 @@ export type PaymentUncheckedCreateInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUpdateInput = {
@@ -476,8 +476,8 @@ export type PaymentUpdateInput = {
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateInput = {
@@ -497,8 +497,8 @@ export type PaymentUncheckedUpdateInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentCreateManyInput = {
@@ -935,8 +935,8 @@ export type PaymentCreateWithoutPaymentTypeInput = {
   paymentMethod: Prisma.PaymentMethodCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutPaymentTypeInput = {
@@ -955,8 +955,8 @@ export type PaymentUncheckedCreateWithoutPaymentTypeInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutPaymentTypeInput = {
@@ -1023,8 +1023,8 @@ export type PaymentCreateWithoutCustomerInput = {
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutCustomerInput = {
@@ -1043,8 +1043,8 @@ export type PaymentUncheckedCreateWithoutCustomerInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutCustomerInput = {
@@ -1185,8 +1185,8 @@ export type PaymentCreateWithoutCurrencyInput = {
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutCurrencyInput = {
@@ -1205,8 +1205,8 @@ export type PaymentUncheckedCreateWithoutCurrencyInput = {
   customerId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutCurrencyInput = {
@@ -1251,8 +1251,8 @@ export type PaymentCreateWithoutRentalInput = {
   paymentMethod: Prisma.PaymentMethodCreateNestedOneWithoutPaymentsInput
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutRentalInput = {
@@ -1271,8 +1271,8 @@ export type PaymentUncheckedCreateWithoutRentalInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutRentalInput = {
@@ -1317,8 +1317,8 @@ export type PaymentCreateWithoutTenantInput = {
   paymentMethod: Prisma.PaymentMethodCreateNestedOneWithoutPaymentsInput
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutTenantInput = {
@@ -1337,8 +1337,8 @@ export type PaymentUncheckedCreateWithoutTenantInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutTenantInput = {
@@ -1383,8 +1383,8 @@ export type PaymentCreateWithoutPaymentMethodInput = {
   paymentType: Prisma.PaymentTypeCreateNestedOneWithoutPaymentsInput
   rental: Prisma.RentalCreateNestedOneWithoutPaymentsInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentUncheckedCreateWithoutPaymentMethodInput = {
@@ -1403,8 +1403,8 @@ export type PaymentUncheckedCreateWithoutPaymentMethodInput = {
   currencyId?: string | null
   payer?: string | null
   payment?: string | null
-  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
   receipt?: Prisma.PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput
+  transaction?: Prisma.TransactionsUncheckedCreateNestedOneWithoutPaymentInput
 }
 
 export type PaymentCreateOrConnectWithoutPaymentMethodInput = {
@@ -1563,8 +1563,8 @@ export type PaymentUpdateWithoutPaymentTypeInput = {
   paymentMethod?: Prisma.PaymentMethodUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutPaymentTypeInput = {
@@ -1583,8 +1583,8 @@ export type PaymentUncheckedUpdateWithoutPaymentTypeInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutPaymentTypeInput = {
@@ -1639,8 +1639,8 @@ export type PaymentUpdateWithoutCustomerInput = {
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutCustomerInput = {
@@ -1659,8 +1659,8 @@ export type PaymentUncheckedUpdateWithoutCustomerInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutCustomerInput = {
@@ -1715,8 +1715,8 @@ export type PaymentUpdateWithoutCurrencyInput = {
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutCurrencyInput = {
@@ -1735,8 +1735,8 @@ export type PaymentUncheckedUpdateWithoutCurrencyInput = {
   customerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutCurrencyInput = {
@@ -1791,8 +1791,8 @@ export type PaymentUpdateWithoutRentalInput = {
   paymentMethod?: Prisma.PaymentMethodUpdateOneRequiredWithoutPaymentsNestedInput
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutRentalInput = {
@@ -1811,8 +1811,8 @@ export type PaymentUncheckedUpdateWithoutRentalInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutRentalInput = {
@@ -1867,8 +1867,8 @@ export type PaymentUpdateWithoutTenantInput = {
   paymentMethod?: Prisma.PaymentMethodUpdateOneRequiredWithoutPaymentsNestedInput
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutTenantInput = {
@@ -1887,8 +1887,8 @@ export type PaymentUncheckedUpdateWithoutTenantInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutTenantInput = {
@@ -1943,8 +1943,8 @@ export type PaymentUpdateWithoutPaymentMethodInput = {
   paymentType?: Prisma.PaymentTypeUpdateOneRequiredWithoutPaymentsNestedInput
   rental?: Prisma.RentalUpdateOneRequiredWithoutPaymentsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateWithoutPaymentMethodInput = {
@@ -1963,8 +1963,8 @@ export type PaymentUncheckedUpdateWithoutPaymentMethodInput = {
   currencyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
   receipt?: Prisma.PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput
+  transaction?: Prisma.TransactionsUncheckedUpdateOneWithoutPaymentNestedInput
 }
 
 export type PaymentUncheckedUpdateManyWithoutPaymentMethodInput = {
@@ -2010,8 +2010,8 @@ export type PaymentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   paymentType?: boolean | Prisma.PaymentTypeDefaultArgs<ExtArgs>
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
-  transaction?: boolean | Prisma.Payment$transactionArgs<ExtArgs>
   receipt?: boolean | Prisma.Payment$receiptArgs<ExtArgs>
+  transaction?: boolean | Prisma.Payment$transactionArgs<ExtArgs>
 }, ExtArgs["result"]["payment"]>
 
 export type PaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2091,8 +2091,8 @@ export type PaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   paymentType?: boolean | Prisma.PaymentTypeDefaultArgs<ExtArgs>
   rental?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
-  transaction?: boolean | Prisma.Payment$transactionArgs<ExtArgs>
   receipt?: boolean | Prisma.Payment$receiptArgs<ExtArgs>
+  transaction?: boolean | Prisma.Payment$transactionArgs<ExtArgs>
 }
 export type PaymentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   currency?: boolean | Prisma.Payment$currencyArgs<ExtArgs>
@@ -2120,8 +2120,8 @@ export type $PaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     paymentType: Prisma.$PaymentTypePayload<ExtArgs>
     rental: Prisma.$RentalPayload<ExtArgs>
     tenant: Prisma.$TenantPayload<ExtArgs>
-    transaction: Prisma.$TransactionsPayload<ExtArgs> | null
     receipt: Prisma.$PaymentReceiptPayload<ExtArgs> | null
+    transaction: Prisma.$TransactionsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2540,8 +2540,8 @@ export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends runtime.
   paymentType<T extends Prisma.PaymentTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PaymentTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__PaymentTypeClient<runtime.Types.Result.GetResult<Prisma.$PaymentTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   rental<T extends Prisma.RentalDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RentalDefaultArgs<ExtArgs>>): Prisma.Prisma__RentalClient<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  transaction<T extends Prisma.Payment$transactionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Payment$transactionArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   receipt<T extends Prisma.Payment$receiptArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Payment$receiptArgs<ExtArgs>>): Prisma.Prisma__PaymentReceiptClient<runtime.Types.Result.GetResult<Prisma.$PaymentReceiptPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  transaction<T extends Prisma.Payment$transactionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Payment$transactionArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2783,6 +2783,11 @@ export type PaymentFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` Payments.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Payments.
+   */
   distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[]
 }
 
@@ -3021,25 +3026,6 @@ export type Payment$customerArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Payment.transaction
- */
-export type Payment$transactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Transactions
-   */
-  select?: Prisma.TransactionsSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Transactions
-   */
-  omit?: Prisma.TransactionsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.TransactionsInclude<ExtArgs> | null
-  where?: Prisma.TransactionsWhereInput
-}
-
-/**
  * Payment.receipt
  */
 export type Payment$receiptArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3056,6 +3042,25 @@ export type Payment$receiptArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   include?: Prisma.PaymentReceiptInclude<ExtArgs> | null
   where?: Prisma.PaymentReceiptWhereInput
+}
+
+/**
+ * Payment.transaction
+ */
+export type Payment$transactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Transactions
+   */
+  select?: Prisma.TransactionsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Transactions
+   */
+  omit?: Prisma.TransactionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransactionsInclude<ExtArgs> | null
+  where?: Prisma.TransactionsWhereInput
 }
 
 /**

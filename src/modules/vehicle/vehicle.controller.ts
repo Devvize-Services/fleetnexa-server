@@ -7,24 +7,28 @@ import {
   Patch,
   Post,
   Put,
-  Req,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { VehicleService } from './vehicle.service.js';
-import { ApiGuard } from '../../common/guards/api.guard.js';
-import { AuthGuard } from '../../common/guards/auth.guard.js';
-import type { AuthenticatedRequest } from '../../types/authenticated-request.js';
+import { ApiGuard } from '../auth/guards/api.guard.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
+import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
+import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
+import { Role } from '../../common/enums/role.enum.js';
+import { Roles } from '../auth/decorator/role.decorator.js';
 
 @Controller('vehicle')
 export class VehicleController {
   constructor(private readonly service: VehicleService) {}
 
   @Get()
-  @UseGuards(AuthGuard)
-  async getTenantVehicles(@Req() req: AuthenticatedRequest) {
-    const { tenant } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async getTenantVehicles(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantVehicles(tenant);
   }
 
@@ -47,72 +51,92 @@ export class VehicleController {
   }
 
   @Get('plate/:plate')
-  @UseGuards(AuthGuard)
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
   async getVehicleByLicensePlate(
     @Param('plate') licensePlate: string,
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
   ) {
-    const { tenant } = req.context;
+    const { tenant } = req.user;
     return this.service.getVehicleByLicensePlate(licensePlate, tenant);
   }
 
-  @Get(':id')
-  @UseGuards(AuthGuard)
-  async getVehicleById(
-    @Param('id') id: string,
-    @Req() req: AuthenticatedRequest,
-  ) {
-    const { tenant } = req.context;
+  @Get('id/:id')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async getVehicleById(@Param('id') id: string, @Request() req) {
+    const { tenant } = req.user;
     return this.service.getVehicleById(id, tenant);
   }
 
   @Post()
-  @UseGuards(AuthGuard)
-  async createVehicle(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async createVehicle(@Request() req, @Body() data: VehicleDto) {
+    const user = req.user;
+    const { tenant } = req.user;
     return this.service.addVehicle(data, tenant, user);
   }
 
   @Put()
-  @UseGuards(AuthGuard)
-  async updateVehicle(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateVehicle(@Request() req, @Body() data: VehicleDto) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.updateVehicle(data, tenant, user);
   }
 
   @Patch('status')
-  @UseGuards(AuthGuard)
-  async updateVehicleStatus(
-    @Req() req: AuthenticatedRequest,
-    @Body() data: VehicleStatusDto,
-  ) {
-    const { tenant, user } = req.context;
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateVehicleStatus(@Request() req, @Body() data: VehicleStatusDto) {
+    const { tenant } = req.user;
+    const user = req.user;
+
     return this.service.updateVehicleStatus(data, tenant, user);
   }
 
-  @Delete(':id')
-  @UseGuards(AuthGuard)
-  async deleteVehicle(
-    @Param('id') id: string,
-    @Req() req: AuthenticatedRequest,
+  @Patch('location')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateVehicleLocation(
+    @Request() req,
+    @Body() data: VehicleLocationDto,
   ) {
-    const { tenant, user } = req.context;
+    const { tenant } = req.user;
+    const user = req.user;
+
+    return this.service.updateVehicleLocation(data, tenant, user);
+  }
+
+  @Post('swap')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async swapVehicle(@Request() req, @Body() data: SwapVehicleDto) {
+    const { tenant } = req.user;
+    const user = req.user;
+    return this.service.swapBookingVehicle(data, tenant, user);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async deleteVehicle(@Param('id') id: string, @Request() req) {
+    const { tenant } = req.user;
+    const user = req.user;
     return this.service.deleteVehicle(id, tenant, user);
   }
 
   @Patch(':id/storefront')
-  @UseGuards(AuthGuard)
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
   async updateVehicleStorefrontStatus(
-    @Req() req: AuthenticatedRequest,
+    @Request() req,
     @Param('id') vehicleId: string,
   ) {
-    const { tenant, user } = req.context;
+    const { tenant } = req.user;
+    const user = req.user;
 
     return this.service.updateVehicleStorefrontStatus(vehicleId, tenant, user);
   }

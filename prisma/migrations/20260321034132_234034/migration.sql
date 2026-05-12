@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "StatItem" ADD VALUE 'YEARLY_VEHICLES';

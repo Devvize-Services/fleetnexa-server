@@ -41,7 +41,13 @@ export class TenantRepository {
       invoiceSequence: true,
       paymentMethods: true,
       customers: true,
-      subscription: true,
+      subscription: {
+        include: {
+          plan: {
+            include: { features: true, details: true },
+          },
+        },
+      },
       services: { where: { isDeleted: false }, include: { service: true } },
       insurance: { where: { isDeleted: false } },
       equipment: { where: { isDeleted: false }, include: { equipment: true } },

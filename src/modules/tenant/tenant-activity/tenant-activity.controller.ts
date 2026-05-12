@@ -1,16 +1,18 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../../../common/guards/auth.guard.js';
+import { Controller, Get, Req, UseGuards, Request } from '@nestjs/common';
 import { TenantActivityService } from './tenant-activity.service.js';
-import type { AuthenticatedRequest } from '../../../types/authenticated-request.js';
+import { JwtAuthGuard } from '../../../modules/auth/guards/jwt-auth.guard.js';
+import { Role } from '../../../common/enums/role.enum.js';
+import { Roles } from '../../../modules/auth/decorator/role.decorator.js';
 
 @Controller('tenant/activity')
-@UseGuards(AuthGuard)
+@UseGuards(JwtAuthGuard)
+@Roles(Role.TENANT)
 export class TenantActivityController {
   constructor(private readonly service: TenantActivityService) {}
 
   @Get()
-  async getActivities(@Req() req: AuthenticatedRequest) {
-    const tenant = req.context.tenant;
+  async getActivities(@Request() req) {
+    const { tenant } = req.user;
     return this.service.getTenantActivities(tenant);
   }
 }

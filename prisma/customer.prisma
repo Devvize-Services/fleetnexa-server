@@ -1,37 +1,37 @@
 model Customer {
-  id             String                 @id @default(dbgenerated("gen_random_uuid()"))
-  firstName      String
-  lastName       String
-  gender         String
-  dateOfBirth    DateTime
-  email          String?
-  phone          String
-  tenantId       String
-  profileImage   String?
-  status         CustomerStatus         @default(ACTIVE)
-  experience     Int?
-  isActive       Boolean                @default(false)
-  isDeleted      Boolean                @default(false)
-  createdAt      DateTime               @default(now())
-  updatedAt      DateTime?              @updatedAt
-  updatedBy      String?
-  storefrontId   String?
-  storefrontUser StorefrontUser?        @relation(fields: [storefrontId], references: [id])
-  tenant         Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  address        CustomerAddress?
-  documents      CustomerDocument?
-  apps           CustomerMessengerApp[]
-  violations     CustomerViolation[]
-  license        DriverLicense?
-  invoices       Invoice[]
-  payments       Payment[]
-  refunds        Refund[]
-  rentalActivity RentalActivity[]
-  agreements     RentalAgreement[]
-  charges        RentalCharge[]
-  drivers        RentalDriver[]
-  damages        VehicleDamage[]
+  id              String                 @id @default(dbgenerated("gen_random_uuid()"))
+  firstName       String
+  lastName        String
+  gender          String
+  dateOfBirth     DateTime
+  email           String?
+  phone           String
+  tenantId        String
+  profileImage    String?
+  status          CustomerStatus         @default(ACTIVE)
+  experience      Int?
+  isActive        Boolean                @default(false)
+  isDeleted       Boolean                @default(false)
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime?              @updatedAt
+  updatedBy       String?
+  storefrontId    String?
+  storefrontUser  StorefrontUser?        @relation(fields: [storefrontId], references: [id])
+  tenant          Tenant                 @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  address         CustomerAddress?
+  documents       CustomerDocument?
+  apps            CustomerMessengerApp[]
+  violations      CustomerViolation[]
+  license         DriverLicense?
+  invoices        Invoice[]
+  payments        Payment[]
   paymentReceipts PaymentReceipt[]
+  refunds         Refund[]
+  rentalActivity  RentalActivity[]
+  agreements      RentalAgreement[]
+  charges         RentalCharge[]
+  drivers         RentalDriver[]
+  damages         VehicleDamage[]
 
   @@unique([tenantId, storefrontId])
 }
