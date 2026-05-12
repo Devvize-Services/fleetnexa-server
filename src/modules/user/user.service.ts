@@ -91,9 +91,32 @@ export class UserService {
       });
 
       if (!subscription?.plan) {
-        throw new NotFoundException(
-          'Tenant does not have an active subscription plan',
+        this.logger.warn(
+          `No active subscription plan found for tenant ${tenant.tenantCode}`,
         );
+        const role = await this.prisma.userRole.findUnique({
+          where: { id: user.roleId },
+          include: {
+            rolePermission: {
+              include: {
+                permission: {
+                  include: {
+                    category: true,
+                  },
+                },
+              },
+            },
+          },
+        });
+
+        if (!role) {
+          this.logger.warn(
+            `Role with ID ${user.roleId} not found for user ${user.id} in tenant ${tenant.tenantCode}`,
+          );
+          throw new NotFoundException('User role not found');
+        }
+
+        return role;
       }
 
       const allowedCategoryIds = subscription.plan.categories.map((c) => c.id);
