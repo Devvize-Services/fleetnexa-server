@@ -77,6 +77,8 @@ export class UserService {
         return new UnauthorizedException('Tenant not found');
       }
 
+      let role: any = null;
+
       const subscription = await this.prisma.tenantSubscription.findUnique({
         where: { tenantId: tenant.id },
         include: {
@@ -94,7 +96,7 @@ export class UserService {
         this.logger.warn(
           `No active subscription plan found for tenant ${tenant.tenantCode}`,
         );
-        const role = await this.prisma.userRole.findUnique({
+        role = await this.prisma.userRole.findUnique({
           where: { id: user.roleId },
           include: {
             rolePermission: {
@@ -108,40 +110,33 @@ export class UserService {
             },
           },
         });
+      } else {
+        const allowedCategoryIds = subscription.plan.categories.map(
+          (c) => c.id,
+        );
 
-        if (!role) {
-          this.logger.warn(
-            `Role with ID ${user.roleId} not found for user ${user.id} in tenant ${tenant.tenantCode}`,
-          );
-          throw new NotFoundException('User role not found');
-        }
-
-        return role;
-      }
-
-      const allowedCategoryIds = subscription.plan.categories.map((c) => c.id);
-
-      const role = await this.prisma.userRole.findUnique({
-        where: { id: user.roleId },
-        include: {
-          rolePermission: {
-            where: {
-              permission: {
-                categoryId: {
-                  in: allowedCategoryIds,
+        role = await this.prisma.userRole.findUnique({
+          where: { id: user.roleId },
+          include: {
+            rolePermission: {
+              where: {
+                permission: {
+                  categoryId: {
+                    in: allowedCategoryIds,
+                  },
                 },
               },
-            },
-            include: {
-              permission: {
-                include: {
-                  category: true,
+              include: {
+                permission: {
+                  include: {
+                    category: true,
+                  },
                 },
               },
             },
           },
-        },
-      });
+        });
+      }
 
       if (!role) {
         this.logger.warn(
