@@ -59,8 +59,6 @@ export class BookingService {
         where: { id },
       });
 
-      console.log('Storefront user:', user);
-
       if (!user) {
         this.logger.warn(`Storefront user with ID ${id} not found`);
         throw new NotFoundException('Storefront user not found');
@@ -68,8 +66,6 @@ export class BookingService {
 
       const customers =
         await this.customerRepo.getStorefrontBookingsByCustomerId(user.id);
-
-      console.log('Associated customers:', customers);
 
       if (!customers) {
         this.logger.warn(`No storefront bookings found for user ID ${id}`);

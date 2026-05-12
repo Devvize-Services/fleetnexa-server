@@ -6,6 +6,7 @@ model SubscriptionPlan {
   planId             String?              @unique
   period             BillingPeriod        @default(MONTHLY)
   price              Float                @default(0)
+  tier               Int                  @default(1)
   details            PlanDetails?
   features           PlanFeatures[]
   tenantSubscription TenantSubscription[]

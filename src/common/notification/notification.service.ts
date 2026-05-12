@@ -56,8 +56,6 @@ export class NotificationService {
       headings: { en: payload.title || 'New Notification' },
     };
 
-    console.log('Push notification body:', body);
-
     try {
       const res = await this.client.post('/notifications', body);
     } catch (error) {

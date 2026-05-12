@@ -8916,7 +8916,8 @@ export const SubscriptionPlanScalarFieldEnum = {
   planCode: 'planCode',
   planId: 'planId',
   period: 'period',
-  price: 'price'
+  price: 'price',
+  tier: 'tier'
 } as const
 
 export type SubscriptionPlanScalarFieldEnum = (typeof SubscriptionPlanScalarFieldEnum)[keyof typeof SubscriptionPlanScalarFieldEnum]
