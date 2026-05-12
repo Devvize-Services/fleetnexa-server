@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/style/useImportType: <> */
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { ApiGuard } from '../auth/guards/api.guard.js';
 import { AdminService } from './admin.service.js';
 
@@ -16,6 +16,18 @@ export class AdminController {
   @UseGuards(ApiGuard)
   async getStorefrontData() {
     return this.service.getStorefrontData();
+  }
+
+  @Get('storefront/destinations')
+  @UseGuards(ApiGuard)
+  async getDestinations() {
+    return this.service.getStorefrontDestinations();
+  }
+
+  @Get('storefront/destinations/:id')
+  @UseGuards(ApiGuard)
+  async getDestinationItems(@Param('id') id: string) {
+    return this.service.getDestinationItems(id);
   }
 
   @Get('dashboard')

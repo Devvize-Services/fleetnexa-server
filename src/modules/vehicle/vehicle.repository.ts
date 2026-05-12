@@ -192,7 +192,7 @@ export class VehicleRepository {
     };
   }
 
-  private getVehicleSelectOptions(): Prisma.VehicleSelect {
+  getVehicleSelectOptions(): Prisma.VehicleSelect {
     return {
       id: true,
       year: true,
