@@ -1,0 +1,19 @@
+model CancellationPolicy {
+  id                    String  @id @default(dbgenerated("gen_random_uuid()"))
+  minimumDays           Int
+  policy                String
+  amount                Float
+  tenantId              String  @unique
+  updatedBy             String?
+  bookingMinimumDays    Int
+  tenant                Tenant?
+}
+
+model LatePolicy {
+  id                    String  @id @default(dbgenerated("gen_random_uuid()"))
+  amount                Float
+  maxHours              Int
+  updatedBy             String?
+  tenantId              String  @unique
+  tenant                Tenant?
+}

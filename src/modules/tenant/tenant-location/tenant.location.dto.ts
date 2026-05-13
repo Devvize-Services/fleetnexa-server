@@ -1,41 +1,57 @@
 import {
-	IsBoolean,
-	IsNotEmpty,
-	IsNumber,
-	IsString,
-	IsUUID,
-} from "class-validator";
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class TenantLocationDto {
-	@IsUUID()
-	@IsNotEmpty()
-	id: string;
+  @IsString()
+  @IsOptional()
+  id?: string;
 
-	@IsString()
-	@IsNotEmpty()
-	location: string;
+  @IsString()
+  @IsNotEmpty()
+  location: string;
 
-	@IsBoolean()
-	@IsNotEmpty()
-	pickupEnabled: boolean;
+  @IsString()
+  @IsNotEmpty()
+  street: string;
 
-	@IsBoolean()
-	@IsNotEmpty()
-	returnEnabled: boolean;
+  @IsString()
+  @IsNotEmpty()
+  countryId: string;
 
-	@IsBoolean()
-	@IsNotEmpty()
-	storefrontEnabled: boolean;
+  @IsString()
+  @IsNotEmpty()
+  stateId: string;
 
-	@IsNumber()
-	@IsNotEmpty()
-	deliveryFee: number;
+  @IsString()
+  @IsNotEmpty()
+  villageId: string;
 
-	@IsNumber()
-	@IsNotEmpty()
-	collectionFee: number;
+  @IsBoolean()
+  @IsNotEmpty()
+  pickupEnabled: boolean;
 
-	@IsNumber()
-	@IsNotEmpty()
-	minimumRentalPeriod: number;
+  @IsBoolean()
+  @IsNotEmpty()
+  returnEnabled: boolean;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  storefrontEnabled: boolean;
+
+  @IsNumber()
+  @IsNotEmpty()
+  deliveryFee: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  collectionFee: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  minimumRentalPeriod: number;
 }

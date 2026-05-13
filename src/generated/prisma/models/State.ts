@@ -196,6 +196,7 @@ export type StateWhereInput = {
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   storefrontUser?: Prisma.StorefrontUserListRelationFilter
   villages?: Prisma.VillageListRelationFilter
+  tenantLocations?: Prisma.TenantLocationListRelationFilter
 }
 
 export type StateOrderByWithRelationInput = {
@@ -211,6 +212,7 @@ export type StateOrderByWithRelationInput = {
   country?: Prisma.CountryOrderByWithRelationInput
   storefrontUser?: Prisma.StorefrontUserOrderByRelationAggregateInput
   villages?: Prisma.VillageOrderByRelationAggregateInput
+  tenantLocations?: Prisma.TenantLocationOrderByRelationAggregateInput
 }
 
 export type StateWhereUniqueInput = Prisma.AtLeast<{
@@ -229,6 +231,7 @@ export type StateWhereUniqueInput = Prisma.AtLeast<{
   country?: Prisma.XOR<Prisma.CountryScalarRelationFilter, Prisma.CountryWhereInput>
   storefrontUser?: Prisma.StorefrontUserListRelationFilter
   villages?: Prisma.VillageListRelationFilter
+  tenantLocations?: Prisma.TenantLocationListRelationFilter
 }, "id">
 
 export type StateOrderByWithAggregationInput = {
@@ -267,6 +270,7 @@ export type StateCreateInput = {
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateInput = {
@@ -281,6 +285,7 @@ export type StateUncheckedCreateInput = {
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateUpdateInput = {
@@ -295,6 +300,7 @@ export type StateUpdateInput = {
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateInput = {
@@ -309,6 +315,7 @@ export type StateUncheckedUpdateInput = {
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateCreateManyInput = {
@@ -470,6 +477,22 @@ export type StateUpdateOneWithoutCustomerAddressesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StateUpdateToOneWithWhereWithoutCustomerAddressesInput, Prisma.StateUpdateWithoutCustomerAddressesInput>, Prisma.StateUncheckedUpdateWithoutCustomerAddressesInput>
 }
 
+export type StateCreateNestedOneWithoutTenantLocationsInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutTenantLocationsInput, Prisma.StateUncheckedCreateWithoutTenantLocationsInput>
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutTenantLocationsInput
+  connect?: Prisma.StateWhereUniqueInput
+}
+
+export type StateUpdateOneWithoutTenantLocationsNestedInput = {
+  create?: Prisma.XOR<Prisma.StateCreateWithoutTenantLocationsInput, Prisma.StateUncheckedCreateWithoutTenantLocationsInput>
+  connectOrCreate?: Prisma.StateCreateOrConnectWithoutTenantLocationsInput
+  upsert?: Prisma.StateUpsertWithoutTenantLocationsInput
+  disconnect?: Prisma.StateWhereInput | boolean
+  delete?: Prisma.StateWhereInput | boolean
+  connect?: Prisma.StateWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StateUpdateToOneWithWhereWithoutTenantLocationsInput, Prisma.StateUpdateWithoutTenantLocationsInput>, Prisma.StateUncheckedUpdateWithoutTenantLocationsInput>
+}
+
 export type StateCreateNestedOneWithoutAddressesInput = {
   create?: Prisma.XOR<Prisma.StateCreateWithoutAddressesInput, Prisma.StateUncheckedCreateWithoutAddressesInput>
   connectOrCreate?: Prisma.StateCreateOrConnectWithoutAddressesInput
@@ -513,6 +536,7 @@ export type StateCreateWithoutCountryInput = {
   presetLocations?: Prisma.PresetLocationCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutCountryInput = {
@@ -526,6 +550,7 @@ export type StateUncheckedCreateWithoutCountryInput = {
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutCountryInput = {
@@ -577,6 +602,7 @@ export type StateCreateWithoutVillagesInput = {
   presetLocations?: Prisma.PresetLocationCreateNestedManyWithoutStateInput
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutVillagesInput = {
@@ -590,6 +616,7 @@ export type StateUncheckedCreateWithoutVillagesInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutStateInput
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutVillagesInput = {
@@ -619,6 +646,7 @@ export type StateUpdateWithoutVillagesInput = {
   presetLocations?: Prisma.PresetLocationUpdateManyWithoutStateNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutVillagesInput = {
@@ -632,6 +660,7 @@ export type StateUncheckedUpdateWithoutVillagesInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutStateNestedInput
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateCreateWithoutPresetLocationsInput = {
@@ -645,6 +674,7 @@ export type StateCreateWithoutPresetLocationsInput = {
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutPresetLocationsInput = {
@@ -658,6 +688,7 @@ export type StateUncheckedCreateWithoutPresetLocationsInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutPresetLocationsInput = {
@@ -687,6 +718,7 @@ export type StateUpdateWithoutPresetLocationsInput = {
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutPresetLocationsInput = {
@@ -700,6 +732,7 @@ export type StateUncheckedUpdateWithoutPresetLocationsInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateCreateWithoutCustomerAddressesInput = {
@@ -713,6 +746,7 @@ export type StateCreateWithoutCustomerAddressesInput = {
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutCustomerAddressesInput = {
@@ -726,6 +760,7 @@ export type StateUncheckedCreateWithoutCustomerAddressesInput = {
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutCustomerAddressesInput = {
@@ -755,6 +790,7 @@ export type StateUpdateWithoutCustomerAddressesInput = {
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutCustomerAddressesInput = {
@@ -765,6 +801,79 @@ export type StateUncheckedUpdateWithoutCustomerAddressesInput = {
   iso2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutStateNestedInput
+  presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
+  storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
+  villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
+}
+
+export type StateCreateWithoutTenantLocationsInput = {
+  id?: string
+  state: string
+  cscId?: string | null
+  iso2?: string | null
+  type?: string | null
+  addresses?: Prisma.AddressCreateNestedManyWithoutStateInput
+  customerAddresses?: Prisma.CustomerAddressCreateNestedManyWithoutStateInput
+  presetLocations?: Prisma.PresetLocationCreateNestedManyWithoutStateInput
+  country: Prisma.CountryCreateNestedOneWithoutStatesInput
+  storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
+  villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+}
+
+export type StateUncheckedCreateWithoutTenantLocationsInput = {
+  id?: string
+  countryId: string
+  state: string
+  cscId?: string | null
+  iso2?: string | null
+  type?: string | null
+  addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutStateInput
+  customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutStateInput
+  presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
+  storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
+  villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+}
+
+export type StateCreateOrConnectWithoutTenantLocationsInput = {
+  where: Prisma.StateWhereUniqueInput
+  create: Prisma.XOR<Prisma.StateCreateWithoutTenantLocationsInput, Prisma.StateUncheckedCreateWithoutTenantLocationsInput>
+}
+
+export type StateUpsertWithoutTenantLocationsInput = {
+  update: Prisma.XOR<Prisma.StateUpdateWithoutTenantLocationsInput, Prisma.StateUncheckedUpdateWithoutTenantLocationsInput>
+  create: Prisma.XOR<Prisma.StateCreateWithoutTenantLocationsInput, Prisma.StateUncheckedCreateWithoutTenantLocationsInput>
+  where?: Prisma.StateWhereInput
+}
+
+export type StateUpdateToOneWithWhereWithoutTenantLocationsInput = {
+  where?: Prisma.StateWhereInput
+  data: Prisma.XOR<Prisma.StateUpdateWithoutTenantLocationsInput, Prisma.StateUncheckedUpdateWithoutTenantLocationsInput>
+}
+
+export type StateUpdateWithoutTenantLocationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addresses?: Prisma.AddressUpdateManyWithoutStateNestedInput
+  customerAddresses?: Prisma.CustomerAddressUpdateManyWithoutStateNestedInput
+  presetLocations?: Prisma.PresetLocationUpdateManyWithoutStateNestedInput
+  country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
+  storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
+  villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+}
+
+export type StateUncheckedUpdateWithoutTenantLocationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  countryId?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  cscId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  iso2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addresses?: Prisma.AddressUncheckedUpdateManyWithoutStateNestedInput
+  customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutStateNestedInput
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
@@ -781,6 +890,7 @@ export type StateCreateWithoutAddressesInput = {
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   storefrontUser?: Prisma.StorefrontUserCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutAddressesInput = {
@@ -794,6 +904,7 @@ export type StateUncheckedCreateWithoutAddressesInput = {
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   storefrontUser?: Prisma.StorefrontUserUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutAddressesInput = {
@@ -823,6 +934,7 @@ export type StateUpdateWithoutAddressesInput = {
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutAddressesInput = {
@@ -836,6 +948,7 @@ export type StateUncheckedUpdateWithoutAddressesInput = {
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateCreateWithoutStorefrontUserInput = {
@@ -849,6 +962,7 @@ export type StateCreateWithoutStorefrontUserInput = {
   presetLocations?: Prisma.PresetLocationCreateNestedManyWithoutStateInput
   country: Prisma.CountryCreateNestedOneWithoutStatesInput
   villages?: Prisma.VillageCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationCreateNestedManyWithoutStateInput
 }
 
 export type StateUncheckedCreateWithoutStorefrontUserInput = {
@@ -862,6 +976,7 @@ export type StateUncheckedCreateWithoutStorefrontUserInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedCreateNestedManyWithoutStateInput
   presetLocations?: Prisma.PresetLocationUncheckedCreateNestedManyWithoutStateInput
   villages?: Prisma.VillageUncheckedCreateNestedManyWithoutStateInput
+  tenantLocations?: Prisma.TenantLocationUncheckedCreateNestedManyWithoutStateInput
 }
 
 export type StateCreateOrConnectWithoutStorefrontUserInput = {
@@ -891,6 +1006,7 @@ export type StateUpdateWithoutStorefrontUserInput = {
   presetLocations?: Prisma.PresetLocationUpdateManyWithoutStateNestedInput
   country?: Prisma.CountryUpdateOneRequiredWithoutStatesNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutStorefrontUserInput = {
@@ -904,6 +1020,7 @@ export type StateUncheckedUpdateWithoutStorefrontUserInput = {
   customerAddresses?: Prisma.CustomerAddressUncheckedUpdateManyWithoutStateNestedInput
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateCreateManyCountryInput = {
@@ -925,6 +1042,7 @@ export type StateUpdateWithoutCountryInput = {
   presetLocations?: Prisma.PresetLocationUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateWithoutCountryInput = {
@@ -938,6 +1056,7 @@ export type StateUncheckedUpdateWithoutCountryInput = {
   presetLocations?: Prisma.PresetLocationUncheckedUpdateManyWithoutStateNestedInput
   storefrontUser?: Prisma.StorefrontUserUncheckedUpdateManyWithoutStateNestedInput
   villages?: Prisma.VillageUncheckedUpdateManyWithoutStateNestedInput
+  tenantLocations?: Prisma.TenantLocationUncheckedUpdateManyWithoutStateNestedInput
 }
 
 export type StateUncheckedUpdateManyWithoutCountryInput = {
@@ -959,6 +1078,7 @@ export type StateCountOutputType = {
   presetLocations: number
   storefrontUser: number
   villages: number
+  tenantLocations: number
 }
 
 export type StateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -967,6 +1087,7 @@ export type StateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   presetLocations?: boolean | StateCountOutputTypeCountPresetLocationsArgs
   storefrontUser?: boolean | StateCountOutputTypeCountStorefrontUserArgs
   villages?: boolean | StateCountOutputTypeCountVillagesArgs
+  tenantLocations?: boolean | StateCountOutputTypeCountTenantLocationsArgs
 }
 
 /**
@@ -1014,6 +1135,13 @@ export type StateCountOutputTypeCountVillagesArgs<ExtArgs extends runtime.Types.
   where?: Prisma.VillageWhereInput
 }
 
+/**
+ * StateCountOutputType without action
+ */
+export type StateCountOutputTypeCountTenantLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TenantLocationWhereInput
+}
+
 
 export type StateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1028,6 +1156,7 @@ export type StateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   storefrontUser?: boolean | Prisma.State$storefrontUserArgs<ExtArgs>
   villages?: boolean | Prisma.State$villagesArgs<ExtArgs>
+  tenantLocations?: boolean | Prisma.State$tenantLocationsArgs<ExtArgs>
   _count?: boolean | Prisma.StateCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["state"]>
 
@@ -1068,6 +1197,7 @@ export type StateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   country?: boolean | Prisma.CountryDefaultArgs<ExtArgs>
   storefrontUser?: boolean | Prisma.State$storefrontUserArgs<ExtArgs>
   villages?: boolean | Prisma.State$villagesArgs<ExtArgs>
+  tenantLocations?: boolean | Prisma.State$tenantLocationsArgs<ExtArgs>
   _count?: boolean | Prisma.StateCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1086,6 +1216,7 @@ export type $StatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     country: Prisma.$CountryPayload<ExtArgs>
     storefrontUser: Prisma.$StorefrontUserPayload<ExtArgs>[]
     villages: Prisma.$VillagePayload<ExtArgs>[]
+    tenantLocations: Prisma.$TenantLocationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1494,6 +1625,7 @@ export interface Prisma__StateClient<T, Null = never, ExtArgs extends runtime.Ty
   country<T extends Prisma.CountryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CountryDefaultArgs<ExtArgs>>): Prisma.Prisma__CountryClient<runtime.Types.Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   storefrontUser<T extends Prisma.State$storefrontUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.State$storefrontUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StorefrontUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   villages<T extends Prisma.State$villagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.State$villagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VillagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tenantLocations<T extends Prisma.State$tenantLocationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.State$tenantLocationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TenantLocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2047,6 +2179,30 @@ export type State$villagesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.VillageScalarFieldEnum | Prisma.VillageScalarFieldEnum[]
+}
+
+/**
+ * State.tenantLocations
+ */
+export type State$tenantLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TenantLocation
+   */
+  select?: Prisma.TenantLocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TenantLocation
+   */
+  omit?: Prisma.TenantLocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TenantLocationInclude<ExtArgs> | null
+  where?: Prisma.TenantLocationWhereInput
+  orderBy?: Prisma.TenantLocationOrderByWithRelationInput | Prisma.TenantLocationOrderByWithRelationInput[]
+  cursor?: Prisma.TenantLocationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TenantLocationScalarFieldEnum | Prisma.TenantLocationScalarFieldEnum[]
 }
 
 /**

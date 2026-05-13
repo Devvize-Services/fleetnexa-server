@@ -38,7 +38,6 @@ model Tenant {
   address               Address?
   customers             Customer[]
   customerViolations    CustomerViolation[]
-  emailTokens           EmailVerification[]
   expenses              Expense[]
   forms                 Form[]
   invoices              Invoice[]
@@ -79,19 +78,6 @@ model Tenant {
   paymentMethods        PaymentMethod[]            @relation("PaymentMethodToTenant")
 }
 
-model EmailVerification {
-  id        String   @id @default(dbgenerated("gen_random_uuid()"))
-  email     String
-  token     String   @unique
-  createdAt DateTime @default(now())
-  expiresAt DateTime
-  verified  Boolean  @default(false)
-  tenantId  String
-  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-
-  @@index([email])
-}
-
 model PaymentMethod {
   id        String    @id @default(dbgenerated("gen_random_uuid()"))
   method    String
@@ -116,70 +102,7 @@ model Address {
   village   Village?  @relation(fields: [villageId], references: [id])
 }
 
-model TenantLocation {
-  id                  String    @id @default(dbgenerated("gen_random_uuid()"))
-  location            String
-  pickupEnabled       Boolean
-  returnEnabled       Boolean
-  deliveryFee         Float
-  collectionFee       Float
-  tenantId            String
-  minimumRentalPeriod Int       @default(1)
-  isDeleted           Boolean   @default(false)
-  updatedAt           DateTime? @updatedAt
-  updatedBy           String?
-  storefrontEnabled   Boolean   @default(false)
-  createdAt           DateTime  @default(now())
-  pickups             Rental[]  @relation("PickupLocation")
-  returns             Rental[]  @relation("ReturnLocation")
-  tenant              Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  vehicles            Vehicle[]
-}
 
-model TenantInsurance {
-  id          String      @id @default(dbgenerated("gen_random_uuid()"))
-  insurance   String
-  description String
-  pricePolicy PricePolicy
-  price       Float
-  tenantId    String
-  isActive    Boolean     @default(true)
-  isDeleted   Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime?   @updatedAt
-  updatedBy   String?
-  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-}
-
-model TenantEquipment {
-  id          String      @id @default(dbgenerated("gen_random_uuid()"))
-  equipmentId String
-  pricePolicy PricePolicy
-  price       Float
-  tenantId    String
-  isActive    Boolean     @default(true)
-  isDeleted   Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime?   @updatedAt
-  updatedBy   String?
-  equipment   Equipment   @relation(fields: [equipmentId], references: [id])
-  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-}
-
-model TenantService {
-  id          String      @id @default(dbgenerated("gen_random_uuid()"))
-  serviceId   String
-  tenantId    String
-  price       Float
-  pricePolicy PricePolicy
-  isActive    Boolean     @default(false)
-  isDeleted   Boolean     @default(false)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime?   @updatedAt
-  updatedBy   String?
-  service     Service     @relation(fields: [serviceId], references: [id])
-  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-}
 
 model TenantSubscription {
   id        String             @id @default(dbgenerated("gen_random_uuid()"))
@@ -221,25 +144,7 @@ model TenantReminders {
   tenant      Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 }
 
-model CancellationPolicy {
-  id                 String  @id @default(dbgenerated("gen_random_uuid()"))
-  minimumDays        Int
-  policy             String
-  amount             Float
-  tenantId           String  @unique
-  updatedBy          String?
-  bookingMinimumDays Int
-  tenant             Tenant?
-}
 
-model LatePolicy {
-  id        String  @id @default(dbgenerated("gen_random_uuid()"))
-  amount    Float
-  maxHours  Int
-  updatedBy String?
-  tenantId  String  @unique
-  tenant    Tenant?
-}
 
 model TenantViolation {
   id                 String              @id @default(dbgenerated("gen_random_uuid()"))

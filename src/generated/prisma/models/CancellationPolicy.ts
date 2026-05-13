@@ -370,11 +370,6 @@ export type CancellationPolicyUncheckedUpdateManyInput = {
   bookingMinimumDays?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type CancellationPolicyNullableScalarRelationFilter = {
-  is?: Prisma.CancellationPolicyWhereInput | null
-  isNot?: Prisma.CancellationPolicyWhereInput | null
-}
-
 export type CancellationPolicyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   minimumDays?: Prisma.SortOrder
@@ -415,6 +410,11 @@ export type CancellationPolicySumOrderByAggregateInput = {
   minimumDays?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   bookingMinimumDays?: Prisma.SortOrder
+}
+
+export type CancellationPolicyNullableScalarRelationFilter = {
+  is?: Prisma.CancellationPolicyWhereInput | null
+  isNot?: Prisma.CancellationPolicyWhereInput | null
 }
 
 export type CancellationPolicyCreateNestedOneWithoutTenantInput = {

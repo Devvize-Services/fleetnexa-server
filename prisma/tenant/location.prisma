@@ -1,0 +1,29 @@
+model TenantLocation {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()"))
+  location            String
+  pickupEnabled       Boolean
+  returnEnabled       Boolean
+  deliveryFee         Float
+  collectionFee       Float
+  tenantId            String
+  minimumRentalPeriod Int       @default(1)
+  isDeleted           Boolean   @default(false)
+  updatedAt           DateTime? @updatedAt
+  updatedBy           String?
+  storefrontEnabled   Boolean   @default(false)
+  createdAt           DateTime  @default(now())
+  street              String?
+  villageId          String?
+  stateId            String?
+  countryId          String?
+
+  tenant              Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  country             Country?  @relation(fields: [countryId], references: [id])
+  state               State?    @relation(fields: [stateId], references: [id])
+  village             Village?  @relation(fields: [villageId], references: [id])
+
+
+  pickups             Rental[]  @relation("PickupLocation")
+  returns             Rental[]  @relation("ReturnLocation")
+  vehicles            Vehicle[]
+}

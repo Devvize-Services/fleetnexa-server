@@ -52,6 +52,10 @@ export type TenantLocationMinAggregateOutputType = {
   updatedBy: string | null
   storefrontEnabled: boolean | null
   createdAt: Date | null
+  street: string | null
+  villageId: string | null
+  stateId: string | null
+  countryId: string | null
 }
 
 export type TenantLocationMaxAggregateOutputType = {
@@ -68,6 +72,10 @@ export type TenantLocationMaxAggregateOutputType = {
   updatedBy: string | null
   storefrontEnabled: boolean | null
   createdAt: Date | null
+  street: string | null
+  villageId: string | null
+  stateId: string | null
+  countryId: string | null
 }
 
 export type TenantLocationCountAggregateOutputType = {
@@ -84,6 +92,10 @@ export type TenantLocationCountAggregateOutputType = {
   updatedBy: number
   storefrontEnabled: number
   createdAt: number
+  street: number
+  villageId: number
+  stateId: number
+  countryId: number
   _all: number
 }
 
@@ -114,6 +126,10 @@ export type TenantLocationMinAggregateInputType = {
   updatedBy?: true
   storefrontEnabled?: true
   createdAt?: true
+  street?: true
+  villageId?: true
+  stateId?: true
+  countryId?: true
 }
 
 export type TenantLocationMaxAggregateInputType = {
@@ -130,6 +146,10 @@ export type TenantLocationMaxAggregateInputType = {
   updatedBy?: true
   storefrontEnabled?: true
   createdAt?: true
+  street?: true
+  villageId?: true
+  stateId?: true
+  countryId?: true
 }
 
 export type TenantLocationCountAggregateInputType = {
@@ -146,6 +166,10 @@ export type TenantLocationCountAggregateInputType = {
   updatedBy?: true
   storefrontEnabled?: true
   createdAt?: true
+  street?: true
+  villageId?: true
+  stateId?: true
+  countryId?: true
   _all?: true
 }
 
@@ -249,6 +273,10 @@ export type TenantLocationGroupByOutputType = {
   updatedBy: string | null
   storefrontEnabled: boolean
   createdAt: Date
+  street: string | null
+  villageId: string | null
+  stateId: string | null
+  countryId: string | null
   _count: TenantLocationCountAggregateOutputType | null
   _avg: TenantLocationAvgAggregateOutputType | null
   _sum: TenantLocationSumAggregateOutputType | null
@@ -288,9 +316,16 @@ export type TenantLocationWhereInput = {
   updatedBy?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
   storefrontEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
   createdAt?: Prisma.DateTimeFilter<"TenantLocation"> | Date | string
+  street?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  villageId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  stateId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  countryId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
+  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
+  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.StateWhereInput> | null
+  village?: Prisma.XOR<Prisma.VillageNullableScalarRelationFilter, Prisma.VillageWhereInput> | null
   pickups?: Prisma.RentalListRelationFilter
   returns?: Prisma.RentalListRelationFilter
-  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   vehicles?: Prisma.VehicleListRelationFilter
 }
 
@@ -308,9 +343,16 @@ export type TenantLocationOrderByWithRelationInput = {
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   storefrontEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  villageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateId?: Prisma.SortOrderInput | Prisma.SortOrder
+  countryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  tenant?: Prisma.TenantOrderByWithRelationInput
+  country?: Prisma.CountryOrderByWithRelationInput
+  state?: Prisma.StateOrderByWithRelationInput
+  village?: Prisma.VillageOrderByWithRelationInput
   pickups?: Prisma.RentalOrderByRelationAggregateInput
   returns?: Prisma.RentalOrderByRelationAggregateInput
-  tenant?: Prisma.TenantOrderByWithRelationInput
   vehicles?: Prisma.VehicleOrderByRelationAggregateInput
 }
 
@@ -331,9 +373,16 @@ export type TenantLocationWhereUniqueInput = Prisma.AtLeast<{
   updatedBy?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
   storefrontEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
   createdAt?: Prisma.DateTimeFilter<"TenantLocation"> | Date | string
+  street?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  villageId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  stateId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  countryId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
+  country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
+  state?: Prisma.XOR<Prisma.StateNullableScalarRelationFilter, Prisma.StateWhereInput> | null
+  village?: Prisma.XOR<Prisma.VillageNullableScalarRelationFilter, Prisma.VillageWhereInput> | null
   pickups?: Prisma.RentalListRelationFilter
   returns?: Prisma.RentalListRelationFilter
-  tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   vehicles?: Prisma.VehicleListRelationFilter
 }, "id">
 
@@ -351,6 +400,10 @@ export type TenantLocationOrderByWithAggregationInput = {
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   storefrontEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  villageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateId?: Prisma.SortOrderInput | Prisma.SortOrder
+  countryId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TenantLocationCountOrderByAggregateInput
   _avg?: Prisma.TenantLocationAvgOrderByAggregateInput
   _max?: Prisma.TenantLocationMaxOrderByAggregateInput
@@ -375,6 +428,10 @@ export type TenantLocationScalarWhereWithAggregatesInput = {
   updatedBy?: Prisma.StringNullableWithAggregatesFilter<"TenantLocation"> | string | null
   storefrontEnabled?: Prisma.BoolWithAggregatesFilter<"TenantLocation"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TenantLocation"> | Date | string
+  street?: Prisma.StringNullableWithAggregatesFilter<"TenantLocation"> | string | null
+  villageId?: Prisma.StringNullableWithAggregatesFilter<"TenantLocation"> | string | null
+  stateId?: Prisma.StringNullableWithAggregatesFilter<"TenantLocation"> | string | null
+  countryId?: Prisma.StringNullableWithAggregatesFilter<"TenantLocation"> | string | null
 }
 
 export type TenantLocationCreateInput = {
@@ -390,9 +447,13 @@ export type TenantLocationCreateInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
   pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
-  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
   vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
 }
 
@@ -410,6 +471,10 @@ export type TenantLocationUncheckedCreateInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
   pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
@@ -428,9 +493,13 @@ export type TenantLocationUpdateInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
   pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
   vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
 }
 
@@ -448,6 +517,10 @@ export type TenantLocationUncheckedUpdateInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
@@ -467,6 +540,10 @@ export type TenantLocationCreateManyInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
 }
 
 export type TenantLocationUpdateManyMutationInput = {
@@ -482,6 +559,7 @@ export type TenantLocationUpdateManyMutationInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantLocationUncheckedUpdateManyInput = {
@@ -498,11 +576,10 @@ export type TenantLocationUncheckedUpdateManyInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type TenantLocationScalarRelationFilter = {
-  is?: Prisma.TenantLocationWhereInput
-  isNot?: Prisma.TenantLocationWhereInput
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantLocationListRelationFilter = {
@@ -513,6 +590,11 @@ export type TenantLocationListRelationFilter = {
 
 export type TenantLocationOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type TenantLocationScalarRelationFilter = {
+  is?: Prisma.TenantLocationWhereInput
+  isNot?: Prisma.TenantLocationWhereInput
 }
 
 export type TenantLocationCountOrderByAggregateInput = {
@@ -529,6 +611,10 @@ export type TenantLocationCountOrderByAggregateInput = {
   updatedBy?: Prisma.SortOrder
   storefrontEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
+  stateId?: Prisma.SortOrder
+  countryId?: Prisma.SortOrder
 }
 
 export type TenantLocationAvgOrderByAggregateInput = {
@@ -551,6 +637,10 @@ export type TenantLocationMaxOrderByAggregateInput = {
   updatedBy?: Prisma.SortOrder
   storefrontEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
+  stateId?: Prisma.SortOrder
+  countryId?: Prisma.SortOrder
 }
 
 export type TenantLocationMinOrderByAggregateInput = {
@@ -567,6 +657,10 @@ export type TenantLocationMinOrderByAggregateInput = {
   updatedBy?: Prisma.SortOrder
   storefrontEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
+  stateId?: Prisma.SortOrder
+  countryId?: Prisma.SortOrder
 }
 
 export type TenantLocationSumOrderByAggregateInput = {
@@ -578,6 +672,132 @@ export type TenantLocationSumOrderByAggregateInput = {
 export type TenantLocationNullableScalarRelationFilter = {
   is?: Prisma.TenantLocationWhereInput | null
   isNot?: Prisma.TenantLocationWhereInput | null
+}
+
+export type TenantLocationCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput> | Prisma.TenantLocationCreateWithoutCountryInput[] | Prisma.TenantLocationUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutCountryInput | Prisma.TenantLocationCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.TenantLocationCreateManyCountryInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUncheckedCreateNestedManyWithoutCountryInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput> | Prisma.TenantLocationCreateWithoutCountryInput[] | Prisma.TenantLocationUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutCountryInput | Prisma.TenantLocationCreateOrConnectWithoutCountryInput[]
+  createMany?: Prisma.TenantLocationCreateManyCountryInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput> | Prisma.TenantLocationCreateWithoutCountryInput[] | Prisma.TenantLocationUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutCountryInput | Prisma.TenantLocationCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutCountryInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.TenantLocationCreateManyCountryInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutCountryInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutCountryInput | Prisma.TenantLocationUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutCountryNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput> | Prisma.TenantLocationCreateWithoutCountryInput[] | Prisma.TenantLocationUncheckedCreateWithoutCountryInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutCountryInput | Prisma.TenantLocationCreateOrConnectWithoutCountryInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutCountryInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutCountryInput[]
+  createMany?: Prisma.TenantLocationCreateManyCountryInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutCountryInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutCountryInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutCountryInput | Prisma.TenantLocationUpdateManyWithWhereWithoutCountryInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+}
+
+export type TenantLocationCreateNestedManyWithoutStateInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput> | Prisma.TenantLocationCreateWithoutStateInput[] | Prisma.TenantLocationUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutStateInput | Prisma.TenantLocationCreateOrConnectWithoutStateInput[]
+  createMany?: Prisma.TenantLocationCreateManyStateInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUncheckedCreateNestedManyWithoutStateInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput> | Prisma.TenantLocationCreateWithoutStateInput[] | Prisma.TenantLocationUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutStateInput | Prisma.TenantLocationCreateOrConnectWithoutStateInput[]
+  createMany?: Prisma.TenantLocationCreateManyStateInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUpdateManyWithoutStateNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput> | Prisma.TenantLocationCreateWithoutStateInput[] | Prisma.TenantLocationUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutStateInput | Prisma.TenantLocationCreateOrConnectWithoutStateInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutStateInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutStateInput[]
+  createMany?: Prisma.TenantLocationCreateManyStateInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutStateInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutStateInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutStateInput | Prisma.TenantLocationUpdateManyWithWhereWithoutStateInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutStateNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput> | Prisma.TenantLocationCreateWithoutStateInput[] | Prisma.TenantLocationUncheckedCreateWithoutStateInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutStateInput | Prisma.TenantLocationCreateOrConnectWithoutStateInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutStateInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutStateInput[]
+  createMany?: Prisma.TenantLocationCreateManyStateInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutStateInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutStateInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutStateInput | Prisma.TenantLocationUpdateManyWithWhereWithoutStateInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+}
+
+export type TenantLocationCreateNestedManyWithoutVillageInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput> | Prisma.TenantLocationCreateWithoutVillageInput[] | Prisma.TenantLocationUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutVillageInput | Prisma.TenantLocationCreateOrConnectWithoutVillageInput[]
+  createMany?: Prisma.TenantLocationCreateManyVillageInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUncheckedCreateNestedManyWithoutVillageInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput> | Prisma.TenantLocationCreateWithoutVillageInput[] | Prisma.TenantLocationUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutVillageInput | Prisma.TenantLocationCreateOrConnectWithoutVillageInput[]
+  createMany?: Prisma.TenantLocationCreateManyVillageInputEnvelope
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+}
+
+export type TenantLocationUpdateManyWithoutVillageNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput> | Prisma.TenantLocationCreateWithoutVillageInput[] | Prisma.TenantLocationUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutVillageInput | Prisma.TenantLocationCreateOrConnectWithoutVillageInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutVillageInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutVillageInput[]
+  createMany?: Prisma.TenantLocationCreateManyVillageInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutVillageInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutVillageInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutVillageInput | Prisma.TenantLocationUpdateManyWithWhereWithoutVillageInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutVillageNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput> | Prisma.TenantLocationCreateWithoutVillageInput[] | Prisma.TenantLocationUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.TenantLocationCreateOrConnectWithoutVillageInput | Prisma.TenantLocationCreateOrConnectWithoutVillageInput[]
+  upsert?: Prisma.TenantLocationUpsertWithWhereUniqueWithoutVillageInput | Prisma.TenantLocationUpsertWithWhereUniqueWithoutVillageInput[]
+  createMany?: Prisma.TenantLocationCreateManyVillageInputEnvelope
+  set?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  disconnect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  delete?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  connect?: Prisma.TenantLocationWhereUniqueInput | Prisma.TenantLocationWhereUniqueInput[]
+  update?: Prisma.TenantLocationUpdateWithWhereUniqueWithoutVillageInput | Prisma.TenantLocationUpdateWithWhereUniqueWithoutVillageInput[]
+  updateMany?: Prisma.TenantLocationUpdateManyWithWhereWithoutVillageInput | Prisma.TenantLocationUpdateManyWithWhereWithoutVillageInput[]
+  deleteMany?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
 }
 
 export type TenantLocationCreateNestedOneWithoutPickupsInput = {
@@ -666,6 +886,239 @@ export type TenantLocationUpdateOneWithoutVehiclesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TenantLocationUpdateToOneWithWhereWithoutVehiclesInput, Prisma.TenantLocationUpdateWithoutVehiclesInput>, Prisma.TenantLocationUncheckedUpdateWithoutVehiclesInput>
 }
 
+export type TenantLocationCreateWithoutCountryInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
+  pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationUncheckedCreateWithoutCountryInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationCreateOrConnectWithoutCountryInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput>
+}
+
+export type TenantLocationCreateManyCountryInputEnvelope = {
+  data: Prisma.TenantLocationCreateManyCountryInput | Prisma.TenantLocationCreateManyCountryInput[]
+  skipDuplicates?: boolean
+}
+
+export type TenantLocationUpsertWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  update: Prisma.XOR<Prisma.TenantLocationUpdateWithoutCountryInput, Prisma.TenantLocationUncheckedUpdateWithoutCountryInput>
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutCountryInput, Prisma.TenantLocationUncheckedCreateWithoutCountryInput>
+}
+
+export type TenantLocationUpdateWithWhereUniqueWithoutCountryInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateWithoutCountryInput, Prisma.TenantLocationUncheckedUpdateWithoutCountryInput>
+}
+
+export type TenantLocationUpdateManyWithWhereWithoutCountryInput = {
+  where: Prisma.TenantLocationScalarWhereInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateManyMutationInput, Prisma.TenantLocationUncheckedUpdateManyWithoutCountryInput>
+}
+
+export type TenantLocationScalarWhereInput = {
+  AND?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+  OR?: Prisma.TenantLocationScalarWhereInput[]
+  NOT?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
+  id?: Prisma.StringFilter<"TenantLocation"> | string
+  location?: Prisma.StringFilter<"TenantLocation"> | string
+  pickupEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
+  returnEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
+  deliveryFee?: Prisma.FloatFilter<"TenantLocation"> | number
+  collectionFee?: Prisma.FloatFilter<"TenantLocation"> | number
+  tenantId?: Prisma.StringFilter<"TenantLocation"> | string
+  minimumRentalPeriod?: Prisma.IntFilter<"TenantLocation"> | number
+  isDeleted?: Prisma.BoolFilter<"TenantLocation"> | boolean
+  updatedAt?: Prisma.DateTimeNullableFilter<"TenantLocation"> | Date | string | null
+  updatedBy?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  storefrontEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"TenantLocation"> | Date | string
+  street?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  villageId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  stateId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+  countryId?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
+}
+
+export type TenantLocationCreateWithoutStateInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
+  pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationUncheckedCreateWithoutStateInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  countryId?: string | null
+  pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationCreateOrConnectWithoutStateInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput>
+}
+
+export type TenantLocationCreateManyStateInputEnvelope = {
+  data: Prisma.TenantLocationCreateManyStateInput | Prisma.TenantLocationCreateManyStateInput[]
+  skipDuplicates?: boolean
+}
+
+export type TenantLocationUpsertWithWhereUniqueWithoutStateInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  update: Prisma.XOR<Prisma.TenantLocationUpdateWithoutStateInput, Prisma.TenantLocationUncheckedUpdateWithoutStateInput>
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutStateInput, Prisma.TenantLocationUncheckedCreateWithoutStateInput>
+}
+
+export type TenantLocationUpdateWithWhereUniqueWithoutStateInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateWithoutStateInput, Prisma.TenantLocationUncheckedUpdateWithoutStateInput>
+}
+
+export type TenantLocationUpdateManyWithWhereWithoutStateInput = {
+  where: Prisma.TenantLocationScalarWhereInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateManyMutationInput, Prisma.TenantLocationUncheckedUpdateManyWithoutStateInput>
+}
+
+export type TenantLocationCreateWithoutVillageInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationUncheckedCreateWithoutVillageInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  stateId?: string | null
+  countryId?: string | null
+  pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
+  returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
+  vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
+}
+
+export type TenantLocationCreateOrConnectWithoutVillageInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput>
+}
+
+export type TenantLocationCreateManyVillageInputEnvelope = {
+  data: Prisma.TenantLocationCreateManyVillageInput | Prisma.TenantLocationCreateManyVillageInput[]
+  skipDuplicates?: boolean
+}
+
+export type TenantLocationUpsertWithWhereUniqueWithoutVillageInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  update: Prisma.XOR<Prisma.TenantLocationUpdateWithoutVillageInput, Prisma.TenantLocationUncheckedUpdateWithoutVillageInput>
+  create: Prisma.XOR<Prisma.TenantLocationCreateWithoutVillageInput, Prisma.TenantLocationUncheckedCreateWithoutVillageInput>
+}
+
+export type TenantLocationUpdateWithWhereUniqueWithoutVillageInput = {
+  where: Prisma.TenantLocationWhereUniqueInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateWithoutVillageInput, Prisma.TenantLocationUncheckedUpdateWithoutVillageInput>
+}
+
+export type TenantLocationUpdateManyWithWhereWithoutVillageInput = {
+  where: Prisma.TenantLocationScalarWhereInput
+  data: Prisma.XOR<Prisma.TenantLocationUpdateManyMutationInput, Prisma.TenantLocationUncheckedUpdateManyWithoutVillageInput>
+}
+
 export type TenantLocationCreateWithoutPickupsInput = {
   id?: string
   location: string
@@ -679,8 +1132,12 @@ export type TenantLocationCreateWithoutPickupsInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
-  returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
+  street?: string | null
   tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
+  returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
   vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
 }
 
@@ -698,6 +1155,10 @@ export type TenantLocationUncheckedCreateWithoutPickupsInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
   returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
 }
@@ -720,8 +1181,12 @@ export type TenantLocationCreateWithoutReturnsInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
-  pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
+  street?: string | null
   tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
+  pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
   vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
 }
 
@@ -739,6 +1204,10 @@ export type TenantLocationUncheckedCreateWithoutReturnsInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
   pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
 }
@@ -772,8 +1241,12 @@ export type TenantLocationUpdateWithoutPickupsInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
+  returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
   vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
 }
 
@@ -791,6 +1264,10 @@ export type TenantLocationUncheckedUpdateWithoutPickupsInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
 }
@@ -819,8 +1296,12 @@ export type TenantLocationUpdateWithoutReturnsInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
+  pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
   vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
 }
 
@@ -838,6 +1319,10 @@ export type TenantLocationUncheckedUpdateWithoutReturnsInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
 }
@@ -855,6 +1340,10 @@ export type TenantLocationCreateWithoutTenantInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
   pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
   vehicles?: Prisma.VehicleCreateNestedManyWithoutLocationInput
@@ -873,6 +1362,10 @@ export type TenantLocationUncheckedCreateWithoutTenantInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
   pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
   vehicles?: Prisma.VehicleUncheckedCreateNestedManyWithoutLocationInput
@@ -904,25 +1397,6 @@ export type TenantLocationUpdateManyWithWhereWithoutTenantInput = {
   data: Prisma.XOR<Prisma.TenantLocationUpdateManyMutationInput, Prisma.TenantLocationUncheckedUpdateManyWithoutTenantInput>
 }
 
-export type TenantLocationScalarWhereInput = {
-  AND?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
-  OR?: Prisma.TenantLocationScalarWhereInput[]
-  NOT?: Prisma.TenantLocationScalarWhereInput | Prisma.TenantLocationScalarWhereInput[]
-  id?: Prisma.StringFilter<"TenantLocation"> | string
-  location?: Prisma.StringFilter<"TenantLocation"> | string
-  pickupEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
-  returnEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
-  deliveryFee?: Prisma.FloatFilter<"TenantLocation"> | number
-  collectionFee?: Prisma.FloatFilter<"TenantLocation"> | number
-  tenantId?: Prisma.StringFilter<"TenantLocation"> | string
-  minimumRentalPeriod?: Prisma.IntFilter<"TenantLocation"> | number
-  isDeleted?: Prisma.BoolFilter<"TenantLocation"> | boolean
-  updatedAt?: Prisma.DateTimeNullableFilter<"TenantLocation"> | Date | string | null
-  updatedBy?: Prisma.StringNullableFilter<"TenantLocation"> | string | null
-  storefrontEnabled?: Prisma.BoolFilter<"TenantLocation"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"TenantLocation"> | Date | string
-}
-
 export type TenantLocationCreateWithoutVehiclesInput = {
   id?: string
   location: string
@@ -936,9 +1410,13 @@ export type TenantLocationCreateWithoutVehiclesInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
+  country?: Prisma.CountryCreateNestedOneWithoutTenantLocationsInput
+  state?: Prisma.StateCreateNestedOneWithoutTenantLocationsInput
+  village?: Prisma.VillageCreateNestedOneWithoutTenantLocationsInput
   pickups?: Prisma.RentalCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalCreateNestedManyWithoutReturnInput
-  tenant: Prisma.TenantCreateNestedOneWithoutTenantLocationsInput
 }
 
 export type TenantLocationUncheckedCreateWithoutVehiclesInput = {
@@ -955,6 +1433,10 @@ export type TenantLocationUncheckedCreateWithoutVehiclesInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
   pickups?: Prisma.RentalUncheckedCreateNestedManyWithoutPickupInput
   returns?: Prisma.RentalUncheckedCreateNestedManyWithoutReturnInput
 }
@@ -988,9 +1470,13 @@ export type TenantLocationUpdateWithoutVehiclesInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
   pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
 }
 
 export type TenantLocationUncheckedUpdateWithoutVehiclesInput = {
@@ -1007,8 +1493,258 @@ export type TenantLocationUncheckedUpdateWithoutVehiclesInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
+}
+
+export type TenantLocationCreateManyCountryInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+}
+
+export type TenantLocationUpdateWithoutCountryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
+  pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateWithoutCountryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutCountryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type TenantLocationCreateManyStateInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  countryId?: string | null
+}
+
+export type TenantLocationUpdateWithoutStateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
+  pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateWithoutStateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutStateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type TenantLocationCreateManyVillageInput = {
+  id?: string
+  location: string
+  pickupEnabled: boolean
+  returnEnabled: boolean
+  deliveryFee: number
+  collectionFee: number
+  tenantId: string
+  minimumRentalPeriod?: number
+  isDeleted?: boolean
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontEnabled?: boolean
+  createdAt?: Date | string
+  street?: string | null
+  stateId?: string | null
+  countryId?: string | null
+}
+
+export type TenantLocationUpdateWithoutVillageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTenantLocationsNestedInput
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateWithoutVillageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
+  returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
+  vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
+}
+
+export type TenantLocationUncheckedUpdateManyWithoutVillageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  pickupEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  returnEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deliveryFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  collectionFee?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  minimumRentalPeriod?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TenantLocationCreateManyTenantInput = {
@@ -1024,6 +1760,10 @@ export type TenantLocationCreateManyTenantInput = {
   updatedBy?: string | null
   storefrontEnabled?: boolean
   createdAt?: Date | string
+  street?: string | null
+  villageId?: string | null
+  stateId?: string | null
+  countryId?: string | null
 }
 
 export type TenantLocationUpdateWithoutTenantInput = {
@@ -1039,6 +1779,10 @@ export type TenantLocationUpdateWithoutTenantInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.CountryUpdateOneWithoutTenantLocationsNestedInput
+  state?: Prisma.StateUpdateOneWithoutTenantLocationsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutTenantLocationsNestedInput
   pickups?: Prisma.RentalUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUpdateManyWithoutReturnNestedInput
   vehicles?: Prisma.VehicleUpdateManyWithoutLocationNestedInput
@@ -1057,6 +1801,10 @@ export type TenantLocationUncheckedUpdateWithoutTenantInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pickups?: Prisma.RentalUncheckedUpdateManyWithoutPickupNestedInput
   returns?: Prisma.RentalUncheckedUpdateManyWithoutReturnNestedInput
   vehicles?: Prisma.VehicleUncheckedUpdateManyWithoutLocationNestedInput
@@ -1075,6 +1823,10 @@ export type TenantLocationUncheckedUpdateManyWithoutTenantInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   storefrontEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1140,9 +1892,16 @@ export type TenantLocationSelect<ExtArgs extends runtime.Types.Extensions.Intern
   updatedBy?: boolean
   storefrontEnabled?: boolean
   createdAt?: boolean
+  street?: boolean
+  villageId?: boolean
+  stateId?: boolean
+  countryId?: boolean
+  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
   pickups?: boolean | Prisma.TenantLocation$pickupsArgs<ExtArgs>
   returns?: boolean | Prisma.TenantLocation$returnsArgs<ExtArgs>
-  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   vehicles?: boolean | Prisma.TenantLocation$vehiclesArgs<ExtArgs>
   _count?: boolean | Prisma.TenantLocationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tenantLocation"]>
@@ -1161,7 +1920,14 @@ export type TenantLocationSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   updatedBy?: boolean
   storefrontEnabled?: boolean
   createdAt?: boolean
+  street?: boolean
+  villageId?: boolean
+  stateId?: boolean
+  countryId?: boolean
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
 }, ExtArgs["result"]["tenantLocation"]>
 
 export type TenantLocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1178,7 +1944,14 @@ export type TenantLocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   updatedBy?: boolean
   storefrontEnabled?: boolean
   createdAt?: boolean
+  street?: boolean
+  villageId?: boolean
+  stateId?: boolean
+  countryId?: boolean
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
 }, ExtArgs["result"]["tenantLocation"]>
 
 export type TenantLocationSelectScalar = {
@@ -1195,29 +1968,45 @@ export type TenantLocationSelectScalar = {
   updatedBy?: boolean
   storefrontEnabled?: boolean
   createdAt?: boolean
+  street?: boolean
+  villageId?: boolean
+  stateId?: boolean
+  countryId?: boolean
 }
 
-export type TenantLocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "location" | "pickupEnabled" | "returnEnabled" | "deliveryFee" | "collectionFee" | "tenantId" | "minimumRentalPeriod" | "isDeleted" | "updatedAt" | "updatedBy" | "storefrontEnabled" | "createdAt", ExtArgs["result"]["tenantLocation"]>
+export type TenantLocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "location" | "pickupEnabled" | "returnEnabled" | "deliveryFee" | "collectionFee" | "tenantId" | "minimumRentalPeriod" | "isDeleted" | "updatedAt" | "updatedBy" | "storefrontEnabled" | "createdAt" | "street" | "villageId" | "stateId" | "countryId", ExtArgs["result"]["tenantLocation"]>
 export type TenantLocationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
   pickups?: boolean | Prisma.TenantLocation$pickupsArgs<ExtArgs>
   returns?: boolean | Prisma.TenantLocation$returnsArgs<ExtArgs>
-  tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   vehicles?: boolean | Prisma.TenantLocation$vehiclesArgs<ExtArgs>
   _count?: boolean | Prisma.TenantLocationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TenantLocationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
 }
 export type TenantLocationIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  country?: boolean | Prisma.TenantLocation$countryArgs<ExtArgs>
+  state?: boolean | Prisma.TenantLocation$stateArgs<ExtArgs>
+  village?: boolean | Prisma.TenantLocation$villageArgs<ExtArgs>
 }
 
 export type $TenantLocationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TenantLocation"
   objects: {
+    tenant: Prisma.$TenantPayload<ExtArgs>
+    country: Prisma.$CountryPayload<ExtArgs> | null
+    state: Prisma.$StatePayload<ExtArgs> | null
+    village: Prisma.$VillagePayload<ExtArgs> | null
     pickups: Prisma.$RentalPayload<ExtArgs>[]
     returns: Prisma.$RentalPayload<ExtArgs>[]
-    tenant: Prisma.$TenantPayload<ExtArgs>
     vehicles: Prisma.$VehiclePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1234,6 +2023,10 @@ export type $TenantLocationPayload<ExtArgs extends runtime.Types.Extensions.Inte
     updatedBy: string | null
     storefrontEnabled: boolean
     createdAt: Date
+    street: string | null
+    villageId: string | null
+    stateId: string | null
+    countryId: string | null
   }, ExtArgs["result"]["tenantLocation"]>
   composites: {}
 }
@@ -1628,9 +2421,12 @@ readonly fields: TenantLocationFieldRefs;
  */
 export interface Prisma__TenantLocationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  country<T extends Prisma.TenantLocation$countryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$countryArgs<ExtArgs>>): Prisma.Prisma__CountryClient<runtime.Types.Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  state<T extends Prisma.TenantLocation$stateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$stateArgs<ExtArgs>>): Prisma.Prisma__StateClient<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  village<T extends Prisma.TenantLocation$villageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$villageArgs<ExtArgs>>): Prisma.Prisma__VillageClient<runtime.Types.Result.GetResult<Prisma.$VillagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   pickups<T extends Prisma.TenantLocation$pickupsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$pickupsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   returns<T extends Prisma.TenantLocation$returnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$returnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   vehicles<T extends Prisma.TenantLocation$vehiclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantLocation$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1674,6 +2470,10 @@ export interface TenantLocationFieldRefs {
   readonly updatedBy: Prisma.FieldRef<"TenantLocation", 'String'>
   readonly storefrontEnabled: Prisma.FieldRef<"TenantLocation", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"TenantLocation", 'DateTime'>
+  readonly street: Prisma.FieldRef<"TenantLocation", 'String'>
+  readonly villageId: Prisma.FieldRef<"TenantLocation", 'String'>
+  readonly stateId: Prisma.FieldRef<"TenantLocation", 'String'>
+  readonly countryId: Prisma.FieldRef<"TenantLocation", 'String'>
 }
     
 
@@ -2072,6 +2872,63 @@ export type TenantLocationDeleteManyArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many TenantLocations to delete.
    */
   limit?: number
+}
+
+/**
+ * TenantLocation.country
+ */
+export type TenantLocation$countryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Country
+   */
+  select?: Prisma.CountrySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Country
+   */
+  omit?: Prisma.CountryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CountryInclude<ExtArgs> | null
+  where?: Prisma.CountryWhereInput
+}
+
+/**
+ * TenantLocation.state
+ */
+export type TenantLocation$stateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the State
+   */
+  select?: Prisma.StateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the State
+   */
+  omit?: Prisma.StateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StateInclude<ExtArgs> | null
+  where?: Prisma.StateWhereInput
+}
+
+/**
+ * TenantLocation.village
+ */
+export type TenantLocation$villageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Village
+   */
+  select?: Prisma.VillageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Village
+   */
+  omit?: Prisma.VillageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VillageInclude<ExtArgs> | null
+  where?: Prisma.VillageWhereInput
 }
 
 /**

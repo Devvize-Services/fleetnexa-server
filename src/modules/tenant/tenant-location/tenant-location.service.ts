@@ -57,8 +57,11 @@ export class TenantLocationService {
 
       await this.prisma.tenantLocation.create({
         data: {
-          id: uuidv4(),
           location: data.location,
+          street: data.street,
+          villageId: data.villageId,
+          stateId: data.stateId,
+          countryId: data.countryId,
           tenantId: tenant.id,
           pickupEnabled: data.pickupEnabled,
           returnEnabled: data.returnEnabled,

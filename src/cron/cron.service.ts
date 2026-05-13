@@ -23,7 +23,6 @@ export class CronService {
   @Cron('* * * * *')
   async monthlyStatsCron() {
     try {
-      this.logger.log('Running monthly stats cron...');
       await this.runMonthlyStatCron();
     } catch (error) {
       this.logger.error('Monthly stats cron failed', error);
@@ -33,7 +32,6 @@ export class CronService {
   @Cron('* * * * *')
   async yearlyStatsCron() {
     try {
-      this.logger.log('Running yearly stats cron...');
       await this.runYearlyStatCron();
     } catch (error) {
       this.logger.error('Yearly stats cron failed', error);
@@ -43,7 +41,6 @@ export class CronService {
   @Cron('0 * * * *')
   async notificationCron() {
     try {
-      this.logger.log('Running notification cron...');
       await this.runUnconfirmedRentalsCron();
       await this.runUpcomingRentalsCron();
       await this.runUpcomingReturnsCron();

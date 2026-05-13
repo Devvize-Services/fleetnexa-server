@@ -97,6 +97,8 @@ model Country {
   presetLocations    PresetLocation[]
   states             State[]
   storefrontUser     StorefrontUser[]
+
+  tenantLocations TenantLocation[]
 }
 
 model State {
@@ -112,6 +114,8 @@ model State {
   country           Country           @relation(fields: [countryId], references: [id])
   storefrontUser    StorefrontUser[]
   villages          Village[]
+
+  tenantLocations TenantLocation[]
 }
 
 model Village {
@@ -124,6 +128,8 @@ model Village {
   presetLocations   PresetLocation[]
   storefrontUser    StorefrontUser[]
   state             State             @relation(fields: [stateId], references: [id])
+
+  tenantLocations TenantLocation[]
 }
 
 model MaintenanceService {

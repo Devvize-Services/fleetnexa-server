@@ -328,11 +328,6 @@ export type LatePolicyUncheckedUpdateManyInput = {
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type LatePolicyNullableScalarRelationFilter = {
-  is?: Prisma.LatePolicyWhereInput | null
-  isNot?: Prisma.LatePolicyWhereInput | null
-}
-
 export type LatePolicyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   amount?: Prisma.SortOrder
@@ -365,6 +360,11 @@ export type LatePolicyMinOrderByAggregateInput = {
 export type LatePolicySumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
   maxHours?: Prisma.SortOrder
+}
+
+export type LatePolicyNullableScalarRelationFilter = {
+  is?: Prisma.LatePolicyWhereInput | null
+  isNot?: Prisma.LatePolicyWhereInput | null
 }
 
 export type LatePolicyCreateNestedOneWithoutTenantInput = {

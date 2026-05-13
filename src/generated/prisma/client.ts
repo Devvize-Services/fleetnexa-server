@@ -350,15 +350,25 @@ export type PlanFeatures = Prisma.PlanFeaturesModel
  */
 export type PlanDetails = Prisma.PlanDetailsModel
 /**
+ * Model TenantLocation
+ * 
+ */
+export type TenantLocation = Prisma.TenantLocationModel
+/**
+ * Model CancellationPolicy
+ * 
+ */
+export type CancellationPolicy = Prisma.CancellationPolicyModel
+/**
+ * Model LatePolicy
+ * 
+ */
+export type LatePolicy = Prisma.LatePolicyModel
+/**
  * Model Tenant
  * 
  */
 export type Tenant = Prisma.TenantModel
-/**
- * Model EmailVerification
- * 
- */
-export type EmailVerification = Prisma.EmailVerificationModel
 /**
  * Model PaymentMethod
  * 
@@ -369,26 +379,6 @@ export type PaymentMethod = Prisma.PaymentMethodModel
  * 
  */
 export type Address = Prisma.AddressModel
-/**
- * Model TenantLocation
- * 
- */
-export type TenantLocation = Prisma.TenantLocationModel
-/**
- * Model TenantInsurance
- * 
- */
-export type TenantInsurance = Prisma.TenantInsuranceModel
-/**
- * Model TenantEquipment
- * 
- */
-export type TenantEquipment = Prisma.TenantEquipmentModel
-/**
- * Model TenantService
- * 
- */
-export type TenantService = Prisma.TenantServiceModel
 /**
  * Model TenantSubscription
  * 
@@ -405,16 +395,6 @@ export type TenantContact = Prisma.TenantContactModel
  */
 export type TenantReminders = Prisma.TenantRemindersModel
 /**
- * Model CancellationPolicy
- * 
- */
-export type CancellationPolicy = Prisma.CancellationPolicyModel
-/**
- * Model LatePolicy
- * 
- */
-export type LatePolicy = Prisma.LatePolicyModel
-/**
  * Model TenantViolation
  * 
  */
@@ -429,6 +409,21 @@ export type TenantVendor = Prisma.TenantVendorModel
  * 
  */
 export type VerificationRequest = Prisma.VerificationRequestModel
+/**
+ * Model TenantInsurance
+ * 
+ */
+export type TenantInsurance = Prisma.TenantInsuranceModel
+/**
+ * Model TenantEquipment
+ * 
+ */
+export type TenantEquipment = Prisma.TenantEquipmentModel
+/**
+ * Model TenantService
+ * 
+ */
+export type TenantService = Prisma.TenantServiceModel
 /**
  * Model Transactions
  * 
