@@ -45,38 +45,6 @@ export class CountryService {
     }
   }
 
-  async getCountriesFromApi() {
-    try {
-      const res = await this.api.get('countries');
-
-      for (const item of res.data) {
-        await this.prisma.country.upsert({
-          where: {
-            code: item.iso2,
-          },
-          update: {
-            country: item.name,
-            phoneCode: item.phonecode,
-            iso3: item.iso3,
-            cscId: item.id,
-            currency: item.currency,
-          },
-          create: {
-            cscId: item.id,
-            iso3: item.iso3,
-            country: item.name,
-            code: item.iso2,
-            phoneCode: item.phonecode,
-            currency: item.currency,
-          },
-        });
-      }
-    } catch (error) {
-      this.logger.error('Error fetching countries from external API', error);
-      throw error;
-    }
-  }
-
   async getCountryById(id: string) {
     try {
       return this.prisma.country.findUnique({

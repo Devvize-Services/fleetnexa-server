@@ -45,23 +45,6 @@ export class VillageService {
       let state: State | null = null;
       let country: Country | null = null;
 
-      if (data.stateId) {
-        state = await this.prisma.state.findUnique({
-          where: { id: data.stateId },
-        });
-      } else if (data.state) {
-        state = await this.prisma.state.findFirst({
-          where: {
-            state: { equals: data.state, mode: 'insensitive' },
-          },
-        });
-      }
-
-      if (!state) {
-        this.logger.warn(`State with ID ${data.stateId} not found`);
-        throw new NotFoundException('State not found');
-      }
-
       if (data.countryId) {
         country = await this.prisma.country.findUnique({
           where: { id: data.countryId },
@@ -73,9 +56,28 @@ export class VillageService {
           },
         });
       }
+
       if (!country) {
         this.logger.warn(`Country with ID ${data.countryId} not found`);
         throw new NotFoundException('Country not found');
+      }
+
+      if (data.stateId) {
+        state = await this.prisma.state.findUnique({
+          where: { id: data.stateId, countryId: country.id },
+        });
+      } else if (data.state) {
+        state = await this.prisma.state.findFirst({
+          where: {
+            state: { equals: data.state, mode: 'insensitive' },
+            countryId: country.id,
+          },
+        });
+      }
+
+      if (!state) {
+        this.logger.warn(`State with ID ${data.stateId} not found`);
+        throw new NotFoundException('State not found');
       }
 
       const existing = await this.prisma.village.findFirst({
@@ -243,91 +245,6 @@ export class VillageService {
       };
     } catch (error) {
       this.logger.error('Error deleting village', error);
-      throw error;
-    }
-  }
-
-  async processVillageFile() {
-    const fileUrl =
-      'https://devvize-services.s3.us-east-1.amazonaws.com/cities.xlsx';
-
-    try {
-      const response = await axios.get(fileUrl, {
-        responseType: 'arraybuffer',
-      });
-
-      const workbook = XLSX.read(response.data, { type: 'buffer' });
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      const citiesData = XLSX.utils.sheet_to_json(worksheet, {
-        header: 1,
-      });
-
-      citiesData.shift();
-
-      for (const row of citiesData) {
-        const [id, village, country, state] = row as any[];
-
-        const foundCountry = await this.prisma.country.findFirst({
-          where: {
-            country: { equals: country, mode: 'insensitive' },
-          },
-        });
-
-        if (!foundCountry) {
-          this.logger.warn(
-            `Country not found for city: ${village}, country: ${country}`,
-          );
-          continue;
-        }
-
-        const foundState = await this.prisma.state.findFirst({
-          where: {
-            state: { equals: state, mode: 'insensitive' },
-            countryId: foundCountry.id,
-          },
-        });
-
-        if (!foundState) {
-          this.logger.warn(
-            `State "${state}" not found for country "${country} while processing city: ${village}"`,
-          );
-          continue;
-        }
-
-        const existingCity = await this.prisma.village.findFirst({
-          where: {
-            village: { equals: village, mode: 'insensitive' },
-            stateId: foundState.id,
-          },
-        });
-
-        if (existingCity?.cscId) {
-          this.logger.log(`City already exists with cscId: ${village}`);
-        } else if (existingCity && !existingCity.cscId) {
-          await this.prisma.village.update({
-            where: { id: existingCity.id },
-            data: {
-              village,
-              cscId: String(id),
-            },
-          });
-          this.logger.log(`Updated existing city with cscId: ${village}`);
-        } else {
-          await this.prisma.village.create({
-            data: {
-              village,
-              cscId: String(id),
-              stateId: foundState.id,
-            },
-          });
-          this.logger.log(`Created new city: ${village}`);
-        }
-      }
-
-      return { message: 'City data processed successfully' };
-    } catch (error) {
-      this.logger.error('Error processing cities file', error);
       throw error;
     }
   }

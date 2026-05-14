@@ -20,11 +20,6 @@ export class CountryController {
     return this.service.getCountries();
   }
 
-  @Get('api')
-  async getCountriesFromApi() {
-    return this.service.getCountriesFromApi();
-  }
-
   @Post('bulk')
   @UseInterceptors(FileInterceptor('file'))
   async bulkUpload(@UploadedFile() file: Express.Multer.File) {
