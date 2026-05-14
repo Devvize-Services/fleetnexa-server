@@ -245,6 +245,21 @@ export class TenantService {
           },
         });
 
+        const mainLocation = await tx.tenantLocation.findFirst({
+          where: { tenantId: tenant.id, location: 'Main Office' },
+        });
+
+        if (mainLocation) {
+          await tx.tenantLocation.update({
+            where: { id: mainLocation.id },
+            data: {
+              countryId: data.address.countryId,
+              stateId: data.address.stateId,
+              villageId: data.address.villageId,
+            },
+          });
+        }
+
         await tx.tenant.update({
           where: { id: tenant.id },
           data: {

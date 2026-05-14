@@ -48,10 +48,10 @@ export class TenantLocationService {
 
       if (existing) {
         this.logger.warn(
-          `Tenant location with name ${data.location} already exists for tenant ${tenant.tenantCode}`,
+          `Company Location with name ${data.location} already exists for tenant ${tenant.tenantCode}`,
         );
         throw new ConflictException(
-          'Tenant location with this name already exists',
+          'Company Location with this name already exists',
         );
       }
 
@@ -77,7 +77,7 @@ export class TenantLocationService {
 
       const locations = await this.getAllTenantLocations(tenant);
       return {
-        message: 'Location created successfully',
+        message: 'Company Location created successfully',
         locations,
       };
     } catch (error) {
@@ -98,9 +98,9 @@ export class TenantLocationService {
 
       if (!location) {
         this.logger.warn(
-          `Tenant location with id ${data.id} not found for tenant ${tenant.tenantCode}`,
+          `Company location with id ${data.id} not found for tenant ${tenant.tenantCode}`,
         );
-        throw new NotFoundException('Location not found');
+        throw new NotFoundException('Company Location not found');
       }
 
       await this.prisma.tenantLocation.update({
@@ -115,12 +115,16 @@ export class TenantLocationService {
           minimumRentalPeriod: data.minimumRentalPeriod,
           updatedAt: new Date(),
           updatedBy: user.id,
+          stateId: data.stateId,
+          countryId: data.countryId,
+          street: data.street,
+          villageId: data.villageId,
         },
       });
 
       const locations = await this.getAllTenantLocations(tenant);
       return {
-        message: 'Location updated successfully',
+        message: 'Company Location updated successfully',
         locations,
       };
     } catch (error) {
@@ -137,9 +141,9 @@ export class TenantLocationService {
 
       if (!location) {
         this.logger.warn(
-          `Tenant location with id ${id} not found for tenant ${tenant.tenantCode}`,
+          `Company Location with id ${id} not found for tenant ${tenant.tenantCode}`,
         );
-        throw new NotFoundException('Tenant location not found');
+        throw new NotFoundException('Company Location not found');
       }
 
       await this.prisma.tenantLocation.update({
@@ -153,7 +157,7 @@ export class TenantLocationService {
 
       const locations = await this.getAllTenantLocations(tenant);
       return {
-        message: 'Tenant location deleted successfully',
+        message: 'Company Location deleted successfully',
         locations,
       };
     } catch (error) {
@@ -173,6 +177,7 @@ export class TenantLocationService {
           data: {
             id: uuidv4(),
             location: 'Main Office',
+            countryId: country.id,
             tenantId: tenant.id,
             pickupEnabled: true,
             returnEnabled: true,
@@ -192,6 +197,7 @@ export class TenantLocationService {
               id: uuidv4(),
               location: location.location,
               tenantId: tenant.id,
+              countryId: country.id,
               pickupEnabled: true,
               returnEnabled: true,
               deliveryFee: 0,
