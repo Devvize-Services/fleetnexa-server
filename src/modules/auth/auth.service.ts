@@ -161,21 +161,26 @@ export class AuthService {
 
   async createStorefrontUser(data: StorefrontAuthDto) {
     try {
-      const [existingEmail, existingLicense] = await Promise.all([
-        this.prisma.storefrontUser.findUnique({ where: { email: data.email } }),
-        this.prisma.storefrontUser.findFirst({
-          where: { driverLicenseNumber: data.licenseNumber },
-        }),
-      ]);
+      const existingEmail = await this.prisma.storefrontUser.findUnique({
+        where: { email: data.email },
+      });
 
-      if (existingEmail || existingLicense) {
-        this.logger.warn('Registration conflict', {
-          emailConflict: !!existingEmail,
-          licenseConflict: !!existingLicense,
-        });
-        throw new ConflictException(
-          'An account with these details already exists.',
+      if (existingEmail) {
+        this.logger.warn(
+          `Registration failed: Email ${data.email} already in use.`,
         );
+        throw new ConflictException('Email already in use');
+      }
+
+      const existingLicense = await this.prisma.storefrontUser.findUnique({
+        where: { driverLicenseNumber: data.licenseNumber },
+      });
+
+      if (existingLicense) {
+        this.logger.warn(
+          `Registration failed: Driver license number ${data.licenseNumber} already in use.`,
+        );
+        throw new ConflictException('Driver license number already in use');
       }
 
       const salt = await bcrypt.genSalt(10);
@@ -192,7 +197,7 @@ export class AuthService {
         licenseExpiry: new Date(data.licenseExpiry),
         licenseIssued: new Date(data.licenseIssued),
         license: data.license,
-        dateOfBirth: data.dateOfBirth,
+        dateOfBirth: new Date(data.dateOfBirth),
         street: data.street || '',
         countryId: data.countryId || null,
         stateId: data.stateId || null,
