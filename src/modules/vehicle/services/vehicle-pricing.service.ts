@@ -1,38 +1,41 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { VehicleDiscountDto } from '../dto/vehicle.dto.js';
-import { TxClient } from '../../../prisma/prisma.service.js';
 import { User } from '../../../generated/prisma/client.js';
+import { PrismaService } from '../../../prisma/prisma.service.js';
+import { VehicleDiscountDto } from '../dto/vehicle-dicount.dto.js';
+import { VehicleRepository } from '../vehicle.repository.js';
 
 @Injectable()
 export class VehiclePricingService {
   private readonly logger = new Logger(VehiclePricingService.name);
 
-  constructor() {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly vehicleRepo: VehicleRepository,
+  ) {}
 
-  async upsertVehicleDiscount(
-    tx: TxClient,
+  async updateVehicleDiscounts(
+    data: VehicleDiscountDto[],
     vehicleId: string,
-    discounts: VehicleDiscountDto[],
     user: User,
   ) {
     try {
-      if (!discounts || discounts.length === 0) {
-        await tx.vehicleDiscount.deleteMany({
+      if (!data || data.length === 0) {
+        await this.prisma.vehicleDiscount.deleteMany({
           where: { vehicleId },
         });
         return;
       }
 
-      await tx.vehicleDiscount.deleteMany({
+      await this.prisma.vehicleDiscount.deleteMany({
         where: {
           vehicleId,
-          id: { notIn: discounts.map((d) => d.id) },
+          id: { notIn: data.map((d) => d.id) },
         },
       });
 
       await Promise.all(
-        discounts.map((discount) =>
-          tx.vehicleDiscount.upsert({
+        data.map((discount) =>
+          this.prisma.vehicleDiscount.upsert({
             where: { id: discount.id },
             create: {
               id: discount.id,
@@ -56,10 +59,20 @@ export class VehiclePricingService {
           }),
         ),
       );
+
+      const vehicle = await this.vehicleRepo.getVehicleById(
+        vehicleId,
+        user.tenantId,
+      );
+
+      return {
+        message: 'Vehicle discounts updated successfully',
+        vehicle,
+      };
     } catch (error) {
       this.logger.error(
         error,
-        `Failed to upsert vehicle discount for vehicle: ${vehicleId}`,
+        `Failed to update vehicle discount for vehicle: ${vehicleId}`,
       );
       throw error;
     }

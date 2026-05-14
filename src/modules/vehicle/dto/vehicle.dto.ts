@@ -15,23 +15,6 @@ export class VehicleFeatureDto {
   feature: string;
 }
 
-export class VehicleDiscountDto {
-  @IsUUID()
-  id: string;
-
-  @IsNumber()
-  period: number;
-
-  @IsString()
-  periodPolicy: string;
-
-  @IsNumber()
-  amount: number;
-
-  @IsString()
-  discountPolicy: string;
-}
-
 export class VehicleDto {
   @IsUUID()
   id: string;
@@ -121,7 +104,31 @@ export class VehicleDto {
   @IsNumber()
   drivingExperience: number;
 
-  @IsArray()
+  @IsString()
   @IsOptional()
-  discounts?: VehicleDiscountDto[];
+  insuranceCompanyId?: string;
+
+  @IsString()
+  @IsOptional()
+  policyNumber?: string;
+
+  @IsString()
+  @IsOptional()
+  insuranceValidFrom?: string;
+
+  @IsString()
+  @IsOptional()
+  insuranceValidTo?: string;
+
+  @IsString()
+  @IsOptional()
+  registrationNumber?: string;
+
+  @IsString()
+  @IsOptional()
+  registrationValidFrom?: string;
+
+  @IsString()
+  @IsOptional()
+  registrationValidTo?: string;
 }

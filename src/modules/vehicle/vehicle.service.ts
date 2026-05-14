@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   ConflictException,
   Injectable,
   Logger,
@@ -8,24 +7,17 @@ import {
 import { VehicleRepository } from './vehicle.repository.js';
 import { PrismaService } from '../../prisma/prisma.service.js';
 import { TenantExtraService } from '../tenant/tenant-extra/tenant-extra.service.js';
-import {
-  Tenant,
-  User,
-  Vehicle,
-  VehicleEventType,
-} from '../../generated/prisma/client.js';
+import { Tenant, User } from '../../generated/prisma/client.js';
 import { VehicleDto } from './dto/vehicle.dto.js';
 import { StorageService } from '../storage/storage.service.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
-import { VehicleEventService } from './modules/vehicle-event/vehicle-event.service.js';
-import { VehicleEventDto } from './dto/vehicle-event.dto.js';
-import { BookingRepository } from '../booking/booking.repository.js';
-import { VehiclePricingService } from './services/vehicle-pricing.service.js';
 import { VehicleStatusService } from './services/vehicle-status.service.js';
 import { VehicleLocationService } from './services/vehicle-location.service.js';
 import { VehicleBookingService } from './services/vehicle-booking.service.js';
+import { VehicleDiscountDto } from './dto/vehicle-dicount.dto.js';
+import { VehiclePricingService } from './services/vehicle-pricing.service.js';
 
 @Injectable()
 export class VehicleService {
@@ -36,12 +28,10 @@ export class VehicleService {
     private readonly prisma: PrismaService,
     private readonly extrasService: TenantExtraService,
     private readonly storage: StorageService,
-    private readonly bookingRepo: BookingRepository,
-    private readonly vehicleEvent: VehicleEventService,
-    private readonly vehiclePricingService: VehiclePricingService,
     private readonly vehicleStatusService: VehicleStatusService,
     private readonly vehicleLocationService: VehicleLocationService,
     private readonly vehicleBookingService: VehicleBookingService,
+    private readonly vehiclePricingService: VehiclePricingService,
   ) {}
 
   async getTenantVehicles(tenant: Tenant) {
@@ -188,13 +178,6 @@ export class VehicleService {
               createdBy: user.username,
             },
           });
-
-          await this.vehiclePricingService.upsertVehicleDiscount(
-            tx,
-            data.id,
-            data.discounts || [],
-            user,
-          );
         },
         { maxWait: 5000, timeout: 10000 },
       );
@@ -273,13 +256,6 @@ export class VehicleService {
               drivingExperience: data.drivingExperience,
             },
           });
-
-          await this.vehiclePricingService.upsertVehicleDiscount(
-            tx,
-            data.id,
-            data.discounts || [],
-            user,
-          );
 
           return tx.vehicle.findUnique({ where: { id: data.id } });
         },
@@ -405,6 +381,18 @@ export class VehicleService {
     return await this.vehicleLocationService.updateVehicleLocation(
       data,
       tenant,
+      user,
+    );
+  }
+
+  async updateVehicleDiscounts(
+    data: VehicleDiscountDto[],
+    vehicleId: string,
+    user: User,
+  ) {
+    return await this.vehiclePricingService.updateVehicleDiscounts(
+      data,
+      vehicleId,
       user,
     );
   }

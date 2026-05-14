@@ -19,6 +19,7 @@ import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { Role } from '../../common/enums/role.enum.js';
 import { Roles } from '../auth/decorator/role.decorator.js';
+import { VehicleDiscountDto } from './dto/vehicle-dicount.dto.js';
 
 @Controller('vehicle')
 export class VehicleController {
@@ -139,5 +140,18 @@ export class VehicleController {
     const user = req.user;
 
     return this.service.updateVehicleStorefrontStatus(vehicleId, tenant, user);
+  }
+
+  @Post('discounts/:id')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateVehicleDiscounts(
+    @Request() req,
+    @Param('id') vehicleId: string,
+    @Body() data: VehicleDiscountDto[],
+  ) {
+    const user = req.user;
+
+    return await this.service.updateVehicleDiscounts(data, vehicleId, user);
   }
 }
