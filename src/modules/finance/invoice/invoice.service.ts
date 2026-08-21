@@ -11,7 +11,7 @@ import { FormatterService } from '../../../common/formatter/formatter.service';
 import { TenantExtraService } from '../../../modules/tenant/tenant-extra/tenant-extra.service';
 import { AwsService } from '../../../infrastructure/aws/aws.service';
 import { randomBytes } from 'crypto';
-import { ActivityService } from '../../../modules/activity/activity.service';
+import { ActivityService } from '../../../common/activity/activity.service';
 
 @Injectable()
 export class InvoiceService {

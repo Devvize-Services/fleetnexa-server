@@ -1,5 +1,4 @@
 import {
-  Controller,
   Get,
   Req,
   UseGuards,
@@ -9,7 +8,10 @@ import {
   Post,
   Put,
   Delete,
+  Res,
+  Controller,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import { BookingService } from './booking.service.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { Roles } from '../auth/decorator/role.decorator.js';
@@ -110,28 +112,40 @@ export class BookingController {
   @Post('cancel/:id')
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT)
-  async cancelBooking(@Request() req, @Param('id') id: string) {
+  async cancelBooking(
+    @Request() req,
+    @Param('id') id: string,
+    @Res() res: Response,
+  ) {
     const { tenant } = req.user;
     const user = req.user;
-    return this.bookingService.cancelBooking(id, tenant, user);
+    return this.bookingService.cancelBooking(id, tenant, user, res);
   }
 
   @Post('start')
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT)
-  async startBooking(@Request() req, @Body() data: ActionBookingDto) {
+  async startBooking(
+    @Request() req,
+    @Body() data: ActionBookingDto,
+    @Res() res: Response,
+  ) {
     const { tenant } = req.user;
     const user = req.user;
-    return this.bookingService.startBooking(data, tenant, user);
+    return this.bookingService.startBooking(data, tenant, user, res);
   }
 
   @Post('end')
   @UseGuards(JwtAuthGuard)
   @Roles(Role.TENANT)
-  async endBooking(@Request() req, @Body() data: ActionBookingDto) {
+  async endBooking(
+    @Request() req,
+    @Body() data: ActionBookingDto,
+    @Res() res: Response,
+  ) {
     const { tenant } = req.user;
     const user = req.user;
-    return this.bookingService.endBooking(data, tenant, user);
+    return this.bookingService.endBooking(data, tenant, user, res);
   }
 
   @Delete(':id')

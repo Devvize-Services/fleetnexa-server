@@ -26,6 +26,7 @@ import {
   PrismaService,
   TxClient,
 } from '../../../infrastructure/prisma/prisma.service.js';
+import { ActivityService } from '../../../common/activity/activity.service.js';
 
 @Injectable()
 export class BookingCreationService {
@@ -39,6 +40,7 @@ export class BookingCreationService {
     private readonly emailService: EmailService,
     private readonly whatsapp: WhatsappService,
     private readonly tenantNotification: TenantNotificationService,
+    private readonly activityService: ActivityService,
   ) {}
 
   createTenantBooking(dto: CreateBookingDto, tenant: Tenant, user: User) {
@@ -172,6 +174,18 @@ export class BookingCreationService {
           bookingId: booking.id,
         }),
       );
+    }
+
+    if (data.source === BookingSource.TENANT) {
+      this.activityService.logEvent({
+        tenantId: tenant.id,
+        userId: data.createdBy!,
+        module: 'BOOKING',
+        action: 'CREATE',
+        entityType: 'BOOKING',
+        entityId: booking.id,
+        description: `Booking created with code ${booking.bookingCode}`,
+      });
     }
 
     return this.getBookingDetails(booking.id);

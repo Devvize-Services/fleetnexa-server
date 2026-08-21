@@ -313,7 +313,9 @@ export const ActivityAction = {
   EXPORT: 'EXPORT',
   STATUS_CHANGE: 'STATUS_CHANGE',
   ASSIGN: 'ASSIGN',
-  UNASSIGN: 'UNASSIGN'
+  UNASSIGN: 'UNASSIGN',
+  START: 'START',
+  END: 'END'
 } as const
 
 export type ActivityAction = (typeof ActivityAction)[keyof typeof ActivityAction]

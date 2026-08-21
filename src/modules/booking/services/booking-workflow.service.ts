@@ -13,6 +13,7 @@ import { BookingActivityService } from './booking-activity.service.js';
 import { ResendService } from '../../../infrastructure/resend/resend.service.js';
 import { PrismaService } from '../../../infrastructure/prisma/prisma.service.js';
 import { InvoiceService } from '../../finance/invoice/invoice.service.js';
+import { ActivityService } from '../../../common/activity/activity.service.js';
 
 @Injectable()
 export class BookingWorkflowService {
@@ -26,6 +27,7 @@ export class BookingWorkflowService {
     private readonly vehicleService: VehicleService,
     private readonly resend: ResendService,
     private readonly invoiceService: InvoiceService,
+    private readonly activityService: ActivityService,
   ) {}
 
   private async findBookingOrFail(id: string) {
@@ -46,7 +48,12 @@ export class BookingWorkflowService {
     });
   }
 
-  async confirmBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+  async confirmBooking(
+    data: ActionBookingDto,
+    tenant: Tenant,
+    user: User,
+    res?: any,
+  ) {
     try {
       await this.findBookingOrFail(data.bookingId);
 
@@ -85,6 +92,18 @@ export class BookingWorkflowService {
 
       const bookings = await this.bookingRepo.getBookings(tenant.id);
 
+      await this.activityService.logEvent({
+        userId: user.id,
+        tenantId: tenant.id,
+        action: 'CONFIRM',
+        module: 'BOOKING',
+        entityType: 'BOOKING',
+        entityId: updatedBooking?.id || '',
+        description: `Booking #${updatedBooking?.rentalNumber} has been confirmed`,
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers['user-agent'] || '',
+      });
+
       return {
         message: `Booking #${updatedBooking!.rentalNumber} confirmed successfully`,
         booking: updatedBooking,
@@ -100,7 +119,12 @@ export class BookingWorkflowService {
     }
   }
 
-  async startBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+  async startBooking(
+    data: ActionBookingDto,
+    tenant: Tenant,
+    user: User,
+    res?: any,
+  ) {
     try {
       const booking = await this.findBookingOrFail(data.bookingId);
 
@@ -124,6 +148,18 @@ export class BookingWorkflowService {
       );
       const bookings = await this.bookingRepo.getBookings(tenant.id);
 
+      await this.activityService.logEvent({
+        userId: user.id,
+        tenantId: tenant.id,
+        action: 'START',
+        module: 'BOOKING',
+        entityType: 'BOOKING',
+        entityId: updatedBooking?.id || '',
+        description: `Booking #${updatedBooking?.rentalNumber} has been started`,
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers['user-agent'] || '',
+      });
+
       return {
         message: `Booking #${updatedBooking!.rentalNumber} started successfully`,
         booking: updatedBooking,
@@ -139,7 +175,12 @@ export class BookingWorkflowService {
     }
   }
 
-  async endBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
+  async endBooking(
+    data: ActionBookingDto,
+    tenant: Tenant,
+    user: User,
+    res?: any,
+  ) {
     try {
       const booking = await this.findBookingOrFail(data.bookingId);
 
@@ -169,6 +210,18 @@ export class BookingWorkflowService {
 
       const bookings = await this.bookingRepo.getBookings(tenant.id);
 
+      await this.activityService.logEvent({
+        userId: user.id,
+        tenantId: tenant.id,
+        action: 'END',
+        module: 'BOOKING',
+        entityType: 'BOOKING',
+        entityId: updatedBooking?.id || '',
+        description: `Booking #${updatedBooking?.rentalNumber} has been ended`,
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers['user-agent'] || '',
+      });
+
       return {
         message: `Booking #${updatedBooking!.rentalNumber} ended successfully`,
         booking: updatedBooking,
@@ -184,7 +237,7 @@ export class BookingWorkflowService {
     }
   }
 
-  async declineBooking(id: string, tenant: Tenant, user: User) {
+  async declineBooking(id: string, tenant: Tenant, user: User, res?: any) {
     try {
       await this.findBookingOrFail(id);
 
@@ -195,6 +248,18 @@ export class BookingWorkflowService {
       });
 
       const bookings = await this.bookingRepo.getBookings(tenant.id);
+
+      await this.activityService.logEvent({
+        userId: user.id,
+        tenantId: tenant.id,
+        action: 'DECLINE',
+        module: 'BOOKING',
+        entityType: 'BOOKING',
+        entityId: updatedBooking?.id || '',
+        description: `Booking #${updatedBooking?.rentalNumber} has been declined`,
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers['user-agent'] || '',
+      });
 
       return {
         message: `Booking #${updatedBooking!.rentalNumber} declined successfully`,
@@ -211,21 +276,42 @@ export class BookingWorkflowService {
     }
   }
 
-  async cancelBooking(id: string, tenant: Tenant, user: User) {
-    await this.findBookingOrFail(id);
+  async cancelBooking(id: string, tenant: Tenant, user: User, res?: any) {
+    try {
+      await this.findBookingOrFail(id);
 
-    const updatedBooking = await this.prisma.$transaction(async (tx) => {
-      await this.updateBookingStatus(id, RentalStatus.CANCELED, user);
+      const updatedBooking = await this.prisma.$transaction(async (tx) => {
+        await this.updateBookingStatus(id, RentalStatus.CANCELED, user);
 
-      return this.bookingRepo.getBookingById(id);
-    });
+        return this.bookingRepo.getBookingById(id);
+      });
 
-    const bookings = await this.bookingRepo.getBookings(tenant.id);
+      const bookings = await this.bookingRepo.getBookings(tenant.id);
 
-    return {
-      message: `Booking #${updatedBooking!.rentalNumber} canceled successfully`,
-      booking: updatedBooking,
-      bookings,
-    };
+      await this.activityService.logEvent({
+        userId: user.id,
+        tenantId: tenant.id,
+        action: 'CANCEL',
+        module: 'BOOKING',
+        entityType: 'BOOKING',
+        entityId: updatedBooking?.id || '',
+        description: `Booking #${updatedBooking?.rentalNumber} has been canceled`,
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers['user-agent'] || '',
+      });
+
+      return {
+        message: `Booking #${updatedBooking!.rentalNumber} canceled successfully`,
+        booking: updatedBooking,
+        bookings,
+      };
+    } catch (error: any) {
+      this.logger.error(error, 'Failed to cancel booking', {
+        tenantId: tenant.id,
+        tenantCode: tenant.tenantCode,
+        bookingId: id,
+      });
+      throw error;
+    }
   }
 }

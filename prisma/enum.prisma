@@ -228,6 +228,8 @@ enum ActivityAction {
   STATUS_CHANGE
   ASSIGN
   UNASSIGN
+  START
+  END
 }
 
 enum ActivityModule {

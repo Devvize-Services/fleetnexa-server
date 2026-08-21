@@ -1,7 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Global, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import { ActivityDto } from './activity.dto';
 
+@Global()
 @Injectable()
 export class ActivityService {
   private readonly logger = new Logger(ActivityService.name);

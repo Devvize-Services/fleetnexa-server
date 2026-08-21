@@ -201,24 +201,29 @@ export class BookingService {
     };
   }
 
-  confirmBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    return this.workflow.confirmBooking(data, tenant, user);
+  confirmBooking(
+    data: ActionBookingDto,
+    tenant: Tenant,
+    user: User,
+    res?: any,
+  ) {
+    return this.workflow.confirmBooking(data, tenant, user, res);
   }
 
-  declineBooking(id: string, tenant: Tenant, user: User) {
-    return this.workflow.declineBooking(id, tenant, user);
+  declineBooking(id: string, tenant: Tenant, user: User, res?: any) {
+    return this.workflow.declineBooking(id, tenant, user, res);
   }
 
-  cancelBooking(id: string, tenant: Tenant, user: User) {
-    return this.workflow.cancelBooking(id, tenant, user);
+  cancelBooking(id: string, tenant: Tenant, user: User, res?: any) {
+    return this.workflow.cancelBooking(id, tenant, user, res);
   }
 
-  startBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    return this.workflow.startBooking(data, tenant, user);
+  startBooking(data: ActionBookingDto, tenant: Tenant, user: User, res?: any) {
+    return this.workflow.startBooking(data, tenant, user, res);
   }
 
-  endBooking(data: ActionBookingDto, tenant: Tenant, user: User) {
-    return this.workflow.endBooking(data, tenant, user);
+  endBooking(data: ActionBookingDto, tenant: Tenant, user: User, res?: any) {
+    return this.workflow.endBooking(data, tenant, user, res);
   }
 
   addBookingCharge(

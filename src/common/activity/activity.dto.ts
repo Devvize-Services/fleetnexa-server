@@ -27,16 +27,16 @@ export class ActivityDto {
   description: string;
 
   @IsOptional()
-  oldValues: Record<string, any>;
+  oldValues?: Record<string, any>;
 
   @IsOptional()
-  newValues: Record<string, any>;
-
-  @IsString()
-  @IsOptional()
-  ipAddress: string;
+  newValues?: Record<string, any>;
 
   @IsString()
   @IsOptional()
-  userAgent: string;
+  ipAddress?: string;
+
+  @IsString()
+  @IsOptional()
+  userAgent?: string;
 }
