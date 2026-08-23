@@ -45,3 +45,39 @@ model ExchangeRate {
 
   @@unique([base, target])
 }
+
+model Payment {
+  id                    String          @id @default(dbgenerated("gen_random_uuid()"))
+  amount                Float
+  paymentMethodId       String
+  paymentTypeId         String
+  tenantId              String
+  rentalId              String
+  notes                 String?
+  isDeleted             Boolean         @default(false)
+  paymentDate           DateTime
+  customerId            String?
+  currencyId            String?
+  payer                 String?
+  payment               String?
+  reference             String?         
+  status                PaymentStatus   @default(COMPLETED)
+
+  createdBy             String?
+  updatedBy             String?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime?       @updatedAt
+
+  currency              Currency?       @relation(fields: [currencyId], references: [id])
+  customer              Customer?       @relation(fields: [customerId], references: [id])
+  paymentMethod         PaymentMethod   @relation(fields: [paymentMethodId], references: [id])
+  paymentType           PaymentType     @relation(fields: [paymentTypeId], references: [id])
+  booking               Rental          @relation(fields: [rentalId], references: [id])
+  tenant                Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user                  User?           @relation(fields: [createdBy], references: [username])
+
+  receipt               PaymentReceipt?
+  transaction           Transactions?
+
+  @@unique([tenantId, reference])
+}

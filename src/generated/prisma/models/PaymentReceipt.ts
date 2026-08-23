@@ -41,12 +41,13 @@ export type PaymentReceiptMinAggregateOutputType = {
   tenantId: string | null
   customerId: string | null
   receiptUrl: string | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  accessToken: string | null
   createdBy: string | null
   updatedBy: string | null
   paymentId: string | null
   bookingId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type PaymentReceiptMaxAggregateOutputType = {
@@ -56,12 +57,13 @@ export type PaymentReceiptMaxAggregateOutputType = {
   tenantId: string | null
   customerId: string | null
   receiptUrl: string | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  accessToken: string | null
   createdBy: string | null
   updatedBy: string | null
   paymentId: string | null
   bookingId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type PaymentReceiptCountAggregateOutputType = {
@@ -71,12 +73,13 @@ export type PaymentReceiptCountAggregateOutputType = {
   tenantId: number
   customerId: number
   receiptUrl: number
-  createdAt: number
-  updatedAt: number
+  accessToken: number
   createdBy: number
   updatedBy: number
   paymentId: number
   bookingId: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -96,12 +99,13 @@ export type PaymentReceiptMinAggregateInputType = {
   tenantId?: true
   customerId?: true
   receiptUrl?: true
-  createdAt?: true
-  updatedAt?: true
+  accessToken?: true
   createdBy?: true
   updatedBy?: true
   paymentId?: true
   bookingId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type PaymentReceiptMaxAggregateInputType = {
@@ -111,12 +115,13 @@ export type PaymentReceiptMaxAggregateInputType = {
   tenantId?: true
   customerId?: true
   receiptUrl?: true
-  createdAt?: true
-  updatedAt?: true
+  accessToken?: true
   createdBy?: true
   updatedBy?: true
   paymentId?: true
   bookingId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type PaymentReceiptCountAggregateInputType = {
@@ -126,12 +131,13 @@ export type PaymentReceiptCountAggregateInputType = {
   tenantId?: true
   customerId?: true
   receiptUrl?: true
-  createdAt?: true
-  updatedAt?: true
+  accessToken?: true
   createdBy?: true
   updatedBy?: true
   paymentId?: true
   bookingId?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -228,12 +234,13 @@ export type PaymentReceiptGroupByOutputType = {
   tenantId: string
   customerId: string
   receiptUrl: string | null
-  createdAt: Date
-  updatedAt: Date | null
+  accessToken: string | null
   createdBy: string | null
   updatedBy: string | null
   paymentId: string
   bookingId: string | null
+  createdAt: Date
+  updatedAt: Date | null
   _count: PaymentReceiptCountAggregateOutputType | null
   _avg: PaymentReceiptAvgAggregateOutputType | null
   _sum: PaymentReceiptSumAggregateOutputType | null
@@ -266,12 +273,13 @@ export type PaymentReceiptWhereInput = {
   tenantId?: Prisma.StringFilter<"PaymentReceipt"> | string
   customerId?: Prisma.StringFilter<"PaymentReceipt"> | string
   receiptUrl?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
+  accessToken?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   createdBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   paymentId?: Prisma.StringFilter<"PaymentReceipt"> | string
   bookingId?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   payment?: Prisma.XOR<Prisma.PaymentScalarRelationFilter, Prisma.PaymentWhereInput>
@@ -285,12 +293,13 @@ export type PaymentReceiptOrderByWithRelationInput = {
   tenantId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   paymentId?: Prisma.SortOrder
   bookingId?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   rental?: Prisma.RentalOrderByWithRelationInput
   customer?: Prisma.CustomerOrderByWithRelationInput
   payment?: Prisma.PaymentOrderByWithRelationInput
@@ -299,6 +308,7 @@ export type PaymentReceiptOrderByWithRelationInput = {
 
 export type PaymentReceiptWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  accessToken?: string
   paymentId?: string
   receiptNumber_tenantId?: Prisma.PaymentReceiptReceiptNumber_tenantIdCompoundUniqueInput
   AND?: Prisma.PaymentReceiptWhereInput | Prisma.PaymentReceiptWhereInput[]
@@ -309,16 +319,16 @@ export type PaymentReceiptWhereUniqueInput = Prisma.AtLeast<{
   tenantId?: Prisma.StringFilter<"PaymentReceipt"> | string
   customerId?: Prisma.StringFilter<"PaymentReceipt"> | string
   receiptUrl?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
   createdBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   bookingId?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   payment?: Prisma.XOR<Prisma.PaymentScalarRelationFilter, Prisma.PaymentWhereInput>
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-}, "id" | "paymentId" | "receiptNumber_tenantId">
+}, "id" | "accessToken" | "paymentId" | "receiptNumber_tenantId">
 
 export type PaymentReceiptOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -327,12 +337,13 @@ export type PaymentReceiptOrderByWithAggregationInput = {
   tenantId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   paymentId?: Prisma.SortOrder
   bookingId?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PaymentReceiptCountOrderByAggregateInput
   _avg?: Prisma.PaymentReceiptAvgOrderByAggregateInput
   _max?: Prisma.PaymentReceiptMaxOrderByAggregateInput
@@ -350,12 +361,13 @@ export type PaymentReceiptScalarWhereWithAggregatesInput = {
   tenantId?: Prisma.StringWithAggregatesFilter<"PaymentReceipt"> | string
   customerId?: Prisma.StringWithAggregatesFilter<"PaymentReceipt"> | string
   receiptUrl?: Prisma.StringNullableWithAggregatesFilter<"PaymentReceipt"> | string | null
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"PaymentReceipt"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"PaymentReceipt"> | Date | string | null
+  accessToken?: Prisma.StringNullableWithAggregatesFilter<"PaymentReceipt"> | string | null
   createdBy?: Prisma.StringNullableWithAggregatesFilter<"PaymentReceipt"> | string | null
   updatedBy?: Prisma.StringNullableWithAggregatesFilter<"PaymentReceipt"> | string | null
   paymentId?: Prisma.StringWithAggregatesFilter<"PaymentReceipt"> | string
   bookingId?: Prisma.StringNullableWithAggregatesFilter<"PaymentReceipt"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"PaymentReceipt"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"PaymentReceipt"> | Date | string | null
 }
 
 export type PaymentReceiptCreateInput = {
@@ -363,10 +375,11 @@ export type PaymentReceiptCreateInput = {
   receiptNumber: string
   amount: number
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rental?: Prisma.RentalCreateNestedOneWithoutPaymentReceiptsInput
   customer: Prisma.CustomerCreateNestedOneWithoutPaymentReceiptsInput
   payment: Prisma.PaymentCreateNestedOneWithoutReceiptInput
@@ -380,12 +393,13 @@ export type PaymentReceiptUncheckedCreateInput = {
   tenantId: string
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptUpdateInput = {
@@ -393,10 +407,11 @@ export type PaymentReceiptUpdateInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rental?: Prisma.RentalUpdateOneWithoutPaymentReceiptsNestedInput
   customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput
   payment?: Prisma.PaymentUpdateOneRequiredWithoutReceiptNestedInput
@@ -410,12 +425,13 @@ export type PaymentReceiptUncheckedUpdateInput = {
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptCreateManyInput = {
@@ -425,12 +441,13 @@ export type PaymentReceiptCreateManyInput = {
   tenantId: string
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptUpdateManyMutationInput = {
@@ -438,10 +455,11 @@ export type PaymentReceiptUpdateManyMutationInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptUncheckedUpdateManyInput = {
@@ -451,12 +469,13 @@ export type PaymentReceiptUncheckedUpdateManyInput = {
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptListRelationFilter = {
@@ -481,12 +500,13 @@ export type PaymentReceiptCountOrderByAggregateInput = {
   tenantId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
   paymentId?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PaymentReceiptAvgOrderByAggregateInput = {
@@ -500,12 +520,13 @@ export type PaymentReceiptMaxOrderByAggregateInput = {
   tenantId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
   paymentId?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PaymentReceiptMinOrderByAggregateInput = {
@@ -515,12 +536,13 @@ export type PaymentReceiptMinOrderByAggregateInput = {
   tenantId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
   paymentId?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PaymentReceiptSumOrderByAggregateInput = {
@@ -572,6 +594,38 @@ export type PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput = {
   update?: Prisma.PaymentReceiptUpdateWithWhereUniqueWithoutCustomerInput | Prisma.PaymentReceiptUpdateWithWhereUniqueWithoutCustomerInput[]
   updateMany?: Prisma.PaymentReceiptUpdateManyWithWhereWithoutCustomerInput | Prisma.PaymentReceiptUpdateManyWithWhereWithoutCustomerInput[]
   deleteMany?: Prisma.PaymentReceiptScalarWhereInput | Prisma.PaymentReceiptScalarWhereInput[]
+}
+
+export type PaymentReceiptCreateNestedOneWithoutPaymentInput = {
+  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
+  connect?: Prisma.PaymentReceiptWhereUniqueInput
+}
+
+export type PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput = {
+  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
+  connect?: Prisma.PaymentReceiptWhereUniqueInput
+}
+
+export type PaymentReceiptUpdateOneWithoutPaymentNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
+  upsert?: Prisma.PaymentReceiptUpsertWithoutPaymentInput
+  disconnect?: Prisma.PaymentReceiptWhereInput | boolean
+  delete?: Prisma.PaymentReceiptWhereInput | boolean
+  connect?: Prisma.PaymentReceiptWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput, Prisma.PaymentReceiptUpdateWithoutPaymentInput>, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
+}
+
+export type PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
+  upsert?: Prisma.PaymentReceiptUpsertWithoutPaymentInput
+  disconnect?: Prisma.PaymentReceiptWhereInput | boolean
+  delete?: Prisma.PaymentReceiptWhereInput | boolean
+  connect?: Prisma.PaymentReceiptWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput, Prisma.PaymentReceiptUpdateWithoutPaymentInput>, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
 }
 
 export type PaymentReceiptCreateNestedManyWithoutRentalInput = {
@@ -658,47 +712,16 @@ export type PaymentReceiptUncheckedUpdateManyWithoutTenantNestedInput = {
   deleteMany?: Prisma.PaymentReceiptScalarWhereInput | Prisma.PaymentReceiptScalarWhereInput[]
 }
 
-export type PaymentReceiptCreateNestedOneWithoutPaymentInput = {
-  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
-  connect?: Prisma.PaymentReceiptWhereUniqueInput
-}
-
-export type PaymentReceiptUncheckedCreateNestedOneWithoutPaymentInput = {
-  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
-  connect?: Prisma.PaymentReceiptWhereUniqueInput
-}
-
-export type PaymentReceiptUpdateOneWithoutPaymentNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
-  upsert?: Prisma.PaymentReceiptUpsertWithoutPaymentInput
-  disconnect?: Prisma.PaymentReceiptWhereInput | boolean
-  delete?: Prisma.PaymentReceiptWhereInput | boolean
-  connect?: Prisma.PaymentReceiptWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput, Prisma.PaymentReceiptUpdateWithoutPaymentInput>, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
-}
-
-export type PaymentReceiptUncheckedUpdateOneWithoutPaymentNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.PaymentReceiptCreateOrConnectWithoutPaymentInput
-  upsert?: Prisma.PaymentReceiptUpsertWithoutPaymentInput
-  disconnect?: Prisma.PaymentReceiptWhereInput | boolean
-  delete?: Prisma.PaymentReceiptWhereInput | boolean
-  connect?: Prisma.PaymentReceiptWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput, Prisma.PaymentReceiptUpdateWithoutPaymentInput>, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
-}
-
 export type PaymentReceiptCreateWithoutCustomerInput = {
   id?: string
   receiptNumber: string
   amount: number
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rental?: Prisma.RentalCreateNestedOneWithoutPaymentReceiptsInput
   payment: Prisma.PaymentCreateNestedOneWithoutReceiptInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentReceiptsInput
@@ -710,12 +733,13 @@ export type PaymentReceiptUncheckedCreateWithoutCustomerInput = {
   amount: number
   tenantId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptCreateOrConnectWithoutCustomerInput = {
@@ -754,12 +778,89 @@ export type PaymentReceiptScalarWhereInput = {
   tenantId?: Prisma.StringFilter<"PaymentReceipt"> | string
   customerId?: Prisma.StringFilter<"PaymentReceipt"> | string
   receiptUrl?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
+  accessToken?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   createdBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
   paymentId?: Prisma.StringFilter<"PaymentReceipt"> | string
   bookingId?: Prisma.StringNullableFilter<"PaymentReceipt"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"PaymentReceipt"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentReceipt"> | Date | string | null
+}
+
+export type PaymentReceiptCreateWithoutPaymentInput = {
+  id?: string
+  receiptNumber: string
+  amount: number
+  receiptUrl?: string | null
+  accessToken?: string | null
+  createdBy?: string | null
+  updatedBy?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  rental?: Prisma.RentalCreateNestedOneWithoutPaymentReceiptsInput
+  customer: Prisma.CustomerCreateNestedOneWithoutPaymentReceiptsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutPaymentReceiptsInput
+}
+
+export type PaymentReceiptUncheckedCreateWithoutPaymentInput = {
+  id?: string
+  receiptNumber: string
+  amount: number
+  tenantId: string
+  customerId: string
+  receiptUrl?: string | null
+  accessToken?: string | null
+  createdBy?: string | null
+  updatedBy?: string | null
+  bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+}
+
+export type PaymentReceiptCreateOrConnectWithoutPaymentInput = {
+  where: Prisma.PaymentReceiptWhereUniqueInput
+  create: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+}
+
+export type PaymentReceiptUpsertWithoutPaymentInput = {
+  update: Prisma.XOR<Prisma.PaymentReceiptUpdateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
+  create: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
+  where?: Prisma.PaymentReceiptWhereInput
+}
+
+export type PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput = {
+  where?: Prisma.PaymentReceiptWhereInput
+  data: Prisma.XOR<Prisma.PaymentReceiptUpdateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
+}
+
+export type PaymentReceiptUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rental?: Prisma.RentalUpdateOneWithoutPaymentReceiptsNestedInput
+  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentReceiptsNestedInput
+}
+
+export type PaymentReceiptUncheckedUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptCreateWithoutRentalInput = {
@@ -767,10 +868,11 @@ export type PaymentReceiptCreateWithoutRentalInput = {
   receiptNumber: string
   amount: number
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   customer: Prisma.CustomerCreateNestedOneWithoutPaymentReceiptsInput
   payment: Prisma.PaymentCreateNestedOneWithoutReceiptInput
   tenant: Prisma.TenantCreateNestedOneWithoutPaymentReceiptsInput
@@ -783,11 +885,12 @@ export type PaymentReceiptUncheckedCreateWithoutRentalInput = {
   tenantId: string
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptCreateOrConnectWithoutRentalInput = {
@@ -821,10 +924,11 @@ export type PaymentReceiptCreateWithoutTenantInput = {
   receiptNumber: string
   amount: number
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rental?: Prisma.RentalCreateNestedOneWithoutPaymentReceiptsInput
   customer: Prisma.CustomerCreateNestedOneWithoutPaymentReceiptsInput
   payment: Prisma.PaymentCreateNestedOneWithoutReceiptInput
@@ -836,12 +940,13 @@ export type PaymentReceiptUncheckedCreateWithoutTenantInput = {
   amount: number
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptCreateOrConnectWithoutTenantInput = {
@@ -870,90 +975,19 @@ export type PaymentReceiptUpdateManyWithWhereWithoutTenantInput = {
   data: Prisma.XOR<Prisma.PaymentReceiptUpdateManyMutationInput, Prisma.PaymentReceiptUncheckedUpdateManyWithoutTenantInput>
 }
 
-export type PaymentReceiptCreateWithoutPaymentInput = {
-  id?: string
-  receiptNumber: string
-  amount: number
-  receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  createdBy?: string | null
-  updatedBy?: string | null
-  rental?: Prisma.RentalCreateNestedOneWithoutPaymentReceiptsInput
-  customer: Prisma.CustomerCreateNestedOneWithoutPaymentReceiptsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutPaymentReceiptsInput
-}
-
-export type PaymentReceiptUncheckedCreateWithoutPaymentInput = {
-  id?: string
-  receiptNumber: string
-  amount: number
-  tenantId: string
-  customerId: string
-  receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  createdBy?: string | null
-  updatedBy?: string | null
-  bookingId?: string | null
-}
-
-export type PaymentReceiptCreateOrConnectWithoutPaymentInput = {
-  where: Prisma.PaymentReceiptWhereUniqueInput
-  create: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-}
-
-export type PaymentReceiptUpsertWithoutPaymentInput = {
-  update: Prisma.XOR<Prisma.PaymentReceiptUpdateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
-  create: Prisma.XOR<Prisma.PaymentReceiptCreateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedCreateWithoutPaymentInput>
-  where?: Prisma.PaymentReceiptWhereInput
-}
-
-export type PaymentReceiptUpdateToOneWithWhereWithoutPaymentInput = {
-  where?: Prisma.PaymentReceiptWhereInput
-  data: Prisma.XOR<Prisma.PaymentReceiptUpdateWithoutPaymentInput, Prisma.PaymentReceiptUncheckedUpdateWithoutPaymentInput>
-}
-
-export type PaymentReceiptUpdateWithoutPaymentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rental?: Prisma.RentalUpdateOneWithoutPaymentReceiptsNestedInput
-  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentReceiptsNestedInput
-}
-
-export type PaymentReceiptUncheckedUpdateWithoutPaymentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
 export type PaymentReceiptCreateManyCustomerInput = {
   id?: string
   receiptNumber: string
   amount: number
   tenantId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptUpdateWithoutCustomerInput = {
@@ -961,10 +995,11 @@ export type PaymentReceiptUpdateWithoutCustomerInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rental?: Prisma.RentalUpdateOneWithoutPaymentReceiptsNestedInput
   payment?: Prisma.PaymentUpdateOneRequiredWithoutReceiptNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentReceiptsNestedInput
@@ -976,12 +1011,13 @@ export type PaymentReceiptUncheckedUpdateWithoutCustomerInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptUncheckedUpdateManyWithoutCustomerInput = {
@@ -990,12 +1026,13 @@ export type PaymentReceiptUncheckedUpdateManyWithoutCustomerInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptCreateManyRentalInput = {
@@ -1005,11 +1042,12 @@ export type PaymentReceiptCreateManyRentalInput = {
   tenantId: string
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptUpdateWithoutRentalInput = {
@@ -1017,10 +1055,11 @@ export type PaymentReceiptUpdateWithoutRentalInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput
   payment?: Prisma.PaymentUpdateOneRequiredWithoutReceiptNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutPaymentReceiptsNestedInput
@@ -1033,11 +1072,12 @@ export type PaymentReceiptUncheckedUpdateWithoutRentalInput = {
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptUncheckedUpdateManyWithoutRentalInput = {
@@ -1047,11 +1087,12 @@ export type PaymentReceiptUncheckedUpdateManyWithoutRentalInput = {
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptCreateManyTenantInput = {
@@ -1060,12 +1101,13 @@ export type PaymentReceiptCreateManyTenantInput = {
   amount: number
   customerId: string
   receiptUrl?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
+  accessToken?: string | null
   createdBy?: string | null
   updatedBy?: string | null
   paymentId: string
   bookingId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
 }
 
 export type PaymentReceiptUpdateWithoutTenantInput = {
@@ -1073,10 +1115,11 @@ export type PaymentReceiptUpdateWithoutTenantInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rental?: Prisma.RentalUpdateOneWithoutPaymentReceiptsNestedInput
   customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput
   payment?: Prisma.PaymentUpdateOneRequiredWithoutReceiptNestedInput
@@ -1088,12 +1131,13 @@ export type PaymentReceiptUncheckedUpdateWithoutTenantInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PaymentReceiptUncheckedUpdateManyWithoutTenantInput = {
@@ -1102,12 +1146,13 @@ export type PaymentReceiptUncheckedUpdateManyWithoutTenantInput = {
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1119,12 +1164,13 @@ export type PaymentReceiptSelect<ExtArgs extends runtime.Types.Extensions.Intern
   tenantId?: boolean
   customerId?: boolean
   receiptUrl?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  accessToken?: boolean
   createdBy?: boolean
   updatedBy?: boolean
   paymentId?: boolean
   bookingId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rental?: boolean | Prisma.PaymentReceipt$rentalArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   payment?: boolean | Prisma.PaymentDefaultArgs<ExtArgs>
@@ -1138,12 +1184,13 @@ export type PaymentReceiptSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   tenantId?: boolean
   customerId?: boolean
   receiptUrl?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  accessToken?: boolean
   createdBy?: boolean
   updatedBy?: boolean
   paymentId?: boolean
   bookingId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rental?: boolean | Prisma.PaymentReceipt$rentalArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   payment?: boolean | Prisma.PaymentDefaultArgs<ExtArgs>
@@ -1157,12 +1204,13 @@ export type PaymentReceiptSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   tenantId?: boolean
   customerId?: boolean
   receiptUrl?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  accessToken?: boolean
   createdBy?: boolean
   updatedBy?: boolean
   paymentId?: boolean
   bookingId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rental?: boolean | Prisma.PaymentReceipt$rentalArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   payment?: boolean | Prisma.PaymentDefaultArgs<ExtArgs>
@@ -1176,15 +1224,16 @@ export type PaymentReceiptSelectScalar = {
   tenantId?: boolean
   customerId?: boolean
   receiptUrl?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  accessToken?: boolean
   createdBy?: boolean
   updatedBy?: boolean
   paymentId?: boolean
   bookingId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type PaymentReceiptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "receiptNumber" | "amount" | "tenantId" | "customerId" | "receiptUrl" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy" | "paymentId" | "bookingId", ExtArgs["result"]["paymentReceipt"]>
+export type PaymentReceiptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "receiptNumber" | "amount" | "tenantId" | "customerId" | "receiptUrl" | "accessToken" | "createdBy" | "updatedBy" | "paymentId" | "bookingId" | "createdAt" | "updatedAt", ExtArgs["result"]["paymentReceipt"]>
 export type PaymentReceiptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   rental?: boolean | Prisma.PaymentReceipt$rentalArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
@@ -1219,12 +1268,13 @@ export type $PaymentReceiptPayload<ExtArgs extends runtime.Types.Extensions.Inte
     tenantId: string
     customerId: string
     receiptUrl: string | null
-    createdAt: Date
-    updatedAt: Date | null
+    accessToken: string | null
     createdBy: string | null
     updatedBy: string | null
     paymentId: string
     bookingId: string | null
+    createdAt: Date
+    updatedAt: Date | null
   }, ExtArgs["result"]["paymentReceipt"]>
   composites: {}
 }
@@ -1658,12 +1708,13 @@ export interface PaymentReceiptFieldRefs {
   readonly tenantId: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly customerId: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly receiptUrl: Prisma.FieldRef<"PaymentReceipt", 'String'>
-  readonly createdAt: Prisma.FieldRef<"PaymentReceipt", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"PaymentReceipt", 'DateTime'>
+  readonly accessToken: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly createdBy: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly updatedBy: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly paymentId: Prisma.FieldRef<"PaymentReceipt", 'String'>
   readonly bookingId: Prisma.FieldRef<"PaymentReceipt", 'String'>
+  readonly createdAt: Prisma.FieldRef<"PaymentReceipt", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"PaymentReceipt", 'DateTime'>
 }
     
 

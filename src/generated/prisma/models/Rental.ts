@@ -493,7 +493,7 @@ export type RentalCreateInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -536,7 +536,7 @@ export type RentalUncheckedCreateInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -567,7 +567,7 @@ export type RentalUpdateInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -610,7 +610,7 @@ export type RentalUncheckedUpdateInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -894,6 +894,20 @@ export type RentalUpdateOneWithoutPaymentReceiptsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RentalUpdateToOneWithWhereWithoutPaymentReceiptsInput, Prisma.RentalUpdateWithoutPaymentReceiptsInput>, Prisma.RentalUncheckedUpdateWithoutPaymentReceiptsInput>
 }
 
+export type RentalCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<Prisma.RentalCreateWithoutPaymentsInput, Prisma.RentalUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.RentalCreateOrConnectWithoutPaymentsInput
+  connect?: Prisma.RentalWhereUniqueInput
+}
+
+export type RentalUpdateOneRequiredWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<Prisma.RentalCreateWithoutPaymentsInput, Prisma.RentalUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.RentalCreateOrConnectWithoutPaymentsInput
+  upsert?: Prisma.RentalUpsertWithoutPaymentsInput
+  connect?: Prisma.RentalWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RentalUpdateToOneWithWhereWithoutPaymentsInput, Prisma.RentalUpdateWithoutPaymentsInput>, Prisma.RentalUncheckedUpdateWithoutPaymentsInput>
+}
+
 export type RentalCreateNestedOneWithoutRentalActivityInput = {
   create?: Prisma.XOR<Prisma.RentalCreateWithoutRentalActivityInput, Prisma.RentalUncheckedCreateWithoutRentalActivityInput>
   connectOrCreate?: Prisma.RentalCreateOrConnectWithoutRentalActivityInput
@@ -1100,20 +1114,6 @@ export type RentalUpdateOneWithoutTransactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RentalUpdateToOneWithWhereWithoutTransactionsInput, Prisma.RentalUpdateWithoutTransactionsInput>, Prisma.RentalUncheckedUpdateWithoutTransactionsInput>
 }
 
-export type RentalCreateNestedOneWithoutPaymentsInput = {
-  create?: Prisma.XOR<Prisma.RentalCreateWithoutPaymentsInput, Prisma.RentalUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.RentalCreateOrConnectWithoutPaymentsInput
-  connect?: Prisma.RentalWhereUniqueInput
-}
-
-export type RentalUpdateOneRequiredWithoutPaymentsNestedInput = {
-  create?: Prisma.XOR<Prisma.RentalCreateWithoutPaymentsInput, Prisma.RentalUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.RentalCreateOrConnectWithoutPaymentsInput
-  upsert?: Prisma.RentalUpsertWithoutPaymentsInput
-  connect?: Prisma.RentalWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.RentalUpdateToOneWithWhereWithoutPaymentsInput, Prisma.RentalUpdateWithoutPaymentsInput>, Prisma.RentalUncheckedUpdateWithoutPaymentsInput>
-}
-
 export type RentalCreateNestedOneWithoutRefundsInput = {
   create?: Prisma.XOR<Prisma.RentalCreateWithoutRefundsInput, Prisma.RentalUncheckedCreateWithoutRefundsInput>
   connectOrCreate?: Prisma.RentalCreateOrConnectWithoutRefundsInput
@@ -1247,7 +1247,7 @@ export type RentalCreateWithoutChargeTypeInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   user?: Prisma.UserCreateNestedOneWithoutRentalsInput
@@ -1288,7 +1288,7 @@ export type RentalUncheckedCreateWithoutChargeTypeInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -1372,7 +1372,7 @@ export type RentalCreateWithoutValuesInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -1414,7 +1414,7 @@ export type RentalUncheckedCreateWithoutValuesInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -1460,7 +1460,7 @@ export type RentalUpdateWithoutValuesInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -1502,7 +1502,7 @@ export type RentalUncheckedUpdateWithoutValuesInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -1531,7 +1531,7 @@ export type RentalCreateWithoutSecurityDepositInput = {
   vehicleSwapped?: boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -1573,7 +1573,7 @@ export type RentalUncheckedCreateWithoutSecurityDepositInput = {
   vehicleSwapped?: boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -1619,7 +1619,7 @@ export type RentalUpdateWithoutSecurityDepositInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -1661,7 +1661,7 @@ export type RentalUncheckedUpdateWithoutSecurityDepositInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -1692,7 +1692,7 @@ export type RentalCreateWithoutAgreementInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -1734,7 +1734,7 @@ export type RentalUncheckedCreateWithoutAgreementInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -1780,7 +1780,7 @@ export type RentalUpdateWithoutAgreementInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -1822,7 +1822,7 @@ export type RentalUncheckedUpdateWithoutAgreementInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -1851,7 +1851,7 @@ export type RentalCreateWithoutInvoiceInput = {
   vehicleSwapped?: boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -1893,7 +1893,7 @@ export type RentalUncheckedCreateWithoutInvoiceInput = {
   vehicleSwapped?: boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -1939,7 +1939,7 @@ export type RentalUpdateWithoutInvoiceInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -1981,7 +1981,7 @@ export type RentalUncheckedUpdateWithoutInvoiceInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -2012,7 +2012,7 @@ export type RentalCreateWithoutPaymentReceiptsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
   user?: Prisma.UserCreateNestedOneWithoutRentalsInput
@@ -2054,7 +2054,7 @@ export type RentalUncheckedCreateWithoutPaymentReceiptsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
   agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
@@ -2100,7 +2100,7 @@ export type RentalUpdateWithoutPaymentReceiptsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
   user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
@@ -2142,1107 +2142,13 @@ export type RentalUncheckedUpdateWithoutPaymentReceiptsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
   agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
   drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
   storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
   transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalCreateWithoutRentalActivityInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutRentalActivityInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutRentalActivityInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutRentalActivityInput, Prisma.RentalUncheckedCreateWithoutRentalActivityInput>
-}
-
-export type RentalUpsertWithoutRentalActivityInput = {
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutRentalActivityInput, Prisma.RentalUncheckedUpdateWithoutRentalActivityInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutRentalActivityInput, Prisma.RentalUncheckedCreateWithoutRentalActivityInput>
-  where?: Prisma.RentalWhereInput
-}
-
-export type RentalUpdateToOneWithWhereWithoutRentalActivityInput = {
-  where?: Prisma.RentalWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutRentalActivityInput, Prisma.RentalUncheckedUpdateWithoutRentalActivityInput>
-}
-
-export type RentalUpdateWithoutRentalActivityInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
-  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
-  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
-  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
-  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
-  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalUncheckedUpdateWithoutRentalActivityInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalCreateWithoutStorefrontBookingInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutStorefrontBookingInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutStorefrontBookingInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutStorefrontBookingInput, Prisma.RentalUncheckedCreateWithoutStorefrontBookingInput>
-}
-
-export type RentalUpsertWithoutStorefrontBookingInput = {
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutStorefrontBookingInput, Prisma.RentalUncheckedUpdateWithoutStorefrontBookingInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutStorefrontBookingInput, Prisma.RentalUncheckedCreateWithoutStorefrontBookingInput>
-  where?: Prisma.RentalWhereInput
-}
-
-export type RentalUpdateToOneWithWhereWithoutStorefrontBookingInput = {
-  where?: Prisma.RentalWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutStorefrontBookingInput, Prisma.RentalUncheckedUpdateWithoutStorefrontBookingInput>
-}
-
-export type RentalUpdateWithoutStorefrontBookingInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
-  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
-  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
-  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
-  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
-  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalUncheckedUpdateWithoutStorefrontBookingInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
-  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalCreateWithoutDriversInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutDriversInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutDriversInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutDriversInput, Prisma.RentalUncheckedCreateWithoutDriversInput>
-}
-
-export type RentalUpsertWithoutDriversInput = {
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutDriversInput, Prisma.RentalUncheckedUpdateWithoutDriversInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutDriversInput, Prisma.RentalUncheckedCreateWithoutDriversInput>
-  where?: Prisma.RentalWhereInput
-}
-
-export type RentalUpdateToOneWithWhereWithoutDriversInput = {
-  where?: Prisma.RentalWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutDriversInput, Prisma.RentalUncheckedUpdateWithoutDriversInput>
-}
-
-export type RentalUpdateWithoutDriversInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
-  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
-  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
-  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
-  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
-  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalUncheckedUpdateWithoutDriversInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
-  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalCreateWithoutVesselsInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-}
-
-export type RentalUncheckedCreateWithoutVesselsInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-}
-
-export type RentalCreateOrConnectWithoutVesselsInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutVesselsInput, Prisma.RentalUncheckedCreateWithoutVesselsInput>
-}
-
-export type RentalUpsertWithoutVesselsInput = {
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutVesselsInput, Prisma.RentalUncheckedUpdateWithoutVesselsInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutVesselsInput, Prisma.RentalUncheckedCreateWithoutVesselsInput>
-  where?: Prisma.RentalWhereInput
-}
-
-export type RentalUpdateToOneWithWhereWithoutVesselsInput = {
-  where?: Prisma.RentalWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutVesselsInput, Prisma.RentalUncheckedUpdateWithoutVesselsInput>
-}
-
-export type RentalUpdateWithoutVesselsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
-  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
-  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
-  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
-  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
-  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
-}
-
-export type RentalUncheckedUpdateWithoutVesselsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
-  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
-  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
-}
-
-export type RentalCreateWithoutPickupInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutPickupInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutPickupInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutPickupInput, Prisma.RentalUncheckedCreateWithoutPickupInput>
-}
-
-export type RentalCreateManyPickupInputEnvelope = {
-  data: Prisma.RentalCreateManyPickupInput | Prisma.RentalCreateManyPickupInput[]
-  skipDuplicates?: boolean
-}
-
-export type RentalCreateWithoutReturnInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutReturnInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutReturnInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutReturnInput, Prisma.RentalUncheckedCreateWithoutReturnInput>
-}
-
-export type RentalCreateManyReturnInputEnvelope = {
-  data: Prisma.RentalCreateManyReturnInput | Prisma.RentalCreateManyReturnInput[]
-  skipDuplicates?: boolean
-}
-
-export type RentalUpsertWithWhereUniqueWithoutPickupInput = {
-  where: Prisma.RentalWhereUniqueInput
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutPickupInput, Prisma.RentalUncheckedUpdateWithoutPickupInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutPickupInput, Prisma.RentalUncheckedCreateWithoutPickupInput>
-}
-
-export type RentalUpdateWithWhereUniqueWithoutPickupInput = {
-  where: Prisma.RentalWhereUniqueInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutPickupInput, Prisma.RentalUncheckedUpdateWithoutPickupInput>
-}
-
-export type RentalUpdateManyWithWhereWithoutPickupInput = {
-  where: Prisma.RentalScalarWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutPickupInput>
-}
-
-export type RentalUpsertWithWhereUniqueWithoutReturnInput = {
-  where: Prisma.RentalWhereUniqueInput
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutReturnInput, Prisma.RentalUncheckedUpdateWithoutReturnInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutReturnInput, Prisma.RentalUncheckedCreateWithoutReturnInput>
-}
-
-export type RentalUpdateWithWhereUniqueWithoutReturnInput = {
-  where: Prisma.RentalWhereUniqueInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutReturnInput, Prisma.RentalUncheckedUpdateWithoutReturnInput>
-}
-
-export type RentalUpdateManyWithWhereWithoutReturnInput = {
-  where: Prisma.RentalScalarWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutReturnInput>
-}
-
-export type RentalCreateWithoutTenantInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutTenantInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutTenantInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutTenantInput, Prisma.RentalUncheckedCreateWithoutTenantInput>
-}
-
-export type RentalCreateManyTenantInputEnvelope = {
-  data: Prisma.RentalCreateManyTenantInput | Prisma.RentalCreateManyTenantInput[]
-  skipDuplicates?: boolean
-}
-
-export type RentalUpsertWithWhereUniqueWithoutTenantInput = {
-  where: Prisma.RentalWhereUniqueInput
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutTenantInput, Prisma.RentalUncheckedUpdateWithoutTenantInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutTenantInput, Prisma.RentalUncheckedCreateWithoutTenantInput>
-}
-
-export type RentalUpdateWithWhereUniqueWithoutTenantInput = {
-  where: Prisma.RentalWhereUniqueInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutTenantInput, Prisma.RentalUncheckedUpdateWithoutTenantInput>
-}
-
-export type RentalUpdateManyWithWhereWithoutTenantInput = {
-  where: Prisma.RentalScalarWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutTenantInput>
-}
-
-export type RentalCreateWithoutTransactionsInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  status?: $Enums.RentalStatus
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
-  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
-  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
-  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
-  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
-  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
-  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
-}
-
-export type RentalUncheckedCreateWithoutTransactionsInput = {
-  id?: string
-  rentalNumber?: string | null
-  startDate: Date | string
-  endDate: Date | string
-  pickupLocationId: string
-  returnLocationId: string
-  vehicleId: string
-  agent: $Enums.Agent
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  tenantId: string
-  status?: $Enums.RentalStatus
-  createdBy?: string | null
-  updatedBy?: string | null
-  notes?: string | null
-  isDeleted?: boolean
-  chargeTypeId?: string | null
-  bookingCode?: string | null
-  deletedAt?: Date | string | null
-  originalVehicleId?: string | null
-  vehicleSwapped?: boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
-  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
-  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
-  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
-  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
-}
-
-export type RentalCreateOrConnectWithoutTransactionsInput = {
-  where: Prisma.RentalWhereUniqueInput
-  create: Prisma.XOR<Prisma.RentalCreateWithoutTransactionsInput, Prisma.RentalUncheckedCreateWithoutTransactionsInput>
-}
-
-export type RentalUpsertWithoutTransactionsInput = {
-  update: Prisma.XOR<Prisma.RentalUpdateWithoutTransactionsInput, Prisma.RentalUncheckedUpdateWithoutTransactionsInput>
-  create: Prisma.XOR<Prisma.RentalCreateWithoutTransactionsInput, Prisma.RentalUncheckedCreateWithoutTransactionsInput>
-  where?: Prisma.RentalWhereInput
-}
-
-export type RentalUpdateToOneWithWhereWithoutTransactionsInput = {
-  where?: Prisma.RentalWhereInput
-  data: Prisma.XOR<Prisma.RentalUpdateWithoutTransactionsInput, Prisma.RentalUncheckedUpdateWithoutTransactionsInput>
-}
-
-export type RentalUpdateWithoutTransactionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
-  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
-  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
-  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
-  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
-  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
-  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
-  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
-  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
-}
-
-export type RentalUncheckedUpdateWithoutTransactionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
-  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
-  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
-  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
-  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
-  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
-  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
-  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
   values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
   vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
 }
@@ -3407,6 +2313,1100 @@ export type RentalUncheckedUpdateWithoutPaymentsInput = {
   vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
 }
 
+export type RentalCreateWithoutRentalActivityInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutRentalActivityInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutRentalActivityInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutRentalActivityInput, Prisma.RentalUncheckedCreateWithoutRentalActivityInput>
+}
+
+export type RentalUpsertWithoutRentalActivityInput = {
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutRentalActivityInput, Prisma.RentalUncheckedUpdateWithoutRentalActivityInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutRentalActivityInput, Prisma.RentalUncheckedCreateWithoutRentalActivityInput>
+  where?: Prisma.RentalWhereInput
+}
+
+export type RentalUpdateToOneWithWhereWithoutRentalActivityInput = {
+  where?: Prisma.RentalWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutRentalActivityInput, Prisma.RentalUncheckedUpdateWithoutRentalActivityInput>
+}
+
+export type RentalUpdateWithoutRentalActivityInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
+  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
+  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
+  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
+  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalUncheckedUpdateWithoutRentalActivityInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalCreateWithoutStorefrontBookingInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutStorefrontBookingInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutStorefrontBookingInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutStorefrontBookingInput, Prisma.RentalUncheckedCreateWithoutStorefrontBookingInput>
+}
+
+export type RentalUpsertWithoutStorefrontBookingInput = {
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutStorefrontBookingInput, Prisma.RentalUncheckedUpdateWithoutStorefrontBookingInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutStorefrontBookingInput, Prisma.RentalUncheckedCreateWithoutStorefrontBookingInput>
+  where?: Prisma.RentalWhereInput
+}
+
+export type RentalUpdateToOneWithWhereWithoutStorefrontBookingInput = {
+  where?: Prisma.RentalWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutStorefrontBookingInput, Prisma.RentalUncheckedUpdateWithoutStorefrontBookingInput>
+}
+
+export type RentalUpdateWithoutStorefrontBookingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
+  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
+  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
+  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
+  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalUncheckedUpdateWithoutStorefrontBookingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
+  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalCreateWithoutDriversInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutDriversInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutDriversInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutDriversInput, Prisma.RentalUncheckedCreateWithoutDriversInput>
+}
+
+export type RentalUpsertWithoutDriversInput = {
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutDriversInput, Prisma.RentalUncheckedUpdateWithoutDriversInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutDriversInput, Prisma.RentalUncheckedCreateWithoutDriversInput>
+  where?: Prisma.RentalWhereInput
+}
+
+export type RentalUpdateToOneWithWhereWithoutDriversInput = {
+  where?: Prisma.RentalWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutDriversInput, Prisma.RentalUncheckedUpdateWithoutDriversInput>
+}
+
+export type RentalUpdateWithoutDriversInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
+  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
+  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
+  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
+  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalUncheckedUpdateWithoutDriversInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
+  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalCreateWithoutVesselsInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+}
+
+export type RentalUncheckedCreateWithoutVesselsInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+}
+
+export type RentalCreateOrConnectWithoutVesselsInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutVesselsInput, Prisma.RentalUncheckedCreateWithoutVesselsInput>
+}
+
+export type RentalUpsertWithoutVesselsInput = {
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutVesselsInput, Prisma.RentalUncheckedUpdateWithoutVesselsInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutVesselsInput, Prisma.RentalUncheckedCreateWithoutVesselsInput>
+  where?: Prisma.RentalWhereInput
+}
+
+export type RentalUpdateToOneWithWhereWithoutVesselsInput = {
+  where?: Prisma.RentalWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutVesselsInput, Prisma.RentalUncheckedUpdateWithoutVesselsInput>
+}
+
+export type RentalUpdateWithoutVesselsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
+  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
+  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
+  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
+  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
+}
+
+export type RentalUncheckedUpdateWithoutVesselsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
+  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutRentalNestedInput
+  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
+}
+
+export type RentalCreateWithoutPickupInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutPickupInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutPickupInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutPickupInput, Prisma.RentalUncheckedCreateWithoutPickupInput>
+}
+
+export type RentalCreateManyPickupInputEnvelope = {
+  data: Prisma.RentalCreateManyPickupInput | Prisma.RentalCreateManyPickupInput[]
+  skipDuplicates?: boolean
+}
+
+export type RentalCreateWithoutReturnInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutReturnInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutReturnInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutReturnInput, Prisma.RentalUncheckedCreateWithoutReturnInput>
+}
+
+export type RentalCreateManyReturnInputEnvelope = {
+  data: Prisma.RentalCreateManyReturnInput | Prisma.RentalCreateManyReturnInput[]
+  skipDuplicates?: boolean
+}
+
+export type RentalUpsertWithWhereUniqueWithoutPickupInput = {
+  where: Prisma.RentalWhereUniqueInput
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutPickupInput, Prisma.RentalUncheckedUpdateWithoutPickupInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutPickupInput, Prisma.RentalUncheckedCreateWithoutPickupInput>
+}
+
+export type RentalUpdateWithWhereUniqueWithoutPickupInput = {
+  where: Prisma.RentalWhereUniqueInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutPickupInput, Prisma.RentalUncheckedUpdateWithoutPickupInput>
+}
+
+export type RentalUpdateManyWithWhereWithoutPickupInput = {
+  where: Prisma.RentalScalarWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutPickupInput>
+}
+
+export type RentalUpsertWithWhereUniqueWithoutReturnInput = {
+  where: Prisma.RentalWhereUniqueInput
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutReturnInput, Prisma.RentalUncheckedUpdateWithoutReturnInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutReturnInput, Prisma.RentalUncheckedCreateWithoutReturnInput>
+}
+
+export type RentalUpdateWithWhereUniqueWithoutReturnInput = {
+  where: Prisma.RentalWhereUniqueInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutReturnInput, Prisma.RentalUncheckedUpdateWithoutReturnInput>
+}
+
+export type RentalUpdateManyWithWhereWithoutReturnInput = {
+  where: Prisma.RentalScalarWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutReturnInput>
+}
+
+export type RentalCreateWithoutTenantInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutTenantInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutTenantInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutTenantInput, Prisma.RentalUncheckedCreateWithoutTenantInput>
+}
+
+export type RentalCreateManyTenantInputEnvelope = {
+  data: Prisma.RentalCreateManyTenantInput | Prisma.RentalCreateManyTenantInput[]
+  skipDuplicates?: boolean
+}
+
+export type RentalUpsertWithWhereUniqueWithoutTenantInput = {
+  where: Prisma.RentalWhereUniqueInput
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutTenantInput, Prisma.RentalUncheckedUpdateWithoutTenantInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutTenantInput, Prisma.RentalUncheckedCreateWithoutTenantInput>
+}
+
+export type RentalUpdateWithWhereUniqueWithoutTenantInput = {
+  where: Prisma.RentalWhereUniqueInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutTenantInput, Prisma.RentalUncheckedUpdateWithoutTenantInput>
+}
+
+export type RentalUpdateManyWithWhereWithoutTenantInput = {
+  where: Prisma.RentalScalarWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateManyMutationInput, Prisma.RentalUncheckedUpdateManyWithoutTenantInput>
+}
+
+export type RentalCreateWithoutTransactionsInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  status?: $Enums.RentalStatus
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
+  chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
+  user?: Prisma.UserCreateNestedOneWithoutRentalsInput
+  pickup: Prisma.TenantLocationCreateNestedOneWithoutPickupsInput
+  return: Prisma.TenantLocationCreateNestedOneWithoutReturnsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutRentalsInput
+  vehicle: Prisma.VehicleCreateNestedOneWithoutRentalsInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingCreateNestedOneWithoutRentalInput
+  values?: Prisma.ValuesCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoCreateNestedManyWithoutBookingInput
+}
+
+export type RentalUncheckedCreateWithoutTransactionsInput = {
+  id?: string
+  rentalNumber?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  pickupLocationId: string
+  returnLocationId: string
+  vehicleId: string
+  agent: $Enums.Agent
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tenantId: string
+  status?: $Enums.RentalStatus
+  createdBy?: string | null
+  updatedBy?: string | null
+  notes?: string | null
+  isDeleted?: boolean
+  chargeTypeId?: string | null
+  bookingCode?: string | null
+  deletedAt?: Date | string | null
+  originalVehicleId?: string | null
+  vehicleSwapped?: boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
+  invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
+  agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutRentalInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedCreateNestedOneWithoutRentalInput
+  values?: Prisma.ValuesUncheckedCreateNestedOneWithoutRentalInput
+  vessels?: Prisma.VesselInfoUncheckedCreateNestedManyWithoutBookingInput
+}
+
+export type RentalCreateOrConnectWithoutTransactionsInput = {
+  where: Prisma.RentalWhereUniqueInput
+  create: Prisma.XOR<Prisma.RentalCreateWithoutTransactionsInput, Prisma.RentalUncheckedCreateWithoutTransactionsInput>
+}
+
+export type RentalUpsertWithoutTransactionsInput = {
+  update: Prisma.XOR<Prisma.RentalUpdateWithoutTransactionsInput, Prisma.RentalUncheckedUpdateWithoutTransactionsInput>
+  create: Prisma.XOR<Prisma.RentalCreateWithoutTransactionsInput, Prisma.RentalUncheckedCreateWithoutTransactionsInput>
+  where?: Prisma.RentalWhereInput
+}
+
+export type RentalUpdateToOneWithWhereWithoutTransactionsInput = {
+  where?: Prisma.RentalWhereInput
+  data: Prisma.XOR<Prisma.RentalUpdateWithoutTransactionsInput, Prisma.RentalUncheckedUpdateWithoutTransactionsInput>
+}
+
+export type RentalUpdateWithoutTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
+  chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
+  user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
+  pickup?: Prisma.TenantLocationUpdateOneRequiredWithoutPickupsNestedInput
+  return?: Prisma.TenantLocationUpdateOneRequiredWithoutReturnsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutRentalsNestedInput
+  vehicle?: Prisma.VehicleUpdateOneRequiredWithoutRentalsNestedInput
+  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUpdateOneWithoutRentalNestedInput
+  values?: Prisma.ValuesUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUpdateManyWithoutBookingNestedInput
+}
+
+export type RentalUncheckedUpdateWithoutTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  returnLocationId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  agent?: Prisma.EnumAgentFieldUpdateOperationsInput | $Enums.Agent
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  chargeTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bookingCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  originalVehicleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
+  invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
+  securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
+  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
+  agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
+  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutRentalNestedInput
+  storefrontBooking?: Prisma.StorefrontBookingUncheckedUpdateOneWithoutRentalNestedInput
+  values?: Prisma.ValuesUncheckedUpdateOneWithoutRentalNestedInput
+  vessels?: Prisma.VesselInfoUncheckedUpdateManyWithoutBookingNestedInput
+}
+
 export type RentalCreateWithoutRefundsInput = {
   id?: string
   rentalNumber?: string | null
@@ -3426,7 +3426,7 @@ export type RentalCreateWithoutRefundsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
   user?: Prisma.UserCreateNestedOneWithoutRentalsInput
@@ -3468,7 +3468,7 @@ export type RentalUncheckedCreateWithoutRefundsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
   agreement?: Prisma.RentalAgreementUncheckedCreateNestedOneWithoutRentalInput
@@ -3514,7 +3514,7 @@ export type RentalUpdateWithoutRefundsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
   user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
@@ -3556,7 +3556,7 @@ export type RentalUncheckedUpdateWithoutRefundsInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
   agreement?: Prisma.RentalAgreementUncheckedUpdateOneWithoutRentalNestedInput
@@ -3586,7 +3586,7 @@ export type RentalCreateWithoutUserInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -3627,7 +3627,7 @@ export type RentalUncheckedCreateWithoutUserInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -3684,7 +3684,7 @@ export type RentalCreateWithoutVehicleInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -3725,7 +3725,7 @@ export type RentalUncheckedCreateWithoutVehicleInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutBookingInput
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -3781,7 +3781,7 @@ export type RentalCreateWithoutVehicleHistoryInput = {
   vehicleSwapped?: boolean
   invoice?: Prisma.InvoiceCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundCreateNestedManyWithoutRentalInput
   chargeType?: Prisma.ChargeTypeCreateNestedOneWithoutRentalsInput
@@ -3823,7 +3823,7 @@ export type RentalUncheckedCreateWithoutVehicleHistoryInput = {
   vehicleSwapped?: boolean
   invoice?: Prisma.InvoiceUncheckedCreateNestedOneWithoutBookingInput
   securityDeposit?: Prisma.SecurityDepositUncheckedCreateNestedOneWithoutBookingInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutBookingInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutRentalInput
   refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutRentalInput
   rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutRentalInput
@@ -3869,7 +3869,7 @@ export type RentalUpdateWithoutVehicleHistoryInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -3911,7 +3911,7 @@ export type RentalUncheckedUpdateWithoutVehicleHistoryInput = {
   vehicleSwapped?: Prisma.BoolFieldUpdateOperationsInput | boolean
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -3965,7 +3965,7 @@ export type RentalUpdateWithoutChargeTypeInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   user?: Prisma.UserUpdateOneWithoutRentalsNestedInput
@@ -4006,7 +4006,7 @@ export type RentalUncheckedUpdateWithoutChargeTypeInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -4106,7 +4106,7 @@ export type RentalUpdateWithoutPickupInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -4147,7 +4147,7 @@ export type RentalUncheckedUpdateWithoutPickupInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -4201,7 +4201,7 @@ export type RentalUpdateWithoutReturnInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -4242,7 +4242,7 @@ export type RentalUncheckedUpdateWithoutReturnInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -4319,7 +4319,7 @@ export type RentalUpdateWithoutTenantInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -4360,7 +4360,7 @@ export type RentalUncheckedUpdateWithoutTenantInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -4437,7 +4437,7 @@ export type RentalUpdateWithoutUserInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -4478,7 +4478,7 @@ export type RentalUncheckedUpdateWithoutUserInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput
@@ -4555,7 +4555,7 @@ export type RentalUpdateWithoutVehicleInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUpdateManyWithoutRentalNestedInput
   chargeType?: Prisma.ChargeTypeUpdateOneWithoutRentalsNestedInput
@@ -4596,7 +4596,7 @@ export type RentalUncheckedUpdateWithoutVehicleInput = {
   vehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutBookingNestedInput
   invoice?: Prisma.InvoiceUncheckedUpdateOneWithoutBookingNestedInput
   securityDeposit?: Prisma.SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutBookingNestedInput
   paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutRentalNestedInput
   refunds?: Prisma.RefundUncheckedUpdateManyWithoutRentalNestedInput
   rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutRentalNestedInput

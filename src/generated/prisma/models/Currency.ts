@@ -370,22 +370,6 @@ export type CurrencyUpdateOneRequiredWithoutTargetsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CurrencyUpdateToOneWithWhereWithoutTargetsInput, Prisma.CurrencyUpdateWithoutTargetsInput>, Prisma.CurrencyUncheckedUpdateWithoutTargetsInput>
 }
 
-export type CurrencyCreateNestedOneWithoutTenantsInput = {
-  create?: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
-  connectOrCreate?: Prisma.CurrencyCreateOrConnectWithoutTenantsInput
-  connect?: Prisma.CurrencyWhereUniqueInput
-}
-
-export type CurrencyUpdateOneWithoutTenantsNestedInput = {
-  create?: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
-  connectOrCreate?: Prisma.CurrencyCreateOrConnectWithoutTenantsInput
-  upsert?: Prisma.CurrencyUpsertWithoutTenantsInput
-  disconnect?: Prisma.CurrencyWhereInput | boolean
-  delete?: Prisma.CurrencyWhereInput | boolean
-  connect?: Prisma.CurrencyWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CurrencyUpdateToOneWithWhereWithoutTenantsInput, Prisma.CurrencyUpdateWithoutTenantsInput>, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
-}
-
 export type CurrencyCreateNestedOneWithoutPaymentsInput = {
   create?: Prisma.XOR<Prisma.CurrencyCreateWithoutPaymentsInput, Prisma.CurrencyUncheckedCreateWithoutPaymentsInput>
   connectOrCreate?: Prisma.CurrencyCreateOrConnectWithoutPaymentsInput
@@ -400,6 +384,22 @@ export type CurrencyUpdateOneWithoutPaymentsNestedInput = {
   delete?: Prisma.CurrencyWhereInput | boolean
   connect?: Prisma.CurrencyWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.CurrencyUpdateToOneWithWhereWithoutPaymentsInput, Prisma.CurrencyUpdateWithoutPaymentsInput>, Prisma.CurrencyUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type CurrencyCreateNestedOneWithoutTenantsInput = {
+  create?: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
+  connectOrCreate?: Prisma.CurrencyCreateOrConnectWithoutTenantsInput
+  connect?: Prisma.CurrencyWhereUniqueInput
+}
+
+export type CurrencyUpdateOneWithoutTenantsNestedInput = {
+  create?: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
+  connectOrCreate?: Prisma.CurrencyCreateOrConnectWithoutTenantsInput
+  upsert?: Prisma.CurrencyUpsertWithoutTenantsInput
+  disconnect?: Prisma.CurrencyWhereInput | boolean
+  delete?: Prisma.CurrencyWhereInput | boolean
+  connect?: Prisma.CurrencyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CurrencyUpdateToOneWithWhereWithoutTenantsInput, Prisma.CurrencyUpdateWithoutTenantsInput>, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
 }
 
 export type CurrencyCreateWithoutCurrencyRatesInput = {
@@ -582,66 +582,6 @@ export type CurrencyUncheckedUpdateWithoutTargetsInput = {
   currencyRates?: Prisma.TenantCurrencyRateUncheckedUpdateManyWithoutCurrencyNestedInput
 }
 
-export type CurrencyCreateWithoutTenantsInput = {
-  id?: string
-  code: string
-  currency?: string | null
-  symbol?: string | null
-  bases?: Prisma.ExchangeRateCreateNestedManyWithoutBaseCurrencyInput
-  targets?: Prisma.ExchangeRateCreateNestedManyWithoutTargetCurrencyInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutCurrencyInput
-  currencyRates?: Prisma.TenantCurrencyRateCreateNestedManyWithoutCurrencyInput
-}
-
-export type CurrencyUncheckedCreateWithoutTenantsInput = {
-  id?: string
-  code: string
-  currency?: string | null
-  symbol?: string | null
-  bases?: Prisma.ExchangeRateUncheckedCreateNestedManyWithoutBaseCurrencyInput
-  targets?: Prisma.ExchangeRateUncheckedCreateNestedManyWithoutTargetCurrencyInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCurrencyInput
-  currencyRates?: Prisma.TenantCurrencyRateUncheckedCreateNestedManyWithoutCurrencyInput
-}
-
-export type CurrencyCreateOrConnectWithoutTenantsInput = {
-  where: Prisma.CurrencyWhereUniqueInput
-  create: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
-}
-
-export type CurrencyUpsertWithoutTenantsInput = {
-  update: Prisma.XOR<Prisma.CurrencyUpdateWithoutTenantsInput, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
-  create: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
-  where?: Prisma.CurrencyWhereInput
-}
-
-export type CurrencyUpdateToOneWithWhereWithoutTenantsInput = {
-  where?: Prisma.CurrencyWhereInput
-  data: Prisma.XOR<Prisma.CurrencyUpdateWithoutTenantsInput, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
-}
-
-export type CurrencyUpdateWithoutTenantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symbol?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bases?: Prisma.ExchangeRateUpdateManyWithoutBaseCurrencyNestedInput
-  targets?: Prisma.ExchangeRateUpdateManyWithoutTargetCurrencyNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutCurrencyNestedInput
-  currencyRates?: Prisma.TenantCurrencyRateUpdateManyWithoutCurrencyNestedInput
-}
-
-export type CurrencyUncheckedUpdateWithoutTenantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symbol?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bases?: Prisma.ExchangeRateUncheckedUpdateManyWithoutBaseCurrencyNestedInput
-  targets?: Prisma.ExchangeRateUncheckedUpdateManyWithoutTargetCurrencyNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutCurrencyNestedInput
-  currencyRates?: Prisma.TenantCurrencyRateUncheckedUpdateManyWithoutCurrencyNestedInput
-}
-
 export type CurrencyCreateWithoutPaymentsInput = {
   id?: string
   code: string
@@ -699,6 +639,66 @@ export type CurrencyUncheckedUpdateWithoutPaymentsInput = {
   bases?: Prisma.ExchangeRateUncheckedUpdateManyWithoutBaseCurrencyNestedInput
   targets?: Prisma.ExchangeRateUncheckedUpdateManyWithoutTargetCurrencyNestedInput
   tenants?: Prisma.TenantUncheckedUpdateManyWithoutCurrencyNestedInput
+  currencyRates?: Prisma.TenantCurrencyRateUncheckedUpdateManyWithoutCurrencyNestedInput
+}
+
+export type CurrencyCreateWithoutTenantsInput = {
+  id?: string
+  code: string
+  currency?: string | null
+  symbol?: string | null
+  bases?: Prisma.ExchangeRateCreateNestedManyWithoutBaseCurrencyInput
+  targets?: Prisma.ExchangeRateCreateNestedManyWithoutTargetCurrencyInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutCurrencyInput
+  currencyRates?: Prisma.TenantCurrencyRateCreateNestedManyWithoutCurrencyInput
+}
+
+export type CurrencyUncheckedCreateWithoutTenantsInput = {
+  id?: string
+  code: string
+  currency?: string | null
+  symbol?: string | null
+  bases?: Prisma.ExchangeRateUncheckedCreateNestedManyWithoutBaseCurrencyInput
+  targets?: Prisma.ExchangeRateUncheckedCreateNestedManyWithoutTargetCurrencyInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutCurrencyInput
+  currencyRates?: Prisma.TenantCurrencyRateUncheckedCreateNestedManyWithoutCurrencyInput
+}
+
+export type CurrencyCreateOrConnectWithoutTenantsInput = {
+  where: Prisma.CurrencyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
+}
+
+export type CurrencyUpsertWithoutTenantsInput = {
+  update: Prisma.XOR<Prisma.CurrencyUpdateWithoutTenantsInput, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
+  create: Prisma.XOR<Prisma.CurrencyCreateWithoutTenantsInput, Prisma.CurrencyUncheckedCreateWithoutTenantsInput>
+  where?: Prisma.CurrencyWhereInput
+}
+
+export type CurrencyUpdateToOneWithWhereWithoutTenantsInput = {
+  where?: Prisma.CurrencyWhereInput
+  data: Prisma.XOR<Prisma.CurrencyUpdateWithoutTenantsInput, Prisma.CurrencyUncheckedUpdateWithoutTenantsInput>
+}
+
+export type CurrencyUpdateWithoutTenantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  symbol?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bases?: Prisma.ExchangeRateUpdateManyWithoutBaseCurrencyNestedInput
+  targets?: Prisma.ExchangeRateUpdateManyWithoutTargetCurrencyNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutCurrencyNestedInput
+  currencyRates?: Prisma.TenantCurrencyRateUpdateManyWithoutCurrencyNestedInput
+}
+
+export type CurrencyUncheckedUpdateWithoutTenantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  symbol?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bases?: Prisma.ExchangeRateUncheckedUpdateManyWithoutBaseCurrencyNestedInput
+  targets?: Prisma.ExchangeRateUncheckedUpdateManyWithoutTargetCurrencyNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutCurrencyNestedInput
   currencyRates?: Prisma.TenantCurrencyRateUncheckedUpdateManyWithoutCurrencyNestedInput
 }
 

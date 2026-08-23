@@ -35,7 +35,7 @@ export class TransactionRepository {
           customer: true,
           paymentMethod: true,
           paymentType: true,
-          rental: {
+          booking: {
             select: {
               id: true,
               rentalNumber: true,

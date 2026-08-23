@@ -228,6 +228,11 @@ export type TenantCurrencyRate = Prisma.TenantCurrencyRateModel
  */
 export type ExchangeRate = Prisma.ExchangeRateModel
 /**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
  * Model Form
  * 
  */
@@ -422,11 +427,6 @@ export type TenantService = Prisma.TenantServiceModel
  * 
  */
 export type Transactions = Prisma.TransactionsModel
-/**
- * Model Payment
- * 
- */
-export type Payment = Prisma.PaymentModel
 /**
  * Model Refund
  * 

@@ -3,9 +3,9 @@ import { PrismaService } from 'src/infrastructure/prisma/prisma.service';
 import { BookingDepositDto } from '../dto/booking-deposit.dto';
 import { SecurityDeposit, Tenant, User } from 'src/generated/prisma/client';
 import { BookingRepository } from '../booking.repository';
-import { PaymentService } from 'src/modules/transaction/modules/payment/payment.service';
 import { CustomerService } from 'src/modules/customer/customer.service';
 import { randomUUID } from 'crypto';
+import { PaymentService } from 'src/modules/finance/payment/payment.service';
 
 @Injectable()
 export class BookingDepositService {

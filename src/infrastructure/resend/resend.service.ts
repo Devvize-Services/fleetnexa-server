@@ -1,9 +1,10 @@
-import { Resend } from 'resend';
+import { Attachment, Resend } from 'resend';
 import { Global, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   AccountCreatedTemplate,
   BookingConfirmationTemplate,
+  PaymentReceiptTemplate,
   WelcomeEmailTemplate,
 } from './resend-templates.js';
 import { Tenant } from '../../generated/prisma/client.js';
@@ -27,7 +28,12 @@ export class ResendService {
     this.client = new Resend(apiKey);
   }
 
-  private async sendEmail(templateId: string, variables: any, to: string) {
+  private async sendEmail(
+    templateId: string,
+    variables: any,
+    to: string,
+    attachments: Attachment[] = [],
+  ) {
     try {
       const res = await this.client.emails.send({
         from: 'FleetNexa <no-reply@fleetnexa.com>',
@@ -36,6 +42,7 @@ export class ResendService {
           id: templateId,
           variables,
         },
+        attachments,
       });
 
       this.logger.log(res.data);
@@ -220,6 +227,69 @@ export class ResendService {
       this.logger.log(`Welcome email sent to ${user.email}`);
     } catch (error: any) {
       this.logger.error('Error sending welcome email:', error);
+      throw error;
+    }
+  }
+
+  async sendPaymentReceiptEmail(paymentId: string, tenant: Tenant) {
+    try {
+      const payment = await this.prisma.payment.findUnique({
+        where: { id: paymentId },
+        include: {
+          booking: true,
+          customer: true,
+          currency: true,
+          user: true,
+          paymentMethod: true,
+          receipt: true,
+        },
+      });
+
+      if (!payment) {
+        this.logger.warn(`Payment with ID ${paymentId} not found`);
+        throw new NotFoundException('Payment not found');
+      }
+
+      if (!payment.receipt) {
+        this.logger.warn(`Receipt for payment ID ${paymentId} not found`);
+        throw new NotFoundException('Payment receipt not found');
+      }
+
+      if (!payment.customer) {
+        this.logger.warn(`Customer for payment ID ${paymentId} not found`);
+        throw new NotFoundException('Customer not found');
+      }
+
+      if (!payment.customer.email) {
+        this.logger.warn(
+          `Customer for payment ID ${paymentId} does not have an email address`,
+        );
+        throw new NotFoundException('Customer email not found');
+      }
+
+      const data: PaymentReceiptTemplate = {
+        amount: this.formatter.formatNumberToTenantCurrency(
+          payment.amount,
+          payment.currency?.code || 'USD',
+        ),
+        bookingCode: payment.booking?.bookingCode || '',
+        handledBy: `${payment.user?.firstName?.charAt(0) || ''}. ${payment.user?.lastName || ''}`,
+        notes: payment.notes || '',
+        paymentDate:
+          this.formatter.formatDateToFriendlyDate(payment.paymentDate) || '',
+        paymentMethod: payment.paymentMethod.method || '',
+        receiptNumber: payment.receipt.receiptNumber || '',
+      };
+
+      await this.sendEmail('payment-receipt', data, payment.customer.email, [
+        {
+          filename: `${payment.receipt.receiptNumber}.pdf`,
+          path: payment.receipt.receiptUrl || '',
+          contentType: 'application/pdf',
+        },
+      ]);
+    } catch (error: any) {
+      this.logger.error('Error sending payment receipt email:', error);
       throw error;
     }
   }

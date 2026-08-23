@@ -25,13 +25,14 @@ import { BookingModule } from './modules/booking/booking.module.js';
 import { UserModule } from './modules/user/user.module.js';
 import { CustomerModule } from './modules/customer/customer.module.js';
 import { NotificationModule } from './infrastructure/notification/notification.module.js';
-import { PaymentModule } from './modules/payment/payment.module.js';
 import { SentDmModule } from './infrastructure/sentdm/sentdm.module.js';
 import { ResendModule } from './infrastructure/resend/resend.module.js';
 import { PrismaModule } from './infrastructure/prisma/prisma.module.js';
 import { RealtimeModule } from './modules/realtime/realtime.module.js';
 import { ActivityModule } from './common/activity/activity.module.js';
 import { FinanceModule } from './modules/finance/finance.module';
+import { PdfMonkeyModule } from './infrastructure/pdfMonkey/pdfMonkey.module.js';
+import { AwsModule } from './infrastructure/aws/aws.module.js';
 
 @Module({
   imports: [
@@ -56,12 +57,15 @@ import { FinanceModule } from './modules/finance/finance.module';
     EmailModule,
     WhatsappModule,
     NotificationModule,
-    PaymentModule,
     ActivityModule,
 
     ResendModule,
     SentDmModule,
+    PdfMonkeyModule,
     RealtimeModule,
+    AwsModule,
+
+    FinanceModule,
 
     AdminModule,
 
@@ -82,8 +86,6 @@ import { FinanceModule } from './modules/finance/finance.module';
     StorageModule,
     DocumentModule,
     SubscriptionModule,
-
-    FinanceModule,
   ],
   controllers: [AppController],
   providers: [

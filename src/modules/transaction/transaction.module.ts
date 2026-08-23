@@ -6,8 +6,8 @@ import { TransactionController } from './transaction.controller.js';
 import { TransactionRepository } from './transaction.repository.js';
 import jwtConfig from '../../config/jwt.config.js';
 import { ExpenseModule } from './modules/expense/expense.module.js';
-import { PaymentModule } from './modules/payment/payment.module.js';
 import { RefundModule } from './modules/refund/refund.module.js';
+import { PaymentModule } from '../finance/payment/payment.module.js';
 
 @Module({
   imports: [

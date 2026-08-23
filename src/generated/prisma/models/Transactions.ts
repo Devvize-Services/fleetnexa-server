@@ -539,6 +539,11 @@ export type TransactionsUncheckedUpdateManyInput = {
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+export type TransactionsNullableScalarRelationFilter = {
+  is?: Prisma.TransactionsWhereInput | null
+  isNot?: Prisma.TransactionsWhereInput | null
+}
+
 export type TransactionsListRelationFilter = {
   every?: Prisma.TransactionsWhereInput
   some?: Prisma.TransactionsWhereInput
@@ -619,9 +624,36 @@ export type TransactionsSumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
 }
 
-export type TransactionsNullableScalarRelationFilter = {
-  is?: Prisma.TransactionsWhereInput | null
-  isNot?: Prisma.TransactionsWhereInput | null
+export type TransactionsCreateNestedOneWithoutPaymentInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
+  connect?: Prisma.TransactionsWhereUniqueInput
+}
+
+export type TransactionsUncheckedCreateNestedOneWithoutPaymentInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
+  connect?: Prisma.TransactionsWhereUniqueInput
+}
+
+export type TransactionsUpdateOneWithoutPaymentNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
+  upsert?: Prisma.TransactionsUpsertWithoutPaymentInput
+  disconnect?: Prisma.TransactionsWhereInput | boolean
+  delete?: Prisma.TransactionsWhereInput | boolean
+  connect?: Prisma.TransactionsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionsUpdateToOneWithWhereWithoutPaymentInput, Prisma.TransactionsUpdateWithoutPaymentInput>, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
+}
+
+export type TransactionsUncheckedUpdateOneWithoutPaymentNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
+  upsert?: Prisma.TransactionsUpsertWithoutPaymentInput
+  disconnect?: Prisma.TransactionsWhereInput | boolean
+  delete?: Prisma.TransactionsWhereInput | boolean
+  connect?: Prisma.TransactionsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionsUpdateToOneWithWhereWithoutPaymentInput, Prisma.TransactionsUpdateWithoutPaymentInput>, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
 }
 
 export type TransactionsCreateNestedManyWithoutRentalInput = {
@@ -710,38 +742,6 @@ export type TransactionsUncheckedUpdateManyWithoutTenantNestedInput = {
 
 export type EnumTransactionTypeFieldUpdateOperationsInput = {
   set?: $Enums.TransactionType
-}
-
-export type TransactionsCreateNestedOneWithoutPaymentInput = {
-  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
-  connect?: Prisma.TransactionsWhereUniqueInput
-}
-
-export type TransactionsUncheckedCreateNestedOneWithoutPaymentInput = {
-  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
-  connect?: Prisma.TransactionsWhereUniqueInput
-}
-
-export type TransactionsUpdateOneWithoutPaymentNestedInput = {
-  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
-  upsert?: Prisma.TransactionsUpsertWithoutPaymentInput
-  disconnect?: Prisma.TransactionsWhereInput | boolean
-  delete?: Prisma.TransactionsWhereInput | boolean
-  connect?: Prisma.TransactionsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionsUpdateToOneWithWhereWithoutPaymentInput, Prisma.TransactionsUpdateWithoutPaymentInput>, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
-}
-
-export type TransactionsUncheckedUpdateOneWithoutPaymentNestedInput = {
-  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutPaymentInput
-  upsert?: Prisma.TransactionsUpsertWithoutPaymentInput
-  disconnect?: Prisma.TransactionsWhereInput | boolean
-  delete?: Prisma.TransactionsWhereInput | boolean
-  connect?: Prisma.TransactionsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionsUpdateToOneWithWhereWithoutPaymentInput, Prisma.TransactionsUpdateWithoutPaymentInput>, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
 }
 
 export type TransactionsCreateNestedOneWithoutRefundInput = {
@@ -848,6 +848,94 @@ export type TransactionsUncheckedUpdateManyWithoutUserNestedInput = {
   update?: Prisma.TransactionsUpdateWithWhereUniqueWithoutUserInput | Prisma.TransactionsUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.TransactionsUpdateManyWithWhereWithoutUserInput | Prisma.TransactionsUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.TransactionsScalarWhereInput | Prisma.TransactionsScalarWhereInput[]
+}
+
+export type TransactionsCreateWithoutPaymentInput = {
+  id?: string
+  amount: number
+  type: $Enums.TransactionType
+  isDeleted?: boolean
+  transactionDate?: Date | string
+  createdAt?: Date | string
+  details?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  number?: string | null
+  user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
+  expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
+  refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
+  rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+}
+
+export type TransactionsUncheckedCreateWithoutPaymentInput = {
+  id?: string
+  amount: number
+  type: $Enums.TransactionType
+  isDeleted?: boolean
+  transactionDate?: Date | string
+  createdAt?: Date | string
+  createdBy?: string | null
+  tenantId: string
+  rentalId?: string | null
+  details?: string | null
+  refundId?: string | null
+  expenseId?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  number?: string | null
+}
+
+export type TransactionsCreateOrConnectWithoutPaymentInput = {
+  where: Prisma.TransactionsWhereUniqueInput
+  create: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+}
+
+export type TransactionsUpsertWithoutPaymentInput = {
+  update: Prisma.XOR<Prisma.TransactionsUpdateWithoutPaymentInput, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
+  create: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
+  where?: Prisma.TransactionsWhereInput
+}
+
+export type TransactionsUpdateToOneWithWhereWithoutPaymentInput = {
+  where?: Prisma.TransactionsWhereInput
+  data: Prisma.XOR<Prisma.TransactionsUpdateWithoutPaymentInput, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
+}
+
+export type TransactionsUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
+  expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
+  refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
+  rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+}
+
+export type TransactionsUncheckedUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateWithoutRentalInput = {
@@ -994,94 +1082,6 @@ export type TransactionsUpdateWithWhereUniqueWithoutTenantInput = {
 export type TransactionsUpdateManyWithWhereWithoutTenantInput = {
   where: Prisma.TransactionsScalarWhereInput
   data: Prisma.XOR<Prisma.TransactionsUpdateManyMutationInput, Prisma.TransactionsUncheckedUpdateManyWithoutTenantInput>
-}
-
-export type TransactionsCreateWithoutPaymentInput = {
-  id?: string
-  amount: number
-  type: $Enums.TransactionType
-  isDeleted?: boolean
-  transactionDate?: Date | string
-  createdAt?: Date | string
-  details?: string | null
-  updatedAt?: Date | string | null
-  updatedBy?: string | null
-  number?: string | null
-  user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
-  expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
-  refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
-  rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
-  tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
-}
-
-export type TransactionsUncheckedCreateWithoutPaymentInput = {
-  id?: string
-  amount: number
-  type: $Enums.TransactionType
-  isDeleted?: boolean
-  transactionDate?: Date | string
-  createdAt?: Date | string
-  createdBy?: string | null
-  tenantId: string
-  rentalId?: string | null
-  details?: string | null
-  refundId?: string | null
-  expenseId?: string | null
-  updatedAt?: Date | string | null
-  updatedBy?: string | null
-  number?: string | null
-}
-
-export type TransactionsCreateOrConnectWithoutPaymentInput = {
-  where: Prisma.TransactionsWhereUniqueInput
-  create: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-}
-
-export type TransactionsUpsertWithoutPaymentInput = {
-  update: Prisma.XOR<Prisma.TransactionsUpdateWithoutPaymentInput, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
-  create: Prisma.XOR<Prisma.TransactionsCreateWithoutPaymentInput, Prisma.TransactionsUncheckedCreateWithoutPaymentInput>
-  where?: Prisma.TransactionsWhereInput
-}
-
-export type TransactionsUpdateToOneWithWhereWithoutPaymentInput = {
-  where?: Prisma.TransactionsWhereInput
-  data: Prisma.XOR<Prisma.TransactionsUpdateWithoutPaymentInput, Prisma.TransactionsUncheckedUpdateWithoutPaymentInput>
-}
-
-export type TransactionsUpdateWithoutPaymentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
-  expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
-  refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
-  rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
-}
-
-export type TransactionsUncheckedUpdateWithoutPaymentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TransactionsCreateWithoutRefundInput = {

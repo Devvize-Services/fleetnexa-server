@@ -726,6 +726,11 @@ export type CustomerScalarRelationFilter = {
   isNot?: Prisma.CustomerWhereInput
 }
 
+export type CustomerNullableScalarRelationFilter = {
+  is?: Prisma.CustomerWhereInput | null
+  isNot?: Prisma.CustomerWhereInput | null
+}
+
 export type CustomerListRelationFilter = {
   every?: Prisma.CustomerWhereInput
   some?: Prisma.CustomerWhereInput
@@ -734,11 +739,6 @@ export type CustomerListRelationFilter = {
 
 export type CustomerOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type CustomerNullableScalarRelationFilter = {
-  is?: Prisma.CustomerWhereInput | null
-  isNot?: Prisma.CustomerWhereInput | null
 }
 
 export type EnumCustomerStatusFieldUpdateOperationsInput = {
@@ -865,6 +865,22 @@ export type CustomerUpdateOneRequiredWithoutPaymentReceiptsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutPaymentReceiptsInput, Prisma.CustomerUpdateWithoutPaymentReceiptsInput>, Prisma.CustomerUncheckedUpdateWithoutPaymentReceiptsInput>
 }
 
+export type CustomerCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutPaymentsInput
+  connect?: Prisma.CustomerWhereUniqueInput
+}
+
+export type CustomerUpdateOneWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutPaymentsInput
+  upsert?: Prisma.CustomerUpsertWithoutPaymentsInput
+  disconnect?: Prisma.CustomerWhereInput | boolean
+  delete?: Prisma.CustomerWhereInput | boolean
+  connect?: Prisma.CustomerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutPaymentsInput, Prisma.CustomerUpdateWithoutPaymentsInput>, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
+}
+
 export type CustomerCreateNestedOneWithoutRentalActivityInput = {
   create?: Prisma.XOR<Prisma.CustomerCreateWithoutRentalActivityInput, Prisma.CustomerUncheckedCreateWithoutRentalActivityInput>
   connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutRentalActivityInput
@@ -947,22 +963,6 @@ export type CustomerUncheckedUpdateManyWithoutTenantNestedInput = {
   update?: Prisma.CustomerUpdateWithWhereUniqueWithoutTenantInput | Prisma.CustomerUpdateWithWhereUniqueWithoutTenantInput[]
   updateMany?: Prisma.CustomerUpdateManyWithWhereWithoutTenantInput | Prisma.CustomerUpdateManyWithWhereWithoutTenantInput[]
   deleteMany?: Prisma.CustomerScalarWhereInput | Prisma.CustomerScalarWhereInput[]
-}
-
-export type CustomerCreateNestedOneWithoutPaymentsInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutPaymentsInput
-  connect?: Prisma.CustomerWhereUniqueInput
-}
-
-export type CustomerUpdateOneWithoutPaymentsNestedInput = {
-  create?: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutPaymentsInput
-  upsert?: Prisma.CustomerUpsertWithoutPaymentsInput
-  disconnect?: Prisma.CustomerWhereInput | boolean
-  delete?: Prisma.CustomerWhereInput | boolean
-  connect?: Prisma.CustomerWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutPaymentsInput, Prisma.CustomerUpdateWithoutPaymentsInput>, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
 }
 
 export type CustomerCreateNestedOneWithoutRefundsInput = {
@@ -2223,6 +2223,154 @@ export type CustomerUncheckedUpdateWithoutPaymentReceiptsInput = {
   damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
+export type CustomerCreateWithoutPaymentsInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  gender: string
+  dateOfBirth: Date | string
+  email?: string | null
+  phone: string
+  profileImage?: string | null
+  status?: $Enums.CustomerStatus
+  experience?: number | null
+  isActive?: boolean
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontUser?: Prisma.StorefrontUserCreateNestedOneWithoutCustomersInput
+  tenant: Prisma.TenantCreateNestedOneWithoutCustomersInput
+  address?: Prisma.CustomerAddressCreateNestedOneWithoutCustomerInput
+  documents?: Prisma.CustomerDocumentCreateNestedOneWithoutCustomerInput
+  apps?: Prisma.CustomerMessengerAppCreateNestedManyWithoutCustomerInput
+  violations?: Prisma.CustomerViolationCreateNestedManyWithoutCustomerInput
+  license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
+  refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
+  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
+  agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
+  charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
+  drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
+  damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerUncheckedCreateWithoutPaymentsInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  gender: string
+  dateOfBirth: Date | string
+  email?: string | null
+  phone: string
+  tenantId: string
+  profileImage?: string | null
+  status?: $Enums.CustomerStatus
+  experience?: number | null
+  isActive?: boolean
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  storefrontId?: string | null
+  address?: Prisma.CustomerAddressUncheckedCreateNestedOneWithoutCustomerInput
+  documents?: Prisma.CustomerDocumentUncheckedCreateNestedOneWithoutCustomerInput
+  apps?: Prisma.CustomerMessengerAppUncheckedCreateNestedManyWithoutCustomerInput
+  violations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutCustomerInput
+  license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
+  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
+  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
+  agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
+  charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
+  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
+  damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerCreateOrConnectWithoutPaymentsInput = {
+  where: Prisma.CustomerWhereUniqueInput
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
+}
+
+export type CustomerUpsertWithoutPaymentsInput = {
+  update: Prisma.XOR<Prisma.CustomerUpdateWithoutPaymentsInput, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
+  where?: Prisma.CustomerWhereInput
+}
+
+export type CustomerUpdateToOneWithWhereWithoutPaymentsInput = {
+  where?: Prisma.CustomerWhereInput
+  data: Prisma.XOR<Prisma.CustomerUpdateWithoutPaymentsInput, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type CustomerUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontUser?: Prisma.StorefrontUserUpdateOneWithoutCustomersNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutCustomersNestedInput
+  address?: Prisma.CustomerAddressUpdateOneWithoutCustomerNestedInput
+  documents?: Prisma.CustomerDocumentUpdateOneWithoutCustomerNestedInput
+  apps?: Prisma.CustomerMessengerAppUpdateManyWithoutCustomerNestedInput
+  violations?: Prisma.CustomerViolationUpdateManyWithoutCustomerNestedInput
+  license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
+  refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
+  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
+  agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
+  charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
+  drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
+  damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
+}
+
+export type CustomerUncheckedUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus
+  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  storefrontId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.CustomerAddressUncheckedUpdateOneWithoutCustomerNestedInput
+  documents?: Prisma.CustomerDocumentUncheckedUpdateOneWithoutCustomerNestedInput
+  apps?: Prisma.CustomerMessengerAppUncheckedUpdateManyWithoutCustomerNestedInput
+  violations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutCustomerNestedInput
+  license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
+  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
+  refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
+  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
+  agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
+  charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
+  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
+  damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
+}
+
 export type CustomerCreateWithoutRentalActivityInput = {
   id?: string
   firstName: string
@@ -2780,154 +2928,6 @@ export type CustomerScalarWhereInput = {
   updatedAt?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"Customer"> | string | null
   storefrontId?: Prisma.StringNullableFilter<"Customer"> | string | null
-}
-
-export type CustomerCreateWithoutPaymentsInput = {
-  id?: string
-  firstName: string
-  lastName: string
-  gender: string
-  dateOfBirth: Date | string
-  email?: string | null
-  phone: string
-  profileImage?: string | null
-  status?: $Enums.CustomerStatus
-  experience?: number | null
-  isActive?: boolean
-  isDeleted?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  updatedBy?: string | null
-  storefrontUser?: Prisma.StorefrontUserCreateNestedOneWithoutCustomersInput
-  tenant: Prisma.TenantCreateNestedOneWithoutCustomersInput
-  address?: Prisma.CustomerAddressCreateNestedOneWithoutCustomerInput
-  documents?: Prisma.CustomerDocumentCreateNestedOneWithoutCustomerInput
-  apps?: Prisma.CustomerMessengerAppCreateNestedManyWithoutCustomerInput
-  violations?: Prisma.CustomerViolationCreateNestedManyWithoutCustomerInput
-  license?: Prisma.DriverLicenseCreateNestedOneWithoutCustomerInput
-  invoices?: Prisma.InvoiceCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptCreateNestedManyWithoutCustomerInput
-  refunds?: Prisma.RefundCreateNestedManyWithoutCustomerInput
-  rentalActivity?: Prisma.RentalActivityCreateNestedManyWithoutCustomerInput
-  agreements?: Prisma.RentalAgreementCreateNestedManyWithoutCustomerInput
-  charges?: Prisma.RentalChargeCreateNestedManyWithoutCustomerInput
-  drivers?: Prisma.RentalDriverCreateNestedManyWithoutCustomerInput
-  damages?: Prisma.VehicleDamageCreateNestedManyWithoutCustomerInput
-}
-
-export type CustomerUncheckedCreateWithoutPaymentsInput = {
-  id?: string
-  firstName: string
-  lastName: string
-  gender: string
-  dateOfBirth: Date | string
-  email?: string | null
-  phone: string
-  tenantId: string
-  profileImage?: string | null
-  status?: $Enums.CustomerStatus
-  experience?: number | null
-  isActive?: boolean
-  isDeleted?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  updatedBy?: string | null
-  storefrontId?: string | null
-  address?: Prisma.CustomerAddressUncheckedCreateNestedOneWithoutCustomerInput
-  documents?: Prisma.CustomerDocumentUncheckedCreateNestedOneWithoutCustomerInput
-  apps?: Prisma.CustomerMessengerAppUncheckedCreateNestedManyWithoutCustomerInput
-  violations?: Prisma.CustomerViolationUncheckedCreateNestedManyWithoutCustomerInput
-  license?: Prisma.DriverLicenseUncheckedCreateNestedOneWithoutCustomerInput
-  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutCustomerInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedCreateNestedManyWithoutCustomerInput
-  refunds?: Prisma.RefundUncheckedCreateNestedManyWithoutCustomerInput
-  rentalActivity?: Prisma.RentalActivityUncheckedCreateNestedManyWithoutCustomerInput
-  agreements?: Prisma.RentalAgreementUncheckedCreateNestedManyWithoutCustomerInput
-  charges?: Prisma.RentalChargeUncheckedCreateNestedManyWithoutCustomerInput
-  drivers?: Prisma.RentalDriverUncheckedCreateNestedManyWithoutCustomerInput
-  damages?: Prisma.VehicleDamageUncheckedCreateNestedManyWithoutCustomerInput
-}
-
-export type CustomerCreateOrConnectWithoutPaymentsInput = {
-  where: Prisma.CustomerWhereUniqueInput
-  create: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
-}
-
-export type CustomerUpsertWithoutPaymentsInput = {
-  update: Prisma.XOR<Prisma.CustomerUpdateWithoutPaymentsInput, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
-  create: Prisma.XOR<Prisma.CustomerCreateWithoutPaymentsInput, Prisma.CustomerUncheckedCreateWithoutPaymentsInput>
-  where?: Prisma.CustomerWhereInput
-}
-
-export type CustomerUpdateToOneWithWhereWithoutPaymentsInput = {
-  where?: Prisma.CustomerWhereInput
-  data: Prisma.XOR<Prisma.CustomerUpdateWithoutPaymentsInput, Prisma.CustomerUncheckedUpdateWithoutPaymentsInput>
-}
-
-export type CustomerUpdateWithoutPaymentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  gender?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  storefrontUser?: Prisma.StorefrontUserUpdateOneWithoutCustomersNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutCustomersNestedInput
-  address?: Prisma.CustomerAddressUpdateOneWithoutCustomerNestedInput
-  documents?: Prisma.CustomerDocumentUpdateOneWithoutCustomerNestedInput
-  apps?: Prisma.CustomerMessengerAppUpdateManyWithoutCustomerNestedInput
-  violations?: Prisma.CustomerViolationUpdateManyWithoutCustomerNestedInput
-  license?: Prisma.DriverLicenseUpdateOneWithoutCustomerNestedInput
-  invoices?: Prisma.InvoiceUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUpdateManyWithoutCustomerNestedInput
-  refunds?: Prisma.RefundUpdateManyWithoutCustomerNestedInput
-  rentalActivity?: Prisma.RentalActivityUpdateManyWithoutCustomerNestedInput
-  agreements?: Prisma.RentalAgreementUpdateManyWithoutCustomerNestedInput
-  charges?: Prisma.RentalChargeUpdateManyWithoutCustomerNestedInput
-  drivers?: Prisma.RentalDriverUpdateManyWithoutCustomerNestedInput
-  damages?: Prisma.VehicleDamageUpdateManyWithoutCustomerNestedInput
-}
-
-export type CustomerUncheckedUpdateWithoutPaymentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  gender?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumCustomerStatusFieldUpdateOperationsInput | $Enums.CustomerStatus
-  experience?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  storefrontId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.CustomerAddressUncheckedUpdateOneWithoutCustomerNestedInput
-  documents?: Prisma.CustomerDocumentUncheckedUpdateOneWithoutCustomerNestedInput
-  apps?: Prisma.CustomerMessengerAppUncheckedUpdateManyWithoutCustomerNestedInput
-  violations?: Prisma.CustomerViolationUncheckedUpdateManyWithoutCustomerNestedInput
-  license?: Prisma.DriverLicenseUncheckedUpdateOneWithoutCustomerNestedInput
-  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutCustomerNestedInput
-  paymentReceipts?: Prisma.PaymentReceiptUncheckedUpdateManyWithoutCustomerNestedInput
-  refunds?: Prisma.RefundUncheckedUpdateManyWithoutCustomerNestedInput
-  rentalActivity?: Prisma.RentalActivityUncheckedUpdateManyWithoutCustomerNestedInput
-  agreements?: Prisma.RentalAgreementUncheckedUpdateManyWithoutCustomerNestedInput
-  charges?: Prisma.RentalChargeUncheckedUpdateManyWithoutCustomerNestedInput
-  drivers?: Prisma.RentalDriverUncheckedUpdateManyWithoutCustomerNestedInput
-  damages?: Prisma.VehicleDamageUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateWithoutRefundsInput = {

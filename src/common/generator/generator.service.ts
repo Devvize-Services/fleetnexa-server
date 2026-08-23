@@ -244,4 +244,28 @@ export class GeneratorService {
   async generateTempPassword(length = 12) {
     return crypto.randomBytes(length).toString('base64').slice(0, length);
   }
+
+  async generatePaymentReferenceNumber(tenantId: string): Promise<string> {
+    try {
+      const year = new Date().getFullYear();
+      const prefix = 'PAY';
+      const lastPayment = await this.prisma.payment.findFirst({
+        where: { tenantId },
+        orderBy: { createdAt: 'desc' },
+        select: { reference: true },
+      });
+
+      const lastNumber = lastPayment?.reference
+        ? parseInt(lastPayment.reference.match(/\d+$/)?.[0] || '0', 10)
+        : 0;
+      const nextNumber = lastNumber + 1;
+
+      const sequenceNumber = nextNumber.toString().padStart(6, '0');
+
+      return `${prefix}-${year}-${sequenceNumber}`;
+    } catch (error: any) {
+      this.logger.error('Failed to generate payment reference number', error);
+      throw error;
+    }
+  }
 }

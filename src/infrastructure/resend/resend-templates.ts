@@ -25,3 +25,13 @@ export class WelcomeEmailTemplate {
   name: string = '';
   username: string = '';
 }
+
+export class PaymentReceiptTemplate {
+  amount: string;
+  bookingCode: string;
+  handledBy: string;
+  notes: string;
+  paymentDate: string;
+  paymentMethod: string;
+  receiptNumber: string;
+}

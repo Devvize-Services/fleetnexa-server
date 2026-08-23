@@ -329,6 +329,7 @@ export const ActivityModule = {
   CUSTOMER: 'CUSTOMER',
   BOOKING: 'BOOKING',
   PAYMENT: 'PAYMENT',
+  RECEIPT: 'RECEIPT',
   REFUND: 'REFUND',
   EXPENSE: 'EXPENSE',
   MAINTENANCE: 'MAINTENANCE',
@@ -340,6 +341,18 @@ export const ActivityModule = {
 } as const
 
 export type ActivityModule = (typeof ActivityModule)[keyof typeof ActivityModule]
+
+
+export const PaymentStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED',
+  REFUNDED: 'REFUNDED',
+  PARTIALLY_REFUNDED: 'PARTIALLY_REFUNDED'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
 
 
 export const FormType = {

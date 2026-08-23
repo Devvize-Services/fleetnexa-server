@@ -2,7 +2,6 @@ import { Injectable, Logger } from '@nestjs/common';
 import { CustomerService } from '../../../modules/customer/customer.service';
 import { NotFoundException } from '@nestjs/common';
 import { GeneratorService } from '../../../common/generator/generator.service';
-import { PdfService } from '../../../common/pdf/pdf.service';
 import { Tenant, User } from '../../../generated/prisma/client';
 import { PrismaService } from '../../../infrastructure/prisma/prisma.service';
 import { InvoiceData, InvoiceItem, RentalService } from '../../../types/pdf';
@@ -12,6 +11,7 @@ import { TenantExtraService } from '../../../modules/tenant/tenant-extra/tenant-
 import { AwsService } from '../../../infrastructure/aws/aws.service';
 import { randomBytes } from 'crypto';
 import { ActivityService } from '../../../common/activity/activity.service';
+import { PdfMonkeyService } from 'src/infrastructure/pdfMonkey/pdf.service';
 
 @Injectable()
 export class InvoiceService {
@@ -20,7 +20,7 @@ export class InvoiceService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly generator: GeneratorService,
-    private readonly pdfService: PdfService,
+    private readonly pdfMonkey: PdfMonkeyService,
     private readonly customerService: CustomerService,
     private readonly formatter: FormatterService,
     private readonly tenantExtraService: TenantExtraService,
@@ -142,7 +142,7 @@ export class InvoiceService {
       const data = await this.generateInvoiceData(bookingId, tenant.id);
 
       data.invoiceNumber = invoiceNumber;
-      const pdfResult = await this.pdfService.createInvoice(
+      const pdfResult = await this.pdfMonkey.createInvoice(
         data,
         invoiceNumber,
         tenant.tenantCode,

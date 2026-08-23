@@ -25,32 +25,7 @@ model Transactions {
   @@unique([number, tenantId], name: "transactionNumber_tenantId")
 }
 
-model Payment {
-  id              String          @id @default(dbgenerated("gen_random_uuid()"))
-  amount          Float
-  paymentMethodId String
-  paymentTypeId   String
-  tenantId        String
-  rentalId        String
-  notes           String?
-  isDeleted       Boolean         @default(false)
-  paymentDate     DateTime
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime?       @updatedAt
-  updatedBy       String?
-  customerId      String?
-  currencyId      String?
-  payer           String?
-  payment         String?
-  currency        Currency?       @relation(fields: [currencyId], references: [id])
-  customer        Customer?       @relation(fields: [customerId], references: [id])
-  paymentMethod   PaymentMethod   @relation(fields: [paymentMethodId], references: [id])
-  paymentType     PaymentType     @relation(fields: [paymentTypeId], references: [id])
-  rental          Rental          @relation(fields: [rentalId], references: [id])
-  tenant          Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  receipt         PaymentReceipt?
-  transaction     Transactions?
-}
+
 
 model Refund {
   id          String        @id @default(dbgenerated("gen_random_uuid()"))

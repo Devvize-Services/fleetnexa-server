@@ -276,6 +276,11 @@ export type PaymentMethodUncheckedUpdateManyInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
+export type PaymentMethodScalarRelationFilter = {
+  is?: Prisma.PaymentMethodWhereInput
+  isNot?: Prisma.PaymentMethodWhereInput
+}
+
 export type PaymentMethodListRelationFilter = {
   every?: Prisma.PaymentMethodWhereInput
   some?: Prisma.PaymentMethodWhereInput
@@ -307,9 +312,18 @@ export type PaymentMethodMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type PaymentMethodScalarRelationFilter = {
-  is?: Prisma.PaymentMethodWhereInput
-  isNot?: Prisma.PaymentMethodWhereInput
+export type PaymentMethodCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPaymentsInput, Prisma.PaymentMethodUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPaymentsInput
+  connect?: Prisma.PaymentMethodWhereUniqueInput
+}
+
+export type PaymentMethodUpdateOneRequiredWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPaymentsInput, Prisma.PaymentMethodUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPaymentsInput
+  upsert?: Prisma.PaymentMethodUpsertWithoutPaymentsInput
+  connect?: Prisma.PaymentMethodWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentMethodUpdateToOneWithWhereWithoutPaymentsInput, Prisma.PaymentMethodUpdateWithoutPaymentsInput>, Prisma.PaymentMethodUncheckedUpdateWithoutPaymentsInput>
 }
 
 export type PaymentMethodCreateNestedManyWithoutTenantInput = {
@@ -348,67 +362,6 @@ export type PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput = {
   update?: Prisma.PaymentMethodUpdateWithWhereUniqueWithoutTenantInput | Prisma.PaymentMethodUpdateWithWhereUniqueWithoutTenantInput[]
   updateMany?: Prisma.PaymentMethodUpdateManyWithWhereWithoutTenantInput | Prisma.PaymentMethodUpdateManyWithWhereWithoutTenantInput[]
   deleteMany?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
-}
-
-export type PaymentMethodCreateNestedOneWithoutPaymentsInput = {
-  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPaymentsInput, Prisma.PaymentMethodUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPaymentsInput
-  connect?: Prisma.PaymentMethodWhereUniqueInput
-}
-
-export type PaymentMethodUpdateOneRequiredWithoutPaymentsNestedInput = {
-  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPaymentsInput, Prisma.PaymentMethodUncheckedCreateWithoutPaymentsInput>
-  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPaymentsInput
-  upsert?: Prisma.PaymentMethodUpsertWithoutPaymentsInput
-  connect?: Prisma.PaymentMethodWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentMethodUpdateToOneWithWhereWithoutPaymentsInput, Prisma.PaymentMethodUpdateWithoutPaymentsInput>, Prisma.PaymentMethodUncheckedUpdateWithoutPaymentsInput>
-}
-
-export type PaymentMethodCreateWithoutTenantInput = {
-  id?: string
-  method: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  payments?: Prisma.PaymentCreateNestedManyWithoutPaymentMethodInput
-}
-
-export type PaymentMethodUncheckedCreateWithoutTenantInput = {
-  id?: string
-  method: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPaymentMethodInput
-}
-
-export type PaymentMethodCreateOrConnectWithoutTenantInput = {
-  where: Prisma.PaymentMethodWhereUniqueInput
-  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutTenantInput, Prisma.PaymentMethodUncheckedCreateWithoutTenantInput>
-}
-
-export type PaymentMethodUpsertWithWhereUniqueWithoutTenantInput = {
-  where: Prisma.PaymentMethodWhereUniqueInput
-  update: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutTenantInput, Prisma.PaymentMethodUncheckedUpdateWithoutTenantInput>
-  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutTenantInput, Prisma.PaymentMethodUncheckedCreateWithoutTenantInput>
-}
-
-export type PaymentMethodUpdateWithWhereUniqueWithoutTenantInput = {
-  where: Prisma.PaymentMethodWhereUniqueInput
-  data: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutTenantInput, Prisma.PaymentMethodUncheckedUpdateWithoutTenantInput>
-}
-
-export type PaymentMethodUpdateManyWithWhereWithoutTenantInput = {
-  where: Prisma.PaymentMethodScalarWhereInput
-  data: Prisma.XOR<Prisma.PaymentMethodUpdateManyMutationInput, Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantInput>
-}
-
-export type PaymentMethodScalarWhereInput = {
-  AND?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
-  OR?: Prisma.PaymentMethodScalarWhereInput[]
-  NOT?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
-  id?: Prisma.StringFilter<"PaymentMethod"> | string
-  method?: Prisma.StringFilter<"PaymentMethod"> | string
-  createdAt?: Prisma.DateTimeFilter<"PaymentMethod"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentMethod"> | Date | string | null
 }
 
 export type PaymentMethodCreateWithoutPaymentsInput = {
@@ -457,6 +410,53 @@ export type PaymentMethodUncheckedUpdateWithoutPaymentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUncheckedUpdateManyWithoutPaymentMethodsNestedInput
+}
+
+export type PaymentMethodCreateWithoutTenantInput = {
+  id?: string
+  method: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  payments?: Prisma.PaymentCreateNestedManyWithoutPaymentMethodInput
+}
+
+export type PaymentMethodUncheckedCreateWithoutTenantInput = {
+  id?: string
+  method: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPaymentMethodInput
+}
+
+export type PaymentMethodCreateOrConnectWithoutTenantInput = {
+  where: Prisma.PaymentMethodWhereUniqueInput
+  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutTenantInput, Prisma.PaymentMethodUncheckedCreateWithoutTenantInput>
+}
+
+export type PaymentMethodUpsertWithWhereUniqueWithoutTenantInput = {
+  where: Prisma.PaymentMethodWhereUniqueInput
+  update: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutTenantInput, Prisma.PaymentMethodUncheckedUpdateWithoutTenantInput>
+  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutTenantInput, Prisma.PaymentMethodUncheckedCreateWithoutTenantInput>
+}
+
+export type PaymentMethodUpdateWithWhereUniqueWithoutTenantInput = {
+  where: Prisma.PaymentMethodWhereUniqueInput
+  data: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutTenantInput, Prisma.PaymentMethodUncheckedUpdateWithoutTenantInput>
+}
+
+export type PaymentMethodUpdateManyWithWhereWithoutTenantInput = {
+  where: Prisma.PaymentMethodScalarWhereInput
+  data: Prisma.XOR<Prisma.PaymentMethodUpdateManyMutationInput, Prisma.PaymentMethodUncheckedUpdateManyWithoutTenantInput>
+}
+
+export type PaymentMethodScalarWhereInput = {
+  AND?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
+  OR?: Prisma.PaymentMethodScalarWhereInput[]
+  NOT?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
+  id?: Prisma.StringFilter<"PaymentMethod"> | string
+  method?: Prisma.StringFilter<"PaymentMethod"> | string
+  createdAt?: Prisma.DateTimeFilter<"PaymentMethod"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"PaymentMethod"> | Date | string | null
 }
 
 export type PaymentMethodUpdateWithoutTenantInput = {

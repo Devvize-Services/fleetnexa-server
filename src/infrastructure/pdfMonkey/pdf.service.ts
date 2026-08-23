@@ -1,6 +1,6 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Global, Injectable, Logger } from '@nestjs/common';
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { AwsService } from '../../infrastructure/aws/aws.service.js';
+import { AwsService } from '../aws/aws.service.js';
 import axios, { AxiosInstance } from 'axios';
 import { ConfigService } from '@nestjs/config';
 import {
@@ -11,9 +11,10 @@ import {
 } from '../../types/pdf.js';
 import { PDFDocument } from 'pdf-lib';
 
+@Global()
 @Injectable()
-export class PdfService {
-  private readonly logger = new Logger(PdfService.name);
+export class PdfMonkeyService {
+  private readonly logger = new Logger(PdfMonkeyService.name);
   private readonly pdfMonkeyApi: AxiosInstance;
   private readonly invoiceId: string;
   private readonly agreementId: string;
@@ -84,7 +85,7 @@ export class PdfService {
     return { s3Key, documentId, publicUrl, signablePublicUrl };
   };
 
-  async getPDFFromS3(bucketName: string, key: string): Promise<Buffer> {
+  private async getPDFFromS3(bucketName: string, key: string): Promise<Buffer> {
     try {
       const command = new GetObjectCommand({
         Bucket: bucketName,
@@ -102,7 +103,7 @@ export class PdfService {
     }
   }
 
-  async streamToBuffer(stream: any) {
+  private async streamToBuffer(stream: any) {
     return new Promise((resolve, reject) => {
       const chunks: Buffer[] = [];
       stream.on('data', (chunk: Buffer) => chunks.push(chunk));
@@ -111,7 +112,7 @@ export class PdfService {
     });
   }
 
-  async createDocument({
+  private async createDocument({
     data,
     documentType,
     documentNumber,

@@ -93,6 +93,7 @@ export const ModelName = {
   Currency: 'Currency',
   TenantCurrencyRate: 'TenantCurrencyRate',
   ExchangeRate: 'ExchangeRate',
+  Payment: 'Payment',
   Form: 'Form',
   FormResponse: 'FormResponse',
   RentalActivity: 'RentalActivity',
@@ -132,7 +133,6 @@ export const ModelName = {
   TenantEquipment: 'TenantEquipment',
   TenantService: 'TenantService',
   Transactions: 'Transactions',
-  Payment: 'Payment',
   Refund: 'Refund',
   Expense: 'Expense',
   Session: 'Session',
@@ -616,12 +616,13 @@ export const PaymentReceiptScalarFieldEnum = {
   tenantId: 'tenantId',
   customerId: 'customerId',
   receiptUrl: 'receiptUrl',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
+  accessToken: 'accessToken',
   createdBy: 'createdBy',
   updatedBy: 'updatedBy',
   paymentId: 'paymentId',
-  bookingId: 'bookingId'
+  bookingId: 'bookingId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type PaymentReceiptScalarFieldEnum = (typeof PaymentReceiptScalarFieldEnum)[keyof typeof PaymentReceiptScalarFieldEnum]
@@ -682,6 +683,31 @@ export const ExchangeRateScalarFieldEnum = {
 } as const
 
 export type ExchangeRateScalarFieldEnum = (typeof ExchangeRateScalarFieldEnum)[keyof typeof ExchangeRateScalarFieldEnum]
+
+
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  paymentMethodId: 'paymentMethodId',
+  paymentTypeId: 'paymentTypeId',
+  tenantId: 'tenantId',
+  rentalId: 'rentalId',
+  notes: 'notes',
+  isDeleted: 'isDeleted',
+  paymentDate: 'paymentDate',
+  customerId: 'customerId',
+  currencyId: 'currencyId',
+  payer: 'payer',
+  payment: 'payment',
+  reference: 'reference',
+  status: 'status',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
 export const FormScalarFieldEnum = {
@@ -1274,28 +1300,6 @@ export const TransactionsScalarFieldEnum = {
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]
-
-
-export const PaymentScalarFieldEnum = {
-  id: 'id',
-  amount: 'amount',
-  paymentMethodId: 'paymentMethodId',
-  paymentTypeId: 'paymentTypeId',
-  tenantId: 'tenantId',
-  rentalId: 'rentalId',
-  notes: 'notes',
-  isDeleted: 'isDeleted',
-  paymentDate: 'paymentDate',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  updatedBy: 'updatedBy',
-  customerId: 'customerId',
-  currencyId: 'currencyId',
-  payer: 'payer',
-  payment: 'payment'
-} as const
-
-export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
 export const RefundScalarFieldEnum = {

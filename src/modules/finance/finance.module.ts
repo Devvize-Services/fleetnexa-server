@@ -2,11 +2,10 @@ import { Module } from '@nestjs/common';
 import { FinanceService } from './finance.service';
 import { FinanceController } from './finance.controller';
 import { InvoiceModule } from './invoice/invoice.module';
-import { ActivityModule } from '../../common/activity/activity.module';
-import { PaymentsModule } from './payments/payments.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
-  imports: [InvoiceModule, ActivityModule, PaymentsModule],
+  imports: [InvoiceModule, PaymentModule],
   controllers: [FinanceController],
   providers: [FinanceService],
   exports: [InvoiceModule, FinanceService],

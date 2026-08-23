@@ -29,7 +29,7 @@ model User {
   rentals                             Rental[]
   transactions                        Transactions[]
   invoices                            Invoice[]
-
+  payments                            Payment[]
 
   @@unique([username, tenantId])
 }

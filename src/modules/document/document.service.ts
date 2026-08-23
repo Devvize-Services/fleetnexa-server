@@ -4,19 +4,17 @@ import { GeneratorService } from '../../common/generator/generator.service.js';
 import { TenantExtraService } from '../tenant/tenant-extra/tenant-extra.service.js';
 import { CustomerService } from '../customer/customer.service.js';
 import {
-  InvoiceData,
   InvoiceItem,
-  PaymentReceiptData,
   RentalAgreementData,
   RentalAgreementDriver,
   RentalService,
 } from '../../types/pdf.js';
 import { format, toZonedTime } from 'date-fns-tz';
 import { FormatterService } from '../../common/formatter/formatter.service.js';
-import { PdfService } from '../../common/pdf/pdf.service.js';
 import { FirmaService } from '../../infrastructure/firma/firma.service.js';
 import { SendForSigningDto } from './dto/send-for-signing.dto.js';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service.js';
+import { PdfMonkeyService } from '../../infrastructure/pdfMonkey/pdf.service.js';
 
 @Injectable()
 export class DocumentService {
@@ -27,91 +25,9 @@ export class DocumentService {
     private readonly formatter: FormatterService,
     private readonly tenantExtraService: TenantExtraService,
     private readonly customerService: CustomerService,
-    private readonly pdfService: PdfService,
+    private readonly pdfMonkey: PdfMonkeyService,
     private readonly firma: FirmaService,
   ) {}
-
-  async generatePaymentReceipt(
-    paymentId: string,
-    bookingId: string,
-    tenant: Tenant,
-    user: User,
-  ) {
-    try {
-      let receiptNumber: string;
-
-      const payment = await this.prisma.payment.findUnique({
-        where: { id: paymentId },
-      });
-
-      const existingPaymentReceipt =
-        await this.prisma.paymentReceipt.findUnique({
-          where: { paymentId, tenantId: tenant.id },
-        });
-
-      if (existingPaymentReceipt) {
-        receiptNumber = existingPaymentReceipt.receiptNumber;
-      } else {
-        receiptNumber = await this.generator.generatePaymentReceiptNumber(
-          tenant.id,
-        );
-      }
-
-      const data = await this.generatePaymentReceiptData(
-        paymentId,
-        tenant.id,
-        bookingId,
-      );
-
-      data.receiptNumber = receiptNumber;
-      const pdfResult = await this.pdfService.createPaymentReceipt(
-        data,
-        receiptNumber,
-        tenant.tenantCode,
-      );
-
-      const primaryDriver =
-        await this.customerService.getPrimaryDriver(bookingId);
-
-      if (!primaryDriver) {
-        throw new NotFoundException('Primary driver not found');
-      }
-
-      const receipt = await this.prisma.paymentReceipt.upsert({
-        where: { paymentId },
-        create: {
-          receiptNumber,
-          paymentId,
-          bookingId,
-          tenantId: tenant.id!,
-          createdAt: new Date(),
-          receiptUrl: pdfResult.publicUrl,
-          customerId: primaryDriver?.driverId || '',
-          amount: payment?.amount || 0,
-          createdBy: user.username,
-        },
-        update: {
-          receiptUrl: pdfResult.publicUrl,
-          amount: payment?.amount || 0,
-          updatedAt: new Date(),
-          updatedBy: user.username,
-        },
-      });
-
-      return {
-        message: 'Payment receipt generated successfully',
-        receipt,
-      };
-    } catch (error: any) {
-      this.logger.error(error, 'Failed to generate payment receipt', {
-        paymentId,
-        bookingId,
-        tenantId: tenant.id,
-        tenantCode: tenant.tenantCode,
-      });
-      throw error;
-    }
-  }
 
   async generateAgreement(bookingId: string, tenant: Tenant, user: User) {
     try {
@@ -141,7 +57,7 @@ export class DocumentService {
       const data = await this.generateAgreementData(bookingId, tenant.id);
 
       data.agreementNumber = agreementNumber;
-      const pdfResult = await this.pdfService.createAgreement(
+      const pdfResult = await this.pdfMonkey.createAgreement(
         data,
         agreementNumber,
         tenant.tenantCode,
@@ -202,72 +118,6 @@ export class DocumentService {
         tenantCode: tenant.tenantCode,
       });
       throw new Error('Failed to send agreement for signature');
-    }
-  }
-
-  async generatePaymentReceiptData(
-    paymentId: string,
-    tenantId: string,
-    bookingId: string,
-  ): Promise<PaymentReceiptData> {
-    try {
-      const tenant = await this.prisma.tenant.findUnique({
-        where: { id: tenantId },
-        include: {
-          currency: true,
-        },
-      });
-
-      if (!tenant) {
-        throw new NotFoundException('Tenant not found');
-      }
-
-      const payment = await this.prisma.payment.findUnique({
-        where: { id: paymentId },
-        include: {
-          rental: true,
-          transaction: true,
-          paymentMethod: true,
-        },
-      });
-
-      if (!payment) {
-        throw new NotFoundException('Payment not found');
-      }
-
-      const booking = await this.prisma.rental.findUnique({
-        where: { id: bookingId },
-      });
-
-      const receiptNo = await this.generator.generatePaymentReceiptNumber(
-        tenant.id,
-      );
-
-      const data: PaymentReceiptData = {
-        logoUrl: tenant.logo || '',
-        companyName: tenant.tenantName || '',
-        email: tenant.email || '',
-        phone: tenant.number || '',
-        transactionNumber: payment?.transaction?.number || '',
-        receiptNumber: '',
-        bookingCode: booking?.bookingCode || '',
-        paymentDate: this.formatter.formatDateToFriendly(
-          payment.createdAt || '',
-        ),
-        paymentMethod: payment.paymentMethod?.method || '',
-        handledBy: payment.transaction?.createdBy || '',
-        notes: payment.notes || '',
-        currency: tenant.currency?.code || 'XCD',
-        amount: payment.amount || 0,
-      };
-
-      return data;
-    } catch (error: any) {
-      this.logger.error(error, 'Failed to generate payment receipt data', {
-        paymentId,
-        tenantId,
-      });
-      throw new Error('Failed to generate payment receipt data');
     }
   }
 
