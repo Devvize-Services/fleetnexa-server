@@ -7,16 +7,21 @@ import {
 import { VehicleRepository } from './vehicle.repository.js';
 import { TenantExtraService } from '../tenant/tenant-extra/tenant-extra.service.js';
 import { Tenant, User } from '../../generated/prisma/client.js';
-import { VehicleDto } from './dto/vehicle.dto.js';
+import {
+  VehicleDto,
+  VehicleFuelLevelDto,
+  VehicleOdometerDto,
+} from './vehicle.dto.js';
 import { StorageService } from '../storage/storage.service.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
-import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 import { VehicleStatusService } from './services/vehicle-status.service.js';
 import { VehicleLocationService } from './services/vehicle-location.service.js';
 import { VehicleDiscountDto } from './dto/vehicle-dicount.dto.js';
 import { VehiclePricingService } from './services/vehicle-pricing.service.js';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service.js';
+import { ActivityService } from '../../common/activity/activity.service.js';
+import { VehicleOdometerService } from './services/vehicle-odometer.service.js';
 
 @Injectable()
 export class VehicleService {
@@ -30,6 +35,8 @@ export class VehicleService {
     private readonly vehicleStatusService: VehicleStatusService,
     private readonly vehicleLocationService: VehicleLocationService,
     private readonly vehiclePricingService: VehiclePricingService,
+    private readonly activity: ActivityService,
+    private readonly odometerService: VehicleOdometerService,
   ) {}
 
   async getTenantVehicles(tenant: Tenant) {
@@ -385,5 +392,85 @@ export class VehicleService {
       vehicleId,
       user,
     );
+  }
+
+  async updateOdometer(
+    data: VehicleOdometerDto,
+    tenant: Tenant,
+    user: User,
+    req?: any,
+  ) {
+    return await this.odometerService.updateVehicleOdometer(
+      data,
+      tenant,
+      user,
+      req,
+    );
+  }
+
+  async updateVehicleFuelLevel(
+    data: VehicleFuelLevelDto,
+    tenant: Tenant,
+    user: User,
+    req?: any,
+  ) {
+    try {
+      const existingVehicle = await this.prisma.vehicle.findUnique({
+        where: { id: data.vehicleId, tenantId: tenant.id },
+      });
+
+      if (!existingVehicle) {
+        this.logger.warn(
+          `Vehicle with id ${data.vehicleId} not found for fuel level update`,
+        );
+        throw new NotFoundException('Vehicle not found');
+      }
+
+      await this.prisma.vehicle.update({
+        where: { id: data.vehicleId },
+        data: {
+          fuelLevel: data.fuelLevel,
+          updatedBy: user.username,
+          updatedAt: new Date(),
+        },
+      });
+
+      this.logger.log(
+        `Updated fuel level for vehicle ${existingVehicle.licensePlate} to ${data.fuelLevel}`,
+        {
+          tenantId: tenant.id,
+          tenantCode: tenant.tenantCode,
+          userId: user.id,
+          vehicleId: data.vehicleId,
+        },
+      );
+
+      await this.activity.logEvent({
+        action: 'UPDATE',
+        userId: user.id,
+        tenantId: tenant.id,
+        module: 'VEHICLE',
+        entityType: 'VEHICLE',
+        entityId: data.vehicleId,
+        description: `Updated fuel level for vehicle ${existingVehicle.licensePlate} to ${data.fuelLevel}`,
+        oldValues: { fuelLevel: existingVehicle.fuelLevel },
+        newValues: { fuelLevel: data.fuelLevel },
+        ipAddress: req?.ip || '',
+        userAgent: req?.headers?.['user-agent'] || '',
+      });
+
+      return {
+        message: 'Vehicle fuel level updated successfully',
+        vehicle: await this.getVehicleById(data.vehicleId, tenant),
+        vehicles: await this.vehicleRepo.getVehicles(tenant.id),
+      };
+    } catch (error: any) {
+      this.logger.error(error, 'Failed to update vehicle fuel level', {
+        tenantId: tenant.id,
+        tenantCode: tenant.tenantCode,
+        data,
+      });
+      throw error;
+    }
   }
 }

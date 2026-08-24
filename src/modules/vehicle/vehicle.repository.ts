@@ -47,9 +47,9 @@ export class VehicleRepository {
     });
   }
 
-  async getVehicleById(id: string, tenantId: string) {
+  async getVehicleById(id: string, tenantId?: string) {
     return this.prisma.vehicle.findUnique({
-      where: { id, tenantId, isDeleted: false },
+      where: { id, isDeleted: false },
       include: this.getVehicleIncludeOptions(),
     });
   }

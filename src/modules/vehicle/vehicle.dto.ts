@@ -132,3 +132,19 @@ export class VehicleDto {
   @IsOptional()
   registrationValidTo?: string;
 }
+
+export class VehicleFuelLevelDto {
+  @IsString()
+  vehicleId: string;
+
+  @IsNumber()
+  fuelLevel: number;
+}
+
+export class VehicleOdometerDto {
+  @IsString()
+  vehicleId: string;
+
+  @IsNumber()
+  odometer: number;
+}

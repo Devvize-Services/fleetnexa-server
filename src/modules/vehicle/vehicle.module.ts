@@ -15,6 +15,7 @@ import { VehicleLocationService } from './services/vehicle-location.service.js';
 import { VehiclePricingService } from './services/vehicle-pricing.service.js';
 import { VehicleStatusService } from './services/vehicle-status.service.js';
 import { PrismaModule } from '../../infrastructure/prisma/prisma.module.js';
+import { VehicleOdometerService } from './services/vehicle-odometer.service.js';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { PrismaModule } from '../../infrastructure/prisma/prisma.module.js';
     VehiclePricingService,
     VehicleStatusService,
     VehicleRepository,
+    VehicleOdometerService,
     ApiGuard,
     TenantRepository,
     UserRepository,

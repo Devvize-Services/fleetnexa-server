@@ -13,7 +13,11 @@ import {
 import { VehicleService } from './vehicle.service.js';
 import { ApiGuard } from '../auth/guards/api.guard.js';
 import { VehicleStatusDto } from './dto/vehicle-status.dto.js';
-import { VehicleDto } from './dto/vehicle.dto.js';
+import {
+  VehicleDto,
+  VehicleFuelLevelDto,
+  VehicleOdometerDto,
+} from './vehicle.dto.js';
 import { VehicleLocationDto } from './dto/vehicle-location.dto.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
@@ -109,6 +113,29 @@ export class VehicleController {
     const user = req.user;
 
     return this.service.updateVehicleLocation(data, tenant, user);
+  }
+
+  @Patch('fuel-level')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateVehicleFuelLevel(
+    @Request() req,
+    @Body() data: VehicleFuelLevelDto,
+  ) {
+    const { tenant } = req.user;
+    const user = req.user;
+
+    return this.service.updateVehicleFuelLevel(data, tenant, user, req);
+  }
+
+  @Patch('odometer')
+  @UseGuards(JwtAuthGuard)
+  @Roles(Role.TENANT)
+  async updateOdometer(@Request() req, @Body() data: VehicleOdometerDto) {
+    const { tenant } = req.user;
+    const user = req.user;
+
+    return this.service.updateOdometer(data, tenant, user, req);
   }
 
   @Delete(':id')
