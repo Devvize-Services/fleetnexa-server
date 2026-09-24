@@ -447,40 +447,44 @@ export class TenantService {
           tenant,
         );
 
-      const bookingActivities = bookings.map((booking) => {
-        const customer = booking.drivers.find((d) => d.isPrimary)?.customer;
-        const activityType =
-          booking.endDate > today ? 'booking_start' : 'booking_end';
+      const bookingActivities = bookings
+        .filter((booking) => !['DECLINED'].includes(booking.status))
+        .map((booking) => {
+          const customer = booking.drivers.find((d) => d.isPrimary)?.customer;
+          const activityType =
+            booking.endDate > today ? 'booking_start' : 'booking_end';
 
-        const time =
-          activityType === 'booking_start'
-            ? booking.startDate
-            : booking.endDate;
+          const time =
+            activityType === 'booking_start'
+              ? booking.startDate
+              : booking.endDate;
 
-        const vehicleName = `${booking.vehicle.year} ${booking.vehicle.brand.brand} ${booking.vehicle.model.model}`;
+          const vehicleName = `${booking.vehicle.year} ${booking.vehicle.brand.brand} ${booking.vehicle.model.model}`;
 
-        const title = `${activityType === 'booking_start' ? 'Vehicle Pickup' : 'Vehicle Return'} - ${vehicleName}`;
+          const title = `${activityType === 'booking_start' ? 'Vehicle Pickup' : 'Vehicle Return'} - ${vehicleName}`;
 
-        const description = `Booking Ref: ${booking.bookingCode}`;
+          const description = `Booking Ref: ${booking.bookingCode}`;
 
-        const act: Activity = {
-          id: booking.id,
-          time: time.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true,
-          }),
-          type: activityType as ActivityType,
-          title,
-          description,
-          vehicle: booking.vehicle,
-          customer: customer,
-          location:
-            activityType === 'booking_start' ? booking.pickup : booking.return,
-        };
+          const act: Activity = {
+            id: booking.id,
+            time: time.toLocaleTimeString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            }),
+            type: activityType as ActivityType,
+            title,
+            description,
+            vehicle: booking.vehicle,
+            customer: customer,
+            location:
+              activityType === 'booking_start'
+                ? booking.pickup
+                : booking.return,
+          };
 
-        return act;
-      });
+          return act;
+        });
 
       const inspectionActivities = bookings
         .filter((booking) => {
