@@ -183,6 +183,12 @@ export class BookingService {
         ),
       );
 
+      await this.bookingDepositService.updateBookingDeposit(
+        data.securityDeposit,
+        tenant,
+        user,
+      );
+
       await this.bookingRepo.updateBookingValues(
         updatedBooking.id,
         data.values,

@@ -25,7 +25,7 @@ export class BookingDepositDto {
   currencyId: string;
 
   @IsEnum(SecurityDepositTransactionType)
-  action: SecurityDepositTransactionType;
+  action?: SecurityDepositTransactionType;
 
   @IsString()
   @IsOptional()

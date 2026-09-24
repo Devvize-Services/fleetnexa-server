@@ -287,6 +287,7 @@ export type SecurityDepositStatus = (typeof SecurityDepositStatus)[keyof typeof 
 
 
 export const SecurityDepositTransactionType = {
+  UPDATED: 'UPDATED',
   COLLECTED: 'COLLECTED',
   REFUNDED: 'REFUNDED',
   FORFEITED: 'FORFEITED',

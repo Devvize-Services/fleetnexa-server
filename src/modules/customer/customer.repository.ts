@@ -260,6 +260,7 @@ export class CustomerRepository {
       },
       invoices: true,
       damages: true,
+      payments: true,
       license: {
         include: {
           class: true,

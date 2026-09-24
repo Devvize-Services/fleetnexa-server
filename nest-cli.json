@@ -5,5 +5,8 @@
   "compilerOptions": {
     "builder": "swc",
     "deleteOutDir": true
+  },
+  "generateOptions": {
+    "spec": false
   }
 }

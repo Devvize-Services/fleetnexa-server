@@ -186,6 +186,16 @@ export class ResendService {
         'booking-confirmation',
         variables,
         primaryDriver.customer.email,
+        [
+          {
+            filename: `Invoice-${booking.bookingCode || ''}.pdf`,
+            path: booking?.invoice?.invoiceUrl || '',
+          },
+          {
+            filename: `Agreement-${booking.bookingCode || ''}.pdf`,
+            path: booking?.agreement?.agreementUrl || '',
+          },
+        ],
       );
 
       this.logger.log(

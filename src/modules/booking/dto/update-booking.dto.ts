@@ -15,6 +15,7 @@ import {
   BookingValuesDto,
 } from '../dto/booking-items.dto.js';
 import { Agent, RentalStatus } from '../../../generated/prisma/client.js';
+import { BookingDepositDto } from './booking-deposit.dto.js';
 
 export class UpdateBookingDto {
   @IsUUID()
@@ -62,4 +63,7 @@ export class UpdateBookingDto {
 
   @IsObject()
   values: BookingValuesDto;
+
+  @IsObject()
+  securityDeposit: BookingDepositDto;
 }

@@ -149,7 +149,7 @@ export class BookingDepositService {
 
       await this.updateSecurityDeposit(
         securityDeposit,
-        data.action,
+        data.action || 'UPDATED',
         data.amount,
       );
 
@@ -160,7 +160,7 @@ export class BookingDepositService {
       const transaction = await this.prisma.securityDepositTransaction.create({
         data: {
           securityDepositId: securityDeposit.id,
-          type: data.action,
+          type: data.action || 'UPDATED',
           amount: data.amount,
           notes: data.notes,
           paymentDate: new Date(data.paymentDate),
