@@ -141,7 +141,7 @@ export class PaymentService {
           userId: user.id,
           module: 'PAYMENT',
           entityType: 'PAYMENT',
-          entityId: payment.id,
+          entityId: newPayment.id,
           newValues: newPayment,
         });
 

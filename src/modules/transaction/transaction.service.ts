@@ -50,6 +50,7 @@ export class TransactionService {
             tenantId: tenant.id,
             rentalId: data.rentalId,
             securityDepositId: data.securityDepositId || null,
+            number: transactionNumber,
           },
         });
       });
