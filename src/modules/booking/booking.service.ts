@@ -19,8 +19,7 @@ import { BookingVehicleService } from './services/booking-vehicle.service.js';
 import { SwapVehicleDto } from './dto/swap-vehicle.dto.js';
 import { BookingChargeService } from './services/booking-charge.service.js';
 import { CreateBookingChargeDto } from './dto/booking-charge.dto.js';
-import { BookingDepositService } from './services/booking-deposit.service.js';
-import { BookingDepositDto } from './dto/booking-deposit.dto.js';
+import { SecurityDepositService } from '../finance/security-deposit/security-deposit.service.js';
 
 @Injectable()
 export class BookingService {
@@ -37,7 +36,7 @@ export class BookingService {
     private readonly bookingCreation: BookingCreationService,
     private readonly vehicleBookingService: BookingVehicleService,
     private readonly bookingChargeService: BookingChargeService,
-    private readonly bookingDepositService: BookingDepositService,
+    private readonly depositService: SecurityDepositService,
   ) {}
 
   private async findBookingOrFail(id: string) {
@@ -183,9 +182,8 @@ export class BookingService {
         ),
       );
 
-      await this.bookingDepositService.updateBookingDeposit(
+      await this.depositService.updateBookingDeposit(
         data.securityDeposit,
-        tenant,
         user,
       );
 
@@ -238,10 +236,6 @@ export class BookingService {
     userId: string,
   ) {
     return this.bookingChargeService.addBookingCharge(data, tenantId, userId);
-  }
-
-  updateBookingDeposit(data: BookingDepositDto, tenant: Tenant, user: User) {
-    return this.bookingDepositService.updateBookingDeposit(data, tenant, user);
   }
 
   async swapBookingVehicle(data: SwapVehicleDto, tenant: Tenant, user: User) {

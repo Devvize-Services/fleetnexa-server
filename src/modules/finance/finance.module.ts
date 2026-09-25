@@ -3,9 +3,10 @@ import { FinanceService } from './finance.service';
 import { FinanceController } from './finance.controller';
 import { InvoiceModule } from './invoice/invoice.module';
 import { PaymentModule } from './payment/payment.module';
+import { SecurityDepositModule } from './security-deposit/security-deposit.module';
 
 @Module({
-  imports: [InvoiceModule, PaymentModule],
+  imports: [InvoiceModule, PaymentModule, SecurityDepositModule],
   controllers: [FinanceController],
   providers: [FinanceService],
   exports: [InvoiceModule, FinanceService],

@@ -174,13 +174,4 @@ export class BookingController {
     const user = req.user;
     return this.bookingService.addBookingCharge(data, tenant.id, user.id);
   }
-
-  @Post('security-deposit')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async updateBookingDeposit(@Request() req, @Body() data: BookingDepositDto) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.updateBookingDeposit(data, tenant, user);
-  }
 }

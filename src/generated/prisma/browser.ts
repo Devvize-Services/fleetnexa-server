@@ -148,16 +148,6 @@ export type InsuranceCompany = Prisma.InsuranceCompanyModel
  */
 export type Values = Prisma.ValuesModel
 /**
- * Model SecurityDeposit
- * 
- */
-export type SecurityDeposit = Prisma.SecurityDepositModel
-/**
- * Model SecurityDepositTransaction
- * 
- */
-export type SecurityDepositTransaction = Prisma.SecurityDepositTransactionModel
-/**
  * Model Customer
  * 
  */
@@ -437,6 +427,11 @@ export type Refund = Prisma.RefundModel
  * 
  */
 export type Expense = Prisma.ExpenseModel
+/**
+ * Model SecurityDeposit
+ * 
+ */
+export type SecurityDeposit = Prisma.SecurityDepositModel
 /**
  * Model Session
  * 

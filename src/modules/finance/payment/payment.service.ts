@@ -158,6 +158,7 @@ export class PaymentService {
         createdBy: user.username,
         refundId: '',
         expenseId: '',
+        securityDepositId: '',
       };
 
       await this.transactionService.createTransaction(
@@ -290,6 +291,7 @@ export class PaymentService {
         paymentId: '',
         refundId: '',
         expenseId: '',
+        securityDepositId: '',
       };
 
       await this.transactionService.updateTransaction(

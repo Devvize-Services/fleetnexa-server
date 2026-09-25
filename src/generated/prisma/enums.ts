@@ -139,7 +139,10 @@ export const TransactionType = {
   RENTAL: 'RENTAL',
   REFUND: 'REFUND',
   PAYMENT: 'PAYMENT',
-  EXPENSE: 'EXPENSE'
+  EXPENSE: 'EXPENSE',
+  SECURITY_DEPOSIT_COLLECTED: 'SECURITY_DEPOSIT_COLLECTED',
+  SECURITY_DEPOSIT_REFUNDED: 'SECURITY_DEPOSIT_REFUNDED',
+  SECURITY_DEPOSIT_FORFEITED: 'SECURITY_DEPOSIT_FORFEITED'
 } as const
 
 export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
@@ -280,7 +283,8 @@ export const SecurityDepositStatus = {
   PENDING: 'PENDING',
   WAIVED: 'WAIVED',
   COLLECTED: 'COLLECTED',
-  CLOSED: 'CLOSED'
+  CLOSED: 'CLOSED',
+  UPDATED: 'UPDATED'
 } as const
 
 export type SecurityDepositStatus = (typeof SecurityDepositStatus)[keyof typeof SecurityDepositStatus]

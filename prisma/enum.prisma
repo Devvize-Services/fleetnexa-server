@@ -96,6 +96,9 @@ enum TransactionType {
   REFUND
   PAYMENT
   EXPENSE
+  SECURITY_DEPOSIT_COLLECTED
+  SECURITY_DEPOSIT_REFUNDED
+  SECURITY_DEPOSIT_FORFEITED
 }
 
 enum NotificationPriority {
@@ -201,6 +204,7 @@ enum SecurityDepositStatus {
   WAIVED
   COLLECTED
   CLOSED
+  UPDATED
 }
 
 enum SecurityDepositTransactionType {

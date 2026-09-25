@@ -21,7 +21,6 @@ model User {
   tenant                   Tenant                   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
   securityDeposits                    SecurityDeposit[]
-  securityDepositTransactions         SecurityDepositTransaction[]
   activityLogs                        Activity[]
   bookingVehicleHistory               BookingVehicleHistory[]
   expenses                            Expense[]

@@ -281,7 +281,6 @@ export type UserWhereInput = {
   role?: Prisma.XOR<Prisma.UserRoleScalarRelationFilter, Prisma.UserRoleWhereInput>
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   securityDeposits?: Prisma.SecurityDepositListRelationFilter
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionListRelationFilter
   activityLogs?: Prisma.ActivityListRelationFilter
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
@@ -313,7 +312,6 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.UserRoleOrderByWithRelationInput
   tenant?: Prisma.TenantOrderByWithRelationInput
   securityDeposits?: Prisma.SecurityDepositOrderByRelationAggregateInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionOrderByRelationAggregateInput
   activityLogs?: Prisma.ActivityOrderByRelationAggregateInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryOrderByRelationAggregateInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
@@ -349,7 +347,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.XOR<Prisma.UserRoleScalarRelationFilter, Prisma.UserRoleWhereInput>
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   securityDeposits?: Prisma.SecurityDepositListRelationFilter
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionListRelationFilter
   activityLogs?: Prisma.ActivityListRelationFilter
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
@@ -425,7 +422,6 @@ export type UserCreateInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -455,7 +451,6 @@ export type UserUncheckedCreateInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -485,7 +480,6 @@ export type UserUpdateInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -515,7 +509,6 @@ export type UserUncheckedUpdateInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -669,36 +662,6 @@ export type UserMinOrderByAggregateInput = {
   updatedBy?: Prisma.SortOrder
 }
 
-export type UserCreateNestedOneWithoutSecurityDepositsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutSecurityDepositsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositsInput
-  upsert?: Prisma.UserUpsertWithoutSecurityDepositsInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSecurityDepositsInput, Prisma.UserUpdateWithoutSecurityDepositsInput>, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
-}
-
-export type UserCreateNestedOneWithoutSecurityDepositTransactionsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositTransactionsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositTransactionsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutSecurityDepositTransactionsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositTransactionsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositTransactionsInput
-  upsert?: Prisma.UserUpsertWithoutSecurityDepositTransactionsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSecurityDepositTransactionsInput, Prisma.UserUpdateWithoutSecurityDepositTransactionsInput>, Prisma.UserUncheckedUpdateWithoutSecurityDepositTransactionsInput>
-}
-
 export type UserCreateNestedOneWithoutInvoicesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutInvoicesInput, Prisma.UserUncheckedCreateWithoutInvoicesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutInvoicesInput
@@ -849,6 +812,22 @@ export type UserUpdateOneWithoutExpensesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutExpensesInput, Prisma.UserUpdateWithoutExpensesInput>, Prisma.UserUncheckedUpdateWithoutExpensesInput>
 }
 
+export type UserCreateNestedOneWithoutSecurityDepositsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutSecurityDepositsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSecurityDepositsInput
+  upsert?: Prisma.UserUpsertWithoutSecurityDepositsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSecurityDepositsInput, Prisma.UserUpdateWithoutSecurityDepositsInput>, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
+}
+
 export type UserCreateNestedManyWithoutRoleInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
@@ -905,270 +884,6 @@ export type UserUpdateOneRequiredWithoutBookingVehicleHistoryNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBookingVehicleHistoryInput, Prisma.UserUpdateWithoutBookingVehicleHistoryInput>, Prisma.UserUncheckedUpdateWithoutBookingVehicleHistoryInput>
 }
 
-export type UserCreateWithoutSecurityDepositsInput = {
-  id?: string
-  password: string
-  firstName: string
-  lastName: string
-  username: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  lastChanged?: Date | string | null
-  email?: string | null
-  profilePicture?: string
-  show?: boolean
-  deletedAt?: Date | string | null
-  isDeleted?: boolean
-  requirePasswordChange?: boolean
-  updatedBy?: string | null
-  role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
-  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
-  activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
-  expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
-  rentals?: Prisma.RentalCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutUserInput
-  invoices?: Prisma.InvoiceCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutSecurityDepositsInput = {
-  id?: string
-  password: string
-  firstName: string
-  lastName: string
-  username: string
-  tenantId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  roleId: string
-  lastChanged?: Date | string | null
-  email?: string | null
-  profilePicture?: string
-  show?: boolean
-  deletedAt?: Date | string | null
-  isDeleted?: boolean
-  requirePasswordChange?: boolean
-  updatedBy?: string | null
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
-  activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
-  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
-  rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutUserInput
-  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutSecurityDepositsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
-}
-
-export type UserUpsertWithoutSecurityDepositsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutSecurityDepositsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
-}
-
-export type UserUpdateWithoutSecurityDepositsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
-  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
-  activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
-  expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
-  rentals?: Prisma.RentalUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutUserNestedInput
-  invoices?: Prisma.InvoiceUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutSecurityDepositsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
-  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
-  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
-  activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
-  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
-  rentals?: Prisma.RentalUncheckedUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutUserNestedInput
-  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutSecurityDepositTransactionsInput = {
-  id?: string
-  password: string
-  firstName: string
-  lastName: string
-  username: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  lastChanged?: Date | string | null
-  email?: string | null
-  profilePicture?: string
-  show?: boolean
-  deletedAt?: Date | string | null
-  isDeleted?: boolean
-  requirePasswordChange?: boolean
-  updatedBy?: string | null
-  role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
-  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
-  securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
-  expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
-  rentals?: Prisma.RentalCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionsCreateNestedManyWithoutUserInput
-  invoices?: Prisma.InvoiceCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutSecurityDepositTransactionsInput = {
-  id?: string
-  password: string
-  firstName: string
-  lastName: string
-  username: string
-  tenantId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  roleId: string
-  lastChanged?: Date | string | null
-  email?: string | null
-  profilePicture?: string
-  show?: boolean
-  deletedAt?: Date | string | null
-  isDeleted?: boolean
-  requirePasswordChange?: boolean
-  updatedBy?: string | null
-  securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
-  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
-  rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutUserInput
-  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutUserInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutSecurityDepositTransactionsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositTransactionsInput>
-}
-
-export type UserUpsertWithoutSecurityDepositTransactionsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositTransactionsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositTransactionsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutSecurityDepositTransactionsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositTransactionsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositTransactionsInput>
-}
-
-export type UserUpdateWithoutSecurityDepositTransactionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
-  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
-  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
-  securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
-  expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
-  rentals?: Prisma.RentalUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionsUpdateManyWithoutUserNestedInput
-  invoices?: Prisma.InvoiceUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutSecurityDepositTransactionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  roleId?: Prisma.StringFieldUpdateOperationsInput | string
-  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
-  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
-  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
-  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
-  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
-  rentals?: Prisma.RentalUncheckedUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutUserNestedInput
-  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutUserNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-}
-
 export type UserCreateWithoutInvoicesInput = {
   id?: string
   password: string
@@ -1188,7 +903,6 @@ export type UserCreateWithoutInvoicesInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1217,7 +931,6 @@ export type UserUncheckedCreateWithoutInvoicesInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -1262,7 +975,6 @@ export type UserUpdateWithoutInvoicesInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -1291,7 +1003,6 @@ export type UserUncheckedUpdateWithoutInvoicesInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -1320,7 +1031,6 @@ export type UserCreateWithoutPaymentsInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1349,7 +1059,6 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -1394,7 +1103,6 @@ export type UserUpdateWithoutPaymentsInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -1423,7 +1131,6 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -1452,7 +1159,6 @@ export type UserCreateWithoutNotificationReadStatusesInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1481,7 +1187,6 @@ export type UserUncheckedCreateWithoutNotificationReadStatusesInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -1526,7 +1231,6 @@ export type UserUpdateWithoutNotificationReadStatusesInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -1555,7 +1259,6 @@ export type UserUncheckedUpdateWithoutNotificationReadStatusesInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -1584,7 +1287,6 @@ export type UserCreateWithoutRentalsInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1613,7 +1315,6 @@ export type UserUncheckedCreateWithoutRentalsInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -1658,7 +1359,6 @@ export type UserUpdateWithoutRentalsInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -1687,7 +1387,6 @@ export type UserUncheckedUpdateWithoutRentalsInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -1716,7 +1415,6 @@ export type UserCreateWithoutActivityLogsInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
@@ -1745,7 +1443,6 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
@@ -1790,7 +1487,6 @@ export type UserUpdateWithoutActivityLogsInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
@@ -1819,7 +1515,6 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
@@ -1847,7 +1542,6 @@ export type UserCreateWithoutTenantInput = {
   updatedBy?: string | null
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1876,7 +1570,6 @@ export type UserUncheckedCreateWithoutTenantInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -1955,7 +1648,6 @@ export type UserCreateWithoutTransactionsInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -1984,7 +1676,6 @@ export type UserUncheckedCreateWithoutTransactionsInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -2029,7 +1720,6 @@ export type UserUpdateWithoutTransactionsInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -2058,7 +1748,6 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -2087,7 +1776,6 @@ export type UserCreateWithoutExpensesInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
@@ -2116,7 +1804,6 @@ export type UserUncheckedCreateWithoutExpensesInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
@@ -2161,7 +1848,6 @@ export type UserUpdateWithoutExpensesInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
@@ -2190,9 +1876,136 @@ export type UserUncheckedUpdateWithoutExpensesInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
+  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
+  rentals?: Prisma.RentalUncheckedUpdateManyWithoutUserNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutUserNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSecurityDepositsInput = {
+  id?: string
+  password: string
+  firstName: string
+  lastName: string
+  username: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  lastChanged?: Date | string | null
+  email?: string | null
+  profilePicture?: string
+  show?: boolean
+  deletedAt?: Date | string | null
+  isDeleted?: boolean
+  requirePasswordChange?: boolean
+  updatedBy?: string | null
+  role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
+  notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
+  rentals?: Prisma.RentalCreateNestedManyWithoutUserInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutUserInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSecurityDepositsInput = {
+  id?: string
+  password: string
+  firstName: string
+  lastName: string
+  username: string
+  tenantId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  roleId: string
+  lastChanged?: Date | string | null
+  email?: string | null
+  profilePicture?: string
+  show?: boolean
+  deletedAt?: Date | string | null
+  isDeleted?: boolean
+  requirePasswordChange?: boolean
+  updatedBy?: string | null
+  activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
+  notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
+  rentals?: Prisma.RentalUncheckedCreateNestedManyWithoutUserInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutUserInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSecurityDepositsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
+}
+
+export type UserUpsertWithoutSecurityDepositsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSecurityDepositsInput, Prisma.UserUncheckedCreateWithoutSecurityDepositsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSecurityDepositsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSecurityDepositsInput, Prisma.UserUncheckedUpdateWithoutSecurityDepositsInput>
+}
+
+export type UserUpdateWithoutSecurityDepositsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
+  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
+  notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
+  rentals?: Prisma.RentalUpdateManyWithoutUserNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutUserNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSecurityDepositsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roleId?: Prisma.StringFieldUpdateOperationsInput | string
+  lastChanged?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePicture?: Prisma.StringFieldUpdateOperationsInput | string
+  show?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
   rentals?: Prisma.RentalUncheckedUpdateManyWithoutUserNestedInput
   transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutUserNestedInput
@@ -2218,7 +2031,6 @@ export type UserCreateWithoutRoleInput = {
   updatedBy?: string | null
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
@@ -2247,7 +2059,6 @@ export type UserUncheckedCreateWithoutRoleInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
@@ -2303,7 +2114,6 @@ export type UserCreateWithoutBookingVehicleHistoryInput = {
   role: Prisma.UserRoleCreateNestedOneWithoutUsersInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusCreateNestedManyWithoutUserInput
@@ -2332,7 +2142,6 @@ export type UserUncheckedCreateWithoutBookingVehicleHistoryInput = {
   requirePasswordChange?: boolean
   updatedBy?: string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutUserInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedCreateNestedManyWithoutUserInput
   activityLogs?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutUserInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedCreateNestedManyWithoutUserInput
@@ -2377,7 +2186,6 @@ export type UserUpdateWithoutBookingVehicleHistoryInput = {
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUpdateManyWithoutUserNestedInput
@@ -2406,7 +2214,6 @@ export type UserUncheckedUpdateWithoutBookingVehicleHistoryInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
   notificationReadStatuses?: Prisma.NotificationReadStatusUncheckedUpdateManyWithoutUserNestedInput
@@ -2453,7 +2260,6 @@ export type UserUpdateWithoutTenantInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.UserRoleUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -2482,7 +2288,6 @@ export type UserUncheckedUpdateWithoutTenantInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -2549,7 +2354,6 @@ export type UserUpdateWithoutRoleInput = {
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutUserNestedInput
@@ -2578,7 +2382,6 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   requirePasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutUserNestedInput
-  securityDepositTransactions?: Prisma.SecurityDepositTransactionUncheckedUpdateManyWithoutUserNestedInput
   activityLogs?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryUncheckedUpdateManyWithoutUserNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutUserNestedInput
@@ -2615,7 +2418,6 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   securityDeposits: number
-  securityDepositTransactions: number
   activityLogs: number
   bookingVehicleHistory: number
   expenses: number
@@ -2628,7 +2430,6 @@ export type UserCountOutputType = {
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   securityDeposits?: boolean | UserCountOutputTypeCountSecurityDepositsArgs
-  securityDepositTransactions?: boolean | UserCountOutputTypeCountSecurityDepositTransactionsArgs
   activityLogs?: boolean | UserCountOutputTypeCountActivityLogsArgs
   bookingVehicleHistory?: boolean | UserCountOutputTypeCountBookingVehicleHistoryArgs
   expenses?: boolean | UserCountOutputTypeCountExpensesArgs
@@ -2654,13 +2455,6 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  */
 export type UserCountOutputTypeCountSecurityDepositsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SecurityDepositWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountSecurityDepositTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SecurityDepositTransactionWhereInput
 }
 
 /**
@@ -2741,7 +2535,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean | Prisma.UserRoleDefaultArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   securityDeposits?: boolean | Prisma.User$securityDepositsArgs<ExtArgs>
-  securityDepositTransactions?: boolean | Prisma.User$securityDepositTransactionsArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
   bookingVehicleHistory?: boolean | Prisma.User$bookingVehicleHistoryArgs<ExtArgs>
   expenses?: boolean | Prisma.User$expensesArgs<ExtArgs>
@@ -2822,7 +2615,6 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   role?: boolean | Prisma.UserRoleDefaultArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   securityDeposits?: boolean | Prisma.User$securityDepositsArgs<ExtArgs>
-  securityDepositTransactions?: boolean | Prisma.User$securityDepositTransactionsArgs<ExtArgs>
   activityLogs?: boolean | Prisma.User$activityLogsArgs<ExtArgs>
   bookingVehicleHistory?: boolean | Prisma.User$bookingVehicleHistoryArgs<ExtArgs>
   expenses?: boolean | Prisma.User$expensesArgs<ExtArgs>
@@ -2848,7 +2640,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     role: Prisma.$UserRolePayload<ExtArgs>
     tenant: Prisma.$TenantPayload<ExtArgs>
     securityDeposits: Prisma.$SecurityDepositPayload<ExtArgs>[]
-    securityDepositTransactions: Prisma.$SecurityDepositTransactionPayload<ExtArgs>[]
     activityLogs: Prisma.$ActivityPayload<ExtArgs>[]
     bookingVehicleHistory: Prisma.$BookingVehicleHistoryPayload<ExtArgs>[]
     expenses: Prisma.$ExpensePayload<ExtArgs>[]
@@ -3273,7 +3064,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   role<T extends Prisma.UserRoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserRoleDefaultArgs<ExtArgs>>): Prisma.Prisma__UserRoleClient<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   securityDeposits<T extends Prisma.User$securityDepositsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$securityDepositsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SecurityDepositPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  securityDepositTransactions<T extends Prisma.User$securityDepositTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$securityDepositTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SecurityDepositTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityLogs<T extends Prisma.User$activityLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activityLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookingVehicleHistory<T extends Prisma.User$bookingVehicleHistoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bookingVehicleHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingVehicleHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   expenses<T extends Prisma.User$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3750,30 +3540,6 @@ export type User$securityDepositsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.SecurityDepositScalarFieldEnum | Prisma.SecurityDepositScalarFieldEnum[]
-}
-
-/**
- * User.securityDepositTransactions
- */
-export type User$securityDepositTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SecurityDepositTransaction
-   */
-  select?: Prisma.SecurityDepositTransactionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SecurityDepositTransaction
-   */
-  omit?: Prisma.SecurityDepositTransactionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SecurityDepositTransactionInclude<ExtArgs> | null
-  where?: Prisma.SecurityDepositTransactionWhereInput
-  orderBy?: Prisma.SecurityDepositTransactionOrderByWithRelationInput | Prisma.SecurityDepositTransactionOrderByWithRelationInput[]
-  cursor?: Prisma.SecurityDepositTransactionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SecurityDepositTransactionScalarFieldEnum | Prisma.SecurityDepositTransactionScalarFieldEnum[]
 }
 
 /**

@@ -38,6 +38,14 @@ export class TransactionDto {
   expenseId: string;
 
   @IsUUID()
+  @ValidateIf(
+    (o) =>
+      o.transactionType === TransactionType.SECURITY_DEPOSIT_COLLECTED ||
+      o.transactionType === TransactionType.SECURITY_DEPOSIT_REFUNDED,
+  )
+  securityDepositId: string;
+
+  @IsUUID()
   @IsOptional()
   rentalId: string;
 }

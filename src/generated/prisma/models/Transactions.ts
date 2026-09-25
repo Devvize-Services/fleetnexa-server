@@ -45,6 +45,7 @@ export type TransactionsMinAggregateOutputType = {
   paymentId: string | null
   tenantId: string | null
   rentalId: string | null
+  securityDepositId: string | null
   details: string | null
   refundId: string | null
   expenseId: string | null
@@ -64,6 +65,7 @@ export type TransactionsMaxAggregateOutputType = {
   paymentId: string | null
   tenantId: string | null
   rentalId: string | null
+  securityDepositId: string | null
   details: string | null
   refundId: string | null
   expenseId: string | null
@@ -83,6 +85,7 @@ export type TransactionsCountAggregateOutputType = {
   paymentId: number
   tenantId: number
   rentalId: number
+  securityDepositId: number
   details: number
   refundId: number
   expenseId: number
@@ -112,6 +115,7 @@ export type TransactionsMinAggregateInputType = {
   paymentId?: true
   tenantId?: true
   rentalId?: true
+  securityDepositId?: true
   details?: true
   refundId?: true
   expenseId?: true
@@ -131,6 +135,7 @@ export type TransactionsMaxAggregateInputType = {
   paymentId?: true
   tenantId?: true
   rentalId?: true
+  securityDepositId?: true
   details?: true
   refundId?: true
   expenseId?: true
@@ -150,6 +155,7 @@ export type TransactionsCountAggregateInputType = {
   paymentId?: true
   tenantId?: true
   rentalId?: true
+  securityDepositId?: true
   details?: true
   refundId?: true
   expenseId?: true
@@ -256,6 +262,7 @@ export type TransactionsGroupByOutputType = {
   paymentId: string | null
   tenantId: string
   rentalId: string | null
+  securityDepositId: string | null
   details: string | null
   refundId: string | null
   expenseId: string | null
@@ -298,6 +305,7 @@ export type TransactionsWhereInput = {
   paymentId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   tenantId?: Prisma.StringFilter<"Transactions"> | string
   rentalId?: Prisma.StringNullableFilter<"Transactions"> | string | null
+  securityDepositId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   details?: Prisma.StringNullableFilter<"Transactions"> | string | null
   refundId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   expenseId?: Prisma.StringNullableFilter<"Transactions"> | string | null
@@ -310,6 +318,7 @@ export type TransactionsWhereInput = {
   refund?: Prisma.XOR<Prisma.RefundNullableScalarRelationFilter, Prisma.RefundWhereInput> | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
+  securityDeposit?: Prisma.XOR<Prisma.SecurityDepositNullableScalarRelationFilter, Prisma.SecurityDepositWhereInput> | null
 }
 
 export type TransactionsOrderByWithRelationInput = {
@@ -323,6 +332,7 @@ export type TransactionsOrderByWithRelationInput = {
   paymentId?: Prisma.SortOrderInput | Prisma.SortOrder
   tenantId?: Prisma.SortOrder
   rentalId?: Prisma.SortOrderInput | Prisma.SortOrder
+  securityDepositId?: Prisma.SortOrderInput | Prisma.SortOrder
   details?: Prisma.SortOrderInput | Prisma.SortOrder
   refundId?: Prisma.SortOrderInput | Prisma.SortOrder
   expenseId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -335,6 +345,7 @@ export type TransactionsOrderByWithRelationInput = {
   refund?: Prisma.RefundOrderByWithRelationInput
   rental?: Prisma.RentalOrderByWithRelationInput
   tenant?: Prisma.TenantOrderByWithRelationInput
+  securityDeposit?: Prisma.SecurityDepositOrderByWithRelationInput
 }
 
 export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
@@ -355,6 +366,7 @@ export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
   createdBy?: Prisma.StringNullableFilter<"Transactions"> | string | null
   tenantId?: Prisma.StringFilter<"Transactions"> | string
   rentalId?: Prisma.StringNullableFilter<"Transactions"> | string | null
+  securityDepositId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   details?: Prisma.StringNullableFilter<"Transactions"> | string | null
   updatedAt?: Prisma.DateTimeNullableFilter<"Transactions"> | Date | string | null
   updatedBy?: Prisma.StringNullableFilter<"Transactions"> | string | null
@@ -364,6 +376,7 @@ export type TransactionsWhereUniqueInput = Prisma.AtLeast<{
   refund?: Prisma.XOR<Prisma.RefundNullableScalarRelationFilter, Prisma.RefundWhereInput> | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
+  securityDeposit?: Prisma.XOR<Prisma.SecurityDepositNullableScalarRelationFilter, Prisma.SecurityDepositWhereInput> | null
 }, "id" | "paymentId" | "refundId" | "expenseId" | "number" | "transactionNumber_tenantId">
 
 export type TransactionsOrderByWithAggregationInput = {
@@ -377,6 +390,7 @@ export type TransactionsOrderByWithAggregationInput = {
   paymentId?: Prisma.SortOrderInput | Prisma.SortOrder
   tenantId?: Prisma.SortOrder
   rentalId?: Prisma.SortOrderInput | Prisma.SortOrder
+  securityDepositId?: Prisma.SortOrderInput | Prisma.SortOrder
   details?: Prisma.SortOrderInput | Prisma.SortOrder
   refundId?: Prisma.SortOrderInput | Prisma.SortOrder
   expenseId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -404,6 +418,7 @@ export type TransactionsScalarWhereWithAggregatesInput = {
   paymentId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   tenantId?: Prisma.StringWithAggregatesFilter<"Transactions"> | string
   rentalId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
+  securityDepositId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   details?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   refundId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
   expenseId?: Prisma.StringNullableWithAggregatesFilter<"Transactions"> | string | null
@@ -429,6 +444,7 @@ export type TransactionsCreateInput = {
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateInput = {
@@ -442,6 +458,7 @@ export type TransactionsUncheckedCreateInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -467,6 +484,7 @@ export type TransactionsUpdateInput = {
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateInput = {
@@ -480,6 +498,7 @@ export type TransactionsUncheckedUpdateInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -499,6 +518,7 @@ export type TransactionsCreateManyInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -531,6 +551,7 @@ export type TransactionsUncheckedUpdateManyInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -570,6 +591,7 @@ export type TransactionsCountOrderByAggregateInput = {
   paymentId?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
+  securityDepositId?: Prisma.SortOrder
   details?: Prisma.SortOrder
   refundId?: Prisma.SortOrder
   expenseId?: Prisma.SortOrder
@@ -593,6 +615,7 @@ export type TransactionsMaxOrderByAggregateInput = {
   paymentId?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
+  securityDepositId?: Prisma.SortOrder
   details?: Prisma.SortOrder
   refundId?: Prisma.SortOrder
   expenseId?: Prisma.SortOrder
@@ -612,6 +635,7 @@ export type TransactionsMinOrderByAggregateInput = {
   paymentId?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
   rentalId?: Prisma.SortOrder
+  securityDepositId?: Prisma.SortOrder
   details?: Prisma.SortOrder
   refundId?: Prisma.SortOrder
   expenseId?: Prisma.SortOrder
@@ -808,6 +832,48 @@ export type TransactionsUncheckedUpdateOneWithoutExpenseNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionsUpdateToOneWithWhereWithoutExpenseInput, Prisma.TransactionsUpdateWithoutExpenseInput>, Prisma.TransactionsUncheckedUpdateWithoutExpenseInput>
 }
 
+export type TransactionsCreateNestedManyWithoutSecurityDepositInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput> | Prisma.TransactionsCreateWithoutSecurityDepositInput[] | Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput[]
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput | Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput[]
+  createMany?: Prisma.TransactionsCreateManySecurityDepositInputEnvelope
+  connect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+}
+
+export type TransactionsUncheckedCreateNestedManyWithoutSecurityDepositInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput> | Prisma.TransactionsCreateWithoutSecurityDepositInput[] | Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput[]
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput | Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput[]
+  createMany?: Prisma.TransactionsCreateManySecurityDepositInputEnvelope
+  connect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+}
+
+export type TransactionsUpdateManyWithoutSecurityDepositNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput> | Prisma.TransactionsCreateWithoutSecurityDepositInput[] | Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput[]
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput | Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput[]
+  upsert?: Prisma.TransactionsUpsertWithWhereUniqueWithoutSecurityDepositInput | Prisma.TransactionsUpsertWithWhereUniqueWithoutSecurityDepositInput[]
+  createMany?: Prisma.TransactionsCreateManySecurityDepositInputEnvelope
+  set?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  disconnect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  delete?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  connect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  update?: Prisma.TransactionsUpdateWithWhereUniqueWithoutSecurityDepositInput | Prisma.TransactionsUpdateWithWhereUniqueWithoutSecurityDepositInput[]
+  updateMany?: Prisma.TransactionsUpdateManyWithWhereWithoutSecurityDepositInput | Prisma.TransactionsUpdateManyWithWhereWithoutSecurityDepositInput[]
+  deleteMany?: Prisma.TransactionsScalarWhereInput | Prisma.TransactionsScalarWhereInput[]
+}
+
+export type TransactionsUncheckedUpdateManyWithoutSecurityDepositNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput> | Prisma.TransactionsCreateWithoutSecurityDepositInput[] | Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput[]
+  connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput | Prisma.TransactionsCreateOrConnectWithoutSecurityDepositInput[]
+  upsert?: Prisma.TransactionsUpsertWithWhereUniqueWithoutSecurityDepositInput | Prisma.TransactionsUpsertWithWhereUniqueWithoutSecurityDepositInput[]
+  createMany?: Prisma.TransactionsCreateManySecurityDepositInputEnvelope
+  set?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  disconnect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  delete?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  connect?: Prisma.TransactionsWhereUniqueInput | Prisma.TransactionsWhereUniqueInput[]
+  update?: Prisma.TransactionsUpdateWithWhereUniqueWithoutSecurityDepositInput | Prisma.TransactionsUpdateWithWhereUniqueWithoutSecurityDepositInput[]
+  updateMany?: Prisma.TransactionsUpdateManyWithWhereWithoutSecurityDepositInput | Prisma.TransactionsUpdateManyWithWhereWithoutSecurityDepositInput[]
+  deleteMany?: Prisma.TransactionsScalarWhereInput | Prisma.TransactionsScalarWhereInput[]
+}
+
 export type TransactionsCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.TransactionsCreateWithoutUserInput, Prisma.TransactionsUncheckedCreateWithoutUserInput> | Prisma.TransactionsCreateWithoutUserInput[] | Prisma.TransactionsUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.TransactionsCreateOrConnectWithoutUserInput | Prisma.TransactionsCreateOrConnectWithoutUserInput[]
@@ -866,6 +932,7 @@ export type TransactionsCreateWithoutPaymentInput = {
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutPaymentInput = {
@@ -878,6 +945,7 @@ export type TransactionsUncheckedCreateWithoutPaymentInput = {
   createdBy?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -918,6 +986,7 @@ export type TransactionsUpdateWithoutPaymentInput = {
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutPaymentInput = {
@@ -930,6 +999,7 @@ export type TransactionsUncheckedUpdateWithoutPaymentInput = {
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -954,6 +1024,7 @@ export type TransactionsCreateWithoutRentalInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutRentalInput = {
@@ -966,6 +1037,7 @@ export type TransactionsUncheckedCreateWithoutRentalInput = {
   createdBy?: string | null
   paymentId?: string | null
   tenantId: string
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1014,6 +1086,7 @@ export type TransactionsScalarWhereInput = {
   paymentId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   tenantId?: Prisma.StringFilter<"Transactions"> | string
   rentalId?: Prisma.StringNullableFilter<"Transactions"> | string | null
+  securityDepositId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   details?: Prisma.StringNullableFilter<"Transactions"> | string | null
   refundId?: Prisma.StringNullableFilter<"Transactions"> | string | null
   expenseId?: Prisma.StringNullableFilter<"Transactions"> | string | null
@@ -1038,6 +1111,7 @@ export type TransactionsCreateWithoutTenantInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutTenantInput = {
@@ -1050,6 +1124,7 @@ export type TransactionsUncheckedCreateWithoutTenantInput = {
   createdBy?: string | null
   paymentId?: string | null
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1100,6 +1175,7 @@ export type TransactionsCreateWithoutRefundInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutRefundInput = {
@@ -1113,6 +1189,7 @@ export type TransactionsUncheckedCreateWithoutRefundInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   expenseId?: string | null
   updatedAt?: Date | string | null
@@ -1152,6 +1229,7 @@ export type TransactionsUpdateWithoutRefundInput = {
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutRefundInput = {
@@ -1165,6 +1243,7 @@ export type TransactionsUncheckedUpdateWithoutRefundInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1188,6 +1267,7 @@ export type TransactionsCreateWithoutExpenseInput = {
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutExpenseInput = {
@@ -1201,6 +1281,7 @@ export type TransactionsUncheckedCreateWithoutExpenseInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   updatedAt?: Date | string | null
@@ -1240,6 +1321,7 @@ export type TransactionsUpdateWithoutExpenseInput = {
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutExpenseInput = {
@@ -1253,11 +1335,76 @@ export type TransactionsUncheckedUpdateWithoutExpenseInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type TransactionsCreateWithoutSecurityDepositInput = {
+  id?: string
+  amount: number
+  type: $Enums.TransactionType
+  isDeleted?: boolean
+  transactionDate?: Date | string
+  createdAt?: Date | string
+  details?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  number?: string | null
+  user?: Prisma.UserCreateNestedOneWithoutTransactionsInput
+  expense?: Prisma.ExpenseCreateNestedOneWithoutTransactionsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutTransactionInput
+  refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
+  rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
+  tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+}
+
+export type TransactionsUncheckedCreateWithoutSecurityDepositInput = {
+  id?: string
+  amount: number
+  type: $Enums.TransactionType
+  isDeleted?: boolean
+  transactionDate?: Date | string
+  createdAt?: Date | string
+  createdBy?: string | null
+  paymentId?: string | null
+  tenantId: string
+  rentalId?: string | null
+  details?: string | null
+  refundId?: string | null
+  expenseId?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  number?: string | null
+}
+
+export type TransactionsCreateOrConnectWithoutSecurityDepositInput = {
+  where: Prisma.TransactionsWhereUniqueInput
+  create: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput>
+}
+
+export type TransactionsCreateManySecurityDepositInputEnvelope = {
+  data: Prisma.TransactionsCreateManySecurityDepositInput | Prisma.TransactionsCreateManySecurityDepositInput[]
+  skipDuplicates?: boolean
+}
+
+export type TransactionsUpsertWithWhereUniqueWithoutSecurityDepositInput = {
+  where: Prisma.TransactionsWhereUniqueInput
+  update: Prisma.XOR<Prisma.TransactionsUpdateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedUpdateWithoutSecurityDepositInput>
+  create: Prisma.XOR<Prisma.TransactionsCreateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedCreateWithoutSecurityDepositInput>
+}
+
+export type TransactionsUpdateWithWhereUniqueWithoutSecurityDepositInput = {
+  where: Prisma.TransactionsWhereUniqueInput
+  data: Prisma.XOR<Prisma.TransactionsUpdateWithoutSecurityDepositInput, Prisma.TransactionsUncheckedUpdateWithoutSecurityDepositInput>
+}
+
+export type TransactionsUpdateManyWithWhereWithoutSecurityDepositInput = {
+  where: Prisma.TransactionsScalarWhereInput
+  data: Prisma.XOR<Prisma.TransactionsUpdateManyMutationInput, Prisma.TransactionsUncheckedUpdateManyWithoutSecurityDepositInput>
 }
 
 export type TransactionsCreateWithoutUserInput = {
@@ -1276,6 +1423,7 @@ export type TransactionsCreateWithoutUserInput = {
   refund?: Prisma.RefundCreateNestedOneWithoutTransactionInput
   rental?: Prisma.RentalCreateNestedOneWithoutTransactionsInput
   tenant: Prisma.TenantCreateNestedOneWithoutTransactionsInput
+  securityDeposit?: Prisma.SecurityDepositCreateNestedOneWithoutTransactionsInput
 }
 
 export type TransactionsUncheckedCreateWithoutUserInput = {
@@ -1288,6 +1436,7 @@ export type TransactionsUncheckedCreateWithoutUserInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1332,6 +1481,7 @@ export type TransactionsCreateManyRentalInput = {
   createdBy?: string | null
   paymentId?: string | null
   tenantId: string
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1356,6 +1506,7 @@ export type TransactionsUpdateWithoutRentalInput = {
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutRentalInput = {
@@ -1368,6 +1519,7 @@ export type TransactionsUncheckedUpdateWithoutRentalInput = {
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1386,6 +1538,7 @@ export type TransactionsUncheckedUpdateManyWithoutRentalInput = {
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1404,6 +1557,7 @@ export type TransactionsCreateManyTenantInput = {
   createdBy?: string | null
   paymentId?: string | null
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1428,6 +1582,7 @@ export type TransactionsUpdateWithoutTenantInput = {
   payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutTenantInput = {
@@ -1440,6 +1595,7 @@ export type TransactionsUncheckedUpdateWithoutTenantInput = {
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1457,6 +1613,83 @@ export type TransactionsUncheckedUpdateManyWithoutTenantInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type TransactionsCreateManySecurityDepositInput = {
+  id?: string
+  amount: number
+  type: $Enums.TransactionType
+  isDeleted?: boolean
+  transactionDate?: Date | string
+  createdAt?: Date | string
+  createdBy?: string | null
+  paymentId?: string | null
+  tenantId: string
+  rentalId?: string | null
+  details?: string | null
+  refundId?: string | null
+  expenseId?: string | null
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  number?: string | null
+}
+
+export type TransactionsUpdateWithoutSecurityDepositInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user?: Prisma.UserUpdateOneWithoutTransactionsNestedInput
+  expense?: Prisma.ExpenseUpdateOneWithoutTransactionsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutTransactionNestedInput
+  refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
+  rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+}
+
+export type TransactionsUncheckedUpdateWithoutSecurityDepositInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type TransactionsUncheckedUpdateManyWithoutSecurityDepositInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  type?: Prisma.EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1476,6 +1709,7 @@ export type TransactionsCreateManyUserInput = {
   paymentId?: string | null
   tenantId: string
   rentalId?: string | null
+  securityDepositId?: string | null
   details?: string | null
   refundId?: string | null
   expenseId?: string | null
@@ -1500,6 +1734,7 @@ export type TransactionsUpdateWithoutUserInput = {
   refund?: Prisma.RefundUpdateOneWithoutTransactionNestedInput
   rental?: Prisma.RentalUpdateOneWithoutTransactionsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutTransactionsNestedInput
+  securityDeposit?: Prisma.SecurityDepositUpdateOneWithoutTransactionsNestedInput
 }
 
 export type TransactionsUncheckedUpdateWithoutUserInput = {
@@ -1512,6 +1747,7 @@ export type TransactionsUncheckedUpdateWithoutUserInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1530,6 +1766,7 @@ export type TransactionsUncheckedUpdateManyWithoutUserInput = {
   paymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tenantId?: Prisma.StringFieldUpdateOperationsInput | string
   rentalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  securityDepositId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refundId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expenseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1551,6 +1788,7 @@ export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   paymentId?: boolean
   tenantId?: boolean
   rentalId?: boolean
+  securityDepositId?: boolean
   details?: boolean
   refundId?: boolean
   expenseId?: boolean
@@ -1563,6 +1801,7 @@ export type TransactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }, ExtArgs["result"]["transactions"]>
 
 export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1576,6 +1815,7 @@ export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   paymentId?: boolean
   tenantId?: boolean
   rentalId?: boolean
+  securityDepositId?: boolean
   details?: boolean
   refundId?: boolean
   expenseId?: boolean
@@ -1588,6 +1828,7 @@ export type TransactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }, ExtArgs["result"]["transactions"]>
 
 export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1601,6 +1842,7 @@ export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   paymentId?: boolean
   tenantId?: boolean
   rentalId?: boolean
+  securityDepositId?: boolean
   details?: boolean
   refundId?: boolean
   expenseId?: boolean
@@ -1613,6 +1855,7 @@ export type TransactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }, ExtArgs["result"]["transactions"]>
 
 export type TransactionsSelectScalar = {
@@ -1626,6 +1869,7 @@ export type TransactionsSelectScalar = {
   paymentId?: boolean
   tenantId?: boolean
   rentalId?: boolean
+  securityDepositId?: boolean
   details?: boolean
   refundId?: boolean
   expenseId?: boolean
@@ -1634,7 +1878,7 @@ export type TransactionsSelectScalar = {
   number?: boolean
 }
 
-export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "type" | "isDeleted" | "transactionDate" | "createdAt" | "createdBy" | "paymentId" | "tenantId" | "rentalId" | "details" | "refundId" | "expenseId" | "updatedAt" | "updatedBy" | "number", ExtArgs["result"]["transactions"]>
+export type TransactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "type" | "isDeleted" | "transactionDate" | "createdAt" | "createdBy" | "paymentId" | "tenantId" | "rentalId" | "securityDepositId" | "details" | "refundId" | "expenseId" | "updatedAt" | "updatedBy" | "number", ExtArgs["result"]["transactions"]>
 export type TransactionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
   expense?: boolean | Prisma.Transactions$expenseArgs<ExtArgs>
@@ -1642,6 +1886,7 @@ export type TransactionsInclude<ExtArgs extends runtime.Types.Extensions.Interna
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }
 export type TransactionsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
@@ -1650,6 +1895,7 @@ export type TransactionsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }
 export type TransactionsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Transactions$userArgs<ExtArgs>
@@ -1658,6 +1904,7 @@ export type TransactionsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types
   refund?: boolean | Prisma.Transactions$refundArgs<ExtArgs>
   rental?: boolean | Prisma.Transactions$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
+  securityDeposit?: boolean | Prisma.Transactions$securityDepositArgs<ExtArgs>
 }
 
 export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1669,6 +1916,7 @@ export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     refund: Prisma.$RefundPayload<ExtArgs> | null
     rental: Prisma.$RentalPayload<ExtArgs> | null
     tenant: Prisma.$TenantPayload<ExtArgs>
+    securityDeposit: Prisma.$SecurityDepositPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1681,6 +1929,7 @@ export type $TransactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     paymentId: string | null
     tenantId: string
     rentalId: string | null
+    securityDepositId: string | null
     details: string | null
     refundId: string | null
     expenseId: string | null
@@ -2087,6 +2336,7 @@ export interface Prisma__TransactionsClient<T, Null = never, ExtArgs extends run
   refund<T extends Prisma.Transactions$refundArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Transactions$refundArgs<ExtArgs>>): Prisma.Prisma__RefundClient<runtime.Types.Result.GetResult<Prisma.$RefundPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   rental<T extends Prisma.Transactions$rentalArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Transactions$rentalArgs<ExtArgs>>): Prisma.Prisma__RentalClient<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  securityDeposit<T extends Prisma.Transactions$securityDepositArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Transactions$securityDepositArgs<ExtArgs>>): Prisma.Prisma__SecurityDepositClient<runtime.Types.Result.GetResult<Prisma.$SecurityDepositPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2126,6 +2376,7 @@ export interface TransactionsFieldRefs {
   readonly paymentId: Prisma.FieldRef<"Transactions", 'String'>
   readonly tenantId: Prisma.FieldRef<"Transactions", 'String'>
   readonly rentalId: Prisma.FieldRef<"Transactions", 'String'>
+  readonly securityDepositId: Prisma.FieldRef<"Transactions", 'String'>
   readonly details: Prisma.FieldRef<"Transactions", 'String'>
   readonly refundId: Prisma.FieldRef<"Transactions", 'String'>
   readonly expenseId: Prisma.FieldRef<"Transactions", 'String'>
@@ -2625,6 +2876,25 @@ export type Transactions$rentalArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   include?: Prisma.RentalInclude<ExtArgs> | null
   where?: Prisma.RentalWhereInput
+}
+
+/**
+ * Transactions.securityDeposit
+ */
+export type Transactions$securityDepositArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SecurityDeposit
+   */
+  select?: Prisma.SecurityDepositSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SecurityDeposit
+   */
+  omit?: Prisma.SecurityDepositOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SecurityDepositInclude<ExtArgs> | null
+  where?: Prisma.SecurityDepositWhereInput
 }
 
 /**

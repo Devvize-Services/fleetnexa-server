@@ -33,37 +33,5 @@ model Values {
   rental               Rental        @relation(fields: [rentalId], references: [id])
 }
 
-model SecurityDeposit {
-  id                String                  @id @default(dbgenerated("gen_random_uuid()"))
-  bookingId         String                  @unique
-  amount            Float
-  amountCollected   Float                   @default(0.0)
-  amountForfeited   Float                   @default(0.0)
-  amountRefunded    Float                   @default(0.0)
-  status            SecurityDepositStatus   @default(PENDING)
-  createdAt         DateTime                @default(now())
-  updatedAt         DateTime?               @updatedAt
-  updatedBy         String?
 
-  booking           Rental                  @relation(fields: [bookingId], references: [id])
-  user              User?                   @relation(fields: [updatedBy], references: [username])
 
-  transactions      SecurityDepositTransaction[]
-}
-
-model SecurityDepositTransaction {
-  id                String @id @default(dbgenerated("gen_random_uuid()"))
-  securityDepositId String
-  type              SecurityDepositTransactionType
-  amount            Float
-  notes             String?
-  paymentDate       DateTime @default(now())
-  paymentMethodId   String?
-  currencyId        String?
-
-  createdAt         DateTime @default(now())
-  createdBy         String
-
-  securityDeposit   SecurityDeposit @relation(fields: [securityDepositId], references: [id])
-  user              User            @relation(fields: [createdBy], references: [username])
-}

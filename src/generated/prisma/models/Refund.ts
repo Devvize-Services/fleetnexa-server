@@ -296,10 +296,10 @@ export type RefundWhereInput = {
   refund?: Prisma.StringNullableFilter<"Refund"> | string | null
   payment?: Prisma.StringNullableFilter<"Refund"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"Refund"> | string | null
+  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerNullableScalarRelationFilter, Prisma.CustomerWhereInput> | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }
 
 export type RefundOrderByWithRelationInput = {
@@ -318,10 +318,10 @@ export type RefundOrderByWithRelationInput = {
   refund?: Prisma.SortOrderInput | Prisma.SortOrder
   payment?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
+  transaction?: Prisma.TransactionsOrderByWithRelationInput
   customer?: Prisma.CustomerOrderByWithRelationInput
   rental?: Prisma.RentalOrderByWithRelationInput
   tenant?: Prisma.TenantOrderByWithRelationInput
-  transaction?: Prisma.TransactionsOrderByWithRelationInput
 }
 
 export type RefundWhereUniqueInput = Prisma.AtLeast<{
@@ -343,10 +343,10 @@ export type RefundWhereUniqueInput = Prisma.AtLeast<{
   refund?: Prisma.StringNullableFilter<"Refund"> | string | null
   payment?: Prisma.StringNullableFilter<"Refund"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"Refund"> | string | null
+  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerNullableScalarRelationFilter, Prisma.CustomerWhereInput> | null
   rental?: Prisma.XOR<Prisma.RentalNullableScalarRelationFilter, Prisma.RentalWhereInput> | null
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
-  transaction?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }, "id">
 
 export type RefundOrderByWithAggregationInput = {
@@ -406,10 +406,10 @@ export type RefundCreateInput = {
   refund?: string | null
   payment?: string | null
   updatedBy?: string | null
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
   customer?: Prisma.CustomerCreateNestedOneWithoutRefundsInput
   rental?: Prisma.RentalCreateNestedOneWithoutRefundsInput
   tenant: Prisma.TenantCreateNestedOneWithoutRefundsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
 }
 
 export type RefundUncheckedCreateInput = {
@@ -444,10 +444,10 @@ export type RefundUpdateInput = {
   refund?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
   customer?: Prisma.CustomerUpdateOneWithoutRefundsNestedInput
   rental?: Prisma.RentalUpdateOneWithoutRefundsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutRefundsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
 }
 
 export type RefundUncheckedUpdateInput = {
@@ -752,9 +752,9 @@ export type RefundCreateWithoutCustomerInput = {
   refund?: string | null
   payment?: string | null
   updatedBy?: string | null
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
   rental?: Prisma.RentalCreateNestedOneWithoutRefundsInput
   tenant: Prisma.TenantCreateNestedOneWithoutRefundsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
 }
 
 export type RefundUncheckedCreateWithoutCustomerInput = {
@@ -835,9 +835,9 @@ export type RefundCreateWithoutRentalInput = {
   refund?: string | null
   payment?: string | null
   updatedBy?: string | null
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
   customer?: Prisma.CustomerCreateNestedOneWithoutRefundsInput
   tenant: Prisma.TenantCreateNestedOneWithoutRefundsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
 }
 
 export type RefundUncheckedCreateWithoutRentalInput = {
@@ -897,9 +897,9 @@ export type RefundCreateWithoutTenantInput = {
   refund?: string | null
   payment?: string | null
   updatedBy?: string | null
+  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
   customer?: Prisma.CustomerCreateNestedOneWithoutRefundsInput
   rental?: Prisma.RentalCreateNestedOneWithoutRefundsInput
-  transaction?: Prisma.TransactionsCreateNestedOneWithoutRefundInput
 }
 
 export type RefundUncheckedCreateWithoutTenantInput = {
@@ -1064,9 +1064,9 @@ export type RefundUpdateWithoutCustomerInput = {
   refund?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
   rental?: Prisma.RentalUpdateOneWithoutRefundsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutRefundsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
 }
 
 export type RefundUncheckedUpdateWithoutCustomerInput = {
@@ -1134,9 +1134,9 @@ export type RefundUpdateWithoutRentalInput = {
   refund?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
   customer?: Prisma.CustomerUpdateOneWithoutRefundsNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutRefundsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
 }
 
 export type RefundUncheckedUpdateWithoutRentalInput = {
@@ -1204,9 +1204,9 @@ export type RefundUpdateWithoutTenantInput = {
   refund?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
   customer?: Prisma.CustomerUpdateOneWithoutRefundsNestedInput
   rental?: Prisma.RentalUpdateOneWithoutRefundsNestedInput
-  transaction?: Prisma.TransactionsUpdateOneWithoutRefundNestedInput
 }
 
 export type RefundUncheckedUpdateWithoutTenantInput = {
@@ -1262,10 +1262,10 @@ export type RefundSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   refund?: boolean
   payment?: boolean
   updatedBy?: boolean
+  transaction?: boolean | Prisma.Refund$transactionArgs<ExtArgs>
   customer?: boolean | Prisma.Refund$customerArgs<ExtArgs>
   rental?: boolean | Prisma.Refund$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
-  transaction?: boolean | Prisma.Refund$transactionArgs<ExtArgs>
 }, ExtArgs["result"]["refund"]>
 
 export type RefundSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1330,10 +1330,10 @@ export type RefundSelectScalar = {
 
 export type RefundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "amount" | "tenantId" | "rentalId" | "reason" | "isDeleted" | "createdAt" | "updatedAt" | "refundDate" | "createdBy" | "customerId" | "payee" | "refund" | "payment" | "updatedBy", ExtArgs["result"]["refund"]>
 export type RefundInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  transaction?: boolean | Prisma.Refund$transactionArgs<ExtArgs>
   customer?: boolean | Prisma.Refund$customerArgs<ExtArgs>
   rental?: boolean | Prisma.Refund$rentalArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
-  transaction?: boolean | Prisma.Refund$transactionArgs<ExtArgs>
 }
 export type RefundIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customer?: boolean | Prisma.Refund$customerArgs<ExtArgs>
@@ -1349,10 +1349,10 @@ export type RefundIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $RefundPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Refund"
   objects: {
+    transaction: Prisma.$TransactionsPayload<ExtArgs> | null
     customer: Prisma.$CustomerPayload<ExtArgs> | null
     rental: Prisma.$RentalPayload<ExtArgs> | null
     tenant: Prisma.$TenantPayload<ExtArgs>
-    transaction: Prisma.$TransactionsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1764,10 +1764,10 @@ readonly fields: RefundFieldRefs;
  */
 export interface Prisma__RefundClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  transaction<T extends Prisma.Refund$transactionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Refund$transactionArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   customer<T extends Prisma.Refund$customerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Refund$customerArgs<ExtArgs>>): Prisma.Prisma__CustomerClient<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   rental<T extends Prisma.Refund$rentalArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Refund$rentalArgs<ExtArgs>>): Prisma.Prisma__RentalClient<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  transaction<T extends Prisma.Refund$transactionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Refund$transactionArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2213,6 +2213,25 @@ export type RefundDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
+ * Refund.transaction
+ */
+export type Refund$transactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Transactions
+   */
+  select?: Prisma.TransactionsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Transactions
+   */
+  omit?: Prisma.TransactionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TransactionsInclude<ExtArgs> | null
+  where?: Prisma.TransactionsWhereInput
+}
+
+/**
  * Refund.customer
  */
 export type Refund$customerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2248,25 +2267,6 @@ export type Refund$rentalArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   include?: Prisma.RentalInclude<ExtArgs> | null
   where?: Prisma.RentalWhereInput
-}
-
-/**
- * Refund.transaction
- */
-export type Refund$transactionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Transactions
-   */
-  select?: Prisma.TransactionsSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Transactions
-   */
-  omit?: Prisma.TransactionsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.TransactionsInclude<ExtArgs> | null
-  where?: Prisma.TransactionsWhereInput
 }
 
 /**

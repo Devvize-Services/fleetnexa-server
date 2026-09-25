@@ -81,3 +81,4 @@ model Payment {
 
   @@unique([tenantId, reference])
 }
+

@@ -293,7 +293,7 @@ export type ExpenseWhereInput = {
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   vehicle?: Prisma.XOR<Prisma.VehicleNullableScalarRelationFilter, Prisma.VehicleWhereInput> | null
   vendor?: Prisma.XOR<Prisma.TenantVendorNullableScalarRelationFilter, Prisma.TenantVendorWhereInput> | null
-  Transactions?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
+  transactions?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }
 
 export type ExpenseOrderByWithRelationInput = {
@@ -316,7 +316,7 @@ export type ExpenseOrderByWithRelationInput = {
   tenant?: Prisma.TenantOrderByWithRelationInput
   vehicle?: Prisma.VehicleOrderByWithRelationInput
   vendor?: Prisma.TenantVendorOrderByWithRelationInput
-  Transactions?: Prisma.TransactionsOrderByWithRelationInput
+  transactions?: Prisma.TransactionsOrderByWithRelationInput
 }
 
 export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
@@ -342,7 +342,7 @@ export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   vehicle?: Prisma.XOR<Prisma.VehicleNullableScalarRelationFilter, Prisma.VehicleWhereInput> | null
   vendor?: Prisma.XOR<Prisma.TenantVendorNullableScalarRelationFilter, Prisma.TenantVendorWhereInput> | null
-  Transactions?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
+  transactions?: Prisma.XOR<Prisma.TransactionsNullableScalarRelationFilter, Prisma.TransactionsWhereInput> | null
 }, "id">
 
 export type ExpenseOrderByWithAggregationInput = {
@@ -402,7 +402,7 @@ export type ExpenseCreateInput = {
   tenant: Prisma.TenantCreateNestedOneWithoutExpensesInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutExpensesInput
   vendor?: Prisma.TenantVendorCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateInput = {
@@ -420,7 +420,7 @@ export type ExpenseUncheckedCreateInput = {
   maintenanceId?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUpdateInput = {
@@ -438,7 +438,7 @@ export type ExpenseUpdateInput = {
   tenant?: Prisma.TenantUpdateOneRequiredWithoutExpensesNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutExpensesNestedInput
   vendor?: Prisma.TenantVendorUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateInput = {
@@ -456,7 +456,7 @@ export type ExpenseUncheckedUpdateInput = {
   maintenanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseCreateManyInput = {
@@ -819,7 +819,7 @@ export type ExpenseCreateWithoutTenantInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedOneWithoutExpensesInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutExpensesInput
   vendor?: Prisma.TenantVendorCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateWithoutTenantInput = {
@@ -836,7 +836,7 @@ export type ExpenseUncheckedCreateWithoutTenantInput = {
   maintenanceId?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseCreateOrConnectWithoutTenantInput = {
@@ -899,7 +899,7 @@ export type ExpenseCreateWithoutVendorInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedOneWithoutExpensesInput
   tenant: Prisma.TenantCreateNestedOneWithoutExpensesInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateWithoutVendorInput = {
@@ -916,7 +916,7 @@ export type ExpenseUncheckedCreateWithoutVendorInput = {
   maintenanceId?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseCreateOrConnectWithoutVendorInput = {
@@ -1043,7 +1043,7 @@ export type ExpenseCreateWithoutUserInput = {
   tenant: Prisma.TenantCreateNestedOneWithoutExpensesInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutExpensesInput
   vendor?: Prisma.TenantVendorCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateWithoutUserInput = {
@@ -1060,7 +1060,7 @@ export type ExpenseUncheckedCreateWithoutUserInput = {
   maintenanceId?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseCreateOrConnectWithoutUserInput = {
@@ -1103,7 +1103,7 @@ export type ExpenseCreateWithoutVehicleInput = {
   maintenance?: Prisma.VehicleMaintenanceCreateNestedOneWithoutExpensesInput
   tenant: Prisma.TenantCreateNestedOneWithoutExpensesInput
   vendor?: Prisma.TenantVendorCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateWithoutVehicleInput = {
@@ -1120,7 +1120,7 @@ export type ExpenseUncheckedCreateWithoutVehicleInput = {
   maintenanceId?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseCreateOrConnectWithoutVehicleInput = {
@@ -1163,7 +1163,7 @@ export type ExpenseCreateWithoutMaintenanceInput = {
   tenant: Prisma.TenantCreateNestedOneWithoutExpensesInput
   vehicle?: Prisma.VehicleCreateNestedOneWithoutExpensesInput
   vendor?: Prisma.TenantVendorCreateNestedOneWithoutExpensesInput
-  Transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseUncheckedCreateWithoutMaintenanceInput = {
@@ -1180,7 +1180,7 @@ export type ExpenseUncheckedCreateWithoutMaintenanceInput = {
   createdBy?: string | null
   expense?: string | null
   payee?: string | null
-  Transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
+  transactions?: Prisma.TransactionsUncheckedCreateNestedOneWithoutExpenseInput
 }
 
 export type ExpenseCreateOrConnectWithoutMaintenanceInput = {
@@ -1239,7 +1239,7 @@ export type ExpenseUpdateWithoutTenantInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateOneWithoutExpensesNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutExpensesNestedInput
   vendor?: Prisma.TenantVendorUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutTenantInput = {
@@ -1256,7 +1256,7 @@ export type ExpenseUncheckedUpdateWithoutTenantInput = {
   maintenanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateManyWithoutTenantInput = {
@@ -1305,7 +1305,7 @@ export type ExpenseUpdateWithoutVendorInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateOneWithoutExpensesNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutExpensesNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutVendorInput = {
@@ -1322,7 +1322,7 @@ export type ExpenseUncheckedUpdateWithoutVendorInput = {
   maintenanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateManyWithoutVendorInput = {
@@ -1371,7 +1371,7 @@ export type ExpenseUpdateWithoutUserInput = {
   tenant?: Prisma.TenantUpdateOneRequiredWithoutExpensesNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutExpensesNestedInput
   vendor?: Prisma.TenantVendorUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutUserInput = {
@@ -1388,7 +1388,7 @@ export type ExpenseUncheckedUpdateWithoutUserInput = {
   maintenanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateManyWithoutUserInput = {
@@ -1437,7 +1437,7 @@ export type ExpenseUpdateWithoutVehicleInput = {
   maintenance?: Prisma.VehicleMaintenanceUpdateOneWithoutExpensesNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutExpensesNestedInput
   vendor?: Prisma.TenantVendorUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutVehicleInput = {
@@ -1454,7 +1454,7 @@ export type ExpenseUncheckedUpdateWithoutVehicleInput = {
   maintenanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateManyWithoutVehicleInput = {
@@ -1503,7 +1503,7 @@ export type ExpenseUpdateWithoutMaintenanceInput = {
   tenant?: Prisma.TenantUpdateOneRequiredWithoutExpensesNestedInput
   vehicle?: Prisma.VehicleUpdateOneWithoutExpensesNestedInput
   vendor?: Prisma.TenantVendorUpdateOneWithoutExpensesNestedInput
-  Transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutMaintenanceInput = {
@@ -1520,7 +1520,7 @@ export type ExpenseUncheckedUpdateWithoutMaintenanceInput = {
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expense?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payee?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
+  transactions?: Prisma.TransactionsUncheckedUpdateOneWithoutExpenseNestedInput
 }
 
 export type ExpenseUncheckedUpdateManyWithoutMaintenanceInput = {
@@ -1561,7 +1561,7 @@ export type ExpenseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   vehicle?: boolean | Prisma.Expense$vehicleArgs<ExtArgs>
   vendor?: boolean | Prisma.Expense$vendorArgs<ExtArgs>
-  Transactions?: boolean | Prisma.Expense$TransactionsArgs<ExtArgs>
+  transactions?: boolean | Prisma.Expense$transactionsArgs<ExtArgs>
 }, ExtArgs["result"]["expense"]>
 
 export type ExpenseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1632,7 +1632,7 @@ export type ExpenseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   vehicle?: boolean | Prisma.Expense$vehicleArgs<ExtArgs>
   vendor?: boolean | Prisma.Expense$vendorArgs<ExtArgs>
-  Transactions?: boolean | Prisma.Expense$TransactionsArgs<ExtArgs>
+  transactions?: boolean | Prisma.Expense$transactionsArgs<ExtArgs>
 }
 export type ExpenseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.Expense$userArgs<ExtArgs>
@@ -1657,7 +1657,7 @@ export type $ExpensePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     tenant: Prisma.$TenantPayload<ExtArgs>
     vehicle: Prisma.$VehiclePayload<ExtArgs> | null
     vendor: Prisma.$TenantVendorPayload<ExtArgs> | null
-    Transactions: Prisma.$TransactionsPayload<ExtArgs> | null
+    transactions: Prisma.$TransactionsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2073,7 +2073,7 @@ export interface Prisma__ExpenseClient<T, Null = never, ExtArgs extends runtime.
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   vehicle<T extends Prisma.Expense$vehicleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Expense$vehicleArgs<ExtArgs>>): Prisma.Prisma__VehicleClient<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   vendor<T extends Prisma.Expense$vendorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Expense$vendorArgs<ExtArgs>>): Prisma.Prisma__TenantVendorClient<runtime.Types.Result.GetResult<Prisma.$TenantVendorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  Transactions<T extends Prisma.Expense$TransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Expense$TransactionsArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  transactions<T extends Prisma.Expense$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Expense$transactionsArgs<ExtArgs>>): Prisma.Prisma__TransactionsClient<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2594,9 +2594,9 @@ export type Expense$vendorArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Expense.Transactions
+ * Expense.transactions
  */
-export type Expense$TransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Expense$transactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Transactions
    */

@@ -15,10 +15,10 @@ import { PrismaModule } from '../../infrastructure/prisma/prisma.module.js';
 import { BookingVehicleService } from './services/booking-vehicle.service.js';
 import { BookingCalculationService } from './services/booking-calculation.service.js';
 import { BookingChargeService } from './services/booking-charge.service.js';
-import { BookingDepositService } from './services/booking-deposit.service.js';
 import { CustomerService } from '../customer/customer.service.js';
 import { FinanceModule } from '../finance/finance.module.js';
 import { PaymentService } from '../finance/payment/payment.service.js';
+import { SecurityDepositModule } from '../finance/security-deposit/security-deposit.module.js';
 
 @Module({
   imports: [
@@ -29,6 +29,7 @@ import { PaymentService } from '../finance/payment/payment.service.js';
     VehicleEventModule,
     TenantNotificationModule,
     FinanceModule,
+    SecurityDepositModule,
   ],
   controllers: [BookingController],
   providers: [
@@ -36,7 +37,6 @@ import { PaymentService } from '../finance/payment/payment.service.js';
     BookingCalculationService,
     BookingChargeService,
     BookingCreationService,
-    BookingDepositService,
     BookingRepository,
     BookingService,
     BookingVehicleService,
