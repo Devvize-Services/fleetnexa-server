@@ -1,6 +1,5 @@
 import {
   Get,
-  Req,
   UseGuards,
   Request,
   Param,
@@ -8,15 +7,13 @@ import {
   Post,
   Put,
   Delete,
-  Res,
   Controller,
 } from '@nestjs/common';
-import type { Response } from 'express';
 import { BookingService } from './booking.service.js';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js';
 import { Roles } from '../auth/decorator/role.decorator.js';
 import { Role } from '../../shared/enums/role.enum.js';
-import { ActionBookingDto } from './dto/action-booking.dto.js';
+import { ActionBookingDto } from './booking-action/action-booking.dto.js';
 import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
@@ -89,63 +86,6 @@ export class BookingController {
     const { tenant } = req.user;
     const user = req.user;
     return this.bookingService.updateBooking(data, tenant, user);
-  }
-
-  @Post('confirm')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async confirmBooking(@Request() req, @Body() data: ActionBookingDto) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.confirmBooking(data, tenant, user);
-  }
-
-  @Post('decline/:id')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async declineBooking(@Request() req, @Param('id') id: string) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.declineBooking(id, tenant, user);
-  }
-
-  @Post('cancel/:id')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async cancelBooking(
-    @Request() req,
-    @Param('id') id: string,
-    @Res() res: Response,
-  ) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.cancelBooking(id, tenant, user, res);
-  }
-
-  @Post('start')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async startBooking(
-    @Request() req,
-    @Body() data: ActionBookingDto,
-    @Res() res: Response,
-  ) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.startBooking(data, tenant, user, res);
-  }
-
-  @Post('end')
-  @UseGuards(JwtAuthGuard)
-  @Roles(Role.TENANT)
-  async endBooking(
-    @Request() req,
-    @Body() data: ActionBookingDto,
-    @Res() res: Response,
-  ) {
-    const { tenant } = req.user;
-    const user = req.user;
-    return this.bookingService.endBooking(data, tenant, user, res);
   }
 
   @Delete(':id')

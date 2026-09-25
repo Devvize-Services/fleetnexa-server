@@ -1,24 +1,19 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { BookingRepository } from '../booking.repository.js';
-import {
-  RentalStatus,
-  Tenant,
-  User,
-} from '../../../generated/prisma/client.js';
-import { ActionBookingDto } from '../dto/action-booking.dto.js';
-import { VehicleStatusDto } from '../../vehicle/dto/vehicle-status.dto.js';
-import { VehicleService } from '../../vehicle/vehicle.service.js';
-import { DocumentService } from '../../document/document.service.js';
-import { BookingActivityService } from './booking-activity.service.js';
-import { ResendService } from '../../../infrastructure/resend/resend.service.js';
-import { PrismaService } from '../../../infrastructure/prisma/prisma.service.js';
-import { InvoiceService } from '../../finance/invoice/invoice.service.js';
-import { ActivityService } from '../../../common/activity/activity.service.js';
+import { ActivityService } from '../../../common/activity/activity.service';
+import { PrismaService } from '../../../infrastructure/prisma/prisma.service';
+import { ResendService } from '../../../infrastructure/resend/resend.service';
+import { DocumentService } from '../../../modules/document/document.service';
+import { InvoiceService } from '../../../modules/finance/invoice/invoice.service';
+import { VehicleService } from '../../../modules/vehicle/vehicle.service';
+import { BookingRepository } from '../booking.repository';
+import { BookingActivityService } from '../services/booking-activity.service';
+import { RentalStatus, Tenant, User } from '../../../generated/prisma/client';
+import { ActionBookingDto } from './action-booking.dto';
+import { VehicleStatusDto } from '../../../modules/vehicle/dto/vehicle-status.dto';
 
 @Injectable()
-export class BookingWorkflowService {
-  private readonly logger = new Logger(BookingWorkflowService.name);
-
+export class BookingActionService {
+  private readonly logger = new Logger(BookingActionService.name);
   constructor(
     private readonly bookingRepo: BookingRepository,
     private readonly documentService: DocumentService,

@@ -19,6 +19,7 @@ import { CustomerService } from '../customer/customer.service.js';
 import { FinanceModule } from '../finance/finance.module.js';
 import { PaymentService } from '../finance/payment/payment.service.js';
 import { SecurityDepositModule } from '../finance/security-deposit/security-deposit.module.js';
+import { BookingActionModule } from './booking-action/booking-action.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { SecurityDepositModule } from '../finance/security-deposit/security-depo
     TenantNotificationModule,
     FinanceModule,
     SecurityDepositModule,
+    BookingActionModule,
   ],
   controllers: [BookingController],
   providers: [

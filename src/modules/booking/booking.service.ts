@@ -2,14 +2,12 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { BookingRepository } from './booking.repository.js';
 import { RentalStatus, Tenant, User } from '../../generated/prisma/client.js';
 import { EmailService } from '../../common/email/email.service.js';
-import { ActionBookingDto } from './dto/action-booking.dto.js';
 import { SendWhatsAppDto } from '../../common/notify/dto/send-whatsapp.dto.js';
 import { WhatsappService } from '../../common/whatsapp/whatsapp.service.js';
 import { TransactionService } from '../transaction/transaction.service.js';
 import { UpdateBookingDto } from './dto/update-booking.dto.js';
 import { SendDocumentsDto } from './dto/send-documents.dto.js';
 import { CustomerRepository } from '../customer/customer.repository.js';
-import { BookingWorkflowService } from './services/booking-workflow.service.js';
 import { BookingCreationService } from './services/booking-creation.service.js';
 import { CreateBookingDto } from './dto/create-booking.dto.js';
 import { StorefrontUserBookingDto } from './dto/storefront-user-booking.dto.js';
@@ -32,7 +30,6 @@ export class BookingService {
     private readonly whatsapp: WhatsappService,
     private readonly transactions: TransactionService,
     private readonly customerRepo: CustomerRepository,
-    private readonly workflow: BookingWorkflowService,
     private readonly bookingCreation: BookingCreationService,
     private readonly vehicleBookingService: BookingVehicleService,
     private readonly bookingChargeService: BookingChargeService,
@@ -203,31 +200,6 @@ export class BookingService {
       booking: updated,
       bookings,
     };
-  }
-
-  confirmBooking(
-    data: ActionBookingDto,
-    tenant: Tenant,
-    user: User,
-    res?: any,
-  ) {
-    return this.workflow.confirmBooking(data, tenant, user, res);
-  }
-
-  declineBooking(id: string, tenant: Tenant, user: User, res?: any) {
-    return this.workflow.declineBooking(id, tenant, user, res);
-  }
-
-  cancelBooking(id: string, tenant: Tenant, user: User, res?: any) {
-    return this.workflow.cancelBooking(id, tenant, user, res);
-  }
-
-  startBooking(data: ActionBookingDto, tenant: Tenant, user: User, res?: any) {
-    return this.workflow.startBooking(data, tenant, user, res);
-  }
-
-  endBooking(data: ActionBookingDto, tenant: Tenant, user: User, res?: any) {
-    return this.workflow.endBooking(data, tenant, user, res);
   }
 
   addBookingCharge(
