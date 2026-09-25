@@ -137,57 +137,60 @@ export class RefundService {
 
   async updateRefund(data: RefundDto, tenant: Tenant, user: any) {
     try {
-      await this.prisma.$transaction(async (tx) => {
-        const existingRefund = await tx.refund.findUnique({
-          where: { id: data.id },
-        });
+      await this.prisma.$transaction(
+        async (tx) => {
+          const existingRefund = await tx.refund.findUnique({
+            where: { id: data.id },
+          });
 
-        if (!existingRefund) {
-          this.logger.warn(
-            `Refund with ID ${data.id} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Refund not found');
-        }
+          if (!existingRefund) {
+            this.logger.warn(
+              `Refund with ID ${data.id} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Refund not found');
+          }
 
-        const existingCustomer = await tx.customer.findUnique({
-          where: { id: data.customerId },
-        });
+          const existingCustomer = await tx.customer.findUnique({
+            where: { id: data.customerId },
+          });
 
-        if (!existingCustomer) {
-          this.logger.warn(
-            `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Customer not found');
-        }
+          if (!existingCustomer) {
+            this.logger.warn(
+              `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Customer not found');
+          }
 
-        const exitingBooking = await tx.rental.findUnique({
-          where: { id: data.bookingId },
-        });
+          const exitingBooking = await tx.rental.findUnique({
+            where: { id: data.bookingId },
+          });
 
-        if (!exitingBooking) {
-          this.logger.warn(
-            `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Booking not found');
-        }
+          if (!exitingBooking) {
+            this.logger.warn(
+              `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Booking not found');
+          }
 
-        const updatedRefund = await tx.refund.update({
-          where: { id: data.id },
-          data: {
-            amount: data.amount,
-            refundDate: new Date(data.refundDate),
-            reason: data.reason,
-            rentalId: data.bookingId,
-            customerId: data.customerId,
-            updatedAt: new Date(),
-            payee: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-            payment: `Refund for booking #${exitingBooking.rentalNumber}`,
-            updatedBy: user.username,
-          },
-        });
+          const updatedRefund = await tx.refund.update({
+            where: { id: data.id },
+            data: {
+              amount: data.amount,
+              refundDate: new Date(data.refundDate),
+              reason: data.reason,
+              rentalId: data.bookingId,
+              customerId: data.customerId,
+              updatedAt: new Date(),
+              payee: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
+              payment: `Refund for booking #${exitingBooking.rentalNumber}`,
+              updatedBy: user.username,
+            },
+          });
 
-        return updatedRefund;
-      });
+          return updatedRefund;
+        },
+        { timeout: 50000 },
+      );
 
       const existingTransaction = await this.prisma.transactions.findFirst({
         where: { refundId: data.id },

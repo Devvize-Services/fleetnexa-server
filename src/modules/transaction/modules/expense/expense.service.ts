@@ -92,69 +92,72 @@ export class ExpenseService {
 
   async updateExpense(data: ExpenseDto, tenant: Tenant, user: User) {
     try {
-      await this.prisma.$transaction(async (tx) => {
-        const existingExpense = await tx.expense.findUnique({
-          where: { id: data.id },
-        });
+      await this.prisma.$transaction(
+        async (tx) => {
+          const existingExpense = await tx.expense.findUnique({
+            where: { id: data.id },
+          });
 
-        if (!existingExpense) {
-          this.logger.warn(
-            `Expense with ID ${data.id} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Expense not found');
-        }
+          if (!existingExpense) {
+            this.logger.warn(
+              `Expense with ID ${data.id} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Expense not found');
+          }
 
-        await tx.expense.update({
-          where: { id: data.id },
-          data: {
-            amount: data.amount,
-            expenseDate: data.expenseDate,
-            notes: data.notes,
-            vendorId: data.vendorId,
-            payee: data.payee,
-            expense: data.expense,
-            maintenanceId: data.maintenanceId,
-            vehicleId: data.vehicleId,
-            updatedAt: new Date(),
-          },
-        });
+          await tx.expense.update({
+            where: { id: data.id },
+            data: {
+              amount: data.amount,
+              expenseDate: data.expenseDate,
+              notes: data.notes,
+              vendorId: data.vendorId,
+              payee: data.payee,
+              expense: data.expense,
+              maintenanceId: data.maintenanceId,
+              vehicleId: data.vehicleId,
+              updatedAt: new Date(),
+            },
+          });
 
-        const existingTransaction = await tx.transactions.findFirst({
-          where: { expenseId: data.id },
-        });
+          const existingTransaction = await tx.transactions.findFirst({
+            where: { expenseId: data.id },
+          });
 
-        if (!existingTransaction) {
-          this.logger.warn(
-            `Associated transaction not found for expense ID ${data.id} and tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Associated transaction not found');
-        }
+          if (!existingTransaction) {
+            this.logger.warn(
+              `Associated transaction not found for expense ID ${data.id} and tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Associated transaction not found');
+          }
 
-        const transaction: TransactionDto = {
-          id: existingTransaction.id,
-          amount: data.amount,
-          transactionDate: data.expenseDate,
-          type: TransactionType.EXPENSE,
-          createdBy: user.username,
-          paymentId: '',
-          refundId: '',
-          expenseId: '',
-          rentalId: '',
-          securityDepositId: '',
-        };
-
-        await this.transaction.updateTransaction(transaction, tenant, user);
-
-        await tx.transactions.update({
-          where: { id: existingTransaction.id },
-          data: {
+          const transaction: TransactionDto = {
+            id: existingTransaction.id,
             amount: data.amount,
             transactionDate: data.expenseDate,
-            updatedAt: new Date(),
-            updatedBy: user.username,
-          },
-        });
-      });
+            type: TransactionType.EXPENSE,
+            createdBy: user.username,
+            paymentId: '',
+            refundId: '',
+            expenseId: '',
+            rentalId: '',
+            securityDepositId: '',
+          };
+
+          await this.transaction.updateTransaction(transaction, tenant, user);
+
+          await tx.transactions.update({
+            where: { id: existingTransaction.id },
+            data: {
+              amount: data.amount,
+              transactionDate: data.expenseDate,
+              updatedAt: new Date(),
+              updatedBy: user.username,
+            },
+          });
+        },
+        { timeout: 50000 },
+      );
 
       const expenses = await this.getTenantExpenses(tenant);
       const transactions = await this.transaction.getTransactions(tenant);

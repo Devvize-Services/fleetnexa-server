@@ -85,67 +85,70 @@ export class PaymentService {
 
   async createPayment(data: PaymentDto, tenant: Tenant, user: User, res?: any) {
     try {
-      const payment = await this.prisma.$transaction(async (tx) => {
-        const existingBooking = await tx.rental.findFirst({
-          where: {
-            id: data.bookingId,
-            tenantId: tenant.id,
-          },
-        });
+      const payment = await this.prisma.$transaction(
+        async (tx) => {
+          const existingBooking = await tx.rental.findFirst({
+            where: {
+              id: data.bookingId,
+              tenantId: tenant.id,
+            },
+          });
 
-        if (!existingBooking) {
-          this.logger.warn(
-            `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
+          if (!existingBooking) {
+            this.logger.warn(
+              `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Booking not found');
+          }
+
+          const existingCustomer = await tx.customer.findUnique({
+            where: { id: data.customerId, tenantId: tenant.id },
+          });
+
+          if (!existingCustomer) {
+            this.logger.warn(
+              `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Customer not found');
+          }
+
+          const reference = await this.generator.generatePaymentReferenceNumber(
+            tenant.id,
           );
-          throw new NotFoundException('Booking not found');
-        }
 
-        const existingCustomer = await tx.customer.findUnique({
-          where: { id: data.customerId, tenantId: tenant.id },
-        });
+          const newPayment = await tx.payment.create({
+            data: {
+              amount: data.amount,
+              tenantId: tenant.id,
+              rentalId: data.bookingId,
+              paymentDate: data.paymentDate,
+              notes: data.notes,
+              paymentTypeId: data.paymentTypeId,
+              paymentMethodId: data.paymentMethodId,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+              customerId: data.customerId,
+              reference: reference,
+              payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
+              payment: `Payment for Booking #${existingBooking.rentalNumber}`,
+              updatedBy: user.username,
+            },
+          });
 
-        if (!existingCustomer) {
-          this.logger.warn(
-            `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Customer not found');
-        }
+          return newPayment;
+        },
+        { timeout: 50000 },
+      );
 
-        const reference = await this.generator.generatePaymentReferenceNumber(
-          tenant.id,
-        );
-
-        const newPayment = await tx.payment.create({
-          data: {
-            amount: data.amount,
-            tenantId: tenant.id,
-            rentalId: data.bookingId,
-            paymentDate: data.paymentDate,
-            notes: data.notes,
-            paymentTypeId: data.paymentTypeId,
-            paymentMethodId: data.paymentMethodId,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            customerId: data.customerId,
-            reference: reference,
-            payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-            payment: `Payment for Booking #${existingBooking.rentalNumber}`,
-            updatedBy: user.username,
-          },
-        });
-
-        await this.activity.logEvent({
-          action: 'CREATE',
-          description: `Payment of amount ${data.amount} added to booking ID ${data.bookingId}`,
-          tenantId: tenant.id,
-          userId: user.id,
-          module: 'PAYMENT',
-          entityType: 'PAYMENT',
-          entityId: newPayment.id,
-          newValues: newPayment,
-        });
-
-        return newPayment;
+      await this.activity.logEvent({
+        action: 'CREATE',
+        description: `Payment of amount ${data.amount} added to booking ID ${data.bookingId}`,
+        tenantId: tenant.id,
+        userId: user.id,
+        module: 'PAYMENT',
+        entityType: 'PAYMENT',
+        entityId: payment.id,
+        newValues: payment,
       });
 
       const transaction: TransactionDto = {
@@ -201,74 +204,77 @@ export class PaymentService {
 
   async updatePayment(data: PaymentDto, tenant: Tenant, user: User, res?: any) {
     try {
-      await this.prisma.$transaction(async (tx) => {
-        const existingPayment = await tx.payment.findUnique({
-          where: { id: data.id, tenantId: tenant.id },
-        });
+      await this.prisma.$transaction(
+        async (tx) => {
+          const existingPayment = await tx.payment.findUnique({
+            where: { id: data.id, tenantId: tenant.id },
+          });
 
-        if (!existingPayment) {
-          this.logger.warn(
-            `Payment with ID ${data.id} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Payment not found');
-        }
+          if (!existingPayment) {
+            this.logger.warn(
+              `Payment with ID ${data.id} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Payment not found');
+          }
 
-        const existingCustomer = await tx.customer.findUnique({
-          where: { id: data.customerId, tenantId: tenant.id },
-        });
+          const existingCustomer = await tx.customer.findUnique({
+            where: { id: data.customerId, tenantId: tenant.id },
+          });
 
-        if (!existingCustomer) {
-          this.logger.warn(
-            `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Customer not found');
-        }
+          if (!existingCustomer) {
+            this.logger.warn(
+              `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Customer not found');
+          }
 
-        const existingBooking = await tx.rental.findFirst({
-          where: {
-            id: data.bookingId,
+          const existingBooking = await tx.rental.findFirst({
+            where: {
+              id: data.bookingId,
+              tenantId: tenant.id,
+            },
+          });
+
+          if (!existingBooking) {
+            this.logger.warn(
+              `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
+            );
+            throw new NotFoundException('Booking not found');
+          }
+
+          const updatedPayment = await tx.payment.update({
+            where: { id: data.id },
+            data: {
+              amount: data.amount,
+              rentalId: data.bookingId,
+              paymentDate: data.paymentDate,
+              notes: data.notes,
+              paymentTypeId: data.paymentTypeId,
+              paymentMethodId: data.paymentMethodId,
+              updatedAt: new Date(),
+              customerId: data.customerId,
+              payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
+              payment: `Payment for booking #${existingBooking.rentalNumber}`,
+              updatedBy: user.username,
+            },
+          });
+
+          await this.activity.logEvent({
+            action: 'UPDATE',
+            description: `Payment of amount ${data.amount} updated for booking ID ${data.bookingId}`,
             tenantId: tenant.id,
-          },
-        });
+            userId: user.id,
+            module: 'PAYMENT',
+            entityType: 'PAYMENT',
+            entityId: data.id,
+            oldValues: existingPayment,
+            newValues: updatedPayment,
+          });
 
-        if (!existingBooking) {
-          this.logger.warn(
-            `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
-          );
-          throw new NotFoundException('Booking not found');
-        }
-
-        const updatedPayment = await tx.payment.update({
-          where: { id: data.id },
-          data: {
-            amount: data.amount,
-            rentalId: data.bookingId,
-            paymentDate: data.paymentDate,
-            notes: data.notes,
-            paymentTypeId: data.paymentTypeId,
-            paymentMethodId: data.paymentMethodId,
-            updatedAt: new Date(),
-            customerId: data.customerId,
-            payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-            payment: `Payment for booking #${existingBooking.rentalNumber}`,
-            updatedBy: user.username,
-          },
-        });
-
-        await this.activity.logEvent({
-          action: 'UPDATE',
-          description: `Payment of amount ${data.amount} updated for booking ID ${data.bookingId}`,
-          tenantId: tenant.id,
-          userId: user.id,
-          module: 'PAYMENT',
-          entityType: 'PAYMENT',
-          entityId: data.id,
-          oldValues: existingPayment,
-          newValues: updatedPayment,
-        });
-
-        return updatedPayment;
-      });
+          return updatedPayment;
+        },
+        { timeout: 50000 },
+      );
 
       const existingTransaction = await this.prisma.transactions.findFirst({
         where: { paymentId: data.id },

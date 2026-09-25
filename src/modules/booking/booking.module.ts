@@ -6,7 +6,6 @@ import { VehicleEventModule } from '../vehicle/modules/vehicle-event/vehicle-eve
 import { VehicleModule } from '../vehicle/vehicle.module.js';
 import { CustomerModule } from '../customer/customer.module.js';
 import { TransactionModule } from '../transaction/transaction.module.js';
-import { BookingWorkflowService } from './services/booking-workflow.service.js';
 import { BookingCreationService } from './services/booking-creation.service.js';
 import { BookingActivityService } from './services/booking-activity.service.js';
 import { CustomerRepository } from '../customer/customer.repository.js';
@@ -42,7 +41,6 @@ import { BookingActionModule } from './booking-action/booking-action.module';
     BookingRepository,
     BookingService,
     BookingVehicleService,
-    BookingWorkflowService,
     CustomerRepository,
     CustomerService,
     PaymentService,
