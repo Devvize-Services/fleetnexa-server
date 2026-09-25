@@ -176,6 +176,7 @@ export type PaymentMethodWhereInput = {
   updatedAt?: Prisma.DateTimeNullableFilter<"PaymentMethod"> | Date | string | null
   payments?: Prisma.PaymentListRelationFilter
   tenant?: Prisma.TenantListRelationFilter
+  securityDeposits?: Prisma.SecurityDepositListRelationFilter
 }
 
 export type PaymentMethodOrderByWithRelationInput = {
@@ -185,6 +186,7 @@ export type PaymentMethodOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   payments?: Prisma.PaymentOrderByRelationAggregateInput
   tenant?: Prisma.TenantOrderByRelationAggregateInput
+  securityDeposits?: Prisma.SecurityDepositOrderByRelationAggregateInput
 }
 
 export type PaymentMethodWhereUniqueInput = Prisma.AtLeast<{
@@ -197,6 +199,7 @@ export type PaymentMethodWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeNullableFilter<"PaymentMethod"> | Date | string | null
   payments?: Prisma.PaymentListRelationFilter
   tenant?: Prisma.TenantListRelationFilter
+  securityDeposits?: Prisma.SecurityDepositListRelationFilter
 }, "id">
 
 export type PaymentMethodOrderByWithAggregationInput = {
@@ -226,6 +229,7 @@ export type PaymentMethodCreateInput = {
   updatedAt?: Date | string | null
   payments?: Prisma.PaymentCreateNestedManyWithoutPaymentMethodInput
   tenant?: Prisma.TenantCreateNestedManyWithoutPaymentMethodsInput
+  securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodUncheckedCreateInput = {
@@ -235,6 +239,7 @@ export type PaymentMethodUncheckedCreateInput = {
   updatedAt?: Date | string | null
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPaymentMethodInput
   tenant?: Prisma.TenantUncheckedCreateNestedManyWithoutPaymentMethodsInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodUpdateInput = {
@@ -244,6 +249,7 @@ export type PaymentMethodUpdateInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payments?: Prisma.PaymentUpdateManyWithoutPaymentMethodNestedInput
   tenant?: Prisma.TenantUpdateManyWithoutPaymentMethodsNestedInput
+  securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodUncheckedUpdateInput = {
@@ -253,6 +259,7 @@ export type PaymentMethodUncheckedUpdateInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutPaymentMethodNestedInput
   tenant?: Prisma.TenantUncheckedUpdateManyWithoutPaymentMethodsNestedInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodCreateManyInput = {
@@ -312,6 +319,11 @@ export type PaymentMethodMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type PaymentMethodNullableScalarRelationFilter = {
+  is?: Prisma.PaymentMethodWhereInput | null
+  isNot?: Prisma.PaymentMethodWhereInput | null
+}
+
 export type PaymentMethodCreateNestedOneWithoutPaymentsInput = {
   create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutPaymentsInput, Prisma.PaymentMethodUncheckedCreateWithoutPaymentsInput>
   connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutPaymentsInput
@@ -364,12 +376,29 @@ export type PaymentMethodUncheckedUpdateManyWithoutTenantNestedInput = {
   deleteMany?: Prisma.PaymentMethodScalarWhereInput | Prisma.PaymentMethodScalarWhereInput[]
 }
 
+export type PaymentMethodCreateNestedOneWithoutSecurityDepositsInput = {
+  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedCreateWithoutSecurityDepositsInput>
+  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutSecurityDepositsInput
+  connect?: Prisma.PaymentMethodWhereUniqueInput
+}
+
+export type PaymentMethodUpdateOneWithoutSecurityDepositsNestedInput = {
+  create?: Prisma.XOR<Prisma.PaymentMethodCreateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedCreateWithoutSecurityDepositsInput>
+  connectOrCreate?: Prisma.PaymentMethodCreateOrConnectWithoutSecurityDepositsInput
+  upsert?: Prisma.PaymentMethodUpsertWithoutSecurityDepositsInput
+  disconnect?: Prisma.PaymentMethodWhereInput | boolean
+  delete?: Prisma.PaymentMethodWhereInput | boolean
+  connect?: Prisma.PaymentMethodWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PaymentMethodUpdateToOneWithWhereWithoutSecurityDepositsInput, Prisma.PaymentMethodUpdateWithoutSecurityDepositsInput>, Prisma.PaymentMethodUncheckedUpdateWithoutSecurityDepositsInput>
+}
+
 export type PaymentMethodCreateWithoutPaymentsInput = {
   id?: string
   method: string
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedManyWithoutPaymentMethodsInput
+  securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodUncheckedCreateWithoutPaymentsInput = {
@@ -378,6 +407,7 @@ export type PaymentMethodUncheckedCreateWithoutPaymentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tenant?: Prisma.TenantUncheckedCreateNestedManyWithoutPaymentMethodsInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodCreateOrConnectWithoutPaymentsInput = {
@@ -402,6 +432,7 @@ export type PaymentMethodUpdateWithoutPaymentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateManyWithoutPaymentMethodsNestedInput
+  securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodUncheckedUpdateWithoutPaymentsInput = {
@@ -410,6 +441,7 @@ export type PaymentMethodUncheckedUpdateWithoutPaymentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUncheckedUpdateManyWithoutPaymentMethodsNestedInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodCreateWithoutTenantInput = {
@@ -418,6 +450,7 @@ export type PaymentMethodCreateWithoutTenantInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   payments?: Prisma.PaymentCreateNestedManyWithoutPaymentMethodInput
+  securityDeposits?: Prisma.SecurityDepositCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodUncheckedCreateWithoutTenantInput = {
@@ -426,6 +459,7 @@ export type PaymentMethodUncheckedCreateWithoutTenantInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPaymentMethodInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedCreateNestedManyWithoutPaymentMethodInput
 }
 
 export type PaymentMethodCreateOrConnectWithoutTenantInput = {
@@ -459,12 +493,65 @@ export type PaymentMethodScalarWhereInput = {
   updatedAt?: Prisma.DateTimeNullableFilter<"PaymentMethod"> | Date | string | null
 }
 
+export type PaymentMethodCreateWithoutSecurityDepositsInput = {
+  id?: string
+  method: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  payments?: Prisma.PaymentCreateNestedManyWithoutPaymentMethodInput
+  tenant?: Prisma.TenantCreateNestedManyWithoutPaymentMethodsInput
+}
+
+export type PaymentMethodUncheckedCreateWithoutSecurityDepositsInput = {
+  id?: string
+  method: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPaymentMethodInput
+  tenant?: Prisma.TenantUncheckedCreateNestedManyWithoutPaymentMethodsInput
+}
+
+export type PaymentMethodCreateOrConnectWithoutSecurityDepositsInput = {
+  where: Prisma.PaymentMethodWhereUniqueInput
+  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedCreateWithoutSecurityDepositsInput>
+}
+
+export type PaymentMethodUpsertWithoutSecurityDepositsInput = {
+  update: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedUpdateWithoutSecurityDepositsInput>
+  create: Prisma.XOR<Prisma.PaymentMethodCreateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedCreateWithoutSecurityDepositsInput>
+  where?: Prisma.PaymentMethodWhereInput
+}
+
+export type PaymentMethodUpdateToOneWithWhereWithoutSecurityDepositsInput = {
+  where?: Prisma.PaymentMethodWhereInput
+  data: Prisma.XOR<Prisma.PaymentMethodUpdateWithoutSecurityDepositsInput, Prisma.PaymentMethodUncheckedUpdateWithoutSecurityDepositsInput>
+}
+
+export type PaymentMethodUpdateWithoutSecurityDepositsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  method?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payments?: Prisma.PaymentUpdateManyWithoutPaymentMethodNestedInput
+  tenant?: Prisma.TenantUpdateManyWithoutPaymentMethodsNestedInput
+}
+
+export type PaymentMethodUncheckedUpdateWithoutSecurityDepositsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  method?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPaymentMethodNestedInput
+  tenant?: Prisma.TenantUncheckedUpdateManyWithoutPaymentMethodsNestedInput
+}
+
 export type PaymentMethodUpdateWithoutTenantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   method?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payments?: Prisma.PaymentUpdateManyWithoutPaymentMethodNestedInput
+  securityDeposits?: Prisma.SecurityDepositUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodUncheckedUpdateWithoutTenantInput = {
@@ -473,6 +560,7 @@ export type PaymentMethodUncheckedUpdateWithoutTenantInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutPaymentMethodNestedInput
+  securityDeposits?: Prisma.SecurityDepositUncheckedUpdateManyWithoutPaymentMethodNestedInput
 }
 
 export type PaymentMethodUncheckedUpdateManyWithoutTenantInput = {
@@ -490,11 +578,13 @@ export type PaymentMethodUncheckedUpdateManyWithoutTenantInput = {
 export type PaymentMethodCountOutputType = {
   payments: number
   tenant: number
+  securityDeposits: number
 }
 
 export type PaymentMethodCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   payments?: boolean | PaymentMethodCountOutputTypeCountPaymentsArgs
   tenant?: boolean | PaymentMethodCountOutputTypeCountTenantArgs
+  securityDeposits?: boolean | PaymentMethodCountOutputTypeCountSecurityDepositsArgs
 }
 
 /**
@@ -521,6 +611,13 @@ export type PaymentMethodCountOutputTypeCountTenantArgs<ExtArgs extends runtime.
   where?: Prisma.TenantWhereInput
 }
 
+/**
+ * PaymentMethodCountOutputType without action
+ */
+export type PaymentMethodCountOutputTypeCountSecurityDepositsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SecurityDepositWhereInput
+}
+
 
 export type PaymentMethodSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -529,6 +626,7 @@ export type PaymentMethodSelect<ExtArgs extends runtime.Types.Extensions.Interna
   updatedAt?: boolean
   payments?: boolean | Prisma.PaymentMethod$paymentsArgs<ExtArgs>
   tenant?: boolean | Prisma.PaymentMethod$tenantArgs<ExtArgs>
+  securityDeposits?: boolean | Prisma.PaymentMethod$securityDepositsArgs<ExtArgs>
   _count?: boolean | Prisma.PaymentMethodCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["paymentMethod"]>
 
@@ -557,6 +655,7 @@ export type PaymentMethodOmit<ExtArgs extends runtime.Types.Extensions.InternalA
 export type PaymentMethodInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   payments?: boolean | Prisma.PaymentMethod$paymentsArgs<ExtArgs>
   tenant?: boolean | Prisma.PaymentMethod$tenantArgs<ExtArgs>
+  securityDeposits?: boolean | Prisma.PaymentMethod$securityDepositsArgs<ExtArgs>
   _count?: boolean | Prisma.PaymentMethodCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PaymentMethodIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -567,6 +666,7 @@ export type $PaymentMethodPayload<ExtArgs extends runtime.Types.Extensions.Inter
   objects: {
     payments: Prisma.$PaymentPayload<ExtArgs>[]
     tenant: Prisma.$TenantPayload<ExtArgs>[]
+    securityDeposits: Prisma.$SecurityDepositPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -969,6 +1069,7 @@ export interface Prisma__PaymentMethodClient<T, Null = never, ExtArgs extends ru
   readonly [Symbol.toStringTag]: "PrismaPromise"
   payments<T extends Prisma.PaymentMethod$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PaymentMethod$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tenant<T extends Prisma.PaymentMethod$tenantArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PaymentMethod$tenantArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  securityDeposits<T extends Prisma.PaymentMethod$securityDepositsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PaymentMethod$securityDepositsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SecurityDepositPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1440,6 +1541,30 @@ export type PaymentMethod$tenantArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.TenantScalarFieldEnum | Prisma.TenantScalarFieldEnum[]
+}
+
+/**
+ * PaymentMethod.securityDeposits
+ */
+export type PaymentMethod$securityDepositsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SecurityDeposit
+   */
+  select?: Prisma.SecurityDepositSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SecurityDeposit
+   */
+  omit?: Prisma.SecurityDepositOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SecurityDepositInclude<ExtArgs> | null
+  where?: Prisma.SecurityDepositWhereInput
+  orderBy?: Prisma.SecurityDepositOrderByWithRelationInput | Prisma.SecurityDepositOrderByWithRelationInput[]
+  cursor?: Prisma.SecurityDepositWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SecurityDepositScalarFieldEnum | Prisma.SecurityDepositScalarFieldEnum[]
 }
 
 /**

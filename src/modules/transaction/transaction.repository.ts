@@ -76,6 +76,17 @@ export class TransactionRepository {
           },
         },
       },
+      securityDeposit: {
+        include: {
+          booking: {
+            select: {
+              id: true,
+              rentalNumber: true,
+              bookingCode: true,
+            },
+          },
+        },
+      },
       user: {
         select: {
           firstName: true,

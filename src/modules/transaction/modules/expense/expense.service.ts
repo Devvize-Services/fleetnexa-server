@@ -67,6 +67,7 @@ export class ExpenseService {
         paymentId: '',
         refundId: '',
         rentalId: '',
+        securityDepositId: '',
       };
 
       await this.transaction.createTransaction(transaction, tenant, user);
@@ -134,11 +135,12 @@ export class ExpenseService {
           amount: data.amount,
           transactionDate: data.expenseDate,
           type: TransactionType.EXPENSE,
-          createdBy: '',
+          createdBy: user.username,
           paymentId: '',
           refundId: '',
           expenseId: '',
           rentalId: '',
+          securityDepositId: '',
         };
 
         await this.transaction.updateTransaction(transaction, tenant, user);

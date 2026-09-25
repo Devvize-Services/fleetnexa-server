@@ -49,6 +49,7 @@ export class TransactionService {
             expenseId: data.expenseId || null,
             tenantId: tenant.id,
             rentalId: data.rentalId,
+            securityDepositId: data.securityDepositId || null,
           },
         });
       });

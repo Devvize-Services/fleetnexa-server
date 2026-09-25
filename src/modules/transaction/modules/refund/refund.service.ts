@@ -86,7 +86,7 @@ export class RefundService {
             updatedAt: new Date(),
             createdBy: user.username,
             payee: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-            payment: `Refund for booking #${existingBooking.rentalNumber}`,
+            payment: `Refund for Booking #${existingBooking.rentalNumber}`,
             updatedBy: user.username,
           },
         });
@@ -104,6 +104,7 @@ export class RefundService {
         createdBy: user.username,
         paymentId: '',
         expenseId: '',
+        securityDepositId: '',
       };
 
       await this.transaction.createTransaction(transaction, tenant, user);
@@ -209,6 +210,7 @@ export class RefundService {
         paymentId: '',
         refundId: '',
         expenseId: '',
+        securityDepositId: '',
       };
 
       await this.transaction.updateTransaction(transaction, tenant, user);

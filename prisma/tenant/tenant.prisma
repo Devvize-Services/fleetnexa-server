@@ -88,6 +88,8 @@ model PaymentMethod {
   updatedAt DateTime? @updatedAt
   payments  Payment[]
   tenant    Tenant[]  @relation("PaymentMethodToTenant")
+
+  securityDeposits SecurityDeposit[]
 }
 
 model Address {

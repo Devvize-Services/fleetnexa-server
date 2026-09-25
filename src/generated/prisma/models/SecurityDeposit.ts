@@ -50,6 +50,7 @@ export type SecurityDepositMinAggregateOutputType = {
   status: $Enums.SecurityDepositStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  paymentMethodId: string | null
   updatedBy: string | null
 }
 
@@ -63,6 +64,7 @@ export type SecurityDepositMaxAggregateOutputType = {
   status: $Enums.SecurityDepositStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  paymentMethodId: string | null
   updatedBy: string | null
 }
 
@@ -76,6 +78,7 @@ export type SecurityDepositCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  paymentMethodId: number
   updatedBy: number
   _all: number
 }
@@ -105,6 +108,7 @@ export type SecurityDepositMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  paymentMethodId?: true
   updatedBy?: true
 }
 
@@ -118,6 +122,7 @@ export type SecurityDepositMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  paymentMethodId?: true
   updatedBy?: true
 }
 
@@ -131,6 +136,7 @@ export type SecurityDepositCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  paymentMethodId?: true
   updatedBy?: true
   _all?: true
 }
@@ -231,6 +237,7 @@ export type SecurityDepositGroupByOutputType = {
   status: $Enums.SecurityDepositStatus
   createdAt: Date
   updatedAt: Date | null
+  paymentMethodId: string | null
   updatedBy: string | null
   _count: SecurityDepositCountAggregateOutputType | null
   _avg: SecurityDepositAvgAggregateOutputType | null
@@ -267,9 +274,11 @@ export type SecurityDepositWhereInput = {
   status?: Prisma.EnumSecurityDepositStatusFilter<"SecurityDeposit"> | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFilter<"SecurityDeposit"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"SecurityDeposit"> | Date | string | null
+  paymentMethodId?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
   booking?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  paymentMethod?: Prisma.XOR<Prisma.PaymentMethodNullableScalarRelationFilter, Prisma.PaymentMethodWhereInput> | null
   transactions?: Prisma.TransactionsListRelationFilter
 }
 
@@ -283,9 +292,11 @@ export type SecurityDepositOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentMethodId?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   booking?: Prisma.RentalOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  paymentMethod?: Prisma.PaymentMethodOrderByWithRelationInput
   transactions?: Prisma.TransactionsOrderByRelationAggregateInput
 }
 
@@ -302,9 +313,11 @@ export type SecurityDepositWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumSecurityDepositStatusFilter<"SecurityDeposit"> | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFilter<"SecurityDeposit"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"SecurityDeposit"> | Date | string | null
+  paymentMethodId?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
   updatedBy?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
   booking?: Prisma.XOR<Prisma.RentalScalarRelationFilter, Prisma.RentalWhereInput>
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  paymentMethod?: Prisma.XOR<Prisma.PaymentMethodNullableScalarRelationFilter, Prisma.PaymentMethodWhereInput> | null
   transactions?: Prisma.TransactionsListRelationFilter
 }, "id" | "bookingId">
 
@@ -318,6 +331,7 @@ export type SecurityDepositOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentMethodId?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SecurityDepositCountOrderByAggregateInput
   _avg?: Prisma.SecurityDepositAvgOrderByAggregateInput
@@ -339,6 +353,7 @@ export type SecurityDepositScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumSecurityDepositStatusWithAggregatesFilter<"SecurityDeposit"> | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SecurityDeposit"> | Date | string
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"SecurityDeposit"> | Date | string | null
+  paymentMethodId?: Prisma.StringNullableWithAggregatesFilter<"SecurityDeposit"> | string | null
   updatedBy?: Prisma.StringNullableWithAggregatesFilter<"SecurityDeposit"> | string | null
 }
 
@@ -353,6 +368,7 @@ export type SecurityDepositCreateInput = {
   updatedAt?: Date | string | null
   booking: Prisma.RentalCreateNestedOneWithoutSecurityDepositInput
   user?: Prisma.UserCreateNestedOneWithoutSecurityDepositsInput
+  paymentMethod?: Prisma.PaymentMethodCreateNestedOneWithoutSecurityDepositsInput
   transactions?: Prisma.TransactionsCreateNestedManyWithoutSecurityDepositInput
 }
 
@@ -366,6 +382,7 @@ export type SecurityDepositUncheckedCreateInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
   updatedBy?: string | null
   transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutSecurityDepositInput
 }
@@ -381,6 +398,7 @@ export type SecurityDepositUpdateInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   booking?: Prisma.RentalUpdateOneRequiredWithoutSecurityDepositNestedInput
   user?: Prisma.UserUpdateOneWithoutSecurityDepositsNestedInput
+  paymentMethod?: Prisma.PaymentMethodUpdateOneWithoutSecurityDepositsNestedInput
   transactions?: Prisma.TransactionsUpdateManyWithoutSecurityDepositNestedInput
 }
 
@@ -394,6 +412,7 @@ export type SecurityDepositUncheckedUpdateInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutSecurityDepositNestedInput
 }
@@ -408,6 +427,7 @@ export type SecurityDepositCreateManyInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
   updatedBy?: string | null
 }
 
@@ -432,12 +452,23 @@ export type SecurityDepositUncheckedUpdateManyInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SecurityDepositNullableScalarRelationFilter = {
   is?: Prisma.SecurityDepositWhereInput | null
   isNot?: Prisma.SecurityDepositWhereInput | null
+}
+
+export type SecurityDepositListRelationFilter = {
+  every?: Prisma.SecurityDepositWhereInput
+  some?: Prisma.SecurityDepositWhereInput
+  none?: Prisma.SecurityDepositWhereInput
+}
+
+export type SecurityDepositOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type SecurityDepositCountOrderByAggregateInput = {
@@ -450,6 +481,7 @@ export type SecurityDepositCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  paymentMethodId?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
 }
 
@@ -470,6 +502,7 @@ export type SecurityDepositMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  paymentMethodId?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
 }
 
@@ -483,6 +516,7 @@ export type SecurityDepositMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  paymentMethodId?: Prisma.SortOrder
   updatedBy?: Prisma.SortOrder
 }
 
@@ -491,16 +525,6 @@ export type SecurityDepositSumOrderByAggregateInput = {
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
-}
-
-export type SecurityDepositListRelationFilter = {
-  every?: Prisma.SecurityDepositWhereInput
-  some?: Prisma.SecurityDepositWhereInput
-  none?: Prisma.SecurityDepositWhereInput
-}
-
-export type SecurityDepositOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type SecurityDepositCreateNestedOneWithoutBookingInput = {
@@ -533,6 +557,48 @@ export type SecurityDepositUncheckedUpdateOneWithoutBookingNestedInput = {
   delete?: Prisma.SecurityDepositWhereInput | boolean
   connect?: Prisma.SecurityDepositWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.SecurityDepositUpdateToOneWithWhereWithoutBookingInput, Prisma.SecurityDepositUpdateWithoutBookingInput>, Prisma.SecurityDepositUncheckedUpdateWithoutBookingInput>
+}
+
+export type SecurityDepositCreateNestedManyWithoutPaymentMethodInput = {
+  create?: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput> | Prisma.SecurityDepositCreateWithoutPaymentMethodInput[] | Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput[]
+  connectOrCreate?: Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput | Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput[]
+  createMany?: Prisma.SecurityDepositCreateManyPaymentMethodInputEnvelope
+  connect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+}
+
+export type SecurityDepositUncheckedCreateNestedManyWithoutPaymentMethodInput = {
+  create?: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput> | Prisma.SecurityDepositCreateWithoutPaymentMethodInput[] | Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput[]
+  connectOrCreate?: Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput | Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput[]
+  createMany?: Prisma.SecurityDepositCreateManyPaymentMethodInputEnvelope
+  connect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+}
+
+export type SecurityDepositUpdateManyWithoutPaymentMethodNestedInput = {
+  create?: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput> | Prisma.SecurityDepositCreateWithoutPaymentMethodInput[] | Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput[]
+  connectOrCreate?: Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput | Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput[]
+  upsert?: Prisma.SecurityDepositUpsertWithWhereUniqueWithoutPaymentMethodInput | Prisma.SecurityDepositUpsertWithWhereUniqueWithoutPaymentMethodInput[]
+  createMany?: Prisma.SecurityDepositCreateManyPaymentMethodInputEnvelope
+  set?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  disconnect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  delete?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  connect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  update?: Prisma.SecurityDepositUpdateWithWhereUniqueWithoutPaymentMethodInput | Prisma.SecurityDepositUpdateWithWhereUniqueWithoutPaymentMethodInput[]
+  updateMany?: Prisma.SecurityDepositUpdateManyWithWhereWithoutPaymentMethodInput | Prisma.SecurityDepositUpdateManyWithWhereWithoutPaymentMethodInput[]
+  deleteMany?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
+}
+
+export type SecurityDepositUncheckedUpdateManyWithoutPaymentMethodNestedInput = {
+  create?: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput> | Prisma.SecurityDepositCreateWithoutPaymentMethodInput[] | Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput[]
+  connectOrCreate?: Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput | Prisma.SecurityDepositCreateOrConnectWithoutPaymentMethodInput[]
+  upsert?: Prisma.SecurityDepositUpsertWithWhereUniqueWithoutPaymentMethodInput | Prisma.SecurityDepositUpsertWithWhereUniqueWithoutPaymentMethodInput[]
+  createMany?: Prisma.SecurityDepositCreateManyPaymentMethodInputEnvelope
+  set?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  disconnect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  delete?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  connect?: Prisma.SecurityDepositWhereUniqueInput | Prisma.SecurityDepositWhereUniqueInput[]
+  update?: Prisma.SecurityDepositUpdateWithWhereUniqueWithoutPaymentMethodInput | Prisma.SecurityDepositUpdateWithWhereUniqueWithoutPaymentMethodInput[]
+  updateMany?: Prisma.SecurityDepositUpdateManyWithWhereWithoutPaymentMethodInput | Prisma.SecurityDepositUpdateManyWithWhereWithoutPaymentMethodInput[]
+  deleteMany?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
 }
 
 export type SecurityDepositCreateNestedOneWithoutTransactionsInput = {
@@ -607,6 +673,7 @@ export type SecurityDepositCreateWithoutBookingInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   user?: Prisma.UserCreateNestedOneWithoutSecurityDepositsInput
+  paymentMethod?: Prisma.PaymentMethodCreateNestedOneWithoutSecurityDepositsInput
   transactions?: Prisma.TransactionsCreateNestedManyWithoutSecurityDepositInput
 }
 
@@ -619,6 +686,7 @@ export type SecurityDepositUncheckedCreateWithoutBookingInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
   updatedBy?: string | null
   transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutSecurityDepositInput
 }
@@ -649,6 +717,7 @@ export type SecurityDepositUpdateWithoutBookingInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneWithoutSecurityDepositsNestedInput
+  paymentMethod?: Prisma.PaymentMethodUpdateOneWithoutSecurityDepositsNestedInput
   transactions?: Prisma.TransactionsUpdateManyWithoutSecurityDepositNestedInput
 }
 
@@ -661,8 +730,80 @@ export type SecurityDepositUncheckedUpdateWithoutBookingInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutSecurityDepositNestedInput
+}
+
+export type SecurityDepositCreateWithoutPaymentMethodInput = {
+  id?: string
+  amount: number
+  amountCollected?: number
+  amountForfeited?: number
+  amountRefunded?: number
+  status?: $Enums.SecurityDepositStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  booking: Prisma.RentalCreateNestedOneWithoutSecurityDepositInput
+  user?: Prisma.UserCreateNestedOneWithoutSecurityDepositsInput
+  transactions?: Prisma.TransactionsCreateNestedManyWithoutSecurityDepositInput
+}
+
+export type SecurityDepositUncheckedCreateWithoutPaymentMethodInput = {
+  id?: string
+  bookingId: string
+  amount: number
+  amountCollected?: number
+  amountForfeited?: number
+  amountRefunded?: number
+  status?: $Enums.SecurityDepositStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+  transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutSecurityDepositInput
+}
+
+export type SecurityDepositCreateOrConnectWithoutPaymentMethodInput = {
+  where: Prisma.SecurityDepositWhereUniqueInput
+  create: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput>
+}
+
+export type SecurityDepositCreateManyPaymentMethodInputEnvelope = {
+  data: Prisma.SecurityDepositCreateManyPaymentMethodInput | Prisma.SecurityDepositCreateManyPaymentMethodInput[]
+  skipDuplicates?: boolean
+}
+
+export type SecurityDepositUpsertWithWhereUniqueWithoutPaymentMethodInput = {
+  where: Prisma.SecurityDepositWhereUniqueInput
+  update: Prisma.XOR<Prisma.SecurityDepositUpdateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedUpdateWithoutPaymentMethodInput>
+  create: Prisma.XOR<Prisma.SecurityDepositCreateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedCreateWithoutPaymentMethodInput>
+}
+
+export type SecurityDepositUpdateWithWhereUniqueWithoutPaymentMethodInput = {
+  where: Prisma.SecurityDepositWhereUniqueInput
+  data: Prisma.XOR<Prisma.SecurityDepositUpdateWithoutPaymentMethodInput, Prisma.SecurityDepositUncheckedUpdateWithoutPaymentMethodInput>
+}
+
+export type SecurityDepositUpdateManyWithWhereWithoutPaymentMethodInput = {
+  where: Prisma.SecurityDepositScalarWhereInput
+  data: Prisma.XOR<Prisma.SecurityDepositUpdateManyMutationInput, Prisma.SecurityDepositUncheckedUpdateManyWithoutPaymentMethodInput>
+}
+
+export type SecurityDepositScalarWhereInput = {
+  AND?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
+  OR?: Prisma.SecurityDepositScalarWhereInput[]
+  NOT?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
+  id?: Prisma.StringFilter<"SecurityDeposit"> | string
+  bookingId?: Prisma.StringFilter<"SecurityDeposit"> | string
+  amount?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountCollected?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountForfeited?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountRefunded?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  status?: Prisma.EnumSecurityDepositStatusFilter<"SecurityDeposit"> | $Enums.SecurityDepositStatus
+  createdAt?: Prisma.DateTimeFilter<"SecurityDeposit"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"SecurityDeposit"> | Date | string | null
+  paymentMethodId?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
+  updatedBy?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
 }
 
 export type SecurityDepositCreateWithoutTransactionsInput = {
@@ -676,6 +817,7 @@ export type SecurityDepositCreateWithoutTransactionsInput = {
   updatedAt?: Date | string | null
   booking: Prisma.RentalCreateNestedOneWithoutSecurityDepositInput
   user?: Prisma.UserCreateNestedOneWithoutSecurityDepositsInput
+  paymentMethod?: Prisma.PaymentMethodCreateNestedOneWithoutSecurityDepositsInput
 }
 
 export type SecurityDepositUncheckedCreateWithoutTransactionsInput = {
@@ -688,6 +830,7 @@ export type SecurityDepositUncheckedCreateWithoutTransactionsInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
   updatedBy?: string | null
 }
 
@@ -718,6 +861,7 @@ export type SecurityDepositUpdateWithoutTransactionsInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   booking?: Prisma.RentalUpdateOneRequiredWithoutSecurityDepositNestedInput
   user?: Prisma.UserUpdateOneWithoutSecurityDepositsNestedInput
+  paymentMethod?: Prisma.PaymentMethodUpdateOneWithoutSecurityDepositsNestedInput
 }
 
 export type SecurityDepositUncheckedUpdateWithoutTransactionsInput = {
@@ -730,6 +874,7 @@ export type SecurityDepositUncheckedUpdateWithoutTransactionsInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -743,6 +888,7 @@ export type SecurityDepositCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   booking: Prisma.RentalCreateNestedOneWithoutSecurityDepositInput
+  paymentMethod?: Prisma.PaymentMethodCreateNestedOneWithoutSecurityDepositsInput
   transactions?: Prisma.TransactionsCreateNestedManyWithoutSecurityDepositInput
 }
 
@@ -756,6 +902,7 @@ export type SecurityDepositUncheckedCreateWithoutUserInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
   transactions?: Prisma.TransactionsUncheckedCreateNestedManyWithoutSecurityDepositInput
 }
 
@@ -785,20 +932,58 @@ export type SecurityDepositUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.SecurityDepositUpdateManyMutationInput, Prisma.SecurityDepositUncheckedUpdateManyWithoutUserInput>
 }
 
-export type SecurityDepositScalarWhereInput = {
-  AND?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
-  OR?: Prisma.SecurityDepositScalarWhereInput[]
-  NOT?: Prisma.SecurityDepositScalarWhereInput | Prisma.SecurityDepositScalarWhereInput[]
-  id?: Prisma.StringFilter<"SecurityDeposit"> | string
-  bookingId?: Prisma.StringFilter<"SecurityDeposit"> | string
-  amount?: Prisma.FloatFilter<"SecurityDeposit"> | number
-  amountCollected?: Prisma.FloatFilter<"SecurityDeposit"> | number
-  amountForfeited?: Prisma.FloatFilter<"SecurityDeposit"> | number
-  amountRefunded?: Prisma.FloatFilter<"SecurityDeposit"> | number
-  status?: Prisma.EnumSecurityDepositStatusFilter<"SecurityDeposit"> | $Enums.SecurityDepositStatus
-  createdAt?: Prisma.DateTimeFilter<"SecurityDeposit"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"SecurityDeposit"> | Date | string | null
-  updatedBy?: Prisma.StringNullableFilter<"SecurityDeposit"> | string | null
+export type SecurityDepositCreateManyPaymentMethodInput = {
+  id?: string
+  bookingId: string
+  amount: number
+  amountCollected?: number
+  amountForfeited?: number
+  amountRefunded?: number
+  status?: $Enums.SecurityDepositStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  updatedBy?: string | null
+}
+
+export type SecurityDepositUpdateWithoutPaymentMethodInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  booking?: Prisma.RentalUpdateOneRequiredWithoutSecurityDepositNestedInput
+  user?: Prisma.UserUpdateOneWithoutSecurityDepositsNestedInput
+  transactions?: Prisma.TransactionsUpdateManyWithoutSecurityDepositNestedInput
+}
+
+export type SecurityDepositUncheckedUpdateWithoutPaymentMethodInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingId?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutSecurityDepositNestedInput
+}
+
+export type SecurityDepositUncheckedUpdateManyWithoutPaymentMethodInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingId?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
+  status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SecurityDepositCreateManyUserInput = {
@@ -811,6 +996,7 @@ export type SecurityDepositCreateManyUserInput = {
   status?: $Enums.SecurityDepositStatus
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  paymentMethodId?: string | null
 }
 
 export type SecurityDepositUpdateWithoutUserInput = {
@@ -823,6 +1009,7 @@ export type SecurityDepositUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   booking?: Prisma.RentalUpdateOneRequiredWithoutSecurityDepositNestedInput
+  paymentMethod?: Prisma.PaymentMethodUpdateOneWithoutSecurityDepositsNestedInput
   transactions?: Prisma.TransactionsUpdateManyWithoutSecurityDepositNestedInput
 }
 
@@ -836,6 +1023,7 @@ export type SecurityDepositUncheckedUpdateWithoutUserInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactions?: Prisma.TransactionsUncheckedUpdateManyWithoutSecurityDepositNestedInput
 }
 
@@ -849,6 +1037,7 @@ export type SecurityDepositUncheckedUpdateManyWithoutUserInput = {
   status?: Prisma.EnumSecurityDepositStatusFieldUpdateOperationsInput | $Enums.SecurityDepositStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paymentMethodId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -892,9 +1081,11 @@ export type SecurityDepositSelect<ExtArgs extends runtime.Types.Extensions.Inter
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  paymentMethodId?: boolean
   updatedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
   transactions?: boolean | Prisma.SecurityDeposit$transactionsArgs<ExtArgs>
   _count?: boolean | Prisma.SecurityDepositCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["securityDeposit"]>
@@ -909,9 +1100,11 @@ export type SecurityDepositSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  paymentMethodId?: boolean
   updatedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
 }, ExtArgs["result"]["securityDeposit"]>
 
 export type SecurityDepositSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -924,9 +1117,11 @@ export type SecurityDepositSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  paymentMethodId?: boolean
   updatedBy?: boolean
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
 }, ExtArgs["result"]["securityDeposit"]>
 
 export type SecurityDepositSelectScalar = {
@@ -939,23 +1134,27 @@ export type SecurityDepositSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  paymentMethodId?: boolean
   updatedBy?: boolean
 }
 
-export type SecurityDepositOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "amount" | "amountCollected" | "amountForfeited" | "amountRefunded" | "status" | "createdAt" | "updatedAt" | "updatedBy", ExtArgs["result"]["securityDeposit"]>
+export type SecurityDepositOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "amount" | "amountCollected" | "amountForfeited" | "amountRefunded" | "status" | "createdAt" | "updatedAt" | "paymentMethodId" | "updatedBy", ExtArgs["result"]["securityDeposit"]>
 export type SecurityDepositInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
   transactions?: boolean | Prisma.SecurityDeposit$transactionsArgs<ExtArgs>
   _count?: boolean | Prisma.SecurityDepositCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SecurityDepositIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
 }
 export type SecurityDepositIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
+  paymentMethod?: boolean | Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>
 }
 
 export type $SecurityDepositPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -963,6 +1162,7 @@ export type $SecurityDepositPayload<ExtArgs extends runtime.Types.Extensions.Int
   objects: {
     booking: Prisma.$RentalPayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs> | null
+    paymentMethod: Prisma.$PaymentMethodPayload<ExtArgs> | null
     transactions: Prisma.$TransactionsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -975,6 +1175,7 @@ export type $SecurityDepositPayload<ExtArgs extends runtime.Types.Extensions.Int
     status: $Enums.SecurityDepositStatus
     createdAt: Date
     updatedAt: Date | null
+    paymentMethodId: string | null
     updatedBy: string | null
   }, ExtArgs["result"]["securityDeposit"]>
   composites: {}
@@ -1372,6 +1573,7 @@ export interface Prisma__SecurityDepositClient<T, Null = never, ExtArgs extends 
   readonly [Symbol.toStringTag]: "PrismaPromise"
   booking<T extends Prisma.RentalDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RentalDefaultArgs<ExtArgs>>): Prisma.Prisma__RentalClient<runtime.Types.Result.GetResult<Prisma.$RentalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.SecurityDeposit$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SecurityDeposit$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  paymentMethod<T extends Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SecurityDeposit$paymentMethodArgs<ExtArgs>>): Prisma.Prisma__PaymentMethodClient<runtime.Types.Result.GetResult<Prisma.$PaymentMethodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   transactions<T extends Prisma.SecurityDeposit$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SecurityDeposit$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1411,6 +1613,7 @@ export interface SecurityDepositFieldRefs {
   readonly status: Prisma.FieldRef<"SecurityDeposit", 'SecurityDepositStatus'>
   readonly createdAt: Prisma.FieldRef<"SecurityDeposit", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SecurityDeposit", 'DateTime'>
+  readonly paymentMethodId: Prisma.FieldRef<"SecurityDeposit", 'String'>
   readonly updatedBy: Prisma.FieldRef<"SecurityDeposit", 'String'>
 }
     
@@ -1829,6 +2032,25 @@ export type SecurityDeposit$userArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   include?: Prisma.UserInclude<ExtArgs> | null
   where?: Prisma.UserWhereInput
+}
+
+/**
+ * SecurityDeposit.paymentMethod
+ */
+export type SecurityDeposit$paymentMethodArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PaymentMethod
+   */
+  select?: Prisma.PaymentMethodSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PaymentMethod
+   */
+  omit?: Prisma.PaymentMethodOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentMethodInclude<ExtArgs> | null
+  where?: Prisma.PaymentMethodWhereInput
 }
 
 /**

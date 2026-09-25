@@ -129,7 +129,7 @@ export class PaymentService {
             customerId: data.customerId,
             reference: reference,
             payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-            payment: `Payment for booking #${existingBooking.rentalNumber}`,
+            payment: `Payment for Booking #${existingBooking.rentalNumber}`,
             updatedBy: user.username,
           },
         });
