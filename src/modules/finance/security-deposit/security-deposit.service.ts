@@ -55,6 +55,7 @@ export class SecurityDepositService {
     data: SecurityDepositDto,
     tenant: Tenant,
     user: User,
+    res?: any,
   ) {
     try {
       const securityDeposit = await this.getSecurityDeposit(
@@ -96,12 +97,12 @@ export class SecurityDepositService {
         user,
       );
 
-      await this.activity.logEvent({
-        action: 'PAYMENT',
+      void this.activity.logEvent({
+        action: 'COLLECT',
         description: `Security deposit of amount ${data.amount} collected for booking ID ${data.bookingId}`,
         tenantId: tenant.id,
         userId: user.id,
-        module: 'BOOKING',
+        module: 'SECURITY_DEPOSIT',
         entityType: 'SECURITY_DEPOSIT',
         entityId: securityDeposit.id,
         oldValues: securityDeposit,
@@ -110,6 +111,8 @@ export class SecurityDepositService {
           amountCollected: securityDeposit.amountCollected + data.amount,
           status: isCollected ? 'COLLECTED' : securityDeposit.status,
         },
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers?.['user-agent'] || '',
       });
 
       return {
@@ -130,6 +133,7 @@ export class SecurityDepositService {
     data: SecurityDepositDto,
     tenant: Tenant,
     user: User,
+    res?: any,
   ) {
     try {
       const securityDeposit = await this.getSecurityDeposit(
@@ -171,20 +175,22 @@ export class SecurityDepositService {
         user,
       );
 
-      await this.activity.logEvent({
+      void this.activity.logEvent({
         action: 'REFUND',
         description: `Security deposit of amount ${data.amount} refunded for booking ID ${data.bookingId}`,
         tenantId: tenant.id,
         userId: user.id,
-        module: 'BOOKING',
+        module: 'SECURITY_DEPOSIT',
         entityType: 'SECURITY_DEPOSIT',
         entityId: securityDeposit.id,
         oldValues: securityDeposit,
         newValues: {
           ...securityDeposit,
-          amountCollected: securityDeposit.amountCollected + data.amount,
-          status: isRefunded ? 'REFUNDED' : securityDeposit.status,
+          amountRefunded: securityDeposit.amountRefunded + data.amount,
+          status: isRefunded ? 'CLOSED' : securityDeposit.status,
         },
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers?.['user-agent'] || '',
       });
 
       return {
@@ -205,6 +211,7 @@ export class SecurityDepositService {
     data: SecurityDepositDto,
     tenant: Tenant,
     user: User,
+    res?: any,
   ) {
     try {
       const securityDeposit = await this.getSecurityDeposit(
@@ -230,7 +237,7 @@ export class SecurityDepositService {
       const transaction: TransactionDto = {
         id: randomUUID(),
         amount: data.amount,
-        type: TransactionType.PAYMENT,
+        type: TransactionType.SECURITY_DEPOSIT_FORFEITED,
         rentalId: data.bookingId,
         transactionDate: data.paymentDate,
         paymentId: '',
@@ -279,9 +286,9 @@ export class SecurityDepositService {
         user,
       );
 
-      await this.activity.logEvent({
-        action: 'PAYMENT',
-        description: `Security deposit of amount ${data.amount} collected for booking ID ${data.bookingId}`,
+      void this.activity.logEvent({
+        action: 'FORFEIT',
+        description: `Security deposit of amount ${data.amount} forfeited for booking ID ${data.bookingId}`,
         tenantId: tenant.id,
         userId: user.id,
         module: 'BOOKING',
@@ -293,6 +300,8 @@ export class SecurityDepositService {
           amountCollected: securityDeposit.amountCollected + data.amount,
           status: isForfeited ? 'CLOSED' : securityDeposit.status,
         },
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers?.['user-agent'] || '',
       });
 
       return {
@@ -313,6 +322,7 @@ export class SecurityDepositService {
     data: SecurityDepositDto,
     tenant: Tenant,
     user: User,
+    res?: any,
   ) {
     try {
       const securityDeposit = await this.getSecurityDeposit(
@@ -334,12 +344,12 @@ export class SecurityDepositService {
         },
       });
 
-      await this.activity.logEvent({
-        action: 'UPDATE',
+      void this.activity.logEvent({
+        action: 'WAIVE',
         description: `Security deposit of amount ${data.amount} waived for booking ID ${data.bookingId}`,
         tenantId: tenant.id,
         userId: user.id,
-        module: 'BOOKING',
+        module: 'SECURITY_DEPOSIT',
         entityType: 'SECURITY_DEPOSIT',
         entityId: securityDeposit.id,
         oldValues: securityDeposit,
@@ -358,6 +368,65 @@ export class SecurityDepositService {
     } catch (error) {
       this.logger.error(
         `Failed to waive security deposit for booking ${data.bookingId}`,
+        error,
+      );
+      throw error;
+    }
+  }
+
+  async increaseBookingDeposit(
+    data: SecurityDepositDto,
+    tenant: Tenant,
+    user: User,
+    res?: any,
+  ) {
+    try {
+      const securityDeposit = await this.getSecurityDeposit(
+        data.bookingId,
+        user,
+      );
+
+      const newAmount = securityDeposit.amount + data.amount;
+
+      await this.prisma.securityDeposit.update({
+        where: { id: securityDeposit.id },
+        data: {
+          amount: newAmount,
+          status: 'PENDING',
+          updatedBy: user.username,
+          updatedAt: new Date(),
+        },
+      });
+
+      const updatedBooking = await this.bookingRepo.getBookingById(
+        data.bookingId,
+      );
+
+      void this.activity.logEvent({
+        action: 'UPDATE',
+        description: `Security deposit of amount ${data.amount} increased for booking ID ${data.bookingId}`,
+        tenantId: tenant.id,
+        userId: user.id,
+        module: 'BOOKING',
+        entityType: 'SECURITY_DEPOSIT',
+        entityId: securityDeposit.id,
+        oldValues: securityDeposit,
+        newValues: {
+          ...securityDeposit,
+          amount: newAmount,
+          status: 'PENDING',
+        },
+        ipAddress: res?.ip || '',
+        userAgent: res?.headers?.['user-agent'] || '',
+      });
+
+      return {
+        message: 'Deposit increased successfully',
+        updatedBooking,
+      };
+    } catch (error) {
+      this.logger.error(
+        `Failed to increase deposit for booking ${data.bookingId}`,
         error,
       );
       throw error;

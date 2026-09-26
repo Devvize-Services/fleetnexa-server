@@ -295,7 +295,8 @@ export const SecurityDepositTransactionType = {
   COLLECTED: 'COLLECTED',
   REFUNDED: 'REFUNDED',
   FORFEITED: 'FORFEITED',
-  WAIVED: 'WAIVED'
+  WAIVED: 'WAIVED',
+  INCREASED: 'INCREASED'
 } as const
 
 export type SecurityDepositTransactionType = (typeof SecurityDepositTransactionType)[keyof typeof SecurityDepositTransactionType]

@@ -213,6 +213,7 @@ enum SecurityDepositTransactionType {
   REFUNDED
   FORFEITED
   WAIVED
+  INCREASED
 }
 
 enum ActivityAction {
