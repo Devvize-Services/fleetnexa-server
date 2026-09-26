@@ -118,32 +118,3 @@ export class BookingValuesDto {
   @IsOptional()
   extras?: BookingExtrasDto[];
 }
-
-export class SecurityDepositDto {
-  @IsUUID()
-  id: string;
-
-  @IsUUID()
-  bookingId: string;
-
-  @IsNumber()
-  amount: number;
-
-  @IsNumber()
-  amountCollected: number;
-
-  @IsNumber()
-  amountForfeited: number;
-
-  @IsNumber()
-  amountRefunded: number;
-
-  @IsEnum(SecurityDepositStatus)
-  status: SecurityDepositStatus;
-
-  @IsUUID()
-  valuesId: string;
-
-  @IsString()
-  updatedBy: string;
-}

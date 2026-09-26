@@ -14,13 +14,14 @@ export class SecurityDepositDto {
   @IsString()
   paymentDate: string;
 
-  @IsUUID()
-  paymentMethodId: string;
+  @IsString()
+  @IsOptional()
+  paymentMethodId?: string;
 
   @IsNumber()
   amount: number;
 
-  @IsUUID()
+  @IsString()
   @IsOptional()
   currencyId: string;
 

@@ -235,6 +235,9 @@ enum ActivityAction {
   UNASSIGN
   START
   END
+  COLLECT
+  WAIVE
+  FORFEIT
 }
 
 enum ActivityModule {
@@ -244,6 +247,7 @@ enum ActivityModule {
   VEHICLE
   CUSTOMER
   BOOKING
+  SECURITY_DEPOSIT
   PAYMENT
   RECEIPT
   REFUND

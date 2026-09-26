@@ -28,6 +28,7 @@ export type AggregateSecurityDeposit = {
 
 export type SecurityDepositAvgAggregateOutputType = {
   amount: number | null
+  amountWaived: number | null
   amountCollected: number | null
   amountForfeited: number | null
   amountRefunded: number | null
@@ -35,6 +36,7 @@ export type SecurityDepositAvgAggregateOutputType = {
 
 export type SecurityDepositSumAggregateOutputType = {
   amount: number | null
+  amountWaived: number | null
   amountCollected: number | null
   amountForfeited: number | null
   amountRefunded: number | null
@@ -44,6 +46,7 @@ export type SecurityDepositMinAggregateOutputType = {
   id: string | null
   bookingId: string | null
   amount: number | null
+  amountWaived: number | null
   amountCollected: number | null
   amountForfeited: number | null
   amountRefunded: number | null
@@ -58,6 +61,7 @@ export type SecurityDepositMaxAggregateOutputType = {
   id: string | null
   bookingId: string | null
   amount: number | null
+  amountWaived: number | null
   amountCollected: number | null
   amountForfeited: number | null
   amountRefunded: number | null
@@ -72,6 +76,7 @@ export type SecurityDepositCountAggregateOutputType = {
   id: number
   bookingId: number
   amount: number
+  amountWaived: number
   amountCollected: number
   amountForfeited: number
   amountRefunded: number
@@ -86,6 +91,7 @@ export type SecurityDepositCountAggregateOutputType = {
 
 export type SecurityDepositAvgAggregateInputType = {
   amount?: true
+  amountWaived?: true
   amountCollected?: true
   amountForfeited?: true
   amountRefunded?: true
@@ -93,6 +99,7 @@ export type SecurityDepositAvgAggregateInputType = {
 
 export type SecurityDepositSumAggregateInputType = {
   amount?: true
+  amountWaived?: true
   amountCollected?: true
   amountForfeited?: true
   amountRefunded?: true
@@ -102,6 +109,7 @@ export type SecurityDepositMinAggregateInputType = {
   id?: true
   bookingId?: true
   amount?: true
+  amountWaived?: true
   amountCollected?: true
   amountForfeited?: true
   amountRefunded?: true
@@ -116,6 +124,7 @@ export type SecurityDepositMaxAggregateInputType = {
   id?: true
   bookingId?: true
   amount?: true
+  amountWaived?: true
   amountCollected?: true
   amountForfeited?: true
   amountRefunded?: true
@@ -130,6 +139,7 @@ export type SecurityDepositCountAggregateInputType = {
   id?: true
   bookingId?: true
   amount?: true
+  amountWaived?: true
   amountCollected?: true
   amountForfeited?: true
   amountRefunded?: true
@@ -231,6 +241,7 @@ export type SecurityDepositGroupByOutputType = {
   id: string
   bookingId: string
   amount: number
+  amountWaived: number
   amountCollected: number
   amountForfeited: number
   amountRefunded: number
@@ -268,6 +279,7 @@ export type SecurityDepositWhereInput = {
   id?: Prisma.StringFilter<"SecurityDeposit"> | string
   bookingId?: Prisma.StringFilter<"SecurityDeposit"> | string
   amount?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountWaived?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountCollected?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountForfeited?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountRefunded?: Prisma.FloatFilter<"SecurityDeposit"> | number
@@ -286,6 +298,7 @@ export type SecurityDepositOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -307,6 +320,7 @@ export type SecurityDepositWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SecurityDepositWhereInput[]
   NOT?: Prisma.SecurityDepositWhereInput | Prisma.SecurityDepositWhereInput[]
   amount?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountWaived?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountCollected?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountForfeited?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountRefunded?: Prisma.FloatFilter<"SecurityDeposit"> | number
@@ -325,6 +339,7 @@ export type SecurityDepositOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -347,6 +362,7 @@ export type SecurityDepositScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"SecurityDeposit"> | string
   bookingId?: Prisma.StringWithAggregatesFilter<"SecurityDeposit"> | string
   amount?: Prisma.FloatWithAggregatesFilter<"SecurityDeposit"> | number
+  amountWaived?: Prisma.FloatWithAggregatesFilter<"SecurityDeposit"> | number
   amountCollected?: Prisma.FloatWithAggregatesFilter<"SecurityDeposit"> | number
   amountForfeited?: Prisma.FloatWithAggregatesFilter<"SecurityDeposit"> | number
   amountRefunded?: Prisma.FloatWithAggregatesFilter<"SecurityDeposit"> | number
@@ -360,6 +376,7 @@ export type SecurityDepositScalarWhereWithAggregatesInput = {
 export type SecurityDepositCreateInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -376,6 +393,7 @@ export type SecurityDepositUncheckedCreateInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -390,6 +408,7 @@ export type SecurityDepositUncheckedCreateInput = {
 export type SecurityDepositUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -406,6 +425,7 @@ export type SecurityDepositUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -421,6 +441,7 @@ export type SecurityDepositCreateManyInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -434,6 +455,7 @@ export type SecurityDepositCreateManyInput = {
 export type SecurityDepositUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -446,6 +468,7 @@ export type SecurityDepositUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -475,6 +498,7 @@ export type SecurityDepositCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -487,6 +511,7 @@ export type SecurityDepositCountOrderByAggregateInput = {
 
 export type SecurityDepositAvgOrderByAggregateInput = {
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -496,6 +521,7 @@ export type SecurityDepositMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -510,6 +536,7 @@ export type SecurityDepositMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -522,6 +549,7 @@ export type SecurityDepositMinOrderByAggregateInput = {
 
 export type SecurityDepositSumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
+  amountWaived?: Prisma.SortOrder
   amountCollected?: Prisma.SortOrder
   amountForfeited?: Prisma.SortOrder
   amountRefunded?: Prisma.SortOrder
@@ -666,6 +694,7 @@ export type SecurityDepositUncheckedUpdateManyWithoutUserNestedInput = {
 export type SecurityDepositCreateWithoutBookingInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -680,6 +709,7 @@ export type SecurityDepositCreateWithoutBookingInput = {
 export type SecurityDepositUncheckedCreateWithoutBookingInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -710,6 +740,7 @@ export type SecurityDepositUpdateToOneWithWhereWithoutBookingInput = {
 export type SecurityDepositUpdateWithoutBookingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -724,6 +755,7 @@ export type SecurityDepositUpdateWithoutBookingInput = {
 export type SecurityDepositUncheckedUpdateWithoutBookingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -738,6 +770,7 @@ export type SecurityDepositUncheckedUpdateWithoutBookingInput = {
 export type SecurityDepositCreateWithoutPaymentMethodInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -753,6 +786,7 @@ export type SecurityDepositUncheckedCreateWithoutPaymentMethodInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -796,6 +830,7 @@ export type SecurityDepositScalarWhereInput = {
   id?: Prisma.StringFilter<"SecurityDeposit"> | string
   bookingId?: Prisma.StringFilter<"SecurityDeposit"> | string
   amount?: Prisma.FloatFilter<"SecurityDeposit"> | number
+  amountWaived?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountCollected?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountForfeited?: Prisma.FloatFilter<"SecurityDeposit"> | number
   amountRefunded?: Prisma.FloatFilter<"SecurityDeposit"> | number
@@ -809,6 +844,7 @@ export type SecurityDepositScalarWhereInput = {
 export type SecurityDepositCreateWithoutTransactionsInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -824,6 +860,7 @@ export type SecurityDepositUncheckedCreateWithoutTransactionsInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -853,6 +890,7 @@ export type SecurityDepositUpdateToOneWithWhereWithoutTransactionsInput = {
 export type SecurityDepositUpdateWithoutTransactionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -868,6 +906,7 @@ export type SecurityDepositUncheckedUpdateWithoutTransactionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -881,6 +920,7 @@ export type SecurityDepositUncheckedUpdateWithoutTransactionsInput = {
 export type SecurityDepositCreateWithoutUserInput = {
   id?: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -896,6 +936,7 @@ export type SecurityDepositUncheckedCreateWithoutUserInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -936,6 +977,7 @@ export type SecurityDepositCreateManyPaymentMethodInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -948,6 +990,7 @@ export type SecurityDepositCreateManyPaymentMethodInput = {
 export type SecurityDepositUpdateWithoutPaymentMethodInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -963,6 +1006,7 @@ export type SecurityDepositUncheckedUpdateWithoutPaymentMethodInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -977,6 +1021,7 @@ export type SecurityDepositUncheckedUpdateManyWithoutPaymentMethodInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -990,6 +1035,7 @@ export type SecurityDepositCreateManyUserInput = {
   id?: string
   bookingId: string
   amount: number
+  amountWaived?: number
   amountCollected?: number
   amountForfeited?: number
   amountRefunded?: number
@@ -1002,6 +1048,7 @@ export type SecurityDepositCreateManyUserInput = {
 export type SecurityDepositUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1017,6 +1064,7 @@ export type SecurityDepositUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1031,6 +1079,7 @@ export type SecurityDepositUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   bookingId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
+  amountWaived?: Prisma.FloatFieldUpdateOperationsInput | number
   amountCollected?: Prisma.FloatFieldUpdateOperationsInput | number
   amountForfeited?: Prisma.FloatFieldUpdateOperationsInput | number
   amountRefunded?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1075,6 +1124,7 @@ export type SecurityDepositSelect<ExtArgs extends runtime.Types.Extensions.Inter
   id?: boolean
   bookingId?: boolean
   amount?: boolean
+  amountWaived?: boolean
   amountCollected?: boolean
   amountForfeited?: boolean
   amountRefunded?: boolean
@@ -1094,6 +1144,7 @@ export type SecurityDepositSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   id?: boolean
   bookingId?: boolean
   amount?: boolean
+  amountWaived?: boolean
   amountCollected?: boolean
   amountForfeited?: boolean
   amountRefunded?: boolean
@@ -1111,6 +1162,7 @@ export type SecurityDepositSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   id?: boolean
   bookingId?: boolean
   amount?: boolean
+  amountWaived?: boolean
   amountCollected?: boolean
   amountForfeited?: boolean
   amountRefunded?: boolean
@@ -1128,6 +1180,7 @@ export type SecurityDepositSelectScalar = {
   id?: boolean
   bookingId?: boolean
   amount?: boolean
+  amountWaived?: boolean
   amountCollected?: boolean
   amountForfeited?: boolean
   amountRefunded?: boolean
@@ -1138,7 +1191,7 @@ export type SecurityDepositSelectScalar = {
   updatedBy?: boolean
 }
 
-export type SecurityDepositOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "amount" | "amountCollected" | "amountForfeited" | "amountRefunded" | "status" | "createdAt" | "updatedAt" | "paymentMethodId" | "updatedBy", ExtArgs["result"]["securityDeposit"]>
+export type SecurityDepositOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "amount" | "amountWaived" | "amountCollected" | "amountForfeited" | "amountRefunded" | "status" | "createdAt" | "updatedAt" | "paymentMethodId" | "updatedBy", ExtArgs["result"]["securityDeposit"]>
 export type SecurityDepositInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.RentalDefaultArgs<ExtArgs>
   user?: boolean | Prisma.SecurityDeposit$userArgs<ExtArgs>
@@ -1169,6 +1222,7 @@ export type $SecurityDepositPayload<ExtArgs extends runtime.Types.Extensions.Int
     id: string
     bookingId: string
     amount: number
+    amountWaived: number
     amountCollected: number
     amountForfeited: number
     amountRefunded: number
@@ -1607,6 +1661,7 @@ export interface SecurityDepositFieldRefs {
   readonly id: Prisma.FieldRef<"SecurityDeposit", 'String'>
   readonly bookingId: Prisma.FieldRef<"SecurityDeposit", 'String'>
   readonly amount: Prisma.FieldRef<"SecurityDeposit", 'Float'>
+  readonly amountWaived: Prisma.FieldRef<"SecurityDeposit", 'Float'>
   readonly amountCollected: Prisma.FieldRef<"SecurityDeposit", 'Float'>
   readonly amountForfeited: Prisma.FieldRef<"SecurityDeposit", 'Float'>
   readonly amountRefunded: Prisma.FieldRef<"SecurityDeposit", 'Float'>

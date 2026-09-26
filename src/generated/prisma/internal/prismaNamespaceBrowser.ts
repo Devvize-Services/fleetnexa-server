@@ -1315,6 +1315,7 @@ export const SecurityDepositScalarFieldEnum = {
   id: 'id',
   bookingId: 'bookingId',
   amount: 'amount',
+  amountWaived: 'amountWaived',
   amountCollected: 'amountCollected',
   amountForfeited: 'amountForfeited',
   amountRefunded: 'amountRefunded',

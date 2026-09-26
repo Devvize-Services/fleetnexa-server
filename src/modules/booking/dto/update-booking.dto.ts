@@ -3,7 +3,6 @@ import {
   IsUUID,
   IsString,
   IsEnum,
-  Max,
   IsArray,
   ArrayMinSize,
   ValidateNested,
@@ -15,7 +14,7 @@ import {
   BookingValuesDto,
 } from '../dto/booking-items.dto.js';
 import { Agent, RentalStatus } from '../../../generated/prisma/client.js';
-import { BookingDepositDto } from './booking-deposit.dto.js';
+import { SecurityDepositDto } from '../../../modules/finance/security-deposit/security-deposit.dto.js';
 
 export class UpdateBookingDto {
   @IsUUID()
@@ -65,5 +64,5 @@ export class UpdateBookingDto {
   values: BookingValuesDto;
 
   @IsObject()
-  securityDeposit: BookingDepositDto;
+  securityDeposit: SecurityDepositDto;
 }

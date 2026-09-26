@@ -82,6 +82,7 @@ model SecurityDeposit {
   id                String                  @id @default(dbgenerated("gen_random_uuid()"))
   bookingId         String                  @unique
   amount            Float
+  amountWaived      Float                   @default(0.0)
   amountCollected   Float                   @default(0.0)
   amountForfeited   Float                   @default(0.0)
   amountRefunded    Float                   @default(0.0)
@@ -93,7 +94,7 @@ model SecurityDeposit {
 
   booking           Rental                  @relation(fields: [bookingId], references: [id])
   user              User?                   @relation(fields: [updatedBy], references: [username])
-  paymentMethod     PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
+  paymentMethod     PaymentMethod?          @relation(fields: [paymentMethodId], references: [id])
   
   transactions      Transactions[]
 }

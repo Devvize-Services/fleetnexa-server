@@ -269,7 +269,7 @@ export class SecurityDepositService {
           amount: data.amount,
           bookingId: data.bookingId,
           customerId: customer.customer.id,
-          paymentMethodId: data.paymentMethodId,
+          paymentMethodId: data.paymentMethodId || '',
           paymentDate: data.paymentDate,
           currencyId: data.currencyId,
           paymentTypeId: paymentType?.id || '',

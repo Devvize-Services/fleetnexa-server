@@ -320,7 +320,10 @@ export const ActivityAction = {
   ASSIGN: 'ASSIGN',
   UNASSIGN: 'UNASSIGN',
   START: 'START',
-  END: 'END'
+  END: 'END',
+  COLLECT: 'COLLECT',
+  WAIVE: 'WAIVE',
+  FORFEIT: 'FORFEIT'
 } as const
 
 export type ActivityAction = (typeof ActivityAction)[keyof typeof ActivityAction]
@@ -333,6 +336,7 @@ export const ActivityModule = {
   VEHICLE: 'VEHICLE',
   CUSTOMER: 'CUSTOMER',
   BOOKING: 'BOOKING',
+  SECURITY_DEPOSIT: 'SECURITY_DEPOSIT',
   PAYMENT: 'PAYMENT',
   RECEIPT: 'RECEIPT',
   REFUND: 'REFUND',
