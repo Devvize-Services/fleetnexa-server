@@ -48,7 +48,7 @@ export class PaymentController {
   createPayment(
     @Request() req,
     @Body() data: PaymentDto,
-    @Res() res: Response,
+    @Res({ passthrough: true }) res: Response,
   ) {
     const { tenant } = req.user;
     const user = req.user;
@@ -59,7 +59,7 @@ export class PaymentController {
   generatePaymentReceipt(
     @Param('paymentId') paymentId: string,
     @Request() req,
-    @Res() res: Response,
+    @Res({ passthrough: true }) res: Response,
   ) {
     const { tenant } = req.user;
     const user = req.user;
@@ -75,7 +75,7 @@ export class PaymentController {
   updatePayment(
     @Request() req,
     @Body() data: PaymentDto,
-    @Res() res: Response,
+    @Res({ passthrough: true }) res: Response,
   ) {
     const { tenant } = req.user;
     const user = req.user;

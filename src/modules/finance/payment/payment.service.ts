@@ -85,112 +85,132 @@ export class PaymentService {
 
   async createPayment(data: PaymentDto, tenant: Tenant, user: User, res?: any) {
     try {
-      const payment = await this.prisma.$transaction(
-        async (tx) => {
-          const existingBooking = await tx.rental.findFirst({
-            where: {
-              id: data.bookingId,
-              tenantId: tenant.id,
-            },
-          });
+      const payment = await this.prisma.$transaction(async (tx) => {
+        const existingBooking = await tx.rental.findFirst({
+          where: {
+            id: data.bookingId,
+            tenantId: tenant.id,
+          },
+        });
 
-          if (!existingBooking) {
-            this.logger.warn(
-              `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
-            );
-            throw new NotFoundException('Booking not found');
-          }
-
-          const existingCustomer = await tx.customer.findUnique({
-            where: { id: data.customerId, tenantId: tenant.id },
-          });
-
-          if (!existingCustomer) {
-            this.logger.warn(
-              `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
-            );
-            throw new NotFoundException('Customer not found');
-          }
-
-          const reference = await this.generator.generatePaymentReferenceNumber(
-            tenant.id,
+        if (!existingBooking) {
+          this.logger.warn(
+            `Booking with ID ${data.bookingId} not found for tenant ${tenant.id}`,
           );
+          throw new NotFoundException('Booking not found');
+        }
 
-          const newPayment = await tx.payment.create({
-            data: {
-              amount: data.amount,
-              tenantId: tenant.id,
-              rentalId: data.bookingId,
-              paymentDate: data.paymentDate,
-              notes: data.notes,
-              paymentTypeId: data.paymentTypeId,
-              paymentMethodId: data.paymentMethodId,
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              customerId: data.customerId,
-              reference: reference,
-              payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
-              payment: `Payment for Booking #${existingBooking.rentalNumber}`,
-              updatedBy: user.username,
-            },
-          });
+        const existingCustomer = await tx.customer.findUnique({
+          where: { id: data.customerId, tenantId: tenant.id },
+        });
 
-          return newPayment;
-        },
-        { timeout: 50000 },
-      );
+        if (!existingCustomer) {
+          this.logger.warn(
+            `Customer with ID ${data.customerId} not found for tenant ${tenant.id}`,
+          );
+          throw new NotFoundException('Customer not found');
+        }
 
-      await this.activity.logEvent({
-        action: 'CREATE',
-        description: `Payment of amount ${data.amount} added to booking ID ${data.bookingId}`,
-        tenantId: tenant.id,
-        userId: user.id,
-        module: 'PAYMENT',
-        entityType: 'PAYMENT',
-        entityId: payment.id,
-        newValues: payment,
+        const reference = await this.generator.generatePaymentReferenceNumber(
+          tenant.id,
+        );
+
+        const newPayment = await tx.payment.create({
+          data: {
+            amount: data.amount,
+            tenantId: tenant.id,
+            rentalId: data.bookingId,
+            paymentDate: data.paymentDate,
+            notes: data.notes,
+            paymentTypeId: data.paymentTypeId,
+            paymentMethodId: data.paymentMethodId,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            customerId: data.customerId,
+            reference: reference,
+            payer: `${existingCustomer.firstName} ${existingCustomer.lastName}`,
+            payment: `Payment for Booking #${existingBooking.rentalNumber}`,
+            updatedBy: user.username,
+          },
+        });
+
+        this.logger.log(
+          `Created new payment with ID ${newPayment.id} for booking ID ${data.bookingId}`,
+        );
+
+        const transaction: TransactionDto = {
+          id: randomUUID(),
+          amount: data.amount,
+          type: TransactionType.PAYMENT,
+          rentalId: data.bookingId,
+          transactionDate: data.paymentDate,
+          paymentId: newPayment.id,
+          createdBy: user.username,
+          refundId: '',
+          expenseId: '',
+          securityDepositId: '',
+        };
+
+        await this.transactionService.createTransaction(
+          transaction,
+          tenant,
+          user,
+          tx,
+        );
+
+        this.logger.log(
+          `Created transaction with ID ${transaction.id} for payment ID ${newPayment.id}`,
+        );
+
+        return newPayment;
       });
 
-      const transaction: TransactionDto = {
-        id: randomUUID(),
-        amount: data.amount,
-        type: TransactionType.PAYMENT,
-        rentalId: data.bookingId,
-        transactionDate: data.paymentDate,
-        paymentId: payment.id,
-        createdBy: user.username,
-        refundId: '',
-        expenseId: '',
-        securityDepositId: '',
-      };
+      void this.activity
+        .logEvent({
+          action: 'CREATE',
+          description: `Payment of amount ${data.amount} added to booking ID ${data.bookingId}`,
+          tenantId: tenant.id,
+          userId: user.id,
+          module: 'PAYMENT',
+          entityType: 'PAYMENT',
+          entityId: payment.id,
+          newValues: payment,
+        })
+        .catch((error) => {
+          this.logger.error(error, 'Failed to log activity', {
+            tenantId: tenant.id,
+            userId: user.id,
+          });
+        });
 
-      await this.transactionService.createTransaction(
-        transaction,
-        tenant,
-        user,
+      void this.generatePaymentReceipt(payment.id, tenant, user, res).catch(
+        (error) => {
+          this.logger.error(error, 'Failed to generate payment receipt', {
+            tenantId: tenant.id,
+            userId: user.id,
+          });
+        },
       );
 
-      await this.generatePaymentReceipt(payment.id, tenant, user, res);
-
       if (data.emailReceipt) {
-        await this.resend.sendPaymentReceiptEmail(payment.id, tenant);
+        void this.resend
+          .sendPaymentReceiptEmail(payment.id, tenant)
+          .catch((error) => {
+            this.logger.error(error, 'Failed to send payment receipt email', {
+              tenantId: tenant.id,
+              userId: user.id,
+            });
+          });
       }
 
       const updatedBooking = await this.bookingRepo.getBookingById(
         data.bookingId,
       );
-      const bookings = await this.bookingRepo.getBookings(tenant.id);
-      const transactions =
-        await this.transactionService.getTransactions(tenant);
-      const payments = await this.getPayments(tenant);
 
       return {
         message: 'Payment created successfully',
         payment,
-        updatedBooking,
-        bookings,
-        transactions,
-        payments,
+        booking: updatedBooking,
       };
     } catch (error: any) {
       this.logger.error(error, 'Error creating payment', {

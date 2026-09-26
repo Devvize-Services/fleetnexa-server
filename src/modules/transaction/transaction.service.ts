@@ -30,30 +30,37 @@ export class TransactionService {
     }
   }
 
-  async createTransaction(data: TransactionDto, tenant: Tenant, user: User) {
+  async createTransaction(
+    data: TransactionDto,
+    tenant: Tenant,
+    user: User,
+    tx?: TxClient,
+  ) {
     try {
       const transactionNumber = await this.generator.generateTransactionNumber(
         tenant.id,
       );
 
-      await this.prisma.$transaction(async (tx: TxClient) => {
-        await tx.transactions.create({
-          data: {
-            id: data.id,
-            amount: data.amount,
-            type: data.type,
-            transactionDate: data.transactionDate,
-            createdBy: user.username,
-            paymentId: data.paymentId || null,
-            refundId: data.refundId || null,
-            expenseId: data.expenseId || null,
-            tenantId: tenant.id,
-            rentalId: data.rentalId,
-            securityDepositId: data.securityDepositId || null,
-            number: transactionNumber,
-          },
-        });
+      const client = tx ?? this.prisma;
+
+      await client.transactions.create({
+        data: {
+          id: data.id,
+          amount: data.amount,
+          type: data.type,
+          transactionDate: data.transactionDate,
+          createdBy: user.username,
+          paymentId: data.paymentId || null,
+          refundId: data.refundId || null,
+          expenseId: data.expenseId || null,
+          tenantId: tenant.id,
+          rentalId: data.rentalId,
+          securityDepositId: data.securityDepositId || null,
+          number: transactionNumber,
+        },
       });
+
+      return transactionNumber;
     } catch (error: any) {
       this.logger.error(error, 'Failed to create transaction', {
         tenantId: tenant.id,
