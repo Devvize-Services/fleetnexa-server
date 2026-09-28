@@ -33,6 +33,7 @@ import { ActivityModule } from './common/activity/activity.module.js';
 import { FinanceModule } from './modules/finance/finance.module';
 import { PdfMonkeyModule } from './infrastructure/pdfMonkey/pdfMonkey.module.js';
 import { AwsModule } from './infrastructure/aws/aws.module.js';
+import { ReportsModule } from './modules/reports/reports.module';
 
 @Module({
   imports: [
@@ -86,6 +87,7 @@ import { AwsModule } from './infrastructure/aws/aws.module.js';
     StorageModule,
     DocumentModule,
     SubscriptionModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [
