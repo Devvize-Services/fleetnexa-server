@@ -17,16 +17,124 @@ export class ReportsService {
       const bookingStats = await this.getBookingCount(tenant.id);
       const fleetStats = await this.getFleetStats(tenant.id);
 
+      const revenueData = await this.getRevenueStats(tenant);
+
       return {
         revenue,
         paymentsReceived,
         expenses,
         ...bookingStats,
         ...fleetStats,
+        revenueData,
       };
     } catch (error) {
       this.logger.error('Failed to get dashboard stats', error);
       throw error;
+    }
+  }
+
+  async getRevenueStats(tenant: Tenant) {
+    try {
+      const bookings = await this.prisma.rental.findMany({
+        where: {
+          tenantId: tenant.id,
+          isDeleted: false,
+          status: { notIn: ['PENDING', 'CANCELED', 'DECLINED'] },
+        },
+        include: {
+          values: true,
+        },
+      });
+
+      const payments = await this.prisma.payment.findMany({
+        where: {
+          tenantId: tenant.id,
+          isDeleted: false,
+          status: 'COMPLETED',
+        },
+      });
+
+      const vehicles = await this.prisma.vehicle.findMany({
+        where: {
+          tenantId: tenant.id,
+        },
+      });
+
+      const revenueByVehicle: { label: string; value: number }[] = [];
+      const revenueBySource: { label: string; value: number }[] = [];
+      const revenueByMonth: { label: string; value: number }[] = [];
+
+      const revenue = await this.calcRevenue(tenant.id);
+      const discounts = bookings.reduce((sum, booking) => {
+        return sum + (booking.values?.discount ?? 0);
+      }, 0);
+      const totalPayments = payments.reduce((sum, payment) => {
+        return sum + payment.amount;
+      }, 0);
+      const outstanding = revenue - totalPayments - discounts;
+
+      for (const vehicle of vehicles) {
+        revenueByVehicle.push({
+          label: vehicle.id,
+          value: bookings
+            .filter((booking) => booking.vehicleId === vehicle.id)
+            .reduce((sum, booking) => sum + (booking.values?.netTotal ?? 0), 0),
+        });
+      }
+      revenueByVehicle.sort((first, second) => second.value - first.value);
+      revenueByVehicle.splice(5);
+
+      for (const booking of bookings) {
+        const bookingRevenue = booking.values?.netTotal ?? 0;
+        const source = booking.agent ?? 'UNKNOWN';
+        const month = booking.startDate.toISOString().slice(0, 7);
+
+        const sourceIndex = revenueBySource.findIndex(
+          (item) => item.label === source,
+        );
+        if (sourceIndex >= 0) {
+          revenueBySource[sourceIndex].value += bookingRevenue;
+        } else {
+          revenueBySource.push({ label: source, value: bookingRevenue });
+        }
+        const monthIndex = revenueByMonth.findIndex(
+          (item) => item.label === month,
+        );
+        if (monthIndex >= 0) {
+          revenueByMonth[monthIndex].value += bookingRevenue;
+        } else {
+          revenueByMonth.push({ label: month, value: bookingRevenue });
+        }
+      }
+
+      const monthlyRevenue = new Map(
+        revenueByMonth.map((item) => [item.label, item.value]),
+      );
+      const now = new Date();
+      const lastFiveMonths = Array.from({ length: 5 }, (_, index) => {
+        const month = new Date(
+          now.getFullYear(),
+          now.getMonth() - 4 + index,
+          1,
+        );
+        return `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`;
+      });
+      const recentRevenueByMonth = lastFiveMonths.map((month) => ({
+        label: month,
+        value: monthlyRevenue.get(month) ?? 0,
+      }));
+
+      return {
+        revenue,
+        discounts,
+        totalPayments,
+        outstanding,
+        revenueByVehicle,
+        revenueBySource,
+        revenueByMonth: recentRevenueByMonth,
+      };
+    } catch (error) {
+      this.logger.error('Failed to get revenue stats', error);
     }
   }
 

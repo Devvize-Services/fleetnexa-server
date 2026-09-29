@@ -15,4 +15,10 @@ export class ReportsController {
     const { tenant } = req.user;
     return this.reportsService.getDashboardStats(tenant);
   }
+
+  @Get('revenue')
+  async getRevenueStats(@Request() req) {
+    const { tenant } = req.user;
+    return this.reportsService.getRevenueStats(tenant);
+  }
 }
