@@ -269,3 +269,24 @@ enum PaymentStatus {
   REFUNDED
   PARTIALLY_REFUNDED
 }
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
+  ARCHIVE
+  OTHER
+}
+
+enum VehicleComplianceType{
+  VEHICLE_REGISTRATION
+  VEHICLE_LICENSE
+  VEHICLE_INSURANCE
+  ROAD_TAX
+}
+
+enum VehicleComplianceStatus {
+  ACTIVE
+  CANCELLED
+}

@@ -20,7 +20,7 @@ import { VehicleLocationService } from './services/vehicle-location.service.js';
 import { VehicleDiscountDto } from './dto/vehicle-dicount.dto.js';
 import { VehiclePricingService } from './services/vehicle-pricing.service.js';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service.js';
-import { ActivityService } from '../../common/activity/activity.service.js';
+import { ActivityLogService } from '../activity-log/activity-log.service.js';
 import { VehicleOdometerService } from './services/vehicle-odometer.service.js';
 
 @Injectable()
@@ -35,7 +35,7 @@ export class VehicleService {
     private readonly vehicleStatusService: VehicleStatusService,
     private readonly vehicleLocationService: VehicleLocationService,
     private readonly vehiclePricingService: VehiclePricingService,
-    private readonly activity: ActivityService,
+    private readonly activity: ActivityLogService,
     private readonly odometerService: VehicleOdometerService,
   ) {}
 

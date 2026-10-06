@@ -29,7 +29,7 @@ import { SentDmModule } from './infrastructure/sentdm/sentdm.module.js';
 import { ResendModule } from './infrastructure/resend/resend.module.js';
 import { PrismaModule } from './infrastructure/prisma/prisma.module.js';
 import { RealtimeModule } from './modules/realtime/realtime.module.js';
-import { ActivityModule } from './common/activity/activity.module.js';
+import { ActivityLogModule } from './modules/activity-log/activity-log.module.js';
 import { FinanceModule } from './modules/finance/finance.module';
 import { PdfMonkeyModule } from './infrastructure/pdfMonkey/pdfMonkey.module.js';
 import { AwsModule } from './infrastructure/aws/aws.module.js';
@@ -58,7 +58,7 @@ import { ReportsModule } from './modules/reports/reports.module';
     EmailModule,
     WhatsappModule,
     NotificationModule,
-    ActivityModule,
+    ActivityLogModule,
 
     ResendModule,
     SentDmModule,

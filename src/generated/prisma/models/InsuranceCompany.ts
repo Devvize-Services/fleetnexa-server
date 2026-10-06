@@ -166,14 +166,12 @@ export type InsuranceCompanyWhereInput = {
   id?: Prisma.StringFilter<"InsuranceCompany"> | string
   company?: Prisma.StringFilter<"InsuranceCompany"> | string
   code?: Prisma.StringFilter<"InsuranceCompany"> | string
-  vehicles?: Prisma.VehicleInsuranceHistoryListRelationFilter
 }
 
 export type InsuranceCompanyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   company?: Prisma.SortOrder
   code?: Prisma.SortOrder
-  vehicles?: Prisma.VehicleInsuranceHistoryOrderByRelationAggregateInput
 }
 
 export type InsuranceCompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -183,7 +181,6 @@ export type InsuranceCompanyWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.InsuranceCompanyWhereInput[]
   NOT?: Prisma.InsuranceCompanyWhereInput | Prisma.InsuranceCompanyWhereInput[]
   company?: Prisma.StringFilter<"InsuranceCompany"> | string
-  vehicles?: Prisma.VehicleInsuranceHistoryListRelationFilter
 }, "id" | "code">
 
 export type InsuranceCompanyOrderByWithAggregationInput = {
@@ -208,28 +205,24 @@ export type InsuranceCompanyCreateInput = {
   id?: string
   company: string
   code: string
-  vehicles?: Prisma.VehicleInsuranceHistoryCreateNestedManyWithoutInsuranceCompanyInput
 }
 
 export type InsuranceCompanyUncheckedCreateInput = {
   id?: string
   company: string
   code: string
-  vehicles?: Prisma.VehicleInsuranceHistoryUncheckedCreateNestedManyWithoutInsuranceCompanyInput
 }
 
 export type InsuranceCompanyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicles?: Prisma.VehicleInsuranceHistoryUpdateManyWithoutInsuranceCompanyNestedInput
 }
 
 export type InsuranceCompanyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicles?: Prisma.VehicleInsuranceHistoryUncheckedUpdateManyWithoutInsuranceCompanyNestedInput
 }
 
 export type InsuranceCompanyCreateManyInput = {
@@ -268,102 +261,12 @@ export type InsuranceCompanyMinOrderByAggregateInput = {
   code?: Prisma.SortOrder
 }
 
-export type InsuranceCompanyScalarRelationFilter = {
-  is?: Prisma.InsuranceCompanyWhereInput
-  isNot?: Prisma.InsuranceCompanyWhereInput
-}
-
-export type InsuranceCompanyCreateNestedOneWithoutVehiclesInput = {
-  create?: Prisma.XOR<Prisma.InsuranceCompanyCreateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedCreateWithoutVehiclesInput>
-  connectOrCreate?: Prisma.InsuranceCompanyCreateOrConnectWithoutVehiclesInput
-  connect?: Prisma.InsuranceCompanyWhereUniqueInput
-}
-
-export type InsuranceCompanyUpdateOneRequiredWithoutVehiclesNestedInput = {
-  create?: Prisma.XOR<Prisma.InsuranceCompanyCreateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedCreateWithoutVehiclesInput>
-  connectOrCreate?: Prisma.InsuranceCompanyCreateOrConnectWithoutVehiclesInput
-  upsert?: Prisma.InsuranceCompanyUpsertWithoutVehiclesInput
-  connect?: Prisma.InsuranceCompanyWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.InsuranceCompanyUpdateToOneWithWhereWithoutVehiclesInput, Prisma.InsuranceCompanyUpdateWithoutVehiclesInput>, Prisma.InsuranceCompanyUncheckedUpdateWithoutVehiclesInput>
-}
-
-export type InsuranceCompanyCreateWithoutVehiclesInput = {
-  id?: string
-  company: string
-  code: string
-}
-
-export type InsuranceCompanyUncheckedCreateWithoutVehiclesInput = {
-  id?: string
-  company: string
-  code: string
-}
-
-export type InsuranceCompanyCreateOrConnectWithoutVehiclesInput = {
-  where: Prisma.InsuranceCompanyWhereUniqueInput
-  create: Prisma.XOR<Prisma.InsuranceCompanyCreateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedCreateWithoutVehiclesInput>
-}
-
-export type InsuranceCompanyUpsertWithoutVehiclesInput = {
-  update: Prisma.XOR<Prisma.InsuranceCompanyUpdateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedUpdateWithoutVehiclesInput>
-  create: Prisma.XOR<Prisma.InsuranceCompanyCreateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedCreateWithoutVehiclesInput>
-  where?: Prisma.InsuranceCompanyWhereInput
-}
-
-export type InsuranceCompanyUpdateToOneWithWhereWithoutVehiclesInput = {
-  where?: Prisma.InsuranceCompanyWhereInput
-  data: Prisma.XOR<Prisma.InsuranceCompanyUpdateWithoutVehiclesInput, Prisma.InsuranceCompanyUncheckedUpdateWithoutVehiclesInput>
-}
-
-export type InsuranceCompanyUpdateWithoutVehiclesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type InsuranceCompanyUncheckedUpdateWithoutVehiclesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-
-/**
- * Count Type InsuranceCompanyCountOutputType
- */
-
-export type InsuranceCompanyCountOutputType = {
-  vehicles: number
-}
-
-export type InsuranceCompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicles?: boolean | InsuranceCompanyCountOutputTypeCountVehiclesArgs
-}
-
-/**
- * InsuranceCompanyCountOutputType without action
- */
-export type InsuranceCompanyCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the InsuranceCompanyCountOutputType
-   */
-  select?: Prisma.InsuranceCompanyCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * InsuranceCompanyCountOutputType without action
- */
-export type InsuranceCompanyCountOutputTypeCountVehiclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.VehicleInsuranceHistoryWhereInput
-}
 
 
 export type InsuranceCompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   company?: boolean
   code?: boolean
-  vehicles?: boolean | Prisma.InsuranceCompany$vehiclesArgs<ExtArgs>
-  _count?: boolean | Prisma.InsuranceCompanyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["insuranceCompany"]>
 
 export type InsuranceCompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -385,18 +288,10 @@ export type InsuranceCompanySelectScalar = {
 }
 
 export type InsuranceCompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "company" | "code", ExtArgs["result"]["insuranceCompany"]>
-export type InsuranceCompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicles?: boolean | Prisma.InsuranceCompany$vehiclesArgs<ExtArgs>
-  _count?: boolean | Prisma.InsuranceCompanyCountOutputTypeDefaultArgs<ExtArgs>
-}
-export type InsuranceCompanyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type InsuranceCompanyIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $InsuranceCompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "InsuranceCompany"
-  objects: {
-    vehicles: Prisma.$VehicleInsuranceHistoryPayload<ExtArgs>[]
-  }
+  objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     company: string
@@ -795,7 +690,6 @@ readonly fields: InsuranceCompanyFieldRefs;
  */
 export interface Prisma__InsuranceCompanyClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  vehicles<T extends Prisma.InsuranceCompany$vehiclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InsuranceCompany$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleInsuranceHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -845,10 +739,6 @@ export type InsuranceCompanyFindUniqueArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * Filter, which InsuranceCompany to fetch.
    */
   where: Prisma.InsuranceCompanyWhereUniqueInput
@@ -867,10 +757,6 @@ export type InsuranceCompanyFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * Filter, which InsuranceCompany to fetch.
    */
   where: Prisma.InsuranceCompanyWhereUniqueInput
@@ -888,10 +774,6 @@ export type InsuranceCompanyFindFirstArgs<ExtArgs extends runtime.Types.Extensio
    * Omit specific fields from the InsuranceCompany
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
   /**
    * Filter, which InsuranceCompany to fetch.
    */
@@ -941,10 +823,6 @@ export type InsuranceCompanyFindFirstOrThrowArgs<ExtArgs extends runtime.Types.E
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * Filter, which InsuranceCompany to fetch.
    */
   where?: Prisma.InsuranceCompanyWhereInput
@@ -992,10 +870,6 @@ export type InsuranceCompanyFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Omit specific fields from the InsuranceCompany
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
   /**
    * Filter, which InsuranceCompanies to fetch.
    */
@@ -1045,10 +919,6 @@ export type InsuranceCompanyCreateArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * The data needed to create a InsuranceCompany.
    */
   data: Prisma.XOR<Prisma.InsuranceCompanyCreateInput, Prisma.InsuranceCompanyUncheckedCreateInput>
@@ -1096,10 +966,6 @@ export type InsuranceCompanyUpdateArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the InsuranceCompany
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
   /**
    * The data needed to update a InsuranceCompany.
    */
@@ -1167,10 +1033,6 @@ export type InsuranceCompanyUpsertArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * The filter to search for the InsuranceCompany to update in case it exists.
    */
   where: Prisma.InsuranceCompanyWhereUniqueInput
@@ -1197,10 +1059,6 @@ export type InsuranceCompanyDeleteArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
-  /**
    * Filter which InsuranceCompany to delete.
    */
   where: Prisma.InsuranceCompanyWhereUniqueInput
@@ -1221,30 +1079,6 @@ export type InsuranceCompanyDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
 }
 
 /**
- * InsuranceCompany.vehicles
- */
-export type InsuranceCompany$vehiclesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the VehicleInsuranceHistory
-   */
-  select?: Prisma.VehicleInsuranceHistorySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the VehicleInsuranceHistory
-   */
-  omit?: Prisma.VehicleInsuranceHistoryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VehicleInsuranceHistoryInclude<ExtArgs> | null
-  where?: Prisma.VehicleInsuranceHistoryWhereInput
-  orderBy?: Prisma.VehicleInsuranceHistoryOrderByWithRelationInput | Prisma.VehicleInsuranceHistoryOrderByWithRelationInput[]
-  cursor?: Prisma.VehicleInsuranceHistoryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.VehicleInsuranceHistoryScalarFieldEnum | Prisma.VehicleInsuranceHistoryScalarFieldEnum[]
-}
-
-/**
  * InsuranceCompany without action
  */
 export type InsuranceCompanyDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1256,8 +1090,4 @@ export type InsuranceCompanyDefaultArgs<ExtArgs extends runtime.Types.Extensions
    * Omit specific fields from the InsuranceCompany
    */
   omit?: Prisma.InsuranceCompanyOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.InsuranceCompanyInclude<ExtArgs> | null
 }

@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { VehicleRepository } from '../vehicle.repository';
 import { PrismaService } from '../../../infrastructure/prisma/prisma.service';
-import { ActivityService } from '../../../common/activity/activity.service';
+import { ActivityLogService } from '../../activity-log/activity-log.service';
 import { Tenant, User } from '../../../generated/prisma/browser';
 import { VehicleOdometerDto } from '../vehicle.dto';
 
@@ -17,7 +17,7 @@ export class VehicleOdometerService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly vehicleRepo: VehicleRepository,
-    private readonly activity: ActivityService,
+    private readonly activity: ActivityLogService,
   ) {}
 
   async updateVehicleOdometer(

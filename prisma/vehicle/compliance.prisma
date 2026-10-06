@@ -1,0 +1,37 @@
+model VehicleCompliance {
+    id                 String           @id @default(dbgenerated("gen_random_uuid()"))
+    vehicleId          String
+    type               VehicleComplianceType
+    status             VehicleComplianceStatus
+    referenceNumber    String?
+    providerId         String?
+    issuedAt           DateTime?
+    expiresAt          DateTime?
+    renewedAt          DateTime?
+    notes              String?
+    isCurrent          Boolean @default(false)
+
+    createdBy          String?
+    updatedBy          String?
+    createdAt          DateTime         @default(now())
+    updatedAt          DateTime         @updatedAt
+    isDeleted          Boolean          @default(false)
+    deletedAt          DateTime?
+
+    vehicle            Vehicle            @relation(fields: [vehicleId], references: [id])
+    provider           ComplianceProvider?  @relation(fields: [providerId], references: [id])
+
+    documents          VehicleComplianceDocument[]
+}
+
+model VehicleComplianceDocument {
+    id                  String           @id @default(dbgenerated("gen_random_uuid()"))
+    vehicleComplianceId String
+    documentId          Int
+
+    vehicleCompliance   VehicleCompliance @relation(fields: [vehicleComplianceId], references: [id])
+    document            Media            @relation(fields: [documentId], references: [id])
+
+    @@unique([vehicleComplianceId, documentId])
+}
+

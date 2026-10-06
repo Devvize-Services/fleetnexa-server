@@ -53,12 +53,12 @@ model Vehicle {
   damages              VehicleDamage[]
   discounts            VehicleDiscount[]
   events               VehicleEvent[]
-  insuranceHistory     VehicleInsuranceHistory[]
   scheduledMaintenance VehicleMaintenance[]
-  registrationHistory  VehicleRegistrationHistory[]
   serviceLogs          VehicleServiceLog[]
   scheduledServices    VehicleServiceSchedule[]
   features             VehicleFeature[]             @relation("VehicleToVehicleFeature")
+
+  complianceRecords     VehicleCompliance[]
 }
 
 model VehicleDiscount {
@@ -193,32 +193,3 @@ model VehicleEvent {
   vehicle   Vehicle          @relation(fields: [vehicleId], references: [id])
 }
 
-model VehicleInsuranceHistory {
-  id                 String           @id @default(dbgenerated("gen_random_uuid()"))
-  vehicleId          String
-  insuranceCompanyId String
-  policyNumber       String
-  validFrom          DateTime
-  validTo            DateTime
-  expired            Boolean          @default(false)
-  createdAt          DateTime         @default(now())
-  updatedAt          DateTime?        @updatedAt
-  createdBy          String?
-  updatedBy          String?
-  insuranceCompany   InsuranceCompany @relation(fields: [insuranceCompanyId], references: [id])
-  vehicle            Vehicle          @relation(fields: [vehicleId], references: [id])
-}
-
-model VehicleRegistrationHistory {
-  id                 String    @id @default(dbgenerated("gen_random_uuid()"))
-  vehicleId          String
-  registrationNumber String
-  validFrom          DateTime
-  validTo            DateTime
-  expired            Boolean   @default(false)
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime? @updatedAt
-  createdBy          String?
-  updatedBy          String?
-  vehicle            Vehicle   @relation(fields: [vehicleId], references: [id])
-}

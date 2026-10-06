@@ -26,7 +26,7 @@ import {
   PrismaService,
   TxClient,
 } from '../../../infrastructure/prisma/prisma.service.js';
-import { ActivityService } from '../../../common/activity/activity.service.js';
+import { ActivityLogService } from '../../activity-log/activity-log.service.js';
 
 @Injectable()
 export class BookingCreationService {
@@ -40,7 +40,7 @@ export class BookingCreationService {
     private readonly emailService: EmailService,
     private readonly whatsapp: WhatsappService,
     private readonly tenantNotification: TenantNotificationService,
-    private readonly activityService: ActivityService,
+    private readonly activityService: ActivityLogService,
   ) {}
 
   createTenantBooking(dto: CreateBookingDto, tenant: Tenant, user: User) {

@@ -165,6 +165,11 @@ export type Port = Prisma.PortModel
  */
 export type InsuranceCompany = Prisma.InsuranceCompanyModel
 /**
+ * Model ComplianceProvider
+ * 
+ */
+export type ComplianceProvider = Prisma.ComplianceProviderModel
+/**
  * Model Values
  * 
  */
@@ -259,6 +264,11 @@ export type FormResponse = Prisma.FormResponseModel
  * 
  */
 export type RentalActivity = Prisma.RentalActivityModel
+/**
+ * Model Media
+ * 
+ */
+export type Media = Prisma.MediaModel
 /**
  * Model TenantNotification
  * 
@@ -500,6 +510,16 @@ export type UserRole = Prisma.UserRoleModel
  */
 export type UserRolePermission = Prisma.UserRolePermissionModel
 /**
+ * Model VehicleCompliance
+ * 
+ */
+export type VehicleCompliance = Prisma.VehicleComplianceModel
+/**
+ * Model VehicleComplianceDocument
+ * 
+ */
+export type VehicleComplianceDocument = Prisma.VehicleComplianceDocumentModel
+/**
  * Model Vehicle
  * 
  */
@@ -549,13 +569,3 @@ export type BookingVehicleHistory = Prisma.BookingVehicleHistoryModel
  * 
  */
 export type VehicleEvent = Prisma.VehicleEventModel
-/**
- * Model VehicleInsuranceHistory
- * 
- */
-export type VehicleInsuranceHistory = Prisma.VehicleInsuranceHistoryModel
-/**
- * Model VehicleRegistrationHistory
- * 
- */
-export type VehicleRegistrationHistory = Prisma.VehicleRegistrationHistoryModel

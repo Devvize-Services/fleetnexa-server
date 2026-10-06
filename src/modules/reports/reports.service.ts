@@ -71,7 +71,7 @@ export class ReportsService {
       const totalPayments = payments.reduce((sum, payment) => {
         return sum + payment.amount;
       }, 0);
-      const outstanding = revenue - totalPayments - discounts;
+      const outstanding = Math.max(0, revenue - totalPayments - discounts);
 
       for (const vehicle of vehicles) {
         revenueByVehicle.push({
@@ -186,7 +186,10 @@ export class ReportsService {
       );
     }, 0);
 
-    const totalBookingOutstanding = totalBookingValues - totalBookingPayments;
+    const totalBookingOutstanding = Math.max(
+      0,
+      totalBookingValues - totalBookingPayments,
+    );
 
     return {
       active: active.length,

@@ -365,6 +365,36 @@ export const PaymentStatus = {
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
 
 
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  AUDIO: 'AUDIO',
+  DOCUMENT: 'DOCUMENT',
+  ARCHIVE: 'ARCHIVE',
+  OTHER: 'OTHER'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]
+
+
+export const VehicleComplianceType = {
+  VEHICLE_REGISTRATION: 'VEHICLE_REGISTRATION',
+  VEHICLE_LICENSE: 'VEHICLE_LICENSE',
+  VEHICLE_INSURANCE: 'VEHICLE_INSURANCE',
+  ROAD_TAX: 'ROAD_TAX'
+} as const
+
+export type VehicleComplianceType = (typeof VehicleComplianceType)[keyof typeof VehicleComplianceType]
+
+
+export const VehicleComplianceStatus = {
+  ACTIVE: 'ACTIVE',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type VehicleComplianceStatus = (typeof VehicleComplianceStatus)[keyof typeof VehicleComplianceStatus]
+
+
 export const FormType = {
   customer_info: 'customer_info',
   driver_registration: 'driver_registration',

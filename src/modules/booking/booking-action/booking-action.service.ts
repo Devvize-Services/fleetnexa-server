@@ -1,5 +1,5 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { ActivityService } from '../../../common/activity/activity.service';
+import { ActivityLogService } from '../../activity-log/activity-log.service';
 import { PrismaService } from '../../../infrastructure/prisma/prisma.service';
 import { ResendService } from '../../../infrastructure/resend/resend.service';
 import { DocumentService } from '../../../modules/document/document.service';
@@ -22,7 +22,7 @@ export class BookingActionService {
     private readonly vehicleService: VehicleService,
     private readonly resend: ResendService,
     private readonly invoiceService: InvoiceService,
-    private readonly activityService: ActivityService,
+    private readonly activityService: ActivityLogService,
   ) {}
 
   private async findBookingOrFail(id: string) {

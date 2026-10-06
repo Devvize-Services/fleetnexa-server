@@ -76,6 +76,7 @@ export const ModelName = {
   VendorType: 'VendorType',
   Port: 'Port',
   InsuranceCompany: 'InsuranceCompany',
+  ComplianceProvider: 'ComplianceProvider',
   Values: 'Values',
   Customer: 'Customer',
   CustomerMessengerApp: 'CustomerMessengerApp',
@@ -95,6 +96,7 @@ export const ModelName = {
   Form: 'Form',
   FormResponse: 'FormResponse',
   RentalActivity: 'RentalActivity',
+  Media: 'Media',
   TenantNotification: 'TenantNotification',
   NotificationReadStatus: 'NotificationReadStatus',
   AppPermission: 'AppPermission',
@@ -143,6 +145,8 @@ export const ModelName = {
   AdminUser: 'AdminUser',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission',
+  VehicleCompliance: 'VehicleCompliance',
+  VehicleComplianceDocument: 'VehicleComplianceDocument',
   Vehicle: 'Vehicle',
   VehicleDiscount: 'VehicleDiscount',
   VehicleDamage: 'VehicleDamage',
@@ -152,9 +156,7 @@ export const ModelName = {
   VehicleMaintenance: 'VehicleMaintenance',
   VehicleServiceSchedule: 'VehicleServiceSchedule',
   BookingVehicleHistory: 'BookingVehicleHistory',
-  VehicleEvent: 'VehicleEvent',
-  VehicleInsuranceHistory: 'VehicleInsuranceHistory',
-  VehicleRegistrationHistory: 'VehicleRegistrationHistory'
+  VehicleEvent: 'VehicleEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,6 +409,15 @@ export const InsuranceCompanyScalarFieldEnum = {
 } as const
 
 export type InsuranceCompanyScalarFieldEnum = (typeof InsuranceCompanyScalarFieldEnum)[keyof typeof InsuranceCompanyScalarFieldEnum]
+
+
+export const ComplianceProviderScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code'
+} as const
+
+export type ComplianceProviderScalarFieldEnum = (typeof ComplianceProviderScalarFieldEnum)[keyof typeof ComplianceProviderScalarFieldEnum]
 
 
 export const ValuesScalarFieldEnum = {
@@ -712,6 +723,35 @@ export const RentalActivityScalarFieldEnum = {
 } as const
 
 export type RentalActivityScalarFieldEnum = (typeof RentalActivityScalarFieldEnum)[keyof typeof RentalActivityScalarFieldEnum]
+
+
+export const MediaScalarFieldEnum = {
+  id: 'id',
+  accessToken: 'accessToken',
+  fileName: 'fileName',
+  originalName: 'originalName',
+  path: 'path',
+  bucket: 'bucket',
+  mimeType: 'mimeType',
+  extension: 'extension',
+  size: 'size',
+  type: 'type',
+  url: 'url',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  altText: 'altText',
+  caption: 'caption',
+  checksum: 'checksum',
+  createById: 'createById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
+  permanentlyDeleteAt: 'permanentlyDeleteAt'
+} as const
+
+export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
 export const TenantNotificationScalarFieldEnum = {
@@ -1471,6 +1511,38 @@ export const UserRolePermissionScalarFieldEnum = {
 export type UserRolePermissionScalarFieldEnum = (typeof UserRolePermissionScalarFieldEnum)[keyof typeof UserRolePermissionScalarFieldEnum]
 
 
+export const VehicleComplianceScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  type: 'type',
+  status: 'status',
+  referenceNumber: 'referenceNumber',
+  providerId: 'providerId',
+  issuedAt: 'issuedAt',
+  expiresAt: 'expiresAt',
+  renewedAt: 'renewedAt',
+  notes: 'notes',
+  isCurrent: 'isCurrent',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt'
+} as const
+
+export type VehicleComplianceScalarFieldEnum = (typeof VehicleComplianceScalarFieldEnum)[keyof typeof VehicleComplianceScalarFieldEnum]
+
+
+export const VehicleComplianceDocumentScalarFieldEnum = {
+  id: 'id',
+  vehicleComplianceId: 'vehicleComplianceId',
+  documentId: 'documentId'
+} as const
+
+export type VehicleComplianceDocumentScalarFieldEnum = (typeof VehicleComplianceDocumentScalarFieldEnum)[keyof typeof VehicleComplianceDocumentScalarFieldEnum]
+
+
 export const VehicleScalarFieldEnum = {
   id: 'id',
   year: 'year',
@@ -1648,39 +1720,6 @@ export const VehicleEventScalarFieldEnum = {
 } as const
 
 export type VehicleEventScalarFieldEnum = (typeof VehicleEventScalarFieldEnum)[keyof typeof VehicleEventScalarFieldEnum]
-
-
-export const VehicleInsuranceHistoryScalarFieldEnum = {
-  id: 'id',
-  vehicleId: 'vehicleId',
-  insuranceCompanyId: 'insuranceCompanyId',
-  policyNumber: 'policyNumber',
-  validFrom: 'validFrom',
-  validTo: 'validTo',
-  expired: 'expired',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
-} as const
-
-export type VehicleInsuranceHistoryScalarFieldEnum = (typeof VehicleInsuranceHistoryScalarFieldEnum)[keyof typeof VehicleInsuranceHistoryScalarFieldEnum]
-
-
-export const VehicleRegistrationHistoryScalarFieldEnum = {
-  id: 'id',
-  vehicleId: 'vehicleId',
-  registrationNumber: 'registrationNumber',
-  validFrom: 'validFrom',
-  validTo: 'validTo',
-  expired: 'expired',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
-} as const
-
-export type VehicleRegistrationHistoryScalarFieldEnum = (typeof VehicleRegistrationHistoryScalarFieldEnum)[keyof typeof VehicleRegistrationHistoryScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -11,7 +11,7 @@ import { TransactionDto } from 'src/modules/transaction/transaction.dto';
 import { randomUUID } from 'crypto';
 import { PaymentDto } from './payment.dto';
 import { GeneratorService } from '../../../common/generator/generator.service';
-import { ActivityService } from '../../../common/activity/activity.service';
+import { ActivityLogService } from '../../activity-log/activity-log.service';
 import { ResendService } from '../../../infrastructure/resend/resend.service';
 import { PaymentReceiptData } from '../../../types/pdf';
 import { FormatterService } from '../../../common/formatter/formatter.service';
@@ -29,7 +29,7 @@ export class PaymentService {
     private readonly transactionService: TransactionService,
     private readonly bookingRepo: BookingRepository,
     private readonly generator: GeneratorService,
-    private readonly activity: ActivityService,
+    private readonly activity: ActivityLogService,
     private readonly resend: ResendService,
     private readonly formatter: FormatterService,
     private readonly pdfMonkey: PdfMonkeyService,

@@ -419,6 +419,23 @@ export type EnumRentalActionWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRentalActionFilter<$PrismaModel>
 }
 
+export type EnumMediaTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.MediaType | Prisma.EnumMediaTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel> | $Enums.MediaType
+}
+
+export type EnumMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MediaType | Prisma.EnumMediaTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.MediaType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel>
+}
+
 export type EnumNotificationTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.NotificationType | Prisma.EnumNotificationTypeFieldRefInput<$PrismaModel>
   in?: $Enums.NotificationType[] | Prisma.ListEnumNotificationTypeFieldRefInput<$PrismaModel>
@@ -787,6 +804,40 @@ export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedBoolNullableFilter<$PrismaModel>
   _max?: Prisma.NestedBoolNullableFilter<$PrismaModel>
+}
+
+export type EnumVehicleComplianceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceType | Prisma.EnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel> | $Enums.VehicleComplianceType
+}
+
+export type EnumVehicleComplianceStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceStatus | Prisma.EnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel> | $Enums.VehicleComplianceStatus
+}
+
+export type EnumVehicleComplianceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceType | Prisma.EnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceTypeWithAggregatesFilter<$PrismaModel> | $Enums.VehicleComplianceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel>
+}
+
+export type EnumVehicleComplianceStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceStatus | Prisma.EnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceStatusWithAggregatesFilter<$PrismaModel> | $Enums.VehicleComplianceStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel>
 }
 
 export type DecimalFilter<$PrismaModel = never> = {
@@ -1251,6 +1302,23 @@ export type NestedEnumRentalActionWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRentalActionFilter<$PrismaModel>
 }
 
+export type NestedEnumMediaTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.MediaType | Prisma.EnumMediaTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel> | $Enums.MediaType
+}
+
+export type NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MediaType | Prisma.EnumMediaTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MediaType[] | Prisma.ListEnumMediaTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.MediaType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMediaTypeFilter<$PrismaModel>
+}
+
 export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.NotificationType | Prisma.EnumNotificationTypeFieldRefInput<$PrismaModel>
   in?: $Enums.NotificationType[] | Prisma.ListEnumNotificationTypeFieldRefInput<$PrismaModel>
@@ -1592,6 +1660,40 @@ export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedBoolNullableFilter<$PrismaModel>
   _max?: Prisma.NestedBoolNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumVehicleComplianceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceType | Prisma.EnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel> | $Enums.VehicleComplianceType
+}
+
+export type NestedEnumVehicleComplianceStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceStatus | Prisma.EnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel> | $Enums.VehicleComplianceStatus
+}
+
+export type NestedEnumVehicleComplianceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceType | Prisma.EnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceType[] | Prisma.ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceTypeWithAggregatesFilter<$PrismaModel> | $Enums.VehicleComplianceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleComplianceTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumVehicleComplianceStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleComplianceStatus | Prisma.EnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleComplianceStatus[] | Prisma.ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleComplianceStatusWithAggregatesFilter<$PrismaModel> | $Enums.VehicleComplianceStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleComplianceStatusFilter<$PrismaModel>
 }
 
 export type NestedDecimalFilter<$PrismaModel = never> = {

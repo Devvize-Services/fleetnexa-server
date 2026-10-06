@@ -10,7 +10,7 @@ import { FormatterService } from '../../../common/formatter/formatter.service';
 import { TenantExtraService } from '../../../modules/tenant/tenant-extra/tenant-extra.service';
 import { AwsService } from '../../../infrastructure/aws/aws.service';
 import { randomBytes } from 'crypto';
-import { ActivityService } from '../../../common/activity/activity.service';
+import { ActivityLogService } from '../../activity-log/activity-log.service';
 import { PdfMonkeyService } from 'src/infrastructure/pdfMonkey/pdf.service';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class InvoiceService {
     private readonly formatter: FormatterService,
     private readonly tenantExtraService: TenantExtraService,
     private readonly awsService: AwsService,
-    private readonly activityService: ActivityService,
+    private readonly activityService: ActivityLogService,
   ) {}
 
   async getInvoices(tenant: Tenant) {

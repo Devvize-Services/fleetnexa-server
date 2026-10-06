@@ -409,6 +409,7 @@ export const ModelName = {
   VendorType: 'VendorType',
   Port: 'Port',
   InsuranceCompany: 'InsuranceCompany',
+  ComplianceProvider: 'ComplianceProvider',
   Values: 'Values',
   Customer: 'Customer',
   CustomerMessengerApp: 'CustomerMessengerApp',
@@ -428,6 +429,7 @@ export const ModelName = {
   Form: 'Form',
   FormResponse: 'FormResponse',
   RentalActivity: 'RentalActivity',
+  Media: 'Media',
   TenantNotification: 'TenantNotification',
   NotificationReadStatus: 'NotificationReadStatus',
   AppPermission: 'AppPermission',
@@ -476,6 +478,8 @@ export const ModelName = {
   AdminUser: 'AdminUser',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission',
+  VehicleCompliance: 'VehicleCompliance',
+  VehicleComplianceDocument: 'VehicleComplianceDocument',
   Vehicle: 'Vehicle',
   VehicleDiscount: 'VehicleDiscount',
   VehicleDamage: 'VehicleDamage',
@@ -485,9 +489,7 @@ export const ModelName = {
   VehicleMaintenance: 'VehicleMaintenance',
   VehicleServiceSchedule: 'VehicleServiceSchedule',
   BookingVehicleHistory: 'BookingVehicleHistory',
-  VehicleEvent: 'VehicleEvent',
-  VehicleInsuranceHistory: 'VehicleInsuranceHistory',
-  VehicleRegistrationHistory: 'VehicleRegistrationHistory'
+  VehicleEvent: 'VehicleEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -503,7 +505,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "service" | "chargeType" | "vehicleBrand" | "vehicleModel" | "vehicleBodyType" | "vehicleStatus" | "fuelType" | "transmission" | "vehicleFeature" | "wheelDrive" | "invoiceSequence" | "country" | "state" | "village" | "maintenanceService" | "documentType" | "presetLocation" | "licenseClass" | "messengerApp" | "equipment" | "contactType" | "paymentType" | "vendorType" | "port" | "insuranceCompany" | "values" | "customer" | "customerMessengerApp" | "customerAddress" | "customerDocument" | "driverLicense" | "customerViolation" | "rentalAgreement" | "invoice" | "paymentReceipt" | "caribbeanCountry" | "shopDMMerchant" | "currency" | "tenantCurrencyRate" | "exchangeRate" | "payment" | "form" | "formResponse" | "rentalActivity" | "tenantNotification" | "notificationReadStatus" | "appPermission" | "permissionCategory" | "rental" | "storefrontBooking" | "rentalDriver" | "rentalExtra" | "rentalCharge" | "vesselInfo" | "activity" | "tenantWeeklyStats" | "tenantYearlyStats" | "tenantMonthlyStats" | "tenantMonthlyRentalStats" | "tenantRatings" | "siteRatings" | "subscriptionPlan" | "planFeatures" | "planDetails" | "tenantLocation" | "cancellationPolicy" | "latePolicy" | "tenant" | "paymentMethod" | "address" | "tenantSubscription" | "tenantContact" | "tenantReminders" | "tenantViolation" | "tenantVendor" | "verificationRequest" | "tenantInsurance" | "tenantEquipment" | "tenantService" | "transactions" | "refund" | "expense" | "securityDeposit" | "session" | "authLog" | "passwordHistory" | "otp" | "user" | "storefrontUser" | "adminUser" | "userRole" | "userRolePermission" | "vehicle" | "vehicleDiscount" | "vehicleDamage" | "vehiclePart" | "fuelPolicy" | "vehicleServiceLog" | "vehicleMaintenance" | "vehicleServiceSchedule" | "bookingVehicleHistory" | "vehicleEvent" | "vehicleInsuranceHistory" | "vehicleRegistrationHistory"
+    modelProps: "service" | "chargeType" | "vehicleBrand" | "vehicleModel" | "vehicleBodyType" | "vehicleStatus" | "fuelType" | "transmission" | "vehicleFeature" | "wheelDrive" | "invoiceSequence" | "country" | "state" | "village" | "maintenanceService" | "documentType" | "presetLocation" | "licenseClass" | "messengerApp" | "equipment" | "contactType" | "paymentType" | "vendorType" | "port" | "insuranceCompany" | "complianceProvider" | "values" | "customer" | "customerMessengerApp" | "customerAddress" | "customerDocument" | "driverLicense" | "customerViolation" | "rentalAgreement" | "invoice" | "paymentReceipt" | "caribbeanCountry" | "shopDMMerchant" | "currency" | "tenantCurrencyRate" | "exchangeRate" | "payment" | "form" | "formResponse" | "rentalActivity" | "media" | "tenantNotification" | "notificationReadStatus" | "appPermission" | "permissionCategory" | "rental" | "storefrontBooking" | "rentalDriver" | "rentalExtra" | "rentalCharge" | "vesselInfo" | "activity" | "tenantWeeklyStats" | "tenantYearlyStats" | "tenantMonthlyStats" | "tenantMonthlyRentalStats" | "tenantRatings" | "siteRatings" | "subscriptionPlan" | "planFeatures" | "planDetails" | "tenantLocation" | "cancellationPolicy" | "latePolicy" | "tenant" | "paymentMethod" | "address" | "tenantSubscription" | "tenantContact" | "tenantReminders" | "tenantViolation" | "tenantVendor" | "verificationRequest" | "tenantInsurance" | "tenantEquipment" | "tenantService" | "transactions" | "refund" | "expense" | "securityDeposit" | "session" | "authLog" | "passwordHistory" | "otp" | "user" | "storefrontUser" | "adminUser" | "userRole" | "userRolePermission" | "vehicleCompliance" | "vehicleComplianceDocument" | "vehicle" | "vehicleDiscount" | "vehicleDamage" | "vehiclePart" | "fuelPolicy" | "vehicleServiceLog" | "vehicleMaintenance" | "vehicleServiceSchedule" | "bookingVehicleHistory" | "vehicleEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2357,6 +2359,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ComplianceProvider: {
+      payload: Prisma.$ComplianceProviderPayload<ExtArgs>
+      fields: Prisma.ComplianceProviderFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ComplianceProviderFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ComplianceProviderFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        findFirst: {
+          args: Prisma.ComplianceProviderFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ComplianceProviderFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        findMany: {
+          args: Prisma.ComplianceProviderFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>[]
+        }
+        create: {
+          args: Prisma.ComplianceProviderCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        createMany: {
+          args: Prisma.ComplianceProviderCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ComplianceProviderCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>[]
+        }
+        delete: {
+          args: Prisma.ComplianceProviderDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        update: {
+          args: Prisma.ComplianceProviderUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        deleteMany: {
+          args: Prisma.ComplianceProviderDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ComplianceProviderUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ComplianceProviderUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>[]
+        }
+        upsert: {
+          args: Prisma.ComplianceProviderUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplianceProviderPayload>
+        }
+        aggregate: {
+          args: Prisma.ComplianceProviderAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateComplianceProvider>
+        }
+        groupBy: {
+          args: Prisma.ComplianceProviderGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplianceProviderGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ComplianceProviderCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplianceProviderCountAggregateOutputType> | number
+        }
+      }
+    }
     Values: {
       payload: Prisma.$ValuesPayload<ExtArgs>
       fields: Prisma.ValuesFieldRefs
@@ -3760,6 +3836,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.RentalActivityCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.RentalActivityCountAggregateOutputType> | number
+        }
+      }
+    }
+    Media: {
+      payload: Prisma.$MediaPayload<ExtArgs>
+      fields: Prisma.MediaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MediaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MediaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        findFirst: {
+          args: Prisma.MediaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MediaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        findMany: {
+          args: Prisma.MediaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        create: {
+          args: Prisma.MediaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        createMany: {
+          args: Prisma.MediaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MediaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        delete: {
+          args: Prisma.MediaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        update: {
+          args: Prisma.MediaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        deleteMany: {
+          args: Prisma.MediaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MediaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MediaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>[]
+        }
+        upsert: {
+          args: Prisma.MediaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MediaPayload>
+        }
+        aggregate: {
+          args: Prisma.MediaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMedia>
+        }
+        groupBy: {
+          args: Prisma.MediaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MediaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MediaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MediaCountAggregateOutputType> | number
         }
       }
     }
@@ -7315,6 +7465,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VehicleCompliance: {
+      payload: Prisma.$VehicleCompliancePayload<ExtArgs>
+      fields: Prisma.VehicleComplianceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VehicleComplianceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VehicleComplianceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        findFirst: {
+          args: Prisma.VehicleComplianceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VehicleComplianceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        findMany: {
+          args: Prisma.VehicleComplianceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>[]
+        }
+        create: {
+          args: Prisma.VehicleComplianceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        createMany: {
+          args: Prisma.VehicleComplianceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VehicleComplianceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>[]
+        }
+        delete: {
+          args: Prisma.VehicleComplianceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        update: {
+          args: Prisma.VehicleComplianceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        deleteMany: {
+          args: Prisma.VehicleComplianceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VehicleComplianceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VehicleComplianceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>[]
+        }
+        upsert: {
+          args: Prisma.VehicleComplianceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleCompliancePayload>
+        }
+        aggregate: {
+          args: Prisma.VehicleComplianceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleCompliance>
+        }
+        groupBy: {
+          args: Prisma.VehicleComplianceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleComplianceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VehicleComplianceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleComplianceCountAggregateOutputType> | number
+        }
+      }
+    }
+    VehicleComplianceDocument: {
+      payload: Prisma.$VehicleComplianceDocumentPayload<ExtArgs>
+      fields: Prisma.VehicleComplianceDocumentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VehicleComplianceDocumentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VehicleComplianceDocumentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        findFirst: {
+          args: Prisma.VehicleComplianceDocumentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VehicleComplianceDocumentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        findMany: {
+          args: Prisma.VehicleComplianceDocumentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>[]
+        }
+        create: {
+          args: Prisma.VehicleComplianceDocumentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        createMany: {
+          args: Prisma.VehicleComplianceDocumentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VehicleComplianceDocumentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>[]
+        }
+        delete: {
+          args: Prisma.VehicleComplianceDocumentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        update: {
+          args: Prisma.VehicleComplianceDocumentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        deleteMany: {
+          args: Prisma.VehicleComplianceDocumentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VehicleComplianceDocumentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VehicleComplianceDocumentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>[]
+        }
+        upsert: {
+          args: Prisma.VehicleComplianceDocumentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleComplianceDocumentPayload>
+        }
+        aggregate: {
+          args: Prisma.VehicleComplianceDocumentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleComplianceDocument>
+        }
+        groupBy: {
+          args: Prisma.VehicleComplianceDocumentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleComplianceDocumentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VehicleComplianceDocumentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleComplianceDocumentCountAggregateOutputType> | number
+        }
+      }
+    }
     Vehicle: {
       payload: Prisma.$VehiclePayload<ExtArgs>
       fields: Prisma.VehicleFieldRefs
@@ -8055,154 +8353,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    VehicleInsuranceHistory: {
-      payload: Prisma.$VehicleInsuranceHistoryPayload<ExtArgs>
-      fields: Prisma.VehicleInsuranceHistoryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.VehicleInsuranceHistoryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.VehicleInsuranceHistoryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        findFirst: {
-          args: Prisma.VehicleInsuranceHistoryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.VehicleInsuranceHistoryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        findMany: {
-          args: Prisma.VehicleInsuranceHistoryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
-        }
-        create: {
-          args: Prisma.VehicleInsuranceHistoryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        createMany: {
-          args: Prisma.VehicleInsuranceHistoryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.VehicleInsuranceHistoryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
-        }
-        delete: {
-          args: Prisma.VehicleInsuranceHistoryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        update: {
-          args: Prisma.VehicleInsuranceHistoryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        deleteMany: {
-          args: Prisma.VehicleInsuranceHistoryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.VehicleInsuranceHistoryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.VehicleInsuranceHistoryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>[]
-        }
-        upsert: {
-          args: Prisma.VehicleInsuranceHistoryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleInsuranceHistoryPayload>
-        }
-        aggregate: {
-          args: Prisma.VehicleInsuranceHistoryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleInsuranceHistory>
-        }
-        groupBy: {
-          args: Prisma.VehicleInsuranceHistoryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VehicleInsuranceHistoryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.VehicleInsuranceHistoryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VehicleInsuranceHistoryCountAggregateOutputType> | number
-        }
-      }
-    }
-    VehicleRegistrationHistory: {
-      payload: Prisma.$VehicleRegistrationHistoryPayload<ExtArgs>
-      fields: Prisma.VehicleRegistrationHistoryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.VehicleRegistrationHistoryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.VehicleRegistrationHistoryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        findFirst: {
-          args: Prisma.VehicleRegistrationHistoryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.VehicleRegistrationHistoryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        findMany: {
-          args: Prisma.VehicleRegistrationHistoryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
-        }
-        create: {
-          args: Prisma.VehicleRegistrationHistoryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        createMany: {
-          args: Prisma.VehicleRegistrationHistoryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.VehicleRegistrationHistoryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
-        }
-        delete: {
-          args: Prisma.VehicleRegistrationHistoryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        update: {
-          args: Prisma.VehicleRegistrationHistoryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        deleteMany: {
-          args: Prisma.VehicleRegistrationHistoryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.VehicleRegistrationHistoryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.VehicleRegistrationHistoryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>[]
-        }
-        upsert: {
-          args: Prisma.VehicleRegistrationHistoryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleRegistrationHistoryPayload>
-        }
-        aggregate: {
-          args: Prisma.VehicleRegistrationHistoryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleRegistrationHistory>
-        }
-        groupBy: {
-          args: Prisma.VehicleRegistrationHistoryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VehicleRegistrationHistoryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.VehicleRegistrationHistoryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VehicleRegistrationHistoryCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -8476,6 +8626,15 @@ export const InsuranceCompanyScalarFieldEnum = {
 } as const
 
 export type InsuranceCompanyScalarFieldEnum = (typeof InsuranceCompanyScalarFieldEnum)[keyof typeof InsuranceCompanyScalarFieldEnum]
+
+
+export const ComplianceProviderScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code'
+} as const
+
+export type ComplianceProviderScalarFieldEnum = (typeof ComplianceProviderScalarFieldEnum)[keyof typeof ComplianceProviderScalarFieldEnum]
 
 
 export const ValuesScalarFieldEnum = {
@@ -8781,6 +8940,35 @@ export const RentalActivityScalarFieldEnum = {
 } as const
 
 export type RentalActivityScalarFieldEnum = (typeof RentalActivityScalarFieldEnum)[keyof typeof RentalActivityScalarFieldEnum]
+
+
+export const MediaScalarFieldEnum = {
+  id: 'id',
+  accessToken: 'accessToken',
+  fileName: 'fileName',
+  originalName: 'originalName',
+  path: 'path',
+  bucket: 'bucket',
+  mimeType: 'mimeType',
+  extension: 'extension',
+  size: 'size',
+  type: 'type',
+  url: 'url',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  altText: 'altText',
+  caption: 'caption',
+  checksum: 'checksum',
+  createById: 'createById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
+  permanentlyDeleteAt: 'permanentlyDeleteAt'
+} as const
+
+export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
 export const TenantNotificationScalarFieldEnum = {
@@ -9540,6 +9728,38 @@ export const UserRolePermissionScalarFieldEnum = {
 export type UserRolePermissionScalarFieldEnum = (typeof UserRolePermissionScalarFieldEnum)[keyof typeof UserRolePermissionScalarFieldEnum]
 
 
+export const VehicleComplianceScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  type: 'type',
+  status: 'status',
+  referenceNumber: 'referenceNumber',
+  providerId: 'providerId',
+  issuedAt: 'issuedAt',
+  expiresAt: 'expiresAt',
+  renewedAt: 'renewedAt',
+  notes: 'notes',
+  isCurrent: 'isCurrent',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt'
+} as const
+
+export type VehicleComplianceScalarFieldEnum = (typeof VehicleComplianceScalarFieldEnum)[keyof typeof VehicleComplianceScalarFieldEnum]
+
+
+export const VehicleComplianceDocumentScalarFieldEnum = {
+  id: 'id',
+  vehicleComplianceId: 'vehicleComplianceId',
+  documentId: 'documentId'
+} as const
+
+export type VehicleComplianceDocumentScalarFieldEnum = (typeof VehicleComplianceDocumentScalarFieldEnum)[keyof typeof VehicleComplianceDocumentScalarFieldEnum]
+
+
 export const VehicleScalarFieldEnum = {
   id: 'id',
   year: 'year',
@@ -9717,39 +9937,6 @@ export const VehicleEventScalarFieldEnum = {
 } as const
 
 export type VehicleEventScalarFieldEnum = (typeof VehicleEventScalarFieldEnum)[keyof typeof VehicleEventScalarFieldEnum]
-
-
-export const VehicleInsuranceHistoryScalarFieldEnum = {
-  id: 'id',
-  vehicleId: 'vehicleId',
-  insuranceCompanyId: 'insuranceCompanyId',
-  policyNumber: 'policyNumber',
-  validFrom: 'validFrom',
-  validTo: 'validTo',
-  expired: 'expired',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
-} as const
-
-export type VehicleInsuranceHistoryScalarFieldEnum = (typeof VehicleInsuranceHistoryScalarFieldEnum)[keyof typeof VehicleInsuranceHistoryScalarFieldEnum]
-
-
-export const VehicleRegistrationHistoryScalarFieldEnum = {
-  id: 'id',
-  vehicleId: 'vehicleId',
-  registrationNumber: 'registrationNumber',
-  validFrom: 'validFrom',
-  validTo: 'validTo',
-  expired: 'expired',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdBy: 'createdBy',
-  updatedBy: 'updatedBy'
-} as const
-
-export type VehicleRegistrationHistoryScalarFieldEnum = (typeof VehicleRegistrationHistoryScalarFieldEnum)[keyof typeof VehicleRegistrationHistoryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -9950,6 +10137,20 @@ export type EnumRentalActionFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'RentalAction[]'
  */
 export type ListEnumRentalActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RentalAction[]'>
+    
+
+
+/**
+ * Reference to a field of type 'MediaType'
+ */
+export type EnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType'>
+    
+
+
+/**
+ * Reference to a field of type 'MediaType[]'
+ */
+export type ListEnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType[]'>
     
 
 
@@ -10206,6 +10407,34 @@ export type ListEnumOtpTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
 
 
 /**
+ * Reference to a field of type 'VehicleComplianceType'
+ */
+export type EnumVehicleComplianceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleComplianceType'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleComplianceType[]'
+ */
+export type ListEnumVehicleComplianceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleComplianceType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleComplianceStatus'
+ */
+export type EnumVehicleComplianceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleComplianceStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleComplianceStatus[]'
+ */
+export type ListEnumVehicleComplianceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleComplianceStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -10409,6 +10638,7 @@ export type GlobalOmitConfig = {
   vendorType?: Prisma.VendorTypeOmit
   port?: Prisma.PortOmit
   insuranceCompany?: Prisma.InsuranceCompanyOmit
+  complianceProvider?: Prisma.ComplianceProviderOmit
   values?: Prisma.ValuesOmit
   customer?: Prisma.CustomerOmit
   customerMessengerApp?: Prisma.CustomerMessengerAppOmit
@@ -10428,6 +10658,7 @@ export type GlobalOmitConfig = {
   form?: Prisma.FormOmit
   formResponse?: Prisma.FormResponseOmit
   rentalActivity?: Prisma.RentalActivityOmit
+  media?: Prisma.MediaOmit
   tenantNotification?: Prisma.TenantNotificationOmit
   notificationReadStatus?: Prisma.NotificationReadStatusOmit
   appPermission?: Prisma.AppPermissionOmit
@@ -10476,6 +10707,8 @@ export type GlobalOmitConfig = {
   adminUser?: Prisma.AdminUserOmit
   userRole?: Prisma.UserRoleOmit
   userRolePermission?: Prisma.UserRolePermissionOmit
+  vehicleCompliance?: Prisma.VehicleComplianceOmit
+  vehicleComplianceDocument?: Prisma.VehicleComplianceDocumentOmit
   vehicle?: Prisma.VehicleOmit
   vehicleDiscount?: Prisma.VehicleDiscountOmit
   vehicleDamage?: Prisma.VehicleDamageOmit
@@ -10486,8 +10719,6 @@ export type GlobalOmitConfig = {
   vehicleServiceSchedule?: Prisma.VehicleServiceScheduleOmit
   bookingVehicleHistory?: Prisma.BookingVehicleHistoryOmit
   vehicleEvent?: Prisma.VehicleEventOmit
-  vehicleInsuranceHistory?: Prisma.VehicleInsuranceHistoryOmit
-  vehicleRegistrationHistory?: Prisma.VehicleRegistrationHistoryOmit
 }
 
 /* Types for Logging */

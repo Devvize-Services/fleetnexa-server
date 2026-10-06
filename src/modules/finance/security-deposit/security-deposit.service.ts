@@ -12,7 +12,7 @@ import {
 import { randomUUID } from 'crypto';
 import { TransactionService } from '../../../modules/transaction/transaction.service';
 import { TransactionDto } from '../../../modules/transaction/transaction.dto';
-import { ActivityService } from '../../../common/activity/activity.service';
+import { ActivityLogService } from '../../activity-log/activity-log.service';
 import { CustomerService } from '../../../modules/customer/customer.service';
 
 @Injectable()
@@ -24,7 +24,7 @@ export class SecurityDepositService {
     private readonly bookingRepo: BookingRepository,
     private readonly paymentService: PaymentService,
     private readonly transactionService: TransactionService,
-    private readonly activity: ActivityService,
+    private readonly activity: ActivityLogService,
     private readonly customerService: CustomerService,
   ) {}
 
