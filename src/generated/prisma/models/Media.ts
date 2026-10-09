@@ -27,7 +27,6 @@ export type AggregateMedia = {
 }
 
 export type MediaAvgAggregateOutputType = {
-  id: number | null
   size: number | null
   width: number | null
   height: number | null
@@ -35,7 +34,6 @@ export type MediaAvgAggregateOutputType = {
 }
 
 export type MediaSumAggregateOutputType = {
-  id: number | null
   size: number | null
   width: number | null
   height: number | null
@@ -43,17 +41,16 @@ export type MediaSumAggregateOutputType = {
 }
 
 export type MediaMinAggregateOutputType = {
-  id: number | null
-  accessToken: string | null
+  id: string | null
   fileName: string | null
   originalName: string | null
   path: string | null
   bucket: string | null
   mimeType: string | null
   extension: string | null
+  url: string | null
   size: number | null
   type: $Enums.MediaType | null
-  url: string | null
   width: number | null
   height: number | null
   duration: number | null
@@ -69,17 +66,16 @@ export type MediaMinAggregateOutputType = {
 }
 
 export type MediaMaxAggregateOutputType = {
-  id: number | null
-  accessToken: string | null
+  id: string | null
   fileName: string | null
   originalName: string | null
   path: string | null
   bucket: string | null
   mimeType: string | null
   extension: string | null
+  url: string | null
   size: number | null
   type: $Enums.MediaType | null
-  url: string | null
   width: number | null
   height: number | null
   duration: number | null
@@ -96,16 +92,15 @@ export type MediaMaxAggregateOutputType = {
 
 export type MediaCountAggregateOutputType = {
   id: number
-  accessToken: number
   fileName: number
   originalName: number
   path: number
   bucket: number
   mimeType: number
   extension: number
+  url: number
   size: number
   type: number
-  url: number
   width: number
   height: number
   duration: number
@@ -123,7 +118,6 @@ export type MediaCountAggregateOutputType = {
 
 
 export type MediaAvgAggregateInputType = {
-  id?: true
   size?: true
   width?: true
   height?: true
@@ -131,7 +125,6 @@ export type MediaAvgAggregateInputType = {
 }
 
 export type MediaSumAggregateInputType = {
-  id?: true
   size?: true
   width?: true
   height?: true
@@ -140,16 +133,15 @@ export type MediaSumAggregateInputType = {
 
 export type MediaMinAggregateInputType = {
   id?: true
-  accessToken?: true
   fileName?: true
   originalName?: true
   path?: true
   bucket?: true
   mimeType?: true
   extension?: true
+  url?: true
   size?: true
   type?: true
-  url?: true
   width?: true
   height?: true
   duration?: true
@@ -166,16 +158,15 @@ export type MediaMinAggregateInputType = {
 
 export type MediaMaxAggregateInputType = {
   id?: true
-  accessToken?: true
   fileName?: true
   originalName?: true
   path?: true
   bucket?: true
   mimeType?: true
   extension?: true
+  url?: true
   size?: true
   type?: true
-  url?: true
   width?: true
   height?: true
   duration?: true
@@ -192,16 +183,15 @@ export type MediaMaxAggregateInputType = {
 
 export type MediaCountAggregateInputType = {
   id?: true
-  accessToken?: true
   fileName?: true
   originalName?: true
   path?: true
   bucket?: true
   mimeType?: true
   extension?: true
+  url?: true
   size?: true
   type?: true
-  url?: true
   width?: true
   height?: true
   duration?: true
@@ -304,17 +294,16 @@ export type MediaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 export type MediaGroupByOutputType = {
-  id: number
-  accessToken: string
+  id: string
   fileName: string
   originalName: string
   path: string
   bucket: string
   mimeType: string
   extension: string
+  url: string | null
   size: number
   type: $Enums.MediaType
-  url: string | null
   width: number | null
   height: number | null
   duration: number | null
@@ -353,17 +342,16 @@ export type MediaWhereInput = {
   AND?: Prisma.MediaWhereInput | Prisma.MediaWhereInput[]
   OR?: Prisma.MediaWhereInput[]
   NOT?: Prisma.MediaWhereInput | Prisma.MediaWhereInput[]
-  id?: Prisma.IntFilter<"Media"> | number
-  accessToken?: Prisma.StringFilter<"Media"> | string
+  id?: Prisma.StringFilter<"Media"> | string
   fileName?: Prisma.StringFilter<"Media"> | string
   originalName?: Prisma.StringFilter<"Media"> | string
   path?: Prisma.StringFilter<"Media"> | string
   bucket?: Prisma.StringFilter<"Media"> | string
   mimeType?: Prisma.StringFilter<"Media"> | string
   extension?: Prisma.StringFilter<"Media"> | string
+  url?: Prisma.StringNullableFilter<"Media"> | string | null
   size?: Prisma.IntFilter<"Media"> | number
   type?: Prisma.EnumMediaTypeFilter<"Media"> | $Enums.MediaType
-  url?: Prisma.StringNullableFilter<"Media"> | string | null
   width?: Prisma.IntNullableFilter<"Media"> | number | null
   height?: Prisma.IntNullableFilter<"Media"> | number | null
   duration?: Prisma.IntNullableFilter<"Media"> | number | null
@@ -376,21 +364,19 @@ export type MediaWhereInput = {
   isDeleted?: Prisma.BoolFilter<"Media"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
   permanentlyDeleteAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentListRelationFilter
 }
 
 export type MediaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  accessToken?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
   originalName?: Prisma.SortOrder
   path?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
   mimeType?: Prisma.SortOrder
   extension?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   size?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  url?: Prisma.SortOrderInput | Prisma.SortOrder
   width?: Prisma.SortOrderInput | Prisma.SortOrder
   height?: Prisma.SortOrderInput | Prisma.SortOrder
   duration?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -403,12 +389,10 @@ export type MediaOrderByWithRelationInput = {
   isDeleted?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   permanentlyDeleteAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  complianceDocuments?: Prisma.VehicleComplianceDocumentOrderByRelationAggregateInput
 }
 
 export type MediaWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
-  accessToken?: string
+  id?: string
   AND?: Prisma.MediaWhereInput | Prisma.MediaWhereInput[]
   OR?: Prisma.MediaWhereInput[]
   NOT?: Prisma.MediaWhereInput | Prisma.MediaWhereInput[]
@@ -418,9 +402,9 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   bucket?: Prisma.StringFilter<"Media"> | string
   mimeType?: Prisma.StringFilter<"Media"> | string
   extension?: Prisma.StringFilter<"Media"> | string
+  url?: Prisma.StringNullableFilter<"Media"> | string | null
   size?: Prisma.IntFilter<"Media"> | number
   type?: Prisma.EnumMediaTypeFilter<"Media"> | $Enums.MediaType
-  url?: Prisma.StringNullableFilter<"Media"> | string | null
   width?: Prisma.IntNullableFilter<"Media"> | number | null
   height?: Prisma.IntNullableFilter<"Media"> | number | null
   duration?: Prisma.IntNullableFilter<"Media"> | number | null
@@ -433,21 +417,19 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   isDeleted?: Prisma.BoolFilter<"Media"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
   permanentlyDeleteAt?: Prisma.DateTimeNullableFilter<"Media"> | Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentListRelationFilter
-}, "id" | "accessToken">
+}, "id">
 
 export type MediaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  accessToken?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
   originalName?: Prisma.SortOrder
   path?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
   mimeType?: Prisma.SortOrder
   extension?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   size?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  url?: Prisma.SortOrderInput | Prisma.SortOrder
   width?: Prisma.SortOrderInput | Prisma.SortOrder
   height?: Prisma.SortOrderInput | Prisma.SortOrder
   duration?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -471,17 +453,16 @@ export type MediaScalarWhereWithAggregatesInput = {
   AND?: Prisma.MediaScalarWhereWithAggregatesInput | Prisma.MediaScalarWhereWithAggregatesInput[]
   OR?: Prisma.MediaScalarWhereWithAggregatesInput[]
   NOT?: Prisma.MediaScalarWhereWithAggregatesInput | Prisma.MediaScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Media"> | number
-  accessToken?: Prisma.StringWithAggregatesFilter<"Media"> | string
+  id?: Prisma.StringWithAggregatesFilter<"Media"> | string
   fileName?: Prisma.StringWithAggregatesFilter<"Media"> | string
   originalName?: Prisma.StringWithAggregatesFilter<"Media"> | string
   path?: Prisma.StringWithAggregatesFilter<"Media"> | string
   bucket?: Prisma.StringWithAggregatesFilter<"Media"> | string
   mimeType?: Prisma.StringWithAggregatesFilter<"Media"> | string
   extension?: Prisma.StringWithAggregatesFilter<"Media"> | string
+  url?: Prisma.StringNullableWithAggregatesFilter<"Media"> | string | null
   size?: Prisma.IntWithAggregatesFilter<"Media"> | number
   type?: Prisma.EnumMediaTypeWithAggregatesFilter<"Media"> | $Enums.MediaType
-  url?: Prisma.StringNullableWithAggregatesFilter<"Media"> | string | null
   width?: Prisma.IntNullableWithAggregatesFilter<"Media"> | number | null
   height?: Prisma.IntNullableWithAggregatesFilter<"Media"> | number | null
   duration?: Prisma.IntNullableWithAggregatesFilter<"Media"> | number | null
@@ -497,16 +478,16 @@ export type MediaScalarWhereWithAggregatesInput = {
 }
 
 export type MediaCreateInput = {
-  accessToken?: string
+  id?: string
   fileName: string
   originalName: string
   path: string
   bucket: string
   mimeType: string
   extension: string
+  url?: string | null
   size: number
   type: $Enums.MediaType
-  url?: string | null
   width?: number | null
   height?: number | null
   duration?: number | null
@@ -519,21 +500,19 @@ export type MediaCreateInput = {
   isDeleted?: boolean
   deletedAt?: Date | string | null
   permanentlyDeleteAt?: Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentCreateNestedManyWithoutDocumentInput
 }
 
 export type MediaUncheckedCreateInput = {
-  id?: number
-  accessToken?: string
+  id?: string
   fileName: string
   originalName: string
   path: string
   bucket: string
   mimeType: string
   extension: string
+  url?: string | null
   size: number
   type: $Enums.MediaType
-  url?: string | null
   width?: number | null
   height?: number | null
   duration?: number | null
@@ -546,20 +525,19 @@ export type MediaUncheckedCreateInput = {
   isDeleted?: boolean
   deletedAt?: Date | string | null
   permanentlyDeleteAt?: Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentUncheckedCreateNestedManyWithoutDocumentInput
 }
 
 export type MediaUpdateInput = {
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
   path?: Prisma.StringFieldUpdateOperationsInput | string
   bucket?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   extension?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   size?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -572,21 +550,19 @@ export type MediaUpdateInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   permanentlyDeleteAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentUpdateManyWithoutDocumentNestedInput
 }
 
 export type MediaUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
   path?: Prisma.StringFieldUpdateOperationsInput | string
   bucket?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   extension?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   size?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -599,21 +575,19 @@ export type MediaUncheckedUpdateInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   permanentlyDeleteAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  complianceDocuments?: Prisma.VehicleComplianceDocumentUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
 export type MediaCreateManyInput = {
-  id?: number
-  accessToken?: string
+  id?: string
   fileName: string
   originalName: string
   path: string
   bucket: string
   mimeType: string
   extension: string
+  url?: string | null
   size: number
   type: $Enums.MediaType
-  url?: string | null
   width?: number | null
   height?: number | null
   duration?: number | null
@@ -629,16 +603,16 @@ export type MediaCreateManyInput = {
 }
 
 export type MediaUpdateManyMutationInput = {
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
   path?: Prisma.StringFieldUpdateOperationsInput | string
   bucket?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   extension?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   size?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -654,17 +628,16 @@ export type MediaUpdateManyMutationInput = {
 }
 
 export type MediaUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
   originalName?: Prisma.StringFieldUpdateOperationsInput | string
   path?: Prisma.StringFieldUpdateOperationsInput | string
   bucket?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   extension?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   size?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -681,16 +654,15 @@ export type MediaUncheckedUpdateManyInput = {
 
 export type MediaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  accessToken?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
   originalName?: Prisma.SortOrder
   path?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
   mimeType?: Prisma.SortOrder
   extension?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   size?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
   duration?: Prisma.SortOrder
@@ -706,7 +678,6 @@ export type MediaCountOrderByAggregateInput = {
 }
 
 export type MediaAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   size?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
@@ -715,16 +686,15 @@ export type MediaAvgOrderByAggregateInput = {
 
 export type MediaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  accessToken?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
   originalName?: Prisma.SortOrder
   path?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
   mimeType?: Prisma.SortOrder
   extension?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   size?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
   duration?: Prisma.SortOrder
@@ -741,16 +711,15 @@ export type MediaMaxOrderByAggregateInput = {
 
 export type MediaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  accessToken?: Prisma.SortOrder
   fileName?: Prisma.SortOrder
   originalName?: Prisma.SortOrder
   path?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
   mimeType?: Prisma.SortOrder
   extension?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   size?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
   duration?: Prisma.SortOrder
@@ -766,197 +735,29 @@ export type MediaMinOrderByAggregateInput = {
 }
 
 export type MediaSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   size?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
   duration?: Prisma.SortOrder
 }
 
-export type MediaScalarRelationFilter = {
-  is?: Prisma.MediaWhereInput
-  isNot?: Prisma.MediaWhereInput
-}
-
 export type EnumMediaTypeFieldUpdateOperationsInput = {
   set?: $Enums.MediaType
 }
 
-export type MediaCreateNestedOneWithoutComplianceDocumentsInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedCreateWithoutComplianceDocumentsInput>
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutComplianceDocumentsInput
-  connect?: Prisma.MediaWhereUniqueInput
-}
-
-export type MediaUpdateOneRequiredWithoutComplianceDocumentsNestedInput = {
-  create?: Prisma.XOR<Prisma.MediaCreateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedCreateWithoutComplianceDocumentsInput>
-  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutComplianceDocumentsInput
-  upsert?: Prisma.MediaUpsertWithoutComplianceDocumentsInput
-  connect?: Prisma.MediaWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutComplianceDocumentsInput, Prisma.MediaUpdateWithoutComplianceDocumentsInput>, Prisma.MediaUncheckedUpdateWithoutComplianceDocumentsInput>
-}
-
-export type MediaCreateWithoutComplianceDocumentsInput = {
-  accessToken?: string
-  fileName: string
-  originalName: string
-  path: string
-  bucket: string
-  mimeType: string
-  extension: string
-  size: number
-  type: $Enums.MediaType
-  url?: string | null
-  width?: number | null
-  height?: number | null
-  duration?: number | null
-  altText?: string | null
-  caption?: string | null
-  checksum?: string | null
-  createById: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  isDeleted?: boolean
-  deletedAt?: Date | string | null
-  permanentlyDeleteAt?: Date | string | null
-}
-
-export type MediaUncheckedCreateWithoutComplianceDocumentsInput = {
-  id?: number
-  accessToken?: string
-  fileName: string
-  originalName: string
-  path: string
-  bucket: string
-  mimeType: string
-  extension: string
-  size: number
-  type: $Enums.MediaType
-  url?: string | null
-  width?: number | null
-  height?: number | null
-  duration?: number | null
-  altText?: string | null
-  caption?: string | null
-  checksum?: string | null
-  createById: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  isDeleted?: boolean
-  deletedAt?: Date | string | null
-  permanentlyDeleteAt?: Date | string | null
-}
-
-export type MediaCreateOrConnectWithoutComplianceDocumentsInput = {
-  where: Prisma.MediaWhereUniqueInput
-  create: Prisma.XOR<Prisma.MediaCreateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedCreateWithoutComplianceDocumentsInput>
-}
-
-export type MediaUpsertWithoutComplianceDocumentsInput = {
-  update: Prisma.XOR<Prisma.MediaUpdateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedUpdateWithoutComplianceDocumentsInput>
-  create: Prisma.XOR<Prisma.MediaCreateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedCreateWithoutComplianceDocumentsInput>
-  where?: Prisma.MediaWhereInput
-}
-
-export type MediaUpdateToOneWithWhereWithoutComplianceDocumentsInput = {
-  where?: Prisma.MediaWhereInput
-  data: Prisma.XOR<Prisma.MediaUpdateWithoutComplianceDocumentsInput, Prisma.MediaUncheckedUpdateWithoutComplianceDocumentsInput>
-}
-
-export type MediaUpdateWithoutComplianceDocumentsInput = {
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  originalName?: Prisma.StringFieldUpdateOperationsInput | string
-  path?: Prisma.StringFieldUpdateOperationsInput | string
-  bucket?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  extension?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createById?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  permanentlyDeleteAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-}
-
-export type MediaUncheckedUpdateWithoutComplianceDocumentsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
-  fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  originalName?: Prisma.StringFieldUpdateOperationsInput | string
-  path?: Prisma.StringFieldUpdateOperationsInput | string
-  bucket?: Prisma.StringFieldUpdateOperationsInput | string
-  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
-  extension?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createById?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  permanentlyDeleteAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-}
-
-
-/**
- * Count Type MediaCountOutputType
- */
-
-export type MediaCountOutputType = {
-  complianceDocuments: number
-}
-
-export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  complianceDocuments?: boolean | MediaCountOutputTypeCountComplianceDocumentsArgs
-}
-
-/**
- * MediaCountOutputType without action
- */
-export type MediaCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the MediaCountOutputType
-   */
-  select?: Prisma.MediaCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * MediaCountOutputType without action
- */
-export type MediaCountOutputTypeCountComplianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.VehicleComplianceDocumentWhereInput
-}
 
 
 export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  accessToken?: boolean
   fileName?: boolean
   originalName?: boolean
   path?: boolean
   bucket?: boolean
   mimeType?: boolean
   extension?: boolean
+  url?: boolean
   size?: boolean
   type?: boolean
-  url?: boolean
   width?: boolean
   height?: boolean
   duration?: boolean
@@ -969,22 +770,19 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   isDeleted?: boolean
   deletedAt?: boolean
   permanentlyDeleteAt?: boolean
-  complianceDocuments?: boolean | Prisma.Media$complianceDocumentsArgs<ExtArgs>
-  _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
 
 export type MediaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  accessToken?: boolean
   fileName?: boolean
   originalName?: boolean
   path?: boolean
   bucket?: boolean
   mimeType?: boolean
   extension?: boolean
+  url?: boolean
   size?: boolean
   type?: boolean
-  url?: boolean
   width?: boolean
   height?: boolean
   duration?: boolean
@@ -1001,16 +799,15 @@ export type MediaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type MediaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  accessToken?: boolean
   fileName?: boolean
   originalName?: boolean
   path?: boolean
   bucket?: boolean
   mimeType?: boolean
   extension?: boolean
+  url?: boolean
   size?: boolean
   type?: boolean
-  url?: boolean
   width?: boolean
   height?: boolean
   duration?: boolean
@@ -1027,16 +824,15 @@ export type MediaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type MediaSelectScalar = {
   id?: boolean
-  accessToken?: boolean
   fileName?: boolean
   originalName?: boolean
   path?: boolean
   bucket?: boolean
   mimeType?: boolean
   extension?: boolean
+  url?: boolean
   size?: boolean
   type?: boolean
-  url?: boolean
   width?: boolean
   height?: boolean
   duration?: boolean
@@ -1051,31 +847,22 @@ export type MediaSelectScalar = {
   permanentlyDeleteAt?: boolean
 }
 
-export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accessToken" | "fileName" | "originalName" | "path" | "bucket" | "mimeType" | "extension" | "size" | "type" | "url" | "width" | "height" | "duration" | "altText" | "caption" | "checksum" | "createById" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt" | "permanentlyDeleteAt", ExtArgs["result"]["media"]>
-export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  complianceDocuments?: boolean | Prisma.Media$complianceDocumentsArgs<ExtArgs>
-  _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
-}
-export type MediaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type MediaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type MediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fileName" | "originalName" | "path" | "bucket" | "mimeType" | "extension" | "url" | "size" | "type" | "width" | "height" | "duration" | "altText" | "caption" | "checksum" | "createById" | "createdAt" | "updatedAt" | "isDeleted" | "deletedAt" | "permanentlyDeleteAt", ExtArgs["result"]["media"]>
 
 export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Media"
-  objects: {
-    complianceDocuments: Prisma.$VehicleComplianceDocumentPayload<ExtArgs>[]
-  }
+  objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
-    accessToken: string
+    id: string
     fileName: string
     originalName: string
     path: string
     bucket: string
     mimeType: string
     extension: string
+    url: string | null
     size: number
     type: $Enums.MediaType
-    url: string | null
     width: number | null
     height: number | null
     duration: number | null
@@ -1482,7 +1269,6 @@ readonly fields: MediaFieldRefs;
  */
 export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  complianceDocuments<T extends Prisma.Media$complianceDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$complianceDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehicleComplianceDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1512,17 +1298,16 @@ export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Ty
  * Fields of the Media model
  */
 export interface MediaFieldRefs {
-  readonly id: Prisma.FieldRef<"Media", 'Int'>
-  readonly accessToken: Prisma.FieldRef<"Media", 'String'>
+  readonly id: Prisma.FieldRef<"Media", 'String'>
   readonly fileName: Prisma.FieldRef<"Media", 'String'>
   readonly originalName: Prisma.FieldRef<"Media", 'String'>
   readonly path: Prisma.FieldRef<"Media", 'String'>
   readonly bucket: Prisma.FieldRef<"Media", 'String'>
   readonly mimeType: Prisma.FieldRef<"Media", 'String'>
   readonly extension: Prisma.FieldRef<"Media", 'String'>
+  readonly url: Prisma.FieldRef<"Media", 'String'>
   readonly size: Prisma.FieldRef<"Media", 'Int'>
   readonly type: Prisma.FieldRef<"Media", 'MediaType'>
-  readonly url: Prisma.FieldRef<"Media", 'String'>
   readonly width: Prisma.FieldRef<"Media", 'Int'>
   readonly height: Prisma.FieldRef<"Media", 'Int'>
   readonly duration: Prisma.FieldRef<"Media", 'Int'>
@@ -1552,10 +1337,6 @@ export type MediaFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * Filter, which Media to fetch.
    */
   where: Prisma.MediaWhereUniqueInput
@@ -1574,10 +1355,6 @@ export type MediaFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * Filter, which Media to fetch.
    */
   where: Prisma.MediaWhereUniqueInput
@@ -1595,10 +1372,6 @@ export type MediaFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Media
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
   /**
    * Filter, which Media to fetch.
    */
@@ -1648,10 +1421,6 @@ export type MediaFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * Filter, which Media to fetch.
    */
   where?: Prisma.MediaWhereInput
@@ -1699,10 +1468,6 @@ export type MediaFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Media
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
   /**
    * Filter, which Media to fetch.
    */
@@ -1752,10 +1517,6 @@ export type MediaCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * The data needed to create a Media.
    */
   data: Prisma.XOR<Prisma.MediaCreateInput, Prisma.MediaUncheckedCreateInput>
@@ -1803,10 +1564,6 @@ export type MediaUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Media
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
   /**
    * The data needed to update a Media.
    */
@@ -1874,10 +1631,6 @@ export type MediaUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * The filter to search for the Media to update in case it exists.
    */
   where: Prisma.MediaWhereUniqueInput
@@ -1904,10 +1657,6 @@ export type MediaDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
-  /**
    * Filter which Media to delete.
    */
   where: Prisma.MediaWhereUniqueInput
@@ -1928,30 +1677,6 @@ export type MediaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Media.complianceDocuments
- */
-export type Media$complianceDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the VehicleComplianceDocument
-   */
-  select?: Prisma.VehicleComplianceDocumentSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the VehicleComplianceDocument
-   */
-  omit?: Prisma.VehicleComplianceDocumentOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VehicleComplianceDocumentInclude<ExtArgs> | null
-  where?: Prisma.VehicleComplianceDocumentWhereInput
-  orderBy?: Prisma.VehicleComplianceDocumentOrderByWithRelationInput | Prisma.VehicleComplianceDocumentOrderByWithRelationInput[]
-  cursor?: Prisma.VehicleComplianceDocumentWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.VehicleComplianceDocumentScalarFieldEnum | Prisma.VehicleComplianceDocumentScalarFieldEnum[]
-}
-
-/**
  * Media without action
  */
 export type MediaDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1963,8 +1688,4 @@ export type MediaDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Media
    */
   omit?: Prisma.MediaOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MediaInclude<ExtArgs> | null
 }

@@ -20,64 +20,46 @@ export type VehicleComplianceDocumentModel = runtime.Types.Result.DefaultSelecti
 
 export type AggregateVehicleComplianceDocument = {
   _count: VehicleComplianceDocumentCountAggregateOutputType | null
-  _avg: VehicleComplianceDocumentAvgAggregateOutputType | null
-  _sum: VehicleComplianceDocumentSumAggregateOutputType | null
   _min: VehicleComplianceDocumentMinAggregateOutputType | null
   _max: VehicleComplianceDocumentMaxAggregateOutputType | null
-}
-
-export type VehicleComplianceDocumentAvgAggregateOutputType = {
-  documentId: number | null
-}
-
-export type VehicleComplianceDocumentSumAggregateOutputType = {
-  documentId: number | null
 }
 
 export type VehicleComplianceDocumentMinAggregateOutputType = {
   id: string | null
   vehicleComplianceId: string | null
-  documentId: number | null
+  url: string | null
 }
 
 export type VehicleComplianceDocumentMaxAggregateOutputType = {
   id: string | null
   vehicleComplianceId: string | null
-  documentId: number | null
+  url: string | null
 }
 
 export type VehicleComplianceDocumentCountAggregateOutputType = {
   id: number
   vehicleComplianceId: number
-  documentId: number
+  url: number
   _all: number
 }
 
 
-export type VehicleComplianceDocumentAvgAggregateInputType = {
-  documentId?: true
-}
-
-export type VehicleComplianceDocumentSumAggregateInputType = {
-  documentId?: true
-}
-
 export type VehicleComplianceDocumentMinAggregateInputType = {
   id?: true
   vehicleComplianceId?: true
-  documentId?: true
+  url?: true
 }
 
 export type VehicleComplianceDocumentMaxAggregateInputType = {
   id?: true
   vehicleComplianceId?: true
-  documentId?: true
+  url?: true
 }
 
 export type VehicleComplianceDocumentCountAggregateInputType = {
   id?: true
   vehicleComplianceId?: true
-  documentId?: true
+  url?: true
   _all?: true
 }
 
@@ -119,18 +101,6 @@ export type VehicleComplianceDocumentAggregateArgs<ExtArgs extends runtime.Types
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: VehicleComplianceDocumentAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: VehicleComplianceDocumentSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: VehicleComplianceDocumentMinAggregateInputType
@@ -161,8 +131,6 @@ export type VehicleComplianceDocumentGroupByArgs<ExtArgs extends runtime.Types.E
   take?: number
   skip?: number
   _count?: VehicleComplianceDocumentCountAggregateInputType | true
-  _avg?: VehicleComplianceDocumentAvgAggregateInputType
-  _sum?: VehicleComplianceDocumentSumAggregateInputType
   _min?: VehicleComplianceDocumentMinAggregateInputType
   _max?: VehicleComplianceDocumentMaxAggregateInputType
 }
@@ -170,10 +138,8 @@ export type VehicleComplianceDocumentGroupByArgs<ExtArgs extends runtime.Types.E
 export type VehicleComplianceDocumentGroupByOutputType = {
   id: string
   vehicleComplianceId: string
-  documentId: number
+  url: string
   _count: VehicleComplianceDocumentCountAggregateOutputType | null
-  _avg: VehicleComplianceDocumentAvgAggregateOutputType | null
-  _sum: VehicleComplianceDocumentSumAggregateOutputType | null
   _min: VehicleComplianceDocumentMinAggregateOutputType | null
   _max: VehicleComplianceDocumentMaxAggregateOutputType | null
 }
@@ -199,40 +165,35 @@ export type VehicleComplianceDocumentWhereInput = {
   NOT?: Prisma.VehicleComplianceDocumentWhereInput | Prisma.VehicleComplianceDocumentWhereInput[]
   id?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
   vehicleComplianceId?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
-  documentId?: Prisma.IntFilter<"VehicleComplianceDocument"> | number
+  url?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
   vehicleCompliance?: Prisma.XOR<Prisma.VehicleComplianceScalarRelationFilter, Prisma.VehicleComplianceWhereInput>
-  document?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
 }
 
 export type VehicleComplianceDocumentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   vehicleComplianceId?: Prisma.SortOrder
-  documentId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   vehicleCompliance?: Prisma.VehicleComplianceOrderByWithRelationInput
-  document?: Prisma.MediaOrderByWithRelationInput
 }
 
 export type VehicleComplianceDocumentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  vehicleComplianceId_documentId?: Prisma.VehicleComplianceDocumentVehicleComplianceIdDocumentIdCompoundUniqueInput
+  vehicleComplianceId_url?: Prisma.VehicleComplianceDocumentVehicleComplianceIdUrlCompoundUniqueInput
   AND?: Prisma.VehicleComplianceDocumentWhereInput | Prisma.VehicleComplianceDocumentWhereInput[]
   OR?: Prisma.VehicleComplianceDocumentWhereInput[]
   NOT?: Prisma.VehicleComplianceDocumentWhereInput | Prisma.VehicleComplianceDocumentWhereInput[]
   vehicleComplianceId?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
-  documentId?: Prisma.IntFilter<"VehicleComplianceDocument"> | number
+  url?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
   vehicleCompliance?: Prisma.XOR<Prisma.VehicleComplianceScalarRelationFilter, Prisma.VehicleComplianceWhereInput>
-  document?: Prisma.XOR<Prisma.MediaScalarRelationFilter, Prisma.MediaWhereInput>
-}, "id" | "vehicleComplianceId_documentId">
+}, "id" | "vehicleComplianceId_url">
 
 export type VehicleComplianceDocumentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   vehicleComplianceId?: Prisma.SortOrder
-  documentId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   _count?: Prisma.VehicleComplianceDocumentCountOrderByAggregateInput
-  _avg?: Prisma.VehicleComplianceDocumentAvgOrderByAggregateInput
   _max?: Prisma.VehicleComplianceDocumentMaxOrderByAggregateInput
   _min?: Prisma.VehicleComplianceDocumentMinOrderByAggregateInput
-  _sum?: Prisma.VehicleComplianceDocumentSumOrderByAggregateInput
 }
 
 export type VehicleComplianceDocumentScalarWhereWithAggregatesInput = {
@@ -241,47 +202,48 @@ export type VehicleComplianceDocumentScalarWhereWithAggregatesInput = {
   NOT?: Prisma.VehicleComplianceDocumentScalarWhereWithAggregatesInput | Prisma.VehicleComplianceDocumentScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"VehicleComplianceDocument"> | string
   vehicleComplianceId?: Prisma.StringWithAggregatesFilter<"VehicleComplianceDocument"> | string
-  documentId?: Prisma.IntWithAggregatesFilter<"VehicleComplianceDocument"> | number
+  url?: Prisma.StringWithAggregatesFilter<"VehicleComplianceDocument"> | string
 }
 
 export type VehicleComplianceDocumentCreateInput = {
   id?: string
+  url: string
   vehicleCompliance: Prisma.VehicleComplianceCreateNestedOneWithoutDocumentsInput
-  document: Prisma.MediaCreateNestedOneWithoutComplianceDocumentsInput
 }
 
 export type VehicleComplianceDocumentUncheckedCreateInput = {
   id?: string
   vehicleComplianceId: string
-  documentId: number
+  url: string
 }
 
 export type VehicleComplianceDocumentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleCompliance?: Prisma.VehicleComplianceUpdateOneRequiredWithoutDocumentsNestedInput
-  document?: Prisma.MediaUpdateOneRequiredWithoutComplianceDocumentsNestedInput
 }
 
 export type VehicleComplianceDocumentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleComplianceId?: Prisma.StringFieldUpdateOperationsInput | string
-  documentId?: Prisma.IntFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleComplianceDocumentCreateManyInput = {
   id?: string
   vehicleComplianceId: string
-  documentId: number
+  url: string
 }
 
 export type VehicleComplianceDocumentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleComplianceDocumentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleComplianceId?: Prisma.StringFieldUpdateOperationsInput | string
-  documentId?: Prisma.IntFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleComplianceDocumentListRelationFilter = {
@@ -294,77 +256,27 @@ export type VehicleComplianceDocumentOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type VehicleComplianceDocumentVehicleComplianceIdDocumentIdCompoundUniqueInput = {
+export type VehicleComplianceDocumentVehicleComplianceIdUrlCompoundUniqueInput = {
   vehicleComplianceId: string
-  documentId: number
+  url: string
 }
 
 export type VehicleComplianceDocumentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleComplianceId?: Prisma.SortOrder
-  documentId?: Prisma.SortOrder
-}
-
-export type VehicleComplianceDocumentAvgOrderByAggregateInput = {
-  documentId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
 }
 
 export type VehicleComplianceDocumentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleComplianceId?: Prisma.SortOrder
-  documentId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
 }
 
 export type VehicleComplianceDocumentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleComplianceId?: Prisma.SortOrder
-  documentId?: Prisma.SortOrder
-}
-
-export type VehicleComplianceDocumentSumOrderByAggregateInput = {
-  documentId?: Prisma.SortOrder
-}
-
-export type VehicleComplianceDocumentCreateNestedManyWithoutDocumentInput = {
-  create?: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput> | Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput[] | Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput[]
-  connectOrCreate?: Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput | Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput[]
-  createMany?: Prisma.VehicleComplianceDocumentCreateManyDocumentInputEnvelope
-  connect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-}
-
-export type VehicleComplianceDocumentUncheckedCreateNestedManyWithoutDocumentInput = {
-  create?: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput> | Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput[] | Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput[]
-  connectOrCreate?: Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput | Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput[]
-  createMany?: Prisma.VehicleComplianceDocumentCreateManyDocumentInputEnvelope
-  connect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-}
-
-export type VehicleComplianceDocumentUpdateManyWithoutDocumentNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput> | Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput[] | Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput[]
-  connectOrCreate?: Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput | Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput[]
-  upsert?: Prisma.VehicleComplianceDocumentUpsertWithWhereUniqueWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpsertWithWhereUniqueWithoutDocumentInput[]
-  createMany?: Prisma.VehicleComplianceDocumentCreateManyDocumentInputEnvelope
-  set?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  disconnect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  delete?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  connect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  update?: Prisma.VehicleComplianceDocumentUpdateWithWhereUniqueWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpdateWithWhereUniqueWithoutDocumentInput[]
-  updateMany?: Prisma.VehicleComplianceDocumentUpdateManyWithWhereWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpdateManyWithWhereWithoutDocumentInput[]
-  deleteMany?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
-}
-
-export type VehicleComplianceDocumentUncheckedUpdateManyWithoutDocumentNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput> | Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput[] | Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput[]
-  connectOrCreate?: Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput | Prisma.VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput[]
-  upsert?: Prisma.VehicleComplianceDocumentUpsertWithWhereUniqueWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpsertWithWhereUniqueWithoutDocumentInput[]
-  createMany?: Prisma.VehicleComplianceDocumentCreateManyDocumentInputEnvelope
-  set?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  disconnect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  delete?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  connect?: Prisma.VehicleComplianceDocumentWhereUniqueInput | Prisma.VehicleComplianceDocumentWhereUniqueInput[]
-  update?: Prisma.VehicleComplianceDocumentUpdateWithWhereUniqueWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpdateWithWhereUniqueWithoutDocumentInput[]
-  updateMany?: Prisma.VehicleComplianceDocumentUpdateManyWithWhereWithoutDocumentInput | Prisma.VehicleComplianceDocumentUpdateManyWithWhereWithoutDocumentInput[]
-  deleteMany?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
+  url?: Prisma.SortOrder
 }
 
 export type VehicleComplianceDocumentCreateNestedManyWithoutVehicleComplianceInput = {
@@ -409,59 +321,14 @@ export type VehicleComplianceDocumentUncheckedUpdateManyWithoutVehicleCompliance
   deleteMany?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
 }
 
-export type VehicleComplianceDocumentCreateWithoutDocumentInput = {
-  id?: string
-  vehicleCompliance: Prisma.VehicleComplianceCreateNestedOneWithoutDocumentsInput
-}
-
-export type VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput = {
-  id?: string
-  vehicleComplianceId: string
-}
-
-export type VehicleComplianceDocumentCreateOrConnectWithoutDocumentInput = {
-  where: Prisma.VehicleComplianceDocumentWhereUniqueInput
-  create: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput>
-}
-
-export type VehicleComplianceDocumentCreateManyDocumentInputEnvelope = {
-  data: Prisma.VehicleComplianceDocumentCreateManyDocumentInput | Prisma.VehicleComplianceDocumentCreateManyDocumentInput[]
-  skipDuplicates?: boolean
-}
-
-export type VehicleComplianceDocumentUpsertWithWhereUniqueWithoutDocumentInput = {
-  where: Prisma.VehicleComplianceDocumentWhereUniqueInput
-  update: Prisma.XOR<Prisma.VehicleComplianceDocumentUpdateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedUpdateWithoutDocumentInput>
-  create: Prisma.XOR<Prisma.VehicleComplianceDocumentCreateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedCreateWithoutDocumentInput>
-}
-
-export type VehicleComplianceDocumentUpdateWithWhereUniqueWithoutDocumentInput = {
-  where: Prisma.VehicleComplianceDocumentWhereUniqueInput
-  data: Prisma.XOR<Prisma.VehicleComplianceDocumentUpdateWithoutDocumentInput, Prisma.VehicleComplianceDocumentUncheckedUpdateWithoutDocumentInput>
-}
-
-export type VehicleComplianceDocumentUpdateManyWithWhereWithoutDocumentInput = {
-  where: Prisma.VehicleComplianceDocumentScalarWhereInput
-  data: Prisma.XOR<Prisma.VehicleComplianceDocumentUpdateManyMutationInput, Prisma.VehicleComplianceDocumentUncheckedUpdateManyWithoutDocumentInput>
-}
-
-export type VehicleComplianceDocumentScalarWhereInput = {
-  AND?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
-  OR?: Prisma.VehicleComplianceDocumentScalarWhereInput[]
-  NOT?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
-  id?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
-  vehicleComplianceId?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
-  documentId?: Prisma.IntFilter<"VehicleComplianceDocument"> | number
-}
-
 export type VehicleComplianceDocumentCreateWithoutVehicleComplianceInput = {
   id?: string
-  document: Prisma.MediaCreateNestedOneWithoutComplianceDocumentsInput
+  url: string
 }
 
 export type VehicleComplianceDocumentUncheckedCreateWithoutVehicleComplianceInput = {
   id?: string
-  documentId: number
+  url: string
 }
 
 export type VehicleComplianceDocumentCreateOrConnectWithoutVehicleComplianceInput = {
@@ -490,44 +357,33 @@ export type VehicleComplianceDocumentUpdateManyWithWhereWithoutVehicleCompliance
   data: Prisma.XOR<Prisma.VehicleComplianceDocumentUpdateManyMutationInput, Prisma.VehicleComplianceDocumentUncheckedUpdateManyWithoutVehicleComplianceInput>
 }
 
-export type VehicleComplianceDocumentCreateManyDocumentInput = {
-  id?: string
-  vehicleComplianceId: string
-}
-
-export type VehicleComplianceDocumentUpdateWithoutDocumentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleCompliance?: Prisma.VehicleComplianceUpdateOneRequiredWithoutDocumentsNestedInput
-}
-
-export type VehicleComplianceDocumentUncheckedUpdateWithoutDocumentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleComplianceId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleComplianceDocumentUncheckedUpdateManyWithoutDocumentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicleComplianceId?: Prisma.StringFieldUpdateOperationsInput | string
+export type VehicleComplianceDocumentScalarWhereInput = {
+  AND?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
+  OR?: Prisma.VehicleComplianceDocumentScalarWhereInput[]
+  NOT?: Prisma.VehicleComplianceDocumentScalarWhereInput | Prisma.VehicleComplianceDocumentScalarWhereInput[]
+  id?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
+  vehicleComplianceId?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
+  url?: Prisma.StringFilter<"VehicleComplianceDocument"> | string
 }
 
 export type VehicleComplianceDocumentCreateManyVehicleComplianceInput = {
   id?: string
-  documentId: number
+  url: string
 }
 
 export type VehicleComplianceDocumentUpdateWithoutVehicleComplianceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  document?: Prisma.MediaUpdateOneRequiredWithoutComplianceDocumentsNestedInput
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleComplianceDocumentUncheckedUpdateWithoutVehicleComplianceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  documentId?: Prisma.IntFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleComplianceDocumentUncheckedUpdateManyWithoutVehicleComplianceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  documentId?: Prisma.IntFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -535,57 +391,50 @@ export type VehicleComplianceDocumentUncheckedUpdateManyWithoutVehicleCompliance
 export type VehicleComplianceDocumentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleComplianceId?: boolean
-  documentId?: boolean
+  url?: boolean
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleComplianceDocument"]>
 
 export type VehicleComplianceDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleComplianceId?: boolean
-  documentId?: boolean
+  url?: boolean
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleComplianceDocument"]>
 
 export type VehicleComplianceDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleComplianceId?: boolean
-  documentId?: boolean
+  url?: boolean
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleComplianceDocument"]>
 
 export type VehicleComplianceDocumentSelectScalar = {
   id?: boolean
   vehicleComplianceId?: boolean
-  documentId?: boolean
+  url?: boolean
 }
 
-export type VehicleComplianceDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleComplianceId" | "documentId", ExtArgs["result"]["vehicleComplianceDocument"]>
+export type VehicleComplianceDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleComplianceId" | "url", ExtArgs["result"]["vehicleComplianceDocument"]>
 export type VehicleComplianceDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 export type VehicleComplianceDocumentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 export type VehicleComplianceDocumentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicleCompliance?: boolean | Prisma.VehicleComplianceDefaultArgs<ExtArgs>
-  document?: boolean | Prisma.MediaDefaultArgs<ExtArgs>
 }
 
 export type $VehicleComplianceDocumentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "VehicleComplianceDocument"
   objects: {
     vehicleCompliance: Prisma.$VehicleCompliancePayload<ExtArgs>
-    document: Prisma.$MediaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     vehicleComplianceId: string
-    documentId: number
+    url: string
   }, ExtArgs["result"]["vehicleComplianceDocument"]>
   composites: {}
 }
@@ -981,7 +830,6 @@ readonly fields: VehicleComplianceDocumentFieldRefs;
 export interface Prisma__VehicleComplianceDocumentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   vehicleCompliance<T extends Prisma.VehicleComplianceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VehicleComplianceDefaultArgs<ExtArgs>>): Prisma.Prisma__VehicleComplianceClient<runtime.Types.Result.GetResult<Prisma.$VehicleCompliancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  document<T extends Prisma.MediaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MediaDefaultArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1013,7 +861,7 @@ export interface Prisma__VehicleComplianceDocumentClient<T, Null = never, ExtArg
 export interface VehicleComplianceDocumentFieldRefs {
   readonly id: Prisma.FieldRef<"VehicleComplianceDocument", 'String'>
   readonly vehicleComplianceId: Prisma.FieldRef<"VehicleComplianceDocument", 'String'>
-  readonly documentId: Prisma.FieldRef<"VehicleComplianceDocument", 'Int'>
+  readonly url: Prisma.FieldRef<"VehicleComplianceDocument", 'String'>
 }
     
 

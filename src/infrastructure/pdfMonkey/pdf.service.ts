@@ -1,6 +1,8 @@
 import { Global, Injectable, Logger } from '@nestjs/common';
-import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { GetObjectCommand } from '@aws-sdk/client-s3';
 import { AwsService } from '../aws/aws.service.js';
+import { StorageService } from '../../modules/storage/storage.service.js';
+import { MediaType } from '../../generated/prisma/client';
 import axios, { AxiosInstance } from 'axios';
 import { ConfigService } from '@nestjs/config';
 import {
@@ -18,19 +20,18 @@ export class PdfMonkeyService {
   private readonly pdfMonkeyApi: AxiosInstance;
   private readonly invoiceId: string;
   private readonly agreementId: string;
-  private readonly awsBucketName: string;
   private readonly paymentReceiptId: string;
 
   constructor(
     private readonly aws: AwsService,
     private readonly config: ConfigService,
+    private readonly storage: StorageService,
   ) {
     const apiKey = this.config.get<string>('PDFMONKEY_API_KEY');
     this.invoiceId = this.config.get<string>('PDFMONKEY_INVOICE_ID') ?? '';
     this.agreementId = this.config.get<string>('PDFMONKEY_AGREEMENT_ID') ?? '';
     this.paymentReceiptId =
       this.config.get<string>('PDFMONKEY_PAYMENT_RECEIPT_ID') ?? '';
-    this.awsBucketName = this.config.get<string>('AWS_BUCKET_NAME') ?? '';
 
     this.pdfMonkeyApi = axios.create({
       baseURL: 'https://api.pdfmonkey.io/api/v1',
@@ -46,12 +47,14 @@ export class PdfMonkeyService {
     invoiceData: InvoiceData,
     invoiceNumber: string,
     tenantCode: string,
+    userId: string,
   ) => {
     const { s3Key, documentId, publicUrl } = await this.createDocument({
       data: invoiceData,
       documentType: 'invoice',
       documentNumber: invoiceNumber,
       tenantCode,
+      userId,
     });
     return { s3Key, documentId, publicUrl };
   };
@@ -60,12 +63,14 @@ export class PdfMonkeyService {
     paymentReceiptData: PaymentReceiptData,
     receiptNumber: string,
     tenantCode: string,
+    userId: string,
   ) => {
     const { s3Key, documentId, publicUrl } = await this.createDocument({
       data: paymentReceiptData,
       documentType: 'payment_receipt',
       documentNumber: receiptNumber,
       tenantCode,
+      userId,
     });
     return { s3Key, documentId, publicUrl };
   };
@@ -74,6 +79,7 @@ export class PdfMonkeyService {
     agreementData: AgreementData,
     agreementNumber: string,
     tenantCode: string,
+    userId: string,
   ) => {
     const { s3Key, documentId, publicUrl, signablePublicUrl } =
       await this.createDocument({
@@ -81,6 +87,7 @@ export class PdfMonkeyService {
         documentType: 'agreement',
         documentNumber: agreementNumber,
         tenantCode,
+        userId,
       });
     return { s3Key, documentId, publicUrl, signablePublicUrl };
   };
@@ -116,10 +123,9 @@ export class PdfMonkeyService {
     data,
     documentType,
     documentNumber,
-    tenantCode,
+    userId,
   }: CreateDocumentParams) {
     let templateId: string;
-    let folder: string;
 
     switch (documentType) {
       case 'invoice':
@@ -130,20 +136,6 @@ export class PdfMonkeyService {
         break;
       case 'payment_receipt':
         templateId = this.paymentReceiptId;
-        break;
-      default:
-        throw new Error(`Unknown document type: ${documentType}`);
-    }
-
-    switch (documentType) {
-      case 'invoice':
-        folder = 'Invoices';
-        break;
-      case 'agreement':
-        folder = 'Agreements';
-        break;
-      case 'payment_receipt':
-        folder = 'PaymentReceipts';
         break;
       default:
         throw new Error(`Unknown document type: ${documentType}`);
@@ -173,8 +165,11 @@ export class PdfMonkeyService {
         documentDetails.data.document.download_url,
       );
 
-      const s3Key = `Tenants/${tenantCode}/${folder}/${documentNumber}.pdf`;
-      const publicUrl = await this.uploadToS3(pdfBuffer, s3Key);
+      const { key: s3Key, url: publicUrl } = await this.saveAsMedia(
+        pdfBuffer,
+        documentNumber,
+        userId,
+      );
 
       if (documentType === 'agreement') {
         const additionalPageUrl =
@@ -186,11 +181,12 @@ export class PdfMonkeyService {
           additionalPageBuffer,
         );
 
-        const signableS3Key = `Tenants/${tenantCode}/${folder}/${documentNumber}_signable.pdf`;
-        const signablePublicUrl = await this.uploadToS3(
-          signablePdfBuffer,
-          signableS3Key,
-        );
+        const { key: signableS3Key, url: signablePublicUrl } =
+          await this.saveAsMedia(
+            signablePdfBuffer,
+            `${documentNumber}_signable`,
+            userId,
+          );
 
         return {
           s3Key,
@@ -234,17 +230,26 @@ export class PdfMonkeyService {
     return Buffer.from(pdfResponse.data, 'binary');
   }
 
-  uploadToS3 = async (pdfBuffer: Buffer, s3Key: string) => {
-    const uploadParams = {
-      Bucket: this.awsBucketName,
-      Key: s3Key,
-      Body: pdfBuffer,
-      ContentType: 'application/pdf',
-    };
-    await this.aws.s3Client.send(new PutObjectCommand(uploadParams));
+  private async saveAsMedia(
+    pdfBuffer: Buffer,
+    fileName: string,
+    userId: string,
+  ) {
+    const file = {
+      buffer: pdfBuffer,
+      originalname: `${fileName}.pdf`,
+      mimetype: 'application/pdf',
+      size: pdfBuffer.length,
+    } as Express.Multer.File;
 
-    return `https://${this.awsBucketName}.s3.amazonaws.com/${s3Key}`;
-  };
+    const { media } = await this.storage.createMedia(
+      { fileName, type: MediaType.DOCUMENT },
+      file,
+      userId,
+    );
+
+    return { key: media.id, url: media.url };
+  }
 
   replaceLastPage = async (
     originalPdfBuffer: Buffer,

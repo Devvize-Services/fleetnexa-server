@@ -27,11 +27,10 @@ model VehicleCompliance {
 model VehicleComplianceDocument {
     id                  String           @id @default(dbgenerated("gen_random_uuid()"))
     vehicleComplianceId String
-    documentId          Int
+    url                 String
 
     vehicleCompliance   VehicleCompliance @relation(fields: [vehicleComplianceId], references: [id])
-    document            Media            @relation(fields: [documentId], references: [id])
 
-    @@unique([vehicleComplianceId, documentId])
+    @@unique([vehicleComplianceId, url])
 }
 

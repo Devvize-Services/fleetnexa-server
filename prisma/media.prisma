@@ -1,15 +1,14 @@
 model Media {
-    id                              Int       @id @default(autoincrement())
-    accessToken                     String    @unique @default(cuid())
+    id                              String    @id @default(dbgenerated("gen_random_uuid()"))
     fileName                         String
     originalName                    String
     path                            String
     bucket                          String
     mimeType                        String
     extension                       String
+    url                             String?
     size                            Int
     type                            MediaType
-    url                             String?
     width                           Int?
     height                          Int?
     duration                        Int?
@@ -22,7 +21,4 @@ model Media {
     isDeleted                       Boolean         @default(false)
     deletedAt                       DateTime?
     permanentlyDeleteAt             DateTime?
-
-
-    complianceDocuments             VehicleComplianceDocument[]
 }

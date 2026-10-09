@@ -167,6 +167,7 @@ interface CreateDocumentParams {
   documentType: DocumentType;
   documentNumber: string;
   tenantCode: string;
+  userId: string;
 }
 
 interface PaymentReceiptData {

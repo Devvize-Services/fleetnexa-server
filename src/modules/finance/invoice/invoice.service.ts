@@ -146,6 +146,7 @@ export class InvoiceService {
         data,
         invoiceNumber,
         tenant.tenantCode,
+        user.id,
       );
 
       const primaryDriver =

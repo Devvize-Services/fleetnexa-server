@@ -8944,16 +8944,15 @@ export type RentalActivityScalarFieldEnum = (typeof RentalActivityScalarFieldEnu
 
 export const MediaScalarFieldEnum = {
   id: 'id',
-  accessToken: 'accessToken',
   fileName: 'fileName',
   originalName: 'originalName',
   path: 'path',
   bucket: 'bucket',
   mimeType: 'mimeType',
   extension: 'extension',
+  url: 'url',
   size: 'size',
   type: 'type',
-  url: 'url',
   width: 'width',
   height: 'height',
   duration: 'duration',
@@ -9754,7 +9753,7 @@ export type VehicleComplianceScalarFieldEnum = (typeof VehicleComplianceScalarFi
 export const VehicleComplianceDocumentScalarFieldEnum = {
   id: 'id',
   vehicleComplianceId: 'vehicleComplianceId',
-  documentId: 'documentId'
+  url: 'url'
 } as const
 
 export type VehicleComplianceDocumentScalarFieldEnum = (typeof VehicleComplianceDocumentScalarFieldEnum)[keyof typeof VehicleComplianceDocumentScalarFieldEnum]

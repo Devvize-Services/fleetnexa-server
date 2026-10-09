@@ -61,6 +61,7 @@ export class DocumentService {
         data,
         agreementNumber,
         tenant.tenantCode,
+        user.id,
       );
 
       const primaryDriver =

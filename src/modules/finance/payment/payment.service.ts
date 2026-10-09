@@ -443,6 +443,7 @@ export class PaymentService {
         data,
         receiptNumber,
         tenant.tenantCode,
+        user.id,
       );
 
       const primaryDriver = await this.customerService.getPrimaryDriver(
